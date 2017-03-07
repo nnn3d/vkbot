@@ -6,8 +6,8 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use yii\helpers\Url;
+
 
 class SiteController extends Controller
 {
@@ -17,23 +17,6 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
         ];
     }
 
@@ -60,7 +43,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // return $this->render('index');
+        return 'lol';
     }
 
     /**
@@ -83,43 +67,34 @@ class SiteController extends Controller
         ]);
     }
 
-    /**
-     * Logout action.
-     *
-     * @return string
-     */
-    public function actionLogout()
+    public function actionGetToken()
     {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
+        return $this->redirect(
+            'https://oauth.vk.com/authorize?'
+            . '&client_id=' . Yii::$app->params['vkBot']['vkAppId']
+            . '&scope=' . Yii::$app->params['vkBot']['vkAppScope']
+            . '&redirect_uri=' . 'https://oauth.vk.com/blank.html'
+            . '&v=' . Yii::$app->params['vkBot']['vkApiVersion']
+        );
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return string
-     */
-    public function actionContact()
+    public function actionRedirect($code)
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+        $url = 'https://oauth.vk.com/access_token?'
+            . '&client_id=' . Yii::$app->params['vkBot']['vkAppId']
+            . '&client_secret=' . Yii::$app->params['vkBot']['vkAppSecret']
+            . '&redirect_uri=' . 'https://oauth.vk.com/blank.html'
+            . '&code=' . $code ;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $output = curl_exec($ch);
+        echo curl_error($ch);
+        curl_close($ch);
+        return "code: $code, key: $output";
     }
 
-    /**
-     * Displays about page.
-     *
-     * @return string
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 }

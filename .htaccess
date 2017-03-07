@@ -1,24 +1,14 @@
-<IfModule mod_rewrite.c>
-    Options +FollowSymlinks
-    IndexIgnore */*
-    RewriteEngine On
-</IfModule>
- 
-<IfModule mod_rewrite.c>
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
 
-    # root directory
-    RewriteRule ^favicon(.*)$ frontend/web/favicon$1 [L]
+RewriteCond %{REQUEST_URI} !^/(web)
+RewriteRule ^assets/(.*)$ /web/assets/$1 [L]
+RewriteRule ^css/(.*)$ web/css/$1 [L]
+RewriteRule ^js/(.*)$ web/js/$1 [L]
+RewriteRule ^images/(.*)$ web/images/$1 [L]
+RewriteRule (.*) /web/$1
 
-    RewriteCond %{REQUEST_URI} ^/(assets|css|js|images)
-    RewriteRule ^assets/(.*)$ web/assets/$1 [L]
-    RewriteRule ^css/(.*)$ web/css/$1 [L]
-    RewriteRule ^js/(.*)$ web/js/$1 [L]
-    RewriteRule ^images/(.*)$ web/images/$1 [L]
-    #RewriteRule ^(.*)$ web/$1 [L]
-
-    RewriteCond %{REQUEST_URI} !^/(frontend|backend)/web/(assets|css|js)/
-    RewriteCond %{REQUEST_URI} !index.php
-    RewriteCond %{REQUEST_FILENAME} !-f [OR]
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^.*$ web/index.php
-</IfModule> 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /web/index.php
