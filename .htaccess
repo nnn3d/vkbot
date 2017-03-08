@@ -1,7 +1,7 @@
 Options +FollowSymLinks
 IndexIgnore */*
 RewriteEngine on
-RewriteRule ^cgi(.*) [L]
+RewriteRule ^git-pull$ /cgi/git-pull.cgi [L]
 RewriteCond %{REQUEST_URI} !^/(web)
 RewriteRule ^assets/(.*)$ /web/assets/$1 [L]
 RewriteRule ^css/(.*)$ web/css/$1 [L]
