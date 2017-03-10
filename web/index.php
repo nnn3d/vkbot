@@ -1,7 +1,7 @@
 <?php
 
 if (isset($argv) && isset($argv[1])) {
-	$_GET['r'] = $argv[1];
+	$_GET['r'] = 'site/' . $argv[1];
 }
 
 // comment out the following two lines when deployed to production
