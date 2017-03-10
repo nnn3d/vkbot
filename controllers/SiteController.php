@@ -78,7 +78,7 @@ class SiteController extends Controller
         return "code: $code, key: $output";
     }
 
-    public function actionEvatop($id , $message) 
+    public function actionEvatop() 
     { 
         $url = 'https://api.vk.com/method/messages.send' 
         .'user_id' . '266979404' 
