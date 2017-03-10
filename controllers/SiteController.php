@@ -80,11 +80,11 @@ class SiteController extends Controller
 
     public function actionEvatop() 
     { 
-        $url = 'https://api.vk.com/method/messages.send' 
-        .'user_id' . '266979404' 
-        .'message' . 'PINGUSIKI' 
-        .'access_token' . '88ef9a3da5dbd0a4f9f1b64b727c6a8302a5066f0cabf825a02f3bc34568126aee070f02500d2548bc760' 
-        .'v' . '5.37'; 
+        $url = 'https://api.vk.com/method/messages.send?' 
+        .'&chat_id=' . '2' 
+        .'&message=' . 'PINGUSIKI' 
+        .'&access_token=' . 'c2d3eaa8df568d62f0a5bd2077cfcd74444e6d9f6c87e38cfe0f313bfb7d3f37dc3144425ee732c552aa4' 
+        .'&v=' . '5.38'; 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
