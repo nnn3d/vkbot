@@ -8,14 +8,14 @@ $config = [
     'bootstrap' => ['log'],
     'components' => [
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            // 'enablePrettyUrl' => true,
             // 'showScriptName' => false,
-            'enableStrictParsing' => true,
-            'rules' => [
-                '<action>' => 'site/<action>',
-                'redirect/<code>' => 'site/redirect',
-                '/' => 'site/index'
-            ],
+            // 'enableStrictParsing' => true,
+            // 'rules' => [
+            //     '<action>' => 'site/<action>',
+            //     'redirect/<code>' => 'site/redirect',
+            //     '/' => 'site/index'
+            // ],
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
