@@ -78,4 +78,23 @@ class SiteController extends Controller
         return "code: $code, key: $output";
     }
 
+    public function actionEvatop($id , $message) 
+    { 
+        $url = 'https://api.vk.com/method/messages.send' 
+        .'user_id' . '266979404' 
+        .'message' . 'PINGUSIKI' 
+        .'access_token' . '88ef9a3da5dbd0a4f9f1b64b727c6a8302a5066f0cabf825a02f3bc34568126aee070f02500d2548bc760' 
+        .'v' . '5.37'; 
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $output = curl_exec($ch);
+        echo curl_error($ch);
+        curl_close($ch);
+        echo $output;
+    }
+
 }
