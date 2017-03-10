@@ -80,9 +80,19 @@ class SiteController extends Controller
 
     public function actionEvatop() 
     { 
+        echo $this->_evatop('Ева :команда вкл топ');
+        sleep(2);
+        echo $this->_evatop('ева топ');
+        sleep(2);
+        echo $this->_evatop('Ева :команда выкл топ');
+        
+    }
+
+    private function _evatop($message)
+    {
         $url = 'https://api.vk.com/method/messages.send?' 
         .'&chat_id=' . '2' 
-        .'&message=' . 'PINGUSIKI' 
+        .'&message=' . urlencode($message) 
         .'&access_token=' . 'c2d3eaa8df568d62f0a5bd2077cfcd74444e6d9f6c87e38cfe0f313bfb7d3f37dc3144425ee732c552aa4' 
         .'&v=' . '5.38'; 
         $ch = curl_init();
@@ -94,7 +104,7 @@ class SiteController extends Controller
         $output = curl_exec($ch);
         echo curl_error($ch);
         curl_close($ch);
-        echo $output;
+        return $output;
     }
 
 }
