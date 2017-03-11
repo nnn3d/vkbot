@@ -15,6 +15,16 @@ Thumbs.db
 # composer vendor dir
 /vendor
 
+#logs
+log.txt
+work-log.txt
+
+#sublime
+*.sublime-project
+
+# db
+/config/db.php
+
 # composer itself is not needed
 composer.phar
 

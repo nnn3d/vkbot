@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\helpers\Url;
+use app\models\Vk;
 
 
 class SiteController extends Controller
@@ -76,6 +77,20 @@ class SiteController extends Controller
         echo curl_error($ch);
         curl_close($ch);
         return "code: $code, key: $output";
+    }
+
+    public function actionTest()
+    {
+        // $vk = new Vk(Yii::$app->params['vkBot']['vkConfig']);
+        echo $vk->messages->send([
+            'chat_id' => 2,
+            'message' => 'лолидза',
+        ]);
+    }
+
+    public function actionBot()
+    {
+        \app\models\Bot::get()->start();
     }
 
     public function actionEvatop() 

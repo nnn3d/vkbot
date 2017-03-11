@@ -9,7 +9,7 @@ namespace app\models;
  * @version: 2.0
  */
 // Возвращаемые ошибки https://vk.com/dev/errors
-class VkException extends Exception {};
+class VkException extends \yii\base\Exception {};
 class Vk{
     private $v = '5.53'; // версия Api VKontakte @link https://vk.com/dev/versions
     const VERSION = '2.0'; // версия этой библиотеки
@@ -17,6 +17,7 @@ class Vk{
     const AUTHORIZE_URL  = 'https://oauth.vk.com/authorize?';
     const GET_TOKEN_URL  = 'https://oauth.vk.com/access_token?';
     const METHOD_URL     = 'https://api.vk.com/method/';
+    const TIME_SLEEP    = 0.334;
     public $secret_key  = null;
     public $scope       = [];
     public $client_id   = null;
@@ -24,6 +25,8 @@ class Vk{
     public $owner_id    = 0;
     public $debug       = false;
     private $_api_scope = '';
+
+    public static $last_request_time;
     /**
      * Это Конструктор (Кэп.)
      * Передаются параметры настроек
@@ -32,7 +35,14 @@ class Vk{
     function __construct( $options = [] ){
         $this->scope[]='offline'; // обязательно запрашиваем права на оффлайн работу без участия пользователя
         $this->set_options($options);
+        if (!static::$last_request_time) static::$last_request_time = microtime(true);
     }
+
+    static function get()
+    {
+        return new self(\Yii::$app->params['vkBot']['vkConfig']);
+    }
+
     // Magic Method (*__*)
     function __call($method, $params){
         if(!isset($params[0])) $params[0] = [];
@@ -57,6 +67,21 @@ class Vk{
         if($this->debug) return $url;
         return $this->call($url);
     }
+
+    public function longPoll($server, $key, $ts)
+    {
+        $params = http_build_query([
+            'key'       => $key,
+            'ts'        => $ts,
+            'act'       => 'a_check',
+            'wait'      => '25',
+            'mode'      => '2',
+            'version'   => '1',
+        ]);
+        $url = 'https://' . $server . '?' . $params;
+        return $this->call($url);
+    }
+
     public function execute($code){
         return $this->api('execute', array('code' => $code));
     }
@@ -101,8 +126,11 @@ class Vk{
         return $this->call($url);
     }
     private function call($url = ''){
+        $time = self::TIME_SLEEP - (microtime(true) - static::$last_request_time);
+        if ($time > 0) usleep(intval(1000000 * ($time)));
         if(function_exists('curl_init')) $json = $this->curl_post($url); else $json = file_get_contents($url);
         $json = json_decode($json, true);
+        static::$last_request_time = microtime(true);
         // Произошла ошибка на стороне VK, коды ошибок тут https://vk.com/dev/errors
         if(isset($json['error'], $json['error']['error_msg'], $json['error']['error_code'])){
             throw new VkException($json['error']['error_msg'], $json['error']['error_code']);
