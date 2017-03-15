@@ -53,8 +53,15 @@ class Users extends \yii\db\ActiveRecord
 
     public static function getUser($chatId, $userId)
     {
-        if ($userId == Params::get()->selfId) return null;
+        if ($userId == Params::get()->selfId) return new self;
         return static::userExists($chatId, $userId) ? static::findOne(['chatId' => $chatId, 'userId' => $userId]) : static::updateUser($chatId, $userId);
+    }
+
+    public function getStatus()
+    {
+        $status = $this->status;
+        if (Params::get()->selfId == $this->userId) $status = 10;
+        return $status;
     }
 
     public static function userExists($chatId, $userId, $load = false)

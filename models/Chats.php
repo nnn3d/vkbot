@@ -34,6 +34,11 @@ class Chats extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function get($chatId)
+    {
+        return static::findOne(['chatId' => $chatId]);
+    }
+
     /**
      * @inheritdoc
      */
@@ -45,6 +50,14 @@ class Chats extends \yii\db\ActiveRecord
             'adminId' => 'Admin ID',
             'lastMessageId' => 'Last Message ID',
         ];
+    }
+
+    public function sendMessage($message)
+    {
+        Vk::get()->messages->send([
+            'chat_id' => $this->chatId,
+            'message' => $message,
+        ]);
     }
 
     public static function addChatFromMessage($message)
@@ -77,6 +90,37 @@ class Chats extends \yii\db\ActiveRecord
         return $chat;
     }
 
+    public static function chatExists($chatId)
+    {
+        return static::find()->where(['chatId' => $chatId])->exists();
+    }
+
+    public static function getAllChats($load = false)
+    {
+        if ($load) static::updateChats();
+        return static::find()->all();
+    }
+
+    public function getAllUsers($load = false)
+    {
+        if ($load) $this->updateUsers();
+        return Users::findAll(['chatId' => $this->chatId]);
+    }
+
+    public function getAllActiveUsers()
+    {
+        $users = $this->getAllUsers(true);
+        $activeUsers = array_map(function ($user)
+        {
+            return $user['id'];
+        }, $this->loadUsers());
+        $resultUsers = [];
+        foreach ($users as $user) {
+           if (in_array($user->userId, $activeUsers)) $resultUsers[] = $user; 
+        }
+        return $resultUsers;
+    }
+
     public function getUser($userId)
     {
         $user = Users::getUser($chatId, $userId);
@@ -103,7 +147,10 @@ class Chats extends \yii\db\ActiveRecord
     {
         $chats = static::loadChatsRecursive();
         foreach ($chats as $elem) {
-            static::addChatFromMessage($elem['message']);
+            $chat = static::addChatFromMessage($elem['message']);
+            if (!static::chatExists($chat->chatId)) {
+                $chat->save();
+            }
         }
     }
 
@@ -116,12 +163,21 @@ class Chats extends \yii\db\ActiveRecord
         ];
         $chats = Vk::get()->messages->getDialogs($params);
         $items = $chats['items'];
-        if (count($items) + $prevCount < $chats['count']) $items = array_merge($items, static::loadChatsRecursive($unread, $offset + $params['count'], count($items) + $prevCount));
-        $items = array_filter($items, function ($var)
+        if (count($items) + $prevCount < $chats['count']) {
+            $items = array_merge(
+                $items, 
+                static::loadChatsRecursive(
+                    $unread, 
+                    $offset + $params['count'], 
+                    count($items) + $prevCount
+                )
+            );
+        }
+        $itemsF = array_filter($items, function ($var)
         {
             return isset($var['message']['chat_id']);
         });
-        return $items;
+        return $itemsF;
     }
 
 

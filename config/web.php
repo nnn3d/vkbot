@@ -40,12 +40,26 @@ $config = [
             'useFileTransport' => true,
         ],
         'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'traceLevel' => YII_DEBUG ? 0 : 0,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning', 'info'],
+                    'levels' => ['error', 'warning'],
                     'logFile' => '@app/log.txt',
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['trace', 'info'],
+                    'logFile' => '@app/info-log.txt',
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'categories' => ['bot-log'],
+                    'logFile' => '@app/work-log.txt',
+                    'logVars' => [],
+                    'prefix' => function ($message) {
+                        return '';
+                    }
                 ],
             ],
         ],

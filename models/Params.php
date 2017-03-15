@@ -13,13 +13,33 @@ use Yii;
  */
 class Params extends \yii\db\ActiveRecord
 {
-    private $params;
+    public static $params;
+
+    public static function bot($params)
+    {
+        if (!is_array($params)) $params = [$params];
+        $botParam = Yii::$app->params['vkBot'];
+        foreach ($params as $param) {
+            if (isset($botParam[$param])) {
+                $botParam = $botParam[$param];
+            } else {
+                return false;
+            }
+        }
+        return $botParam;
+    }
+
+    public function __construct()
+    {
+        if (!static::$params) static::$params = [];
+    }
 
     public function __get($param)
     {
         if ($param == 'param' || $param == 'value') return parent::__get($param);
-        if (isset($params[$param])) return $params[$param];
-        return self::get()->findOne(['param' => $param])->value;
+        if (isset(static::$params[$param])) return $params[$param];
+        $self = self::get()->findOne(['param' => $param]);
+        return $self ? $self->value : null;
     }
 
     public function __set($param, $value)   

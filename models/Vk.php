@@ -38,16 +38,27 @@ class Vk{
         if (!static::$last_request_time) static::$last_request_time = microtime(true);
     }
 
-    static function get()
+    static function get($params = null)
     {
-        return new self(\Yii::$app->params['vkBot']['vkConfig']);
+        return new self(\app\models\Params::bot('vkConfig'));
+    }
+
+    function getR($params = null)
+    {
+        return $this->invoke('get', $params);
     }
 
     // Magic Method (*__*)
     function __call($method, $params){
+        return $this->invoke($method, $params);
+    }
+
+    private function invoke($method, $params)
+    {
         if(!isset($params[0])) $params[0] = [];
         return $this->api($this->_api_scope . '.' . $method, $params[0]);
     }
+
     function  __get($name){
         $this->_api_scope = $name;
         return $this;
@@ -133,7 +144,8 @@ class Vk{
         static::$last_request_time = microtime(true);
         // Произошла ошибка на стороне VK, коды ошибок тут https://vk.com/dev/errors
         if(isset($json['error'], $json['error']['error_msg'], $json['error']['error_code'])){
-            throw new VkException($json['error']['error_msg'], $json['error']['error_code']);
+            \Yii::error("vk error with code {$json['error']['error_code']} and message '{$json['error']['error_msg']}'", 'bot-log');
+            throw new VkException("error #{$json['error']['error_code']}: {$json['error']['error_msg']}");
         }
         if(isset($json['response'])) return $json['response'];
         return $json;
