@@ -18858,3 +18858,666 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1489771020.369
     'REQUEST_TIME' => 1489771020
 ]
+2017-03-17 17:58:54 [127.0.0.1][-][-][error][yii\base\ErrorException:64] exception 'yii\base\ErrorException' with message 'Namespace declaration statement has to be the very first statement in the script' in Z:\home\penmet.local\www\models\Bot.php:4
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-17 17:58:52 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '57260'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489773532.298
+    'REQUEST_TIME' => 1489773532
+]
+2017-03-17 17:59:22 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '===' (T_IS_IDENTICAL)' in Z:\home\penmet.local\www\models\Bot.php:157
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-17 17:59:22 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '57288'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489773562.839
+    'REQUEST_TIME' => 1489773562
+]
+2017-03-17 18:00:36 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in Z:\home\penmet.local\www\models\Params.php:40
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-17 18:00:36 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '57316'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489773636.194
+    'REQUEST_TIME' => 1489773636
+]
+2017-03-17 17:30:41 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 1
+2017-03-17 17:46:58 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:47:09 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:47:13 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:47:20 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:47:34 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:47:39 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:47:45 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:47:48 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:48:04 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:48:10 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:48:12 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:48:21 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:48:23 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:48:27 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:48:34 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:48:40 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:48:46 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:48:52 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:48:59 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:49:03 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:49:06 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:49:09 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:49:13 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:49:19 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:49:35 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:49:39 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:49:47 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:49:54 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:49:57 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:50:03 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:50:10 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:50:14 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:50:20 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:50:27 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:50:51 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:51:08 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:51:15 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:51:25 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:51:33 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:51:37 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:51:41 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:51:44 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:51:47 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:51:51 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:52:00 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:52:07 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:52:15 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:52:21 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:52:48 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:52:55 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:53:23 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:53:50 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:54:00 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:54:22 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:54:28 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:54:33 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:54:44 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:54:59 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:55:10 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:55:19 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:55:23 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:55:27 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:55:32 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:55:40 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:55:45 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:55:49 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:56:02 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:56:28 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:56:32 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:56:40 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:57:07 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:57:37 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:58:05 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:58:31 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:58:48 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:59:14 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:59:52 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:00:41 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 1
+2017-03-17 18:00:41 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:00:46 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:01:01 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:01:13 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 17:22:22 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '55510'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489771342.222
+    'REQUEST_TIME' => 1489771342
+]
+2017-03-17 18:01:41 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:01:52 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:01:55 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '<<' (T_SL), expecting function (T_FUNCTION)' in Z:\home\penmet.local\www\models\Chats.php:37
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-17 18:01:33 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '57361'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489773693.114
+    'REQUEST_TIME' => 1489773693
+]
+2017-03-17 18:03:25 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:03:32 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:03:40 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:03:45 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:03:51 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:03:54 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '<<' (T_SL)' in Z:\home\penmet.local\www\models\Chats.php:136
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-17 18:03:14 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '57425'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489773794.732
+    'REQUEST_TIME' => 1489773794
+]
+2017-03-17 18:11:59 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:11:42 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '57771'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489774302.465
+    'REQUEST_TIME' => 1489774302
+]
+2017-03-17 18:04:41 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:04:49 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:04:56 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:05:08 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:05:15 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:05:19 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:05:24 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:05:29 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:05:34 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:05:38 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:05:45 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:05:50 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:06:00 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:06:12 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:06:22 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:06:25 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:06:30 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:06:35 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:06:39 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:07:04 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:07:10 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:07:41 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:07:50 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:07:57 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:08:23 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:08:49 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:09:27 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:09:53 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:10:19 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:10:46 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:11:13 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:11:39 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:11:59 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:04:30 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '57475'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489773870.904
+    'REQUEST_TIME' => 1489773870
+]
+2017-03-17 18:12:31 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:12:37 [127.0.0.1][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Undefined class constant 'commands'' in Z:\home\penmet.local\www\models\ChatCommands.php:38
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-17 18:12:27 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '57806'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489774347.459
+    'REQUEST_TIME' => 1489774347
+]
+2017-03-17 18:14:50 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:15:15 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:15:30 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:15:44 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:15:54 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-17 18:14:39 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '57902'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489774479.507
+    'REQUEST_TIME' => 1489774479
+]
+2017-03-17 18:24:06 [127.0.0.1][-][-][error][yii\db\Exception] exception 'yii\base\ErrorException' with message 'PDOStatement::execute(): MySQL server has gone away' in Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\Command.php:902
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'PDOStatement::e...', 'Z:\\home\\penmet....', 902, Array)
+#1 Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\Command.php(902): PDOStatement->execute()
+#2 Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\Command.php(376): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#3 Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\Query.php(253): yii\db\Command->queryOne()
+#4 Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\ActiveQuery.php(295): yii\db\Query->one('<span class="ke...')
+#5 Z:\home\penmet.local\www\models\ParamsQuery.php(32): yii\db\ActiveQuery->one('<span class="ke...')
+#6 Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\BaseActiveRecord.php(107): app\models\ParamsQuery->one()
+#7 Z:\home\penmet.local\www\models\Params.php(48): yii\db\BaseActiveRecord::findOne('[<span class="s...')
+#8 Z:\home\penmet.local\www\models\Bot.php(74): app\models\Params->__set('<span class="st...', '<span class="nu...')
+#9 Z:\home\penmet.local\www\models\Bot.php(34): app\models\Bot->longPoll()
+#10 Z:\home\penmet.local\www\models\Bot.php(26): app\models\Bot->cycle()
+#11 Z:\home\penmet.local\www\controllers\SiteController.php(93): app\models\Bot->start()
+#12 [internal function]: app\controllers\SiteController->actionBot()
+#13 Z:\home\penmet.local\www\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#14 Z:\home\penmet.local\www\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#15 Z:\home\penmet.local\www\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#16 Z:\home\penmet.local\www\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#17 Z:\home\penmet.local\www\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 Z:\home\penmet.local\www\web\index.php(16): yii\base\Application->run()
+#19 {main}
+
+Next exception 'yii\db\Exception' with message 'PDOStatement::execute(): MySQL server has gone away
+The SQL being executed was: SELECT * FROM `params` WHERE `param`='longPollTs'' in Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\Schema.php:636
+Stack trace:
+#0 Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\Command.php(917): yii\db\Schema->convertException(Object(yii\base\ErrorException), 'SELECT * FROM `...')
+#1 Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\Command.php(376): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\Query.php(253): yii\db\Command->queryOne()
+#3 Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\ActiveQuery.php(295): yii\db\Query->one('<span class="ke...')
+#4 Z:\home\penmet.local\www\models\ParamsQuery.php(32): yii\db\ActiveQuery->one('<span class="ke...')
+#5 Z:\home\penmet.local\www\vendor\yiisoft\yii2\db\BaseActiveRecord.php(107): app\models\ParamsQuery->one()
+#6 Z:\home\penmet.local\www\models\Params.php(48): yii\db\BaseActiveRecord::findOne('[<span class="s...')
+#7 Z:\home\penmet.local\www\models\Bot.php(74): app\models\Params->__set('<span class="st...', '<span class="nu...')
+#8 Z:\home\penmet.local\www\models\Bot.php(34): app\models\Bot->longPoll()
+#9 Z:\home\penmet.local\www\models\Bot.php(26): app\models\Bot->cycle()
+#10 Z:\home\penmet.local\www\controllers\SiteController.php(93): app\models\Bot->start()
+#11 [internal function]: app\controllers\SiteController->actionBot()
+#12 Z:\home\penmet.local\www\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#13 Z:\home\penmet.local\www\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#14 Z:\home\penmet.local\www\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#15 Z:\home\penmet.local\www\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#16 Z:\home\penmet.local\www\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#17 Z:\home\penmet.local\www\web\index.php(16): yii\base\Application->run()
+#18 {main}
+Additional Information:
+
+2017-03-17 18:22:15 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '58094'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489774935.864
+    'REQUEST_TIME' => 1489774935
+]

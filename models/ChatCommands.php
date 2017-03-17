@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use app\models\Chats;
 use app\models\Users;
+use app\models\MessagesCounter;
 
 class ChatCommands {
 	private static $commands;
@@ -34,9 +35,21 @@ class ChatCommands {
 
 	public static function getAllCommands()
 	{
-		if (isset(static::$commands)) return static::commands;
+		if (isset(static::$commands)) return static::$commands;
 		$s = new self;
 		$commands = [];
+		// example
+		$commands[] = new ChatCommand(
+			function ($chatId, $userId, $args) use ($s) 
+			{
+				$s->load($chatId, $userId, $args);
+				return false;
+			}, 
+			function ($chatId, $userId, $args) 
+			{
+				//do something
+			}
+		);
 		// chat top
 		$commands[] = new ChatCommand(
 			function ($chatId, $userId, $args) use ($s) 
@@ -56,6 +69,38 @@ class ChatCommands {
 				foreach ($users as $num => $user) {
 					$n = $num + 1;
 					$message .= "\n{$n}. {$user->name} {$user->secondName} ({$user->messages})";
+				}
+				$chat->sendMessage($message);
+			}
+		);
+		// chat top by days
+		$commands[] = new ChatCommand(
+			function ($chatId, $userId, $args) use ($s) 
+			{
+				$s->load($chatId, $userId, $args);
+				return $s->argsEqual(2) && $s->minStatus(10) && $s->argsRegExp(['топ', '[\d]{1,2}']);
+			}, 
+			function ($chatId, $userId, $args) 
+			{
+				$days = $args[1];
+				$time = time();
+				$chat = Chats::getChat($chatId);
+				$users = $chat->getAllActiveUsers();
+				$usersCount = [];
+				$message = "Топ грязных ртов в течении $days дней (кол-во символов):\n";
+				foreach ($users as $user) {
+					$usersCount[] = [
+						'user' => $user,
+						'count' => MessagesCounter::getSumCount($chatId, $user->userId, $days, $time),
+					];
+				}
+				usort($usersCount, function ($a, $b)
+				{
+					return $b['count'] - $a['count'];
+				});
+				foreach ($usersCount as $num => $item) {
+					$n = $num + 1;
+					$message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']})";
 				}
 				$chat->sendMessage($message);
 			}

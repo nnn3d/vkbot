@@ -47,6 +47,27 @@ class MessagesCounter extends \yii\db\ActiveRecord
         $counter->save();
     }
 
+    public static function getSumCount($chatId, $userId, $daysAgo, $time = null)
+    {
+        (!is_int($time) || !isset($time)) && $time = time();
+        $count = 0;
+        $time = time();
+        for ($i=0; $i < $daysAgo; $i++) { 
+            $count += static::getDayCount($chatId, $userId, $i, $time);
+        }
+        return $count;
+    }
+
+    public static function getDayCount($chatId, $userId, $daysAgo, $time = null)
+    {
+        (!is_int($time) || !isset($time)) && $time = time();
+        $count = 0;
+        list($year, $month, $day) = explode(" ", date("y n j", time() - ($daysAgo * 60 * 60 * 24)));
+        $counter = static::findOne(['chatId' => $chatId, 'userId' => $userId, 'year' => $year, 'month' => $month, 'day' => $day]);
+        if ($counter) $count = $counter->messages;
+        return $count;
+    }
+
     /**
      * @inheritdoc
      */
