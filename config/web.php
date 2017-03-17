@@ -8,14 +8,14 @@ $config = [
     'bootstrap' => ['log'],
     'components' => [
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            // 'enablePrettyUrl' => true,
             // 'showScriptName' => false,
-            'enableStrictParsing' => true,
-            'rules' => [
-                '<action>' => 'site/<action>',
-                'redirect/<code>' => 'site/redirect',
-                '/' => 'site/index'
-            ],
+            // 'enableStrictParsing' => true,
+            // 'rules' => [
+            //     '<action>' => 'site/<action>',
+            //     'redirect/<code>' => 'site/redirect',
+            //     '/' => 'site/index'
+            // ],
         ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -40,11 +40,26 @@ $config = [
             'useFileTransport' => true,
         ],
         'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'traceLevel' => YII_DEBUG ? 0 : 0,
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
+                    'logFile' => '@app/log.txt',
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['trace', 'info'],
+                    'logFile' => '@app/info-log.txt',
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'categories' => ['bot-log'],
+                    'logFile' => '@app/work-log.txt',
+                    'logVars' => [],
+                    'prefix' => function ($message) {
+                        return '';
+                    }
                 ],
             ],
         ],
@@ -61,7 +76,7 @@ $config = [
     'params' => $params,
 ];
 
-if (YII_ENV_DEV || true) {
+if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [

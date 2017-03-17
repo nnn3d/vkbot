@@ -1,0 +1,748 @@
+2017-03-17 17:07:13 [info][bot-log] start bot
+2017-03-17 17:07:23 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237001
+2017-03-17 17:07:25 [info][bot-log] 417171268
+2017-03-17 17:07:43 [info][bot-log] start bot
+2017-03-17 17:07:53 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237097
+2017-03-17 17:07:54 [info][bot-log] 417171268
+2017-03-17 17:07:54 [info][bot-log] Closure
+2017-03-17 17:08:39 [info][bot-log] start bot
+2017-03-17 17:08:49 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237120
+2017-03-17 17:08:51 [info][bot-log] 417171268
+2017-03-17 17:08:51 [info][bot-log] null
+2017-03-17 17:09:22 [info][bot-log] start bot
+2017-03-17 17:09:33 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237200
+2017-03-17 17:09:34 [info][bot-log] 417171268
+2017-03-17 17:09:34 [info][bot-log] null
+2017-03-17 17:10:40 [info][bot-log] start bot
+2017-03-17 17:10:50 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237241
+2017-03-17 17:10:52 [info][bot-log] 417171268
+2017-03-17 17:10:52 [info][bot-log] null
+2017-03-17 17:12:29 [info][bot-log] start bot
+2017-03-17 17:12:39 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237332
+2017-03-17 17:12:42 [info][bot-log] 417171268
+2017-03-17 17:12:42 [info][bot-log] null
+2017-03-17 17:14:41 [info][bot-log] start bot
+2017-03-17 17:14:51 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237510
+2017-03-17 17:14:53 [info][bot-log] 417171268
+2017-03-17 17:14:53 [info][bot-log] function ($chatId, $userId, $args) use ($s) {
+
+				$s->load($chatId, $userId, $args);
+
+				return $s::argsEqual(1) && $s::minStatus(10) && $s::argsRegExp(['топ']);
+
+			}
+2017-03-17 17:17:00 [info][bot-log] start bot
+2017-03-17 17:17:10 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237668
+2017-03-17 17:17:12 [info][bot-log] 417171268
+2017-03-17 17:17:12 [info][bot-log] function ($chatId, $userId, $args) use ($s) {
+
+				$s->load($chatId, $userId, $args);
+
+				return $s::argsEqual(1) && $s::minStatus(10) && $s::argsRegExp(['топ']);
+
+			}
+2017-03-17 17:18:00 [info][bot-log] start bot
+2017-03-17 17:18:11 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237810
+2017-03-17 17:18:12 [info][bot-log] 417171268
+2017-03-17 17:18:12 [info][bot-log] function ($chatId, $userId, $args) use ($s) 
+
+			{
+
+				$s->load($chatId, $userId, $args);
+
+				Yii::info($s->argsEqual(1) . ' ' . $s->minStatus(10) . $s->argsRegExp(['топ']), 'bot-log');
+
+				return $s->argsEqual(1) && $s->minStatus(10) && $s->argsRegExp(['топ']);
+
+2017-03-17 17:18:12 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237863
+2017-03-17 17:18:12 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237864
+2017-03-17 17:18:15 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237866
+2017-03-17 17:18:16 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237867
+2017-03-17 17:18:17 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237868
+2017-03-17 17:18:20 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237869
+2017-03-17 17:18:21 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237871
+2017-03-17 17:18:22 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237873
+2017-03-17 17:18:23 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237875
+2017-03-17 17:18:24 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237876
+2017-03-17 17:18:25 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237877
+2017-03-17 17:18:26 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237879
+2017-03-17 17:18:29 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237880
+2017-03-17 17:18:35 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237881
+2017-03-17 17:18:36 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237882
+2017-03-17 17:18:40 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237883
+2017-03-17 17:18:40 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237885
+2017-03-17 17:18:41 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237886
+2017-03-17 17:18:42 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237888
+2017-03-17 17:18:45 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237889
+2017-03-17 17:18:47 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237890
+2017-03-17 17:18:49 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237892
+2017-03-17 17:18:49 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237893
+2017-03-17 17:18:50 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237894
+2017-03-17 17:18:53 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237895
+2017-03-17 17:18:55 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237897
+2017-03-17 17:18:55 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237898
+2017-03-17 17:19:01 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237899
+2017-03-17 17:19:06 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237900
+2017-03-17 17:19:09 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237901
+2017-03-17 17:19:11 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237904
+2017-03-17 17:19:14 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237905
+2017-03-17 17:19:15 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237907
+2017-03-17 17:19:16 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237908
+2017-03-17 17:19:17 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237910
+2017-03-17 17:19:17 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237911
+2017-03-17 17:19:18 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237912
+2017-03-17 17:19:18 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237913
+2017-03-17 17:19:19 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237915
+2017-03-17 17:19:20 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237916
+2017-03-17 17:19:22 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237917
+2017-03-17 17:19:23 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237918
+2017-03-17 17:19:23 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237919
+2017-03-17 17:19:25 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237923
+2017-03-17 17:19:26 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237924
+2017-03-17 17:19:27 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237926
+2017-03-17 17:19:27 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237927
+2017-03-17 17:19:28 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237928
+2017-03-17 17:19:29 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237929
+2017-03-17 17:19:31 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237930
+2017-03-17 17:19:32 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237933
+2017-03-17 17:19:33 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237934
+2017-03-17 17:19:33 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237935
+2017-03-17 17:19:34 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237936
+2017-03-17 17:19:36 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237938
+2017-03-17 17:19:36 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237941
+2017-03-17 17:19:36 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237942
+2017-03-17 17:19:38 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237943
+2017-03-17 17:19:38 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237944
+2017-03-17 17:19:39 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237946
+2017-03-17 17:19:39 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237949
+2017-03-17 17:19:40 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237951
+2017-03-17 17:19:41 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237953
+2017-03-17 17:19:41 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237956
+2017-03-17 17:19:42 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237957
+2017-03-17 17:19:42 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237958
+2017-03-17 17:19:43 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237959
+2017-03-17 17:19:44 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237961
+2017-03-17 17:19:48 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237963
+2017-03-17 17:19:49 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237964
+2017-03-17 17:19:51 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237965
+2017-03-17 17:19:54 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237966
+2017-03-17 17:19:56 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237967
+2017-03-17 17:19:57 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237969
+2017-03-17 17:19:59 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237970
+2017-03-17 17:20:01 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237972
+2017-03-17 17:20:01 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237973
+2017-03-17 17:20:03 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237974
+2017-03-17 17:20:04 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237975
+2017-03-17 17:20:05 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237978
+2017-03-17 17:20:06 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237980
+2017-03-17 17:20:07 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237981
+2017-03-17 17:20:08 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237982
+2017-03-17 17:20:09 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237984
+2017-03-17 17:20:12 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237985
+2017-03-17 17:20:13 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237986
+2017-03-17 17:20:14 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237988
+2017-03-17 17:20:16 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237990
+2017-03-17 17:20:17 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237992
+2017-03-17 17:20:19 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237995
+2017-03-17 17:20:20 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237996
+2017-03-17 17:20:22 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824237998
+2017-03-17 17:20:22 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238000
+2017-03-17 17:20:23 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238001
+2017-03-17 17:20:24 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238002
+2017-03-17 17:20:27 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238003
+2017-03-17 17:20:27 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238005
+2017-03-17 17:20:29 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238006
+2017-03-17 17:20:30 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238007
+2017-03-17 17:20:35 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238008
+2017-03-17 17:20:36 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238009
+2017-03-17 17:20:36 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238010
+2017-03-17 17:20:38 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238012
+2017-03-17 17:20:40 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238013
+2017-03-17 17:20:40 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238014
+2017-03-17 17:20:40 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238016
+2017-03-17 17:20:44 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238017
+2017-03-17 17:20:46 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238018
+2017-03-17 17:20:50 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238020
+2017-03-17 17:20:52 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238021
+2017-03-17 17:20:53 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238023
+2017-03-17 17:20:54 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238024
+2017-03-17 17:20:55 [info][bot-log] start bot
+2017-03-17 17:20:57 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238025
+2017-03-17 17:20:58 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238026
+2017-03-17 17:20:59 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238028
+2017-03-17 17:20:59 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238029
+2017-03-17 17:21:02 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238030
+2017-03-17 17:21:04 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238031
+2017-03-17 17:21:08 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238032
+2017-03-17 17:21:08 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238034
+2017-03-17 17:21:09 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238037
+2017-03-17 17:21:10 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238039
+2017-03-17 17:21:11 [info][bot-log] add command 'торчмет топ' from chat 16
+2017-03-17 17:21:11 [info][bot-log] 417171268
+2017-03-17 17:21:11 [info][bot-log]  11
+2017-03-17 17:21:11 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238041
+2017-03-17 17:21:13 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238042
+2017-03-17 17:21:14 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238043
+2017-03-17 17:21:19 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238044
+2017-03-17 17:21:20 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238045
+2017-03-17 17:21:22 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238047
+2017-03-17 17:21:22 [info][bot-log] start bot
+2017-03-17 17:21:23 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238049
+2017-03-17 17:21:24 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238050
+2017-03-17 17:21:29 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238051
+2017-03-17 17:21:35 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238052
+2017-03-17 17:21:40 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238053
+2017-03-17 17:21:43 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238054
+2017-03-17 17:21:44 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238055
+2017-03-17 17:21:45 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238057
+2017-03-17 17:21:46 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238059
+2017-03-17 17:21:48 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238061
+2017-03-17 17:21:48 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238063
+2017-03-17 17:21:49 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238066
+2017-03-17 17:21:50 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238068
+2017-03-17 17:21:52 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238069
+2017-03-17 17:21:53 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238071
+2017-03-17 17:21:54 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238072
+2017-03-17 17:21:54 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238076
+2017-03-17 17:21:54 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238078
+2017-03-17 17:21:57 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238079
+2017-03-17 17:21:58 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238081
+2017-03-17 17:21:58 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238083
+2017-03-17 17:21:59 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238084
+2017-03-17 17:22:01 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238086
+2017-03-17 17:22:01 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238087
+2017-03-17 17:22:01 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238088
+2017-03-17 17:22:05 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238089
+2017-03-17 17:22:06 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238090
+2017-03-17 17:22:06 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238091
+2017-03-17 17:22:08 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238095
+2017-03-17 17:22:10 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238096
+2017-03-17 17:22:10 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238098
+2017-03-17 17:22:11 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238100
+2017-03-17 17:22:11 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238101
+2017-03-17 17:22:15 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238102
+2017-03-17 17:22:16 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238104
+2017-03-17 17:22:17 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238106
+2017-03-17 17:22:20 [info][bot-log] start longPoll with params: 
+ server: newimv4.vk.com/nim1682 
+ key: db9e87b7d035293bf98de319ee9b89f35fcaa31e 
+ ts: 1824238107
