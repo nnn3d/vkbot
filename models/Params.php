@@ -37,7 +37,11 @@ class Params extends \yii\db\ActiveRecord
     public function __get($param)
     {
         if ($param == 'param' || $param == 'value') return parent::__get($param);
+<<<<<<< HEAD
         if (isset(static::$params[$param]) && $param != 'run' && $param != 'stop') return $params[$param];
+=======
+        if (isset(static::$params[$param])) return $params[$param];
+>>>>>>> 5ac8bd6589e03406cdda54d2904dc91ce91d4eea
         $self = self::get()->findOne(['param' => $param]);
         return $self ? $self->value : null;
     }

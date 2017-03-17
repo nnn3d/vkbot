@@ -34,6 +34,14 @@ class Chats extends \yii\db\ActiveRecord
         ];
     }
 
+<<<<<<< HEAD
+=======
+    public static function get($chatId)
+    {
+        return static::findOne(['chatId' => $chatId]);
+    }
+
+>>>>>>> 5ac8bd6589e03406cdda54d2904dc91ce91d4eea
     /**
      * @inheritdoc
      */
@@ -68,6 +76,7 @@ class Chats extends \yii\db\ActiveRecord
     {
         $chat = static::findOne(['chatId' => $chatId]);
         if (!$chat) {
+<<<<<<< HEAD
             $chatInfo = Vk::get()->messages->getHistory([
                 'peer_id' => 2000000000 + intval($chatId),
                 'count' => 1,
@@ -77,6 +86,13 @@ class Chats extends \yii\db\ActiveRecord
             ]);
             $chatInfo['items'][0]['admin_id'] = $chatInfo2['admin_id'];
             $chat = static::addChatFromMessage($chatInfo['items'][0]);
+=======
+            $chatInfo = Vk::get()->messages->getDialogs([
+                'start_message_id' => 2000000000 + intval($chatId),
+                'count' => 1,
+            ]);
+            $chat = static::addChatFromMessage($chatInfo['items'][0]['message']);
+>>>>>>> 5ac8bd6589e03406cdda54d2904dc91ce91d4eea
             $chat->save();
         }
         return $chat;
@@ -133,7 +149,11 @@ class Chats extends \yii\db\ActiveRecord
     public function updateUsers($load = false)
     {
         foreach ($this->loadUsers() as $user) {
+<<<<<<< HEAD
             Users::setUser($this->chatId, $user['id'], $user['first_name'], $user['last_name']);
+=======
+            Users::updateUser($this->chatId, $user['id']);
+>>>>>>> 5ac8bd6589e03406cdda54d2904dc91ce91d4eea
         }
     }
 
