@@ -214,3 +214,31 @@
 2017-03-18 21:45:43 [info][bot-log] ldldld user
 2017-03-18 21:45:57 [info][bot-log] start bot
 2017-03-18 21:46:09 [info][bot-log] add command 'торч повторяй 1 стат 1 пен' from chat 16
+2017-03-18 21:50:34 [info][bot-log] start bot
+2017-03-18 21:52:47 [info][bot-log] add command 'торч покажи повторения' from chat 16
+2017-03-18 21:53:18 [info][bot-log] add command 'торч не повторяй стат' from chat 16
+2017-03-18 21:53:51 [info][bot-log] add command 'торч повторяй 30 топ' from chat 2
+2017-03-18 21:55:05 [info][bot-log] start bot
+2017-03-18 21:58:47 [info][bot-log] start bot
+2017-03-18 22:01:25 [warning][bot-log] longPoll failed with code 2
+2017-03-18 22:01:26 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 14c3116767af2d32cf92db718e8810b0cbfdb445 
+ ts: 1758679823
+2017-03-18 22:04:41 [info][bot-log] add command 'торч повторяй 1 ввв' from chat 16
+2017-03-18 22:06:37 [info][bot-log] add command 'торч не повторяй ввв' from chat 16
+2017-03-18 22:06:49 [info][bot-log] start bot
+2017-03-18 22:07:08 [info][bot-log] add command 'торч повторяй ввввыа' from chat 16
+2017-03-18 22:07:46 [info][bot-log] add command 'торч повторяй 1 вываыва' from chat 16
+2017-03-18 22:07:58 [info][bot-log] add command 'торч не повторяй вы' from chat 16
+2017-03-18 22:09:52 [info][bot-log] start bot
+2017-03-18 22:10:03 [info][bot-log] add command 'торч выполняй 1 ылвао' from chat 16
+2017-03-18 22:10:13 [info][bot-log] add command 'торч повторяй 1 ылвао' from chat 16
+2017-03-18 22:10:42 [info][bot-log] add command 'торч повторяй 10101010101 топ' from chat 16
+2017-03-18 22:10:52 [info][bot-log] add command 'торч не повторяй топ' from chat 16
+2017-03-18 22:33:59 [info][bot-log] start bot
+2017-03-18 22:34:47 [info][bot-log] add command 'торч топ активность' from chat 16
+2017-03-18 22:43:24 [info][bot-log] start bot
+2017-03-18 22:43:35 [info][bot-log] add command 'торч топ активность' from chat 16
+2017-03-18 22:44:34 [info][bot-log] start bot
+2017-03-18 22:44:49 [info][bot-log] add command 'торч топ активность' from chat 16

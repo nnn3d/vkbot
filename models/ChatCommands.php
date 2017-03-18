@@ -65,7 +65,7 @@ class ChatCommands {
 				$taskArgsS = implode(' ', $taskArgs);
 				$chat = Chats::getChat($command->chatId);
 				$pc = clone $command;
-				$command->setArgs($taskArgs);
+				$pc->setArgs($taskArgs);
 				if (!ChatCommands::isCommand($pc)) {
 					$chat->sendMessage("Команды '$taskArgsS' не существует или недостаточно прав");
 					return false;
@@ -121,7 +121,34 @@ class ChatCommands {
 			}
 		);
 
-		// chat top
+		
+		$commands['lastActivity'] = new ChatCommand(
+			function ($command) use ($s) 
+			{
+				$s->load($command);
+				return $s->argsEqual(2) && $s->minStatus(10) && $s->argsRegExp(['топ', 'активность']);
+			}, 
+			function ($command) 
+			{
+				$time = time();
+				$chat = Chats::getChat($command->chatId);
+				$users = $chat->getAllActiveUsers();
+				$usersActive = [];
+				$message = "Топ последней активности участников:\n";
+				usort($users, function ($a, $b)
+				{
+					return $b->lastActivity - $a->lastActivity;
+				});
+				foreach ($users as $num => $user) {
+					$n = $num + 1;
+					$am = ChatCommands::timeToStr($time - $user->lastActivity);
+					!$user->lastActivity && $am = 'не активен';
+					$message .= "\n{$n}. {$user->name} {$user->secondName} ({$am})";
+				}
+				$chat->sendMessage($message);
+			}
+		);
+
 		$commands['top'] = new ChatCommand(
 			function ($command) use ($s) 
 			{
@@ -223,12 +250,41 @@ class ChatCommands {
 		return $commands;
 	}
 
-	public static function isCommand($commandCheck)
+	public static function isCommand($commandToCheck)
 	{
+		$result = false;
 		foreach (static::getAllCommands() as $command) {
-			$result = $result || $command->check($commandCheck);
+			$result = $result || $command->check($commandToCheck);
 		}
 		return $result;
+	}
+
+	public static function timeToStr($seconds)
+	{
+		$times = [];
+		    
+	    $count_zero = false;
+	    $periods = [60, 3600, 86400];
+	    
+	    for ($i = 2; $i >= 0; $i--)
+	    {
+	        $period = floor($seconds/$periods[$i]);
+	        if (($period > 0) || ($period == 0 && $count_zero))
+	        {
+	            $times[$i+1] = $period;
+	            $seconds -= $period * $periods[$i];
+	            
+	            $count_zero = true;
+	        }
+	    }
+	    $times[0] = $seconds;
+	    
+		$msg = '';
+		$times[3] && $msg .= $times[3] . ' дн. ';
+		$times[2] && $msg .= $times[2] . ' ч. ';
+		$times[1] && $msg .= $times[1] . ' мин. ';
+		$times[0] && $msg .= $times[0] . ' сек.';
+		return $msg;
 	}
 
 }

@@ -20403,3 +20403,45 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1489873557.121
     'REQUEST_TIME' => 1489873557
 ]
+2017-03-18 22:01:25 [127.0.0.1][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-18 21:58:47 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'www.penmet.local'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101 Firefox/52.0'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'PATH' => '\\usr\\local\\ImageMagick;\\usr\\local\\php5;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\ComposerSetup\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\MATLAB\\R2013b\\runtime\\win64;C:\\Program Files\\MATLAB\\R2013b\\bin;C:\\Program Files\\MATLAB\\R2013b\\polyspace\\bin;C:\\Ruby22-x64\\bin;C:\\Users\\nnn3d\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3\\php;C:\\Program Files\\Sublime Text 3;C:\\adb;C:\\Python27;C:\\Python27\\Scripts;C:\\Users\\nnn3d\\AppData\\Local\\Microsoft\\WindowsApps;C:\\WebServers\\usr\\local\\php5;C:\\Users\\nnn3d\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\WebServers\\usr\\local\\mysql-5.5\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27 Server at www.penmet.local Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.2.22 (Win32) mod_ssl/2.2.22 OpenSSL/1.0.1c mod_scgi/1.13 PHP/5.4.27'
+    'SERVER_NAME' => 'www.penmet.local'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'Z:/home/penmet.local/www'
+    'SERVER_ADMIN' => 'admin@example.com'
+    'SCRIPT_FILENAME' => 'Z:/home/penmet.local/www/web/index.php'
+    'REMOTE_PORT' => '53191'
+    'REDIRECT_QUERY_STRING' => 'r=site/bot'
+    'REDIRECT_URL' => '/index.php'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site/bot'
+    'REQUEST_URI' => '/index.php?r=site/bot'
+    'SCRIPT_NAME' => '/web/index.php'
+    'PHP_SELF' => '/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1489874327.839
+    'REQUEST_TIME' => 1489874327
+]
