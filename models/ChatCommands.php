@@ -12,11 +12,11 @@ class ChatCommands {
 	private $chatId;
 	private $userId;
 	private $args;
-	private function load($chatId, $userId, $args)
+	private function load($command)
 	{
-		$this->chatId = $chatId;
-		$this->userId = $userId;
-		$this->args = $args;
+		$this->chatId = $command->chatId;
+		$this->userId = $command->userId;
+		$this->args = $command->getArgs();
 	}
 	private function argsEqual($set) { return count($this->args) == $set; }
 	private function argsLarger($set) { return count($this->args) > $set; }
@@ -40,27 +40,27 @@ class ChatCommands {
 		$commands = [];
 		// example
 		$commands[] = new ChatCommand(
-			function ($chatId, $userId, $args) use ($s) 
+			function ($command) use ($s) 
 			{
-				$s->load($chatId, $userId, $args);
+				$s->load($command);
 				return false;
 			}, 
-			function ($chatId, $userId, $args) 
+			function ($command) 
 			{
 				//do something
 			}
 		);
 		// chat top
-		$commands[] = new ChatCommand(
-			function ($chatId, $userId, $args) use ($s) 
+		$commands['top'] = new ChatCommand(
+			function ($command) use ($s) 
 			{
-				$s->load($chatId, $userId, $args);
+				$s->load($command);
 				return $s->argsEqual(1) && $s->minStatus(10) && $s->argsRegExp(['топ']);
 			}, 
-			function ($chatId, $userId, $args) 
+			function ($command) 
 			{
-				$message = "Топ грязных ртов (кол-во символов):\n";
-				$chat = Chats::getChat($chatId);
+				$message = "Топ активности участников (кол-во символов):\n";
+				$chat = Chats::getChat($command->chatId);
 				$users = $chat->getAllActiveUsers();
 				usort($users, function ($a, $b)
 				{
@@ -73,25 +73,66 @@ class ChatCommands {
 				$chat->sendMessage($message);
 			}
 		);
-		// chat top by days
-		$commands[] = new ChatCommand(
-			function ($chatId, $userId, $args) use ($s) 
+
+		// user stat by days
+		$commands['statUserByDays'] = new ChatCommand(
+			function ($command) use ($s) 
 			{
-				$s->load($chatId, $userId, $args);
+				$s->load($command);
+				return $s->argsLarger(2) && $s->argsSmaller(5) && $s->minStatus(10) && $s->argsRegExp(['стат', '[\d]{1,2}']);
+			}, 
+			function ($command) 
+			{
+				$days = $command->getArgs()[1];
+				$time = time();
+				$chat = Chats::getChat($command->chatId);
+
+				$name = $command->getArgs()[2];
+				$secondName = isset($command->getArgs()[3]) ? $command->getArgs()[3] : '';
+				$user = Users::getUserByName($command->chatId, $name, $secondName);
+				if (!$user) {
+					$chat->sendMessage("Не найден участник беседы $name $secondName");
+					return false;
+				}
+				$message = "Статистика пользователя {$user->name} {$user->secondName} за последние $days дней (кол-во символов):\n";
+				$count = [];
+				$write = false;
+				for ($i=$days - 1; $i >= 0; $i--) { 
+					$c = MessagesCounter::getDayCount($command->chatId, $user->userId, $i, $time);
+					$write = $write || $c > 0;
+					if ($write) {
+						$count[] = [
+							'date' => date("d.m.y", time() - ($i * 60 * 60 * 24)),
+							'count' => $c,
+						];
+					}
+				}
+				foreach (array_reverse($count) as $item) {
+					$message .= "\n{$item['date']} - {$item['count']} символов";
+				}
+				$chat->sendMessage($message);
+			}
+		);
+
+		// chat top by days
+		$commands['topByDays'] = new ChatCommand(
+			function ($command) use ($s) 
+			{
+				$s->load($command);
 				return $s->argsEqual(2) && $s->minStatus(10) && $s->argsRegExp(['топ', '[\d]{1,2}']);
 			}, 
-			function ($chatId, $userId, $args) 
+			function ($command) 
 			{
-				$days = $args[1];
+				$days = $command->getArgs()[1];
 				$time = time();
-				$chat = Chats::getChat($chatId);
+				$chat = Chats::getChat($command->chatId);
 				$users = $chat->getAllActiveUsers();
 				$usersCount = [];
-				$message = "Топ грязных ртов в течении $days дней (кол-во символов):\n";
+				$message = "Топ активности участников в течении последних $days дней (кол-во символов):\n";
 				foreach ($users as $user) {
 					$usersCount[] = [
 						'user' => $user,
-						'count' => MessagesCounter::getSumCount($chatId, $user->userId, $days, $time),
+						'count' => MessagesCounter::getSumCount($command->chatId, $user->userId, $days, $time),
 					];
 				}
 				usort($usersCount, function ($a, $b)
@@ -123,12 +164,12 @@ class ChatCommand {
 		if (strval(get_class($run)) == 'Closure') $this->run = $run;
 	}
 
-	public function checkAndRun($chatId, $userId, $args)
+	public function checkAndRun($command)
 	{
 		$condition = $this->condition;
 		$run = $this->run;
-		if (!empty($condition) && !empty($run) && $condition($chatId, $userId, $args)) {
-			$run($chatId, $userId, $args);
+		if (!empty($condition) && !empty($run) && $condition($command)) {
+			$run($command);
 			return true;
 		} 
 		return false;

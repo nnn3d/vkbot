@@ -39,23 +39,23 @@ class Commands extends \yii\db\ActiveRecord
     }
 
 
-    public static function addFromMessage($chatId, $userId, $message)
+    public static function addFromMessage($chatId, $userId, $message, $command = 'user')
     {
         $botName = Params::bot('name');
         $args = explode(' ', $message);
         $msg = implode(' ', $args);
         // Yii::info("check name " . "/{$botName}[\W]{0, 1}/i" . "and $args[0]", 'bot-log');
         if (!isset($args[1]) || !preg_match("/{$botName}[\W]?/iu", $args[0])) return;
-        static::add($chatId, $userId, array_slice($args, 1));
+        static::add($chatId, $userId, array_slice($args, 1), $command);
         Yii::info("add command '$message' from chat $chatId", 'bot-log');
     }
 
-    public static function add($chatId, $userId, $args)  
+    public static function add($chatId, $userId, $args, $command = 'user')  
     {
         $self = new self([
             'chatId' => $chatId,
             'userId' => $userId,
-            'command' => '',
+            'command' => $command,
             'args' => serialize($args),
         ]);
         $self->save();

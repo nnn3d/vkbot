@@ -57,6 +57,17 @@ class Users extends \yii\db\ActiveRecord
         return static::userExists($chatId, $userId) ? static::findOne(['chatId' => $chatId, 'userId' => $userId]) : static::updateUser($chatId, $userId);
     }
 
+    public static function getUserByName($chatId, $name, $secondName = '', $load = false)
+    {
+        $users = Chats::getChat($chatId)->getAllActiveUsers();
+        foreach ($users as $user) {
+            if (preg_match("/{$name}.*/ui", $user->name) && preg_match("/{$secondName}.*/ui", $user->secondName)) {
+                return $user;
+            }
+        }
+        return null;
+    }
+
     public function getStatus()
     {
         $status = $this->status;

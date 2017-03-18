@@ -14,16 +14,15 @@ class CommandCaller {
 	{
 		$commands = Commands::getAll();
 		foreach ($commands as $command) {
-			static::runChatCommand($command->chatId, $command->userId, $command->getArgs());
-			$command->delete();
+			static::runChatCommand($command);
+			if ($command->command != 'bot') $command->delete();
 		}	
 	}	
 
-	public static function runChatCommand($chatId, $userId, $args)
+	public static function runChatCommand($command)
 	{
-		foreach (ChatCommands::getAllCommands() as $command) {
-			$msg = implode(' ', $args);
-			$command->checkAndRun($chatId, $userId, $args);
+		foreach (ChatCommands::getAllCommands() as $chatCommand) {
+			$chatCommand->checkAndRun($command);
 		}
 	}
 }

@@ -12,6 +12,6 @@ return [
     		// 'access_token' => 'd32d00466e6fe538344a41da14a8d42412c4af78a001a961b4c525562ea8fb3aed32e5513c79d2e699f80',
     	],
     	'bdVersion' => 1,
-        'name' => 'торчмет',
+        'name' => 'торч',
     ],
 ];
