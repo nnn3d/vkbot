@@ -84,3 +84,133 @@
 2017-03-18 15:46:41 [info][bot-log] add command 'торчмет стат 3 пен' from chat 2
 2017-03-18 15:47:05 [info][bot-log] add command 'торчмет стат 3 михаил' from chat 2
 2017-03-18 15:47:29 [info][bot-log] add command 'торчмет стат 4 карина' from chat 2
+2017-03-18 15:48:10 [info][bot-log] start bot
+2017-03-18 15:48:24 [info][bot-log] add command 'торч стат 3 соня' from chat 2
+2017-03-18 15:48:45 [info][bot-log] add command 'Торчмет стат 4 Robert' from chat 2
+2017-03-18 15:49:08 [info][bot-log] add command 'торч стат 3 robert' from chat 2
+2017-03-18 15:54:47 [info][bot-log] start bot
+2017-03-18 15:51:49 [info][bot-log] start bot
+2017-03-18 15:55:38 [warning][bot-log] longPoll failed with code 2
+2017-03-18 15:55:38 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 70e9773cbd6d99b2b59750e2233930526282a2c1 
+ ts: 1758664466
+2017-03-18 15:56:00 [warning][bot-log] longPoll failed with code 2
+2017-03-18 15:56:00 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 2212c40b68a4f00a55d04d0f911b0f492d299cfe 
+ ts: 1758664469
+2017-03-18 15:56:09 [warning][bot-log] longPoll failed with code 2
+2017-03-18 15:56:10 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: e3cc6230a65947ef9be13a5c9b7108f42b358c24 
+ ts: 1758664472
+2017-03-18 15:56:17 [info][bot-log] start bot
+2017-03-18 15:56:22 [warning][bot-log] longPoll failed with code 2
+2017-03-18 15:56:22 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 805e9bad6a5d35075c5dd684c798395363251316 
+ ts: 1758664476
+2017-03-18 20:54:37 [info][bot-log] start bot
+2017-03-18 20:54:41 [warning][bot-log] longPoll failed with code 2
+2017-03-18 20:54:42 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 7f42c1cb39415f3727e748f4b0c9d9ee6f4138d7 
+ ts: 1758677039
+2017-03-18 20:55:03 [info][bot-log] add command 'торч повторяй 1 топ' from chat 16
+2017-03-18 20:55:13 [info][bot-log] add command 'торч топ' from chat 16
+2017-03-18 20:55:38 [info][bot-log] start bot
+2017-03-18 20:55:45 [info][bot-log] add command 'торч топ' from chat 16
+2017-03-18 20:57:00 [info][bot-log] start bot
+2017-03-18 20:57:07 [info][bot-log] add command 'торч топ' from chat 16
+2017-03-18 20:58:46 [info][bot-log] start bot
+2017-03-18 20:58:51 [info][bot-log] add command 'торч топ' from chat 16
+2017-03-18 20:59:42 [info][bot-log] start bot
+2017-03-18 20:59:46 [info][bot-log] start bot
+2017-03-18 20:59:53 [info][bot-log] add command 'торч топ' from chat 16
+2017-03-18 21:00:09 [info][bot-log] start bot
+2017-03-18 21:00:14 [info][bot-log] add command 'торч топ' from chat 16
+2017-03-18 21:00:44 [warning][bot-log] longPoll failed with code 1
+2017-03-18 21:01:05 [info][bot-log] start bot
+2017-03-18 21:01:08 [warning][bot-log] longPoll failed with code 2
+2017-03-18 21:01:09 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: d660c500cc981a62cf1e595b4f121b976b11b7bb 
+ ts: 1758677640
+2017-03-18 21:01:12 [info][bot-log] add command 'торч топ' from chat 16
+2017-03-18 21:02:15 [info][bot-log] start bot
+2017-03-18 21:02:53 [info][bot-log] start bot
+2017-03-18 21:03:22 [info][bot-log] start bot
+2017-03-18 21:03:48 [info][bot-log] add command 'торч повторяй 1 топ' from chat 16
+2017-03-18 21:05:56 [info][bot-log] start bot
+2017-03-18 21:06:08 [info][bot-log] add command 'торч повторяй 1 топ' from chat 16
+2017-03-18 21:07:35 [info][bot-log] start bot
+2017-03-18 21:09:38 [info][bot-log] start bot
+2017-03-18 21:11:38 [info][bot-log] add command 'торч повторяй 1 топ' from chat 16
+2017-03-18 21:12:29 [info][bot-log] start bot
+2017-03-18 21:12:41 [info][bot-log] add command 'торч повторяй 1 топ' from chat 16
+2017-03-18 21:13:17 [info][bot-log] start bot
+2017-03-18 21:14:11 [info][bot-log] start bot
+2017-03-18 21:16:47 [info][bot-log] start bot
+2017-03-18 21:20:41 [info][bot-log] start bot
+2017-03-18 21:22:21 [info][bot-log] start bot
+2017-03-18 21:24:38 [info][bot-log] start bot
+2017-03-18 21:24:51 [info][bot-log] start checking tasks
+2017-03-18 21:24:54 [info][bot-log] start checking tasks
+2017-03-18 21:24:56 [info][bot-log] start checking tasks
+2017-03-18 21:25:01 [info][bot-log] start checking tasks
+2017-03-18 21:22:30 [info][bot-log] start bot
+2017-03-18 21:24:56 [info][bot-log] start bot
+2017-03-18 21:25:03 [info][bot-log] start checking tasks
+2017-03-18 21:25:06 [info][bot-log] start checking tasks
+2017-03-18 21:25:08 [info][bot-log] start checking tasks
+2017-03-18 21:25:12 [info][bot-log] start checking tasks
+2017-03-18 21:25:16 [info][bot-log] start checking tasks
+2017-03-18 21:25:18 [info][bot-log] start checking tasks
+2017-03-18 21:25:23 [info][bot-log] start checking tasks
+2017-03-18 21:25:24 [info][bot-log] start checking tasks
+2017-03-18 21:25:29 [info][bot-log] start checking tasks
+2017-03-18 21:25:30 [info][bot-log] start checking tasks
+2017-03-18 21:25:34 [info][bot-log] start checking tasks
+2017-03-18 21:25:36 [info][bot-log] start checking tasks
+2017-03-18 21:26:02 [info][bot-log] start checking tasks
+2017-03-18 21:26:18 [info][bot-log] start checking tasks
+2017-03-18 21:26:40 [info][bot-log] start checking tasks
+2017-03-18 21:26:34 [info][bot-log] start bot
+2017-03-18 21:27:03 [info][bot-log] start bot
+2017-03-18 21:27:53 [info][bot-log] start bot
+2017-03-18 21:28:27 [info][bot-log] start bot
+2017-03-18 21:29:35 [info][bot-log] start bot
+2017-03-18 21:30:33 [info][bot-log] ldldld
+2017-03-18 21:30:30 [info][bot-log] start bot
+2017-03-18 21:30:44 [warning][bot-log] longPoll failed with code 1
+2017-03-18 21:31:34 [info][bot-log] ldldld user
+2017-03-18 21:32:23 [info][bot-log] add command 'торч повторяй 1 стат 1 пен' from chat 16
+2017-03-18 21:32:41 [info][bot-log] ldldld user
+2017-03-18 21:32:53 [info][bot-log] start bot
+2017-03-18 21:33:50 [info][bot-log] ldldld user
+2017-03-18 21:33:50 [info][bot-log] ldldld user
+2017-03-18 21:34:50 [info][bot-log] ldldld user
+2017-03-18 21:34:50 [info][bot-log] ldldld user
+2017-03-18 21:35:51 [info][bot-log] ldldld user
+2017-03-18 21:35:51 [info][bot-log] ldldld user
+2017-03-18 21:36:52 [info][bot-log] ldldld user
+2017-03-18 21:36:52 [info][bot-log] ldldld user
+2017-03-18 21:37:52 [info][bot-log] ldldld user
+2017-03-18 21:37:52 [info][bot-log] ldldld user
+2017-03-18 21:38:53 [info][bot-log] ldldld user
+2017-03-18 21:38:53 [info][bot-log] ldldld user
+2017-03-18 21:39:53 [info][bot-log] ldldld user
+2017-03-18 21:39:53 [info][bot-log] ldldld user
+2017-03-18 21:41:00 [info][bot-log] ldldld user
+2017-03-18 21:41:00 [info][bot-log] ldldld user
+2017-03-18 21:42:13 [info][bot-log] ldldld user
+2017-03-18 21:42:13 [info][bot-log] ldldld user
+2017-03-18 21:43:18 [info][bot-log] ldldld user
+2017-03-18 21:43:18 [info][bot-log] ldldld user
+2017-03-18 21:44:30 [info][bot-log] ldldld user
+2017-03-18 21:44:30 [info][bot-log] ldldld user
+2017-03-18 21:45:43 [info][bot-log] ldldld user
+2017-03-18 21:45:43 [info][bot-log] ldldld user
+2017-03-18 21:45:57 [info][bot-log] start bot
+2017-03-18 21:46:09 [info][bot-log] add command 'торч повторяй 1 стат 1 пен' from chat 16

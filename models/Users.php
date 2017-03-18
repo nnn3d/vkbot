@@ -68,11 +68,10 @@ class Users extends \yii\db\ActiveRecord
         return null;
     }
 
-    public function getStatus()
+    public static function getStatus($chatId, $userId)
     {
-        $status = $this->status;
-        if (Params::get()->selfId == $this->userId) $status = 10;
-        return $status;
+        if (Params::get()->selfId == $userId) return 10;
+        return static::getUser($chatId, $userId)->status;
     }
 
     public static function userExists($chatId, $userId, $load = false)

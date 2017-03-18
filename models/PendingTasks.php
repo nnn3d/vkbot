@@ -3,17 +3,17 @@
 namespace app\models;
 
 use Yii;
+use app\models\CommandCaller;
+use app\models\Commands;
+use app\models\Params;
 
 /**
  * This is the model class for table "pendingTasks".
  *
  * @property integer $id
- * @property integer $task
- * @property integer $args
- * @property integer $month
- * @property integer $day
- * @property integer $hour
- * @property integer $minute
+ * @property string $task
+ * @property string $args
+ * @property integer $timeRepeat
  * @property integer $lastRun
  */
 class PendingTasks extends \yii\db\ActiveRecord
@@ -32,8 +32,9 @@ class PendingTasks extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['task', 'args', 'month', 'day', 'hour', 'minute'], 'required'],
-            [['task', 'args', 'month', 'day', 'hour', 'minute', 'lastRun'], 'integer'],
+            [['task', 'timeRepeat'], 'required'],
+            [['timeRepeat', 'lastRun'], 'integer'],
+            [['task', 'args'], 'string'],
         ];
     }
 
@@ -46,12 +47,45 @@ class PendingTasks extends \yii\db\ActiveRecord
             'id' => 'ID',
             'task' => 'Task',
             'args' => 'Args',
-            'month' => 'Month',
-            'day' => 'Day',
-            'hour' => 'Hour',
-            'minute' => 'Minute',
+            'timeRepeat' => 'Time Repeat',
             'lastRun' => 'Last Run',
         ];
+    }
+
+    public function getArgs()
+    {
+        return unserialize($this->args);
+    }
+
+    public static function add($chatId, $args, $timeRepeat, $task = 'user', $lastRun = null)
+    {
+        empty($lastRun) && $lastRun = time();
+        (new PendingTasks([
+            'task' => $task,
+            'chatId' => $chatId,
+            'args' => serialize($args),
+            'timeRepeat' => $timeRepeat,
+            'lastRun' => intval($lastRun),
+        ]))->save();
+    }
+
+    public static function checkAll()
+    {
+        $time = time();
+        foreach (static::find()->all() as $task) {
+            if ($task->timeRepeat + $task->lastRun > $time) return;
+            $task->lastRun = $time;
+            $task->save();
+            switch ($task->task) {
+                case 'user':
+                    Commands::add($task->chatId, Params::get()->selfId, $task->getArgs());
+                    break;
+                
+                default:
+                    
+                    break;
+            }
+        }
     }
 
     /**

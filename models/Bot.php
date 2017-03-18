@@ -7,6 +7,7 @@ use app\models\Vk;
 use app\models\Chats;
 use app\models\Users;
 use app\models\Params;
+use app\models\PendingTasks;
 use app\models\Commands;
 use app\models\CommandCaller;
 
@@ -34,6 +35,7 @@ class Bot {
 	{
 		$this->longPoll();
 		CommandCaller::checkAll();
+		PendingTasks::checkAll();
 	}
 
 	private function longPoll()

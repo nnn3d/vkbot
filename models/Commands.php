@@ -66,6 +66,11 @@ class Commands extends \yii\db\ActiveRecord
         return unserialize($this->args);
     }
 
+    public function setArgs($args)
+    {
+        $this->args = serialize($args);
+    }
+
     public static function getByChat($chatId)
     {
         return static::findAll(['chatId' => $chatId]);
