@@ -280,10 +280,10 @@ class ChatCommands {
 	    $times[0] = $seconds;
 	    
 		$msg = '';
-		$times[3] && $msg .= $times[3] . ' дн. ';
-		$times[2] && $msg .= $times[2] . ' ч. ';
-		$times[1] && $msg .= $times[1] . ' мин. ';
-		$times[0] && $msg .= $times[0] . ' сек.';
+		isset($times[3]) && $msg .= $times[3] . ' дн. ';
+		isset($times[2]) && $msg .= $times[2] . ' ч. ';
+		isset($times[1]) && $msg .= $times[1] . ' мин. ';
+		isset($times[0]) && $msg .= $times[0] . ' сек.';
 		return $msg;
 	}
 
