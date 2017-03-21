@@ -475,16 +475,16 @@ class ChatCommand
 
     private function statusCheck($command)
     {
-    	$neededStatus = $this->getRequiredStatus($command->chatId, $command->userId);
+    	$neededStatus = $this->getRequiredStatus($command->chatId);
     	$userStatus = Users::getStatus($command->chatId, $command->userId);
     	return $userStatus >= $neededStatus;
     }
 
-    public function getRequiredStatus($chatId, $userId)
+    public function getRequiredStatus($chatId)
     {
     	$name = CHAT_PARAMS_COMMAND_PREFIX . $this->name;
     	$neededStatus = $this->status;
-    	if (empty($neededStatus)) $neededStatus = ChatParams::get($command->chatId)->$name;
+    	if (empty($neededStatus)) $neededStatus = ChatParams::get($chatId)->$name;
     	if (empty($neededStatus)) $neededStatus = USER_STATUS_DEFAULT;
     	return $neededStatus;
     }

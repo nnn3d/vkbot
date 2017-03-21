@@ -19,7 +19,7 @@ class ChatParams extends \yii\db\ActiveRecord
     {
         $this->chatId = intval($chatId);
         if (!is_array(static::$params)) static::$params = [];
-        if (!is_array(static::$params[$this->chatId])) static::$params[$this->chatId] = [];
+        if (!isset(static::$params[$this->chatId])) static::$params[$this->chatId] = [];
     }
 
     public function __get($param)
