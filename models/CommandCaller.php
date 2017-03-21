@@ -15,7 +15,7 @@ class CommandCaller {
 		$commands = Commands::getAll();
 		foreach ($commands as $command) {
 			static::runChatCommand($command);
-			if ($command->command != 'bot') $command->delete();
+			if ($command->command != COMMAND_BOT) $command->delete();
 		}	
 	}	
 

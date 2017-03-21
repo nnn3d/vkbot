@@ -57,7 +57,7 @@ class PendingTasks extends \yii\db\ActiveRecord
         return unserialize($this->args);
     }
 
-    public static function add($chatId, $args, $timeRepeat, $task = 'user', $lastRun = null)
+    public static function add($chatId, $args, $timeRepeat, $task = COMMAND_USER, $lastRun = null)
     {
         empty($lastRun) && $lastRun = time();
         (new PendingTasks([
@@ -77,7 +77,7 @@ class PendingTasks extends \yii\db\ActiveRecord
             $task->lastRun = $time;
             $task->save();
             switch ($task->task) {
-                case 'user':
+                case COMMAND_USER:
                     Commands::add($task->chatId, Params::get()->selfId, $task->getArgs());
                     break;
                 
@@ -95,5 +95,36 @@ class PendingTasks extends \yii\db\ActiveRecord
     public static function find()
     {
         return new PendingTasksQuery(get_called_class());
+    }
+}
+
+/**
+ * This is the ActiveQuery class for [[PendingTasks]].
+ *
+ * @see PendingTasks
+ */
+class PendingTasksQuery extends \yii\db\ActiveQuery
+{
+    /*public function active()
+    {
+        return $this->andWhere('[[status]]=1');
+    }*/
+
+    /**
+     * @inheritdoc
+     * @return PendingTasks[]|array
+     */
+    public function all($db = null)
+    {
+        return parent::all($db);
+    }
+
+    /**
+     * @inheritdoc
+     * @return PendingTasks|array|null
+     */
+    public function one($db = null)
+    {
+        return parent::one($db);
     }
 }

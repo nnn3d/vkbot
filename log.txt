@@ -20445,3 +20445,877 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1489874327.839
     'REQUEST_TIME' => 1489874327
 ]
+2017-03-20 18:58:41 [][-][-][warning][yii\log\Dispatcher::dispatch] Unable to send log via yii\debug\LogTarget: Exception (Invalid Configuration) 'yii\base\InvalidConfigException' with message 'Unable to determine the request URI.' 
+
+in C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\web\Request.php:855
+
+Stack trace:
+#0 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\web\Request.php(815): yii\web\Request->resolveRequestUri()
+#1 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\web\Request.php(800): yii\web\Request->getUrl()
+#2 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2-debug\LogTarget.php(151): yii\web\Request->getAbsoluteUrl()
+#3 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2-debug\LogTarget.php(50): yii\debug\LogTarget->collectSummary()
+#4 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2-debug\LogTarget.php(118): yii\debug\LogTarget->export()
+#5 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\log\Dispatcher.php(188): yii\debug\LogTarget->collect(Array, true)
+#6 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\log\Logger.php(177): yii\log\Dispatcher->dispatch(Array, true)
+#7 [internal function]: yii\log\Logger->flush(true)
+#8 {main}
+2017-03-20 18:58:38 [][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490036318.267
+    'REQUEST_TIME' => 1490036318
+    'argv' => [
+        0 => 'web/test.php'
+    ]
+    'argc' => 1
+]
+2017-03-21 02:22:20 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-03-21 02:22:21 [][-][-][warning][bot-log] longPoll failed with code 1
+2017-03-21 02:22:26 [][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Missing argument 3 for app\models\ChatCommand::__construct(), called in C:\WebServers\home\penmet.local\www\models\ChatCommands.php on line 61 and defined' in C:\WebServers\home\penmet.local\www\models\ChatCommands.php:322
+Stack trace:
+#0 C:\WebServers\home\penmet.local\www\models\ChatCommands.php(322): yii\base\ErrorHandler->handleError(2, 'Missing argumen...', 'C:\\WebServers\\h...', 322, Array)
+#1 C:\WebServers\home\penmet.local\www\models\ChatCommands.php(61): app\models\ChatCommand->__construct(Object(Closure), Object(Closure))
+#2 C:\WebServers\home\penmet.local\www\models\CommandCaller.php(24): app\models\ChatCommands::getAllCommands()
+#3 C:\WebServers\home\penmet.local\www\models\CommandCaller.php(17): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#4 C:\WebServers\home\penmet.local\www\models\Bot.php(37): app\models\CommandCaller::checkAll()
+#5 C:\WebServers\home\penmet.local\www\models\Bot.php(28): app\models\Bot->cycle()
+#6 C:\WebServers\home\penmet.local\www\controllers\SiteController.php(93): app\models\Bot->start()
+#7 [internal function]: app\controllers\SiteController->actionBot()
+#8 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#10 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#11 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#12 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\WebServers\home\penmet.local\www\web\test.php(17): yii\base\Application->run()
+#14 {main}
+2017-03-21 02:22:06 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490062926.0984
+    'REQUEST_TIME' => 1490062926
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-03-21 02:23:26 [][-][-][error][yii\base\ErrorException:2] exception 'yii\base\ErrorException' with message 'Missing argument 3 for app\models\ChatCommand::__construct(), called in C:\WebServers\home\penmet.local\www\models\ChatCommands.php on line 61 and defined' in C:\WebServers\home\penmet.local\www\models\ChatCommands.php:322
+Stack trace:
+#0 C:\WebServers\home\penmet.local\www\models\ChatCommands.php(322): yii\base\ErrorHandler->handleError(2, 'Missing argumen...', 'C:\\WebServers\\h...', 322, Array)
+#1 C:\WebServers\home\penmet.local\www\models\ChatCommands.php(61): app\models\ChatCommand->__construct(Object(Closure), Object(Closure))
+#2 C:\WebServers\home\penmet.local\www\models\CommandCaller.php(24): app\models\ChatCommands::getAllCommands()
+#3 C:\WebServers\home\penmet.local\www\models\CommandCaller.php(17): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#4 C:\WebServers\home\penmet.local\www\models\Bot.php(37): app\models\CommandCaller::checkAll()
+#5 C:\WebServers\home\penmet.local\www\models\Bot.php(28): app\models\Bot->cycle()
+#6 C:\WebServers\home\penmet.local\www\controllers\SiteController.php(93): app\models\Bot->start()
+#7 [internal function]: app\controllers\SiteController->actionBot()
+#8 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#10 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#11 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#12 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\WebServers\home\penmet.local\www\web\test.php(17): yii\base\Application->run()
+#14 {main}
+2017-03-21 02:23:10 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490062990.1714
+    'REQUEST_TIME' => 1490062990
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-03-21 02:25:15 [][-][-][error][yii\base\ErrorException:64] exception 'yii\base\ErrorException' with message 'Cannot redeclare class app\models\ParamsQuery' in C:\WebServers\home\penmet.local\www\models\ChatParams.php:134
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-21 02:25:02 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490063102.3968
+    'REQUEST_TIME' => 1490063102
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-03-21 02:26:47 [][-][-][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'The table does not exist: chatParams' in C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\ActiveRecord.php:339
+Stack trace:
+#0 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\ActiveRecord.php(370): yii\db\ActiveRecord::getTableSchema()
+#1 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\BaseActiveRecord.php(464): yii\db\ActiveRecord->attributes()
+#2 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\BaseActiveRecord.php(303): yii\db\BaseActiveRecord->hasAttribute('chatId')
+#3 C:\WebServers\home\penmet.local\www\models\ChatParams.php(49): yii\db\BaseActiveRecord->__set('chatId', 16)
+#4 C:\WebServers\home\penmet.local\www\models\ChatParams.php(34): app\models\ChatParams->__set('chatId', 16)
+#5 C:\WebServers\home\penmet.local\www\models\ChatParams.php(60): app\models\ChatParams->__construct(16)
+#6 C:\WebServers\home\penmet.local\www\models\ChatCommands.php(347): app\models\ChatParams::get(16)
+#7 C:\WebServers\home\penmet.local\www\models\ChatCommands.php(341): app\models\ChatCommand->statusCheck(Object(app\models\Commands))
+#8 C:\WebServers\home\penmet.local\www\models\ChatCommands.php(330): app\models\ChatCommand->check(Object(app\models\Commands))
+#9 C:\WebServers\home\penmet.local\www\models\CommandCaller.php(25): app\models\ChatCommand->checkAndRun(Object(app\models\Commands))
+#10 C:\WebServers\home\penmet.local\www\models\CommandCaller.php(17): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#11 C:\WebServers\home\penmet.local\www\models\Bot.php(37): app\models\CommandCaller::checkAll()
+#12 C:\WebServers\home\penmet.local\www\models\Bot.php(28): app\models\Bot->cycle()
+#13 C:\WebServers\home\penmet.local\www\controllers\SiteController.php(93): app\models\Bot->start()
+#14 [internal function]: app\controllers\SiteController->actionBot()
+#15 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#16 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#17 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#18 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#19 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#20 C:\WebServers\home\penmet.local\www\web\test.php(17): yii\base\Application->run()
+#21 {main}
+2017-03-21 02:26:35 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490063195.0351
+    'REQUEST_TIME' => 1490063195
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-03-21 04:06:58 [][-][-][error][yii\base\UnknownMethodException] exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: app\models\Commands::getName()' in C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Component.php:290
+Stack trace:
+#0 C:\WebServers\home\penmet.local\www\models\ChatCommands.php(297): yii\base\Component->__call('getName', Array)
+#1 C:\WebServers\home\penmet.local\www\models\ChatCommands.php(297): app\models\Commands->getName()
+#2 C:\WebServers\home\penmet.local\www\models\ChatCommands.php(423): app\models\ChatCommands::app\models\{closure}(Object(app\models\Commands))
+#3 C:\WebServers\home\penmet.local\www\models\CommandCaller.php(25): app\models\ChatCommand->checkAndRun(Object(app\models\Commands))
+#4 C:\WebServers\home\penmet.local\www\models\CommandCaller.php(17): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#5 C:\WebServers\home\penmet.local\www\models\Bot.php(37): app\models\CommandCaller::checkAll()
+#6 C:\WebServers\home\penmet.local\www\models\Bot.php(28): app\models\Bot->cycle()
+#7 C:\WebServers\home\penmet.local\www\controllers\SiteController.php(93): app\models\Bot->start()
+#8 [internal function]: app\controllers\SiteController->actionBot()
+#9 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#10 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#11 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#12 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#13 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\WebServers\home\penmet.local\www\web\test.php(17): yii\base\Application->run()
+#15 {main}
+2017-03-21 04:05:27 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490069127.7605
+    'REQUEST_TIME' => 1490069127
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-03-21 04:14:44 [][-][-][error][yii\db\Exception] exception 'yii\base\ErrorException' with message 'PDOStatement::execute(): MySQL server has gone away' in C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\Command.php:846
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'PDOStatement::e...', 'C:\\WebServers\\h...', 846, Array)
+#1 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\Command.php(846): PDOStatement->execute()
+#2 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\ActiveRecord.php(227): yii\db\Command->execute()
+#3 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\BaseActiveRecord.php(766): yii\db\ActiveRecord::updateAll('[<span class="s...', '[<span class="s...')
+#4 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\ActiveRecord.php(576): yii\db\BaseActiveRecord->updateInternal('<span class="ke...')
+#5 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\BaseActiveRecord.php(637): yii\db\ActiveRecord->update('<span class="ke...', '<span class="ke...')
+#6 C:\WebServers\home\penmet.local\www\models\Params.php(52): yii\db\BaseActiveRecord->save()
+#7 C:\WebServers\home\penmet.local\www\models\Bot.php(139): app\models\Params->__set('<span class="st...', '<span class="nu...')
+#8 C:\WebServers\home\penmet.local\www\models\Bot.php(26): app\models\Bot->init()
+#9 C:\WebServers\home\penmet.local\www\controllers\SiteController.php(93): app\models\Bot->start()
+#10 [internal function]: app\controllers\SiteController->actionBot()
+#11 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#12 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#13 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#14 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#15 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#16 C:\WebServers\home\penmet.local\www\web\test.php(17): yii\base\Application->run()
+#17 {main}
+
+Next exception 'yii\db\Exception' with message 'PDOStatement::execute(): MySQL server has gone away
+The SQL being executed was: UPDATE `params` SET `value`='0' WHERE `param`='stop'' in C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\Schema.php:636
+Stack trace:
+#0 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\Command.php(856): yii\db\Schema->convertException(Object(yii\base\ErrorException), 'UPDATE `params`...')
+#1 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\ActiveRecord.php(227): yii\db\Command->execute()
+#2 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\BaseActiveRecord.php(766): yii\db\ActiveRecord::updateAll('[<span class="s...', '[<span class="s...')
+#3 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\ActiveRecord.php(576): yii\db\BaseActiveRecord->updateInternal('<span class="ke...')
+#4 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\db\BaseActiveRecord.php(637): yii\db\ActiveRecord->update('<span class="ke...', '<span class="ke...')
+#5 C:\WebServers\home\penmet.local\www\models\Params.php(52): yii\db\BaseActiveRecord->save()
+#6 C:\WebServers\home\penmet.local\www\models\Bot.php(139): app\models\Params->__set('<span class="st...', '<span class="nu...')
+#7 C:\WebServers\home\penmet.local\www\models\Bot.php(26): app\models\Bot->init()
+#8 C:\WebServers\home\penmet.local\www\controllers\SiteController.php(93): app\models\Bot->start()
+#9 [internal function]: app\controllers\SiteController->actionBot()
+#10 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#11 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#12 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#13 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#14 C:\WebServers\home\penmet.local\www\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 C:\WebServers\home\penmet.local\www\web\test.php(17): yii\base\Application->run()
+#16 {main}
+Additional Information:
+
+2017-03-21 04:10:51 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490069451.0216
+    'REQUEST_TIME' => 1490069451
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-03-21 04:23:41 [][-][-][warning][bot-log] longPoll failed with code 1
+2017-03-21 04:23:42 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function getName() on a non-object' in C:\WebServers\home\penmet.local\www\models\ChatCommands.php:297
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-21 04:23:19 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490070199.6892
+    'REQUEST_TIME' => 1490070199
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-03-21 04:24:55 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Class name must be a valid object or a string' in C:\WebServers\home\penmet.local\www\models\ChatCommands.php:303
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-21 04:24:45 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490070285.04
+    'REQUEST_TIME' => 1490070285
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-03-21 04:35:00 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function getName() on a non-object' in C:\WebServers\home\penmet.local\www\models\ChatCommands.php:337
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-21 04:33:31 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490070811.8436
+    'REQUEST_TIME' => 1490070811
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-03-21 05:09:24 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method app\models\Users::getAllActiveUsers()' in C:\WebServers\home\penmet.local\www\models\ChatCommands.php:352
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-21 05:09:14 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490072954.1035
+    'REQUEST_TIME' => 1490072954
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-03-21 05:09:49 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined method app\models\Users::getAllActiveUsers()' in C:\WebServers\home\penmet.local\www\models\ChatCommands.php:352
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-21 05:09:39 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490072979.2533
+    'REQUEST_TIME' => 1490072979
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-03-21 05:28:53 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Cannot access private property app\models\ChatCommand::$name' in C:\WebServers\home\penmet.local\www\models\ChatCommands.php:381
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-03-21 05:28:43 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\Nikita\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-A8FOQDV'
+    'ComSpec' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\Nikita'
+    'LOCALAPPDATA' => 'C:\\Users\\Nikita\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-A8FOQDV'
+    'NUMBER_OF_PROCESSORS' => '2'
+    'OneDrive' => 'C:\\Users\\Nikita\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\PC Connectivity Solution\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\Python27\\;C:\\Program Files\\Python27\\Scripts;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\Users\\Nikita\\AppData\\Roaming\\npm;C:\\Program Files\\Sublime Text 3;C:\\Program Files\\nodejs\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WebServers\\usr\\local\\php5;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Ruby22-x64\\bin; C:\\Users\\Nikita\\AppData\\Roaming\\npm; C:\\WebServers\\usr\\local\\php5; C:\\Program Files\\Sublime Text 3;C:\\Users\\Nikita\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Nikita\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.RB;.RBW'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 15 Stepping 11, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '0f0b'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => '%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'TEMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\Nikita\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-A8FOQDV'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-A8FOQDV'
+    'USERNAME' => 'Nikita'
+    'USERPROFILE' => 'C:\\Users\\Nikita'
+    'windir' => 'C:\\WINDOWS'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1490074123.0799
+    'REQUEST_TIME' => 1490074123
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]

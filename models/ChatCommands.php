@@ -2,317 +2,503 @@
 
 namespace app\models;
 
-use Yii;
 use app\models\Chats;
-use app\models\Users;
+use app\models\ChatParams;
 use app\models\MessagesCounter;
 use app\models\PendingTasks;
+use app\models\Users;
 
-class ChatCommands {
-	private static $commands;
-	private $chatId;
-	private $userId;
-	private $args;
-	private function load($command)
-	{
-		$this->chatId = $command->chatId;
-		$this->userId = $command->userId;
-		$this->args = $command->getArgs();
-	}
-	private function argsEqual($set) { return count($this->args) == $set; }
-	private function argsLarger($set) { return count($this->args) > $set; }
-	private function argsSmaller($set) { return count($this->args) < $set; }
-	private function minStatus($status) 
-	{ 
-		return Users::getStatus($this->chatId, $this->userId) >= $status; 
-	}
-	private function argsRegExp($set) 
-	{ 
-		foreach ($set as $key => $arg) {
-			if (!preg_match("/{$arg}/iu", $this->args[$key])) return false;
-		}
-		return true;
-	}
+class ChatCommands
+{
+    private static $commands;
+    private $chatId;
+    private $userId;
+    private $args;
+    private $argsCountSkip;
+    private function load($command)
+    {
+        $this->chatId = $command->chatId;
+        $this->userId = $command->userId;
+        $this->args   = $command->getArgs();
+        $this->argsCountSkip = $command->argsCountSkip;
+    }
+    private function argsEqual($set)
+    {return count($this->args) == $set || !$this->argsCountSkip;}
+    private function argsLarger($set)
+    {return count($this->args) > $set || !$this->argsCountSkip;}
+    private function argsSmaller($set)
+    {return count($this->args) < $set || !$this->argsCountSkip;}
+    private function minStatus($status)
+    {
+        return Users::getStatus($this->chatId, $this->userId) >= $status;
+    }
+    private function argsRegExp($set)
+    {
+        foreach ($set as $key => $arg) {
+            if (!preg_match("/{$arg}/iu", $this->args[$key])) {
+                return false;
+            }
 
-	public static function getAllCommands()
-	{
-		if (isset(static::$commands)) return static::$commands;
-		$s = new self;
-		$commands = [];
-		// example
-		$commands[] = new ChatCommand(
-			function ($command) use ($s) 
-			{
-				$s->load($command);
-				return false;
-			}, 
-			function ($command) 
-			{
-				//do something
-			}
-		);
+        }
+        return true;
+    }
 
-		$commands['addPendingTask'] = new ChatCommand(
-			function ($command) use ($s) 
-			{
-				$s->load($command);
-				return $s->argsLarger(2) && $s->minStatus(10) && $s->argsRegExp(['повторяй', '[\d]*']);
-			}, 
-			function ($command) 
-			{
-				$minutes = $command->getArgs()[1];
-				$taskArgs = array_slice($command->getArgs(), 2);
-				$taskArgsS = implode(' ', $taskArgs);
-				$chat = Chats::getChat($command->chatId);
-				$pc = clone $command;
-				$pc->setArgs($taskArgs);
-				if (!ChatCommands::isCommand($pc)) {
-					$chat->sendMessage("Команды '$taskArgsS' не существует или недостаточно прав");
-					return false;
-				}
-				PendingTasks::add($command->chatId, $taskArgs, $minutes * 60);
-				$chat->sendMessage("Добавлена команда '$taskArgsS' с повторением раз в $minutes мин.");
-			}
-		);
+    public static function getAllCommands()
+    {
+        if (isset(static::$commands)) {
+            return static::$commands;
+        }
 
-		$commands['removePendingTask'] = new ChatCommand(
-			function ($command) use ($s) 
-			{
-				$s->load($command);
-				return $s->argsLarger(2) && $s->minStatus(10) && $s->argsRegExp(['не', 'повторяй']);
-			}, 
-			function ($command) 
-			{
-				$taskArgs = implode(' ', array_slice($command->getArgs(), 2));
-				$chat = Chats::getChat($command->chatId);
-				$message = '';
-				foreach (PendingTasks::findAll(['chatId' => $command->chatId]) as $task) {
-					$taskArgsS = implode(' ', $task->getArgs());
-					if ( preg_match("/{$taskArgs}.*/", $taskArgsS) ) {
-						$minutes = $task->timeRepeat / 60;
-						$message .= "\nУдалена команда '$taskArgsS' с повторением раз в $minutes мин.";
-						$task->delete();
-					}
-				}
-				if (!$message) $message = "Ни одна команда с повторением не удалена";
-				$chat->sendMessage($message);
-			}
-		);
+        $s        = new self;
+        $commands = [];
 
-		$commands['showPendingTask'] = new ChatCommand(
-			function ($command) use ($s) 
-			{
-				$s->load($command);
-				return $s->argsEqual(2) && $s->minStatus(10) && $s->argsRegExp(['покажи', 'повторения']);
-			}, 
-			function ($command) 
-			{
-				$taskArgs = implode(' ', array_slice($command->getArgs(), 2));
-				$chat = Chats::getChat($command->chatId);
-				$message = '';
-				foreach (PendingTasks::findAll(['chatId' => $command->chatId]) as $task) {
-					$taskArgsS = implode(' ', $task->getArgs());
-					$minutes = $task->timeRepeat / 60;
-					$message .= "\nКоманда '$taskArgsS' с повторением раз в $minutes мин.";
-				}
-				if (!$message) $message = "Нет команд с повторением";
-				else $message = "Команды с повторением:\n" . $message;
-				$chat->sendMessage($message);
-			}
-		);
+        $commands[] = new ChatCommand(
+            'повторяй { количество минут } { команда полностью }',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(2) && $s->argsRegExp(['повторяй', '[\d]+']);
+            },
+            function ($command) {
+                $minutes   = intval($command->getArgs()[1]);
+                if ($minutes < 1) $minutes = 1;
+                $taskArgs  = array_slice($command->getArgs(), 2);
+                $taskArgsS = implode(' ', $taskArgs);
+                $chat      = Chats::getChat($command->chatId);
+                $pc        = clone $command;
+                $pc->setArgs($taskArgs);
+                if (!ChatCommands::isCommand($pc)) {
+                    $chat->sendMessage("Команды '$taskArgsS' не существует или недостаточно прав");
+                    return false;
+                }
+                PendingTasks::add($command->chatId, $taskArgs, $minutes * 60);
+                $chat->sendMessage("Добавлена команда '$taskArgsS' с повторением раз в $minutes мин.");
+	        },
+            ['status' => USER_STATUS_ADMIN]
+        );
 
-		
-		$commands['lastActivity'] = new ChatCommand(
-			function ($command) use ($s) 
-			{
-				$s->load($command);
-				return $s->argsEqual(2) && $s->minStatus(10) && $s->argsRegExp(['топ', 'активность']);
-			}, 
-			function ($command) 
-			{
-				$time = time();
-				$chat = Chats::getChat($command->chatId);
-				$users = $chat->getAllActiveUsers();
-				$usersActive = [];
-				$message = "Топ последней активности участников:\n";
-				usort($users, function ($a, $b)
-				{
-					return $b->lastActivity - $a->lastActivity;
-				});
-				foreach ($users as $num => $user) {
-					$n = $num + 1;
-					$am = ChatCommands::timeToStr($time - $user->lastActivity);
-					!$user->lastActivity && $am = 'не активен';
-					$message .= "\n{$n}. {$user->name} {$user->secondName} ({$am})";
-				}
-				$chat->sendMessage($message);
-			}
-		);
+        $commands[] = new ChatCommand(
+            'не повторяй',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(2) && $s->argsRegExp(['не', 'повторяй']);
+            },
+            function ($command) {
+                $taskArgs = implode(' ', array_slice($command->getArgs(), 2));
+                $chat     = Chats::getChat($command->chatId);
+                $message  = '';
+                foreach (PendingTasks::findAll(['chatId' => $command->chatId]) as $task) {
+                    $taskArgsS = implode(' ', $task->getArgs());
+                    if (preg_match("/{$taskArgs}.*/", $taskArgsS)) {
+                        $minutes = $task->timeRepeat / 60;
+                        $message .= "\nУдалена команда '$taskArgsS' с повторением раз в $minutes мин.";
+                        $task->delete();
+                    }
+                }
+                if (!$message) {
+                    $message = "Ни одна команда с повторением не удалена";
+                }
 
-		$commands['top'] = new ChatCommand(
-			function ($command) use ($s) 
-			{
-				$s->load($command);
-				return $s->argsEqual(1) && $s->minStatus(10) && $s->argsRegExp(['топ']);
-			}, 
-			function ($command) 
-			{
-				$message = "Топ активности участников (кол-во символов):\n";
-				$chat = Chats::getChat($command->chatId);
-				$users = $chat->getAllActiveUsers();
-				usort($users, function ($a, $b)
-				{
-					return $b->messages - $a->messages;
-				});
-				foreach ($users as $num => $user) {
-					$n = $num + 1;
-					$message .= "\n{$n}. {$user->name} {$user->secondName} ({$user->messages})";
-				}
-				$chat->sendMessage($message);
-			}
-		);
+                $chat->sendMessage($message);
+	        },
+            ['status' => USER_STATUS_ADMIN]
+        );
 
-		// user stat by days
-		$commands['statUserByDays'] = new ChatCommand(
-			function ($command) use ($s) 
-			{
-				$s->load($command);
-				return $s->argsLarger(2) && $s->argsSmaller(5) && $s->minStatus(1) && $s->argsRegExp(['стат', '[\d]{1,2}']);
-			}, 
-			function ($command) 
-			{
-				$days = $command->getArgs()[1];
-				$time = time();
-				$chat = Chats::getChat($command->chatId);
+        $commands[] = new ChatCommand(
+            'покажи повторения',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(2) && $s->argsRegExp(['покажи', 'повторения']);
+            },
+            function ($command) {
+                $chat    = Chats::getChat($command->chatId);
+                $message = '';
+                foreach (PendingTasks::findAll(['chatId' => $command->chatId]) as $task) {
+                    $taskArgsS = implode(' ', $task->getArgs());
+                    $minutes   = $task->timeRepeat / 60;
+                    $message .= "\nКоманда '$taskArgsS' с повторением раз в $minutes мин.";
+                }
+                if (!$message) {
+                    $message = "Нет команд с повторением";
+                } else {
+                    $message = "Команды с повторением:\n" . $message;
+                }
 
-				$name = $command->getArgs()[2];
-				$secondName = isset($command->getArgs()[3]) ? $command->getArgs()[3] : '';
-				$user = Users::getUserByName($command->chatId, $name, $secondName);
-				if (!$user) {
-					$chat->sendMessage("Не найден участник беседы $name $secondName");
-					return false;
-				}
-				$message = "Статистика пользователя {$user->name} {$user->secondName} за последние $days дней (кол-во символов):\n";
-				$count = [];
-				$write = false;
-				for ($i=$days - 1; $i >= 0; $i--) { 
-					$c = MessagesCounter::getDayCount($command->chatId, $user->userId, $i, $time);
-					$write = $write || $c > 0;
-					if ($write) {
-						$count[] = [
-							'date' => date("d.m.y", time() - ($i * 60 * 60 * 24)),
-							'count' => $c,
-						];
-					}
-				}
-				foreach (array_reverse($count) as $item) {
-					$message .= "\n{$item['date']} - {$item['count']} символов";
-				}
-				$chat->sendMessage($message);
-			}
-		);
+                $chat->sendMessage($message);
+	        },
+            ['status' => USER_STATUS_ADMIN]
+        );
 
-		// chat top by days
-		$commands['topByDays'] = new ChatCommand(
-			function ($command) use ($s) 
-			{
-				$s->load($command);
-				return $s->argsEqual(2) && $s->minStatus(10) && $s->argsRegExp(['топ', '[\d]{1,2}']);
-			}, 
-			function ($command) 
-			{
-				$days = $command->getArgs()[1];
-				$time = time();
-				$chat = Chats::getChat($command->chatId);
-				$users = $chat->getAllActiveUsers();
-				$usersCount = [];
-				$message = "Топ активности участников в течении последних $days дней (кол-во символов):\n";
-				foreach ($users as $user) {
-					$usersCount[] = [
-						'user' => $user,
-						'count' => MessagesCounter::getSumCount($command->chatId, $user->userId, $days, $time),
-					];
-				}
-				usort($usersCount, function ($a, $b)
-				{
-					return $b['count'] - $a['count'];
-				});
-				foreach ($usersCount as $num => $item) {
-					$n = $num + 1;
-					$message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']})";
-				}
-				$chat->sendMessage($message);
-			}
-		);
-
-
-		static::$commands = $commands;
-		return $commands;
-	}
-
-	public static function isCommand($commandToCheck)
-	{
-		$result = false;
-		foreach (static::getAllCommands() as $command) {
-			$result = $result || $command->check($commandToCheck);
-		}
-		return $result;
-	}
-
-	public static function timeToStr($seconds)
-	{
-		$times = [];
-		    
-	    $count_zero = false;
-	    $periods = [60, 3600, 86400];
-	    
-	    for ($i = 2; $i >= 0; $i--)
-	    {
-	        $period = floor($seconds/$periods[$i]);
-	        if (($period > 0) || ($period == 0 && $count_zero))
-	        {
-	            $times[$i+1] = $period;
-	            $seconds -= $period * $periods[$i];
-	            
-	            $count_zero = true;
+        $commands[] = new ChatCommand(
+            'топ активность',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(2) && $s->argsRegExp(['топ', 'активность']);
+            },
+            function ($command) {
+                $time        = time();
+                $chat        = Chats::getChat($command->chatId);
+                $users       = $chat->getAllActiveUsers();
+                $usersActive = [];
+                $message     = "Топ последней активности участников:\n";
+                usort($users, function ($a, $b) {
+                    return $b->lastActivity - $a->lastActivity;
+                });
+                foreach ($users as $num => $user) {
+                    $n                          = $num + 1;
+                    $am                         = ChatCommands::timeToStr($time - $user->lastActivity);
+                    !$user->lastActivity && $am = 'не активен';
+                    $message .= "\n{$n}. {$user->name} {$user->secondName} ({$am})";
+                }
+                $chat->sendMessage($message);
 	        }
-	    }
-	    $times[0] = $seconds;
-	    
-		$msg = '';
-		isset($times[3]) && $msg .= $times[3] . ' дн. ';
-		isset($times[2]) && $msg .= $times[2] . ' ч. ';
-		isset($times[1]) && $msg .= $times[1] . ' мин. ';
-		isset($times[0]) && $msg .= $times[0] . ' сек.';
-		return $msg;
-	}
+        );
+
+        $commands[] = new ChatCommand(
+            'общий топ',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(2) && $s->argsRegExp(['общий', 'топ']);
+            },
+            function ($command) {
+                $message = "Топ активности участников (кол-во символов):\n";
+                $chat    = Chats::getChat($command->chatId);
+                $users   = $chat->getAllActiveUsers();
+                usort($users, function ($a, $b) {
+                    return $b->messages - $a->messages;
+                });
+                foreach ($users as $num => $user) {
+                    $n = $num + 1;
+                    $message .= "\n{$n}. {$user->name} {$user->secondName} ({$user->messages})";
+                }
+                $chat->sendMessage($message);
+	        }
+        );
+
+        // user stat by days
+        $commands[] = new ChatCommand(
+            'стат { имя [ + фамилия ] участника }',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(2) && $s->argsSmaller(5) && $s->argsRegExp(['стат', '[\d]{1,2}']);
+            },
+            function ($command) {
+                $days = intval($command->getArgs()[1]);
+                $time = time();
+                $chat = Chats::getChat($command->chatId);
+
+                $name       = $command->getArgs()[2];
+                $secondName = isset($command->getArgs()[3]) ? $command->getArgs()[3] : '';
+                $user       = Users::getUserByName($command->chatId, $name, $secondName);
+                if (!$user) {
+                    $chat->sendMessage("Не найден участник беседы $name $secondName");
+                    return false;
+                }
+                $message = "Статистика пользователя {$user->name} {$user->secondName} за последние $days дней (кол-во символов):\n";
+                $count   = [];
+                $write   = false;
+                for ($i = $days - 1; $i >= 0; $i--) {
+                    $c     = MessagesCounter::getDayCount($command->chatId, $user->userId, $i, $time);
+                    $write = $write || $c > 0;
+                    if ($write) {
+                        $count[] = [
+                            'date'  => date("d.m.y", time() - ($i * 60 * 60 * 24)),
+                            'count' => $c,
+                        ];
+                    }
+                }
+                foreach (array_reverse($count) as $item) {
+                    $message .= "\n{$item['date']} - {$item['count']} символов";
+                }
+                $chat->sendMessage($message);
+	        }
+        );
+
+        // chat top by days
+        $commands[] = new ChatCommand(
+            'топ { количество дней }',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(2) && $s->argsRegExp(['топ', '[\d]{1,2}']);
+            },
+            function ($command) {
+                $days       = intval($command->getArgs()[1]);
+                $time       = time();
+                $chat       = Chats::getChat($command->chatId);
+                $users      = $chat->getAllActiveUsers();
+                $usersCount = [];
+                $message    = "Топ активности участников в течении последних $days дней (кол-во символов):\n";
+                foreach ($users as $user) {
+                    $usersCount[] = [
+                        'user'  => $user,
+                        'count' => MessagesCounter::getSumCount($command->chatId, $user->userId, $days, $time),
+                    ];
+                }
+                usort($usersCount, function ($a, $b) {
+                    return $b['count'] - $a['count'];
+                });
+                foreach ($usersCount as $num => $item) {
+                    $n = $num + 1;
+                    $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']})";
+                }
+                $chat->sendMessage($message);
+	        }
+        );
+
+        $commands[] = new ChatCommand(
+            'кто { любой вопрос }',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(1) && $s->argsRegExp(['кто']);
+            },
+            function ($command) {
+                $chat  = Chats::getChat($command->chatId);
+                $users = $chat->getAllActiveUsers();
+                $r     = mt_rand(0, count($users) - 1);
+                $c     = implode(' ', array_slice($command->getArgs(), 1));
+                $chat->sendMessage("считаю что '$c' - {$users[$r]->name} {$users[$r]->secondName}");
+	        }
+        );
+
+        $commands[] = new ChatCommand(
+            'установить статус команды { админ / модер / все } { название команды }',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(4) && $s->argsRegExp(['установить', 'статус', 'команды']);
+            },
+            function ($command) {
+            	$statusMap = Params::bot(['statusMap']);
+            	$statusArg = $command->getArgs()[3];
+            	if (isset($statusMap[$statusArg])) $status = $statusMap[$statusArg];
+            	else return false;
+
+                $chat  = Chats::getChat($command->chatId);
+            	$commandArgsS = implode(' ', array_slice($command->getArgs(), 4));
+            	$changedCommand = ChatCommands::getCommandByRegExp($commandArgsS);
+            	if (empty($changedCommand)) {
+            		$chat->sendMessage("Команда '$commandArgsS' не найдена");
+            		return false;
+            	}
+            	$commandName = $changedCommand->getName();
+            	if ($changedCommand->getStatus()) {
+            		$chat->sendMessage("Статус команды '$commandName' не может быть изменен");
+            		return false;
+            	}
+            	$name = CHAT_PARAMS_COMMAND_PREFIX . $changedCommand->getName();
+            	ChatParams::get($command->chatId)->$name = $status;
+                $chat->sendMessage("Статус выполнения команды '$commandName' установлен на '$statusArg'");
+            },
+            ['status' => USER_STATUS_ADMIN]
+        );
+
+        $commands[] = new ChatCommand(
+            'установить статус участника { модер / юзер } { имя [ + фамилия ] участника }',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(3) && $s->argsRegExp(['установить', 'статус', 'участника']);
+            },
+            function ($command) {
+            	$statusMap = Params::bot(['statusMap']);
+            	$statusArg = $command->getArgs()[3];
+            	if (isset($statusMap[$statusArg]) && $statusMap[$statusArg] != USER_STATUS_ADMIN) 
+            		$status = $statusMap[$statusArg];
+            	else return false;
+
+                $chat  = Chats::getChat($command->chatId);
+            	$name       = $command->getArgs()[4];
+            	$secondName = isset($command->getArgs()[5]) ? $command->getArgs()[5] : '';
+            	$user       = Users::getUserByName($command->chatId, $name, $secondName);
+            	if (!$user) {
+            	    $chat->sendMessage("Не найден участник беседы '$name $secondName'");
+            	    return false;
+            	}
+            	if ($user->userId == $command->userId) {
+            		$chat->sendMessage("Собственный статус не может быть изменен");
+            		return false;
+            	}
+            	if (Users::getStatus($command->chatId, $user->userId) == USER_STATUS_ADMIN) {
+            		$chat->sendMessage("Статус данного пользователя не может быть изменен");
+            		return false;
+            	}
+            	$user->status = $status;
+            	$user->save();
+                $chat->sendMessage("Статус пользователя '{$user->name} {$user->secondName}' установлен на '$statusArg'");
+            },
+            ['status' => USER_STATUS_ADMIN]
+        );
+
+        $commands[] = new ChatCommand(
+            'статус участников',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(2) && $s->argsRegExp(['статус', 'участников']);
+            },
+            function ($command) {
+            	$statusLabels = Params::bot(['statusLabels']);
+                $chat  = Chats::getChat($command->chatId);
+            	$users = $chat->getAllActiveUsers();
+            	$message = "Статус участников беседы:\n";
+            	usort($users, function ($a, $b) {
+            	    return $b->status - $a->status;
+            	});
+            	foreach ($users as $user) {
+            		$message .= "\n{$user->name} {$user->secondName} ({$statusLabels[$user->status]})";
+            	}
+                $chat->sendMessage($message);
+            }
+        );
+
+        $commands[] = new ChatCommand(
+            'команды',
+            'Описание',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(1) && $s->argsRegExp(['команды']);
+            },
+            function ($command) {
+                $chat  = Chats::getChat($command->chatId);
+            	$commands = ChatCommands::getAllCommands();
+            	$message = "Команды бота:\n";
+
+            	usort($commands, function ($a, $b) {
+            	    return strcasecmp($a->getName(), $b->getName());
+            	});
+            	foreach ($commands as $num => $c) {
+            		$n = $num + 1;
+            		$message .= "\n{$n}. '{$c->getName()}' - {$c->getDesc()}";
+            	}
+            	$message .= "\n\n{} - параметр \n[] - не обязательный параметр";
+                $chat->sendMessage($message);
+            }
+        );
+
+        static::$commands = $commands;
+        return $commands;
+    }
+
+    public static function isCommand($commandToCheck)
+    {
+        $result = false;
+        foreach (static::getAllCommands() as $command) {
+            $result = $result || $command->check($commandToCheck);
+        }
+        return $result;
+    }
+
+    public static function getCommandByRegExp($name)
+    {
+    	foreach (static::getAllCommands() as $command) {
+    	    if (preg_match("/{$name}.*/", $command->getName())) return $command;
+    	}
+    }
+
+    public static function timeToStr($seconds)
+    {
+        $times = [];
+
+        $count_zero = false;
+        $periods    = [60, 3600, 86400];
+
+        for ($i = 2; $i >= 0; $i--) {
+            $period = floor($seconds / $periods[$i]);
+            if (($period > 0) || ($period == 0 && $count_zero)) {
+                $times[$i + 1] = $period;
+                $seconds -= $period * $periods[$i];
+
+                $count_zero = true;
+            }
+        }
+        $times[0] = $seconds;
+
+        $msg = '';
+        isset($times[3]) && $msg .= $times[3] . ' дн. ';
+        isset($times[2]) && $msg .= $times[2] . ' ч. ';
+        isset($times[1]) && $msg .= $times[1] . ' мин. ';
+        isset($times[0]) && $msg .= $times[0] . ' сек.';
+        return $msg;
+    }
 
 }
 
-class ChatCommand {
-	private $condition;
-	private $run;
+class ChatCommand
+{
+    private $name;
+    private $desc;
+    private $condition;
+    private $run;
+    private $status;
 
-	public function __construct($condition, $run)
-	{	
-		if (strval(get_class($condition)) == 'Closure') $this->condition = $condition;
-		if (strval(get_class($run)) == 'Closure') $this->run = $run;
-	}
+    public function __construct($name, $desc, $condition, $run, $params = [])
+    {
+        $this->name = $name;
+        $this->desc = $desc;
 
-	public function checkAndRun($command)
-	{
-		$run = $this->run;
-		if ($this->check($command)) {
-			$run($command);
-			return true;
-		} 
-		return false;
-	}
+        if (strval(get_class($condition)) == 'Closure') {
+            $this->condition = $condition;
+        }
 
-	public function check($command)
-	{
-		$condition = $this->condition;
-		$run = $this->run;
-		return (!empty($condition) && !empty($run) && $condition($command));
-	}
+        if (strval(get_class($run)) == 'Closure') {
+            $this->run = $run;
+        }
+
+        if (isset($params['status'])) {
+        	$this->status = intval($params['status']);
+        }
+    }
+
+    public function checkAndRun($command)
+    {
+        $run = $this->run;
+        if ($this->check($command)) {
+            $run($command);
+            return true;
+        }
+        return false;
+    }
+
+    public function check($command)
+    {
+        $condition = $this->condition;
+        $run       = $this->run;
+        return (!empty($condition) && !empty($run) && $condition($command) && $this->statusCheck($command));
+    }
+
+    private function statusCheck($command)
+    {
+    	$neededStatus = $this->getRequiredStatus($command->chatId, $command->userId);
+    	$userStatus = Users::getStatus($command->chatId, $command->userId);
+    	return $userStatus >= $neededStatus;
+    }
+
+    public function getRequiredStatus($chatId, $userId)
+    {
+    	$name = CHAT_PARAMS_COMMAND_PREFIX . $this->name;
+    	$neededStatus = $this->status;
+    	if (empty($neededStatus)) $neededStatus = ChatParams::get($command->chatId)->$name;
+    	if (empty($neededStatus)) $neededStatus = USER_STATUS_DEFAULT;
+    	return $neededStatus;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+    public function getDesc()
+    {
+        return $this->desc;
+    }
+    public function getStatus()
+    {
+        return $this->status;
+    }
 }

@@ -70,7 +70,7 @@ class Users extends \yii\db\ActiveRecord
 
     public static function getStatus($chatId, $userId)
     {
-        if (Params::get()->selfId == $userId) return 10;
+        if (Params::get()->selfId == $userId) return COMMAND_STATUS_ADMIN;
         return static::getUser($chatId, $userId)->status;
     }
 
@@ -94,9 +94,10 @@ class Users extends \yii\db\ActiveRecord
     {
         if ($userId == Params::get()->selfId) return;
         $user = static::userExists($chatId, $userId) ? static::getUser($chatId, $userId) : new self(['chatId' => intval($chatId), 'userId' => intval($userId)]);
-        if (Chats::getChat($chatId)->adminId == $userId) $status = 10;
+        if (Chats::getChat($chatId)->adminId == $userId) $status = USER_STATUS_ADMIN;
         $user->name = strval($name);
         $user->secondName = strval($secondName);
+        !$user->status && $user->status = USER_STATUS_DEFAULT;
         $status != null && $user->status = intval($status);
         $messages != null && $user->messages = intval($messages);
         $lastActivity != null && $user->lastActivity = intval($lastActivity);
@@ -147,5 +148,37 @@ class Users extends \yii\db\ActiveRecord
     public static function find()
     {
         return new UsersQuery(get_called_class());
+    }
+}
+
+
+/**
+ * This is the ActiveQuery class for [[Users]].
+ *
+ * @see Users
+ */
+class UsersQuery extends \yii\db\ActiveQuery
+{
+    /*public function active()
+    {
+        return $this->andWhere('[[status]]=1');
+    }*/
+
+    /**
+     * @inheritdoc
+     * @return Users[]|array
+     */
+    public function all($db = null)
+    {
+        return parent::all($db);
+    }
+
+    /**
+     * @inheritdoc
+     * @return Users|array|null
+     */
+    public function one($db = null)
+    {
+        return parent::one($db);
     }
 }

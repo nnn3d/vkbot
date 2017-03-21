@@ -31,21 +31,21 @@ class Params extends \yii\db\ActiveRecord
 
     public function __construct()
     {
-        if (!static::$params) static::$params = [];
+        if (!is_array(static::$params)) static::$params = [];
     }
 
     public function __get($param)
     {
         if ($param == 'param' || $param == 'value') return parent::__get($param);
         if (isset(static::$params[$param]) && $param != 'run' && $param != 'stop') return $params[$param];
-        $self = self::get()->findOne(['param' => $param]);
+        $self = static::findOne(['param' => $param]);
         return $self ? $self->value : null;
     }
 
     public function __set($param, $value)   
     {
         if ($param == 'param' || $param == 'value') return parent::__set($param, $value);
-        $var = self::get()->findOne(['param' => $param]);
+        $var = static::findOne(['param' => $param]);
         if (!$var) $var = new self;
         $var->param = strval($param);
         $var->value = strval($value);
@@ -97,5 +97,36 @@ class Params extends \yii\db\ActiveRecord
     public static function find()
     {
         return new ParamsQuery(get_called_class());
+    }
+}
+
+/**
+ * This is the ActiveQuery class for [[Params]].
+ *
+ * @see Params
+ */
+class ParamsQuery extends \yii\db\ActiveQuery
+{
+    /*public function active()
+    {
+        return $this->andWhere('[[status]]=1');
+    }*/
+
+    /**
+     * @inheritdoc
+     * @return Params[]|array
+     */
+    public function all($db = null)
+    {
+        return parent::all($db);
+    }
+
+    /**
+     * @inheritdoc
+     * @return Params|array|null
+     */
+    public function one($db = null)
+    {
+        return parent::one($db);
     }
 }

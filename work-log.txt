@@ -242,3 +242,34 @@
 2017-03-18 22:43:35 [info][bot-log] add command 'торч топ активность' from chat 16
 2017-03-18 22:44:34 [info][bot-log] start bot
 2017-03-18 22:44:49 [info][bot-log] add command 'торч топ активность' from chat 16
+2017-03-21 02:22:06 [info][bot-log] start bot
+2017-03-21 02:22:20 [warning][bot-log] longPoll failed with code 2
+2017-03-21 02:22:20 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: bf661a559b5c7b61ec33a7cea67d6501e112d812 
+ ts: 1711349352
+2017-03-21 02:22:21 [warning][bot-log] longPoll failed with code 1
+2017-03-21 02:22:26 [info][bot-log] add command 'тест топ' from chat 16
+2017-03-21 02:23:10 [info][bot-log] start bot
+2017-03-21 02:25:02 [info][bot-log] start bot
+2017-03-21 02:25:14 [info][bot-log] add command 'тест топ' from chat 16
+2017-03-21 02:25:15 [info][bot-log] add command 'тест топ' from chat 16
+2017-03-21 02:26:35 [info][bot-log] start bot
+2017-03-21 04:05:27 [info][bot-log] start bot
+2017-03-21 04:05:39 [info][bot-log] add command 'тест топ' from chat 16
+2017-03-21 04:05:55 [info][bot-log] add command 'тест топ' from chat 16
+2017-03-21 04:06:27 [info][bot-log] add command 'тест общий топ' from chat 16
+2017-03-21 04:06:58 [info][bot-log] add command 'тест установить статус команды модер общий топ' from chat 16
+2017-03-21 04:10:51 [info][bot-log] start bot
+2017-03-21 04:23:19 [info][bot-log] start bot
+2017-03-21 04:23:41 [warning][bot-log] longPoll failed with code 1
+2017-03-21 04:24:45 [info][bot-log] start bot
+2017-03-21 04:33:31 [info][bot-log] start bot
+2017-03-21 04:34:33 [info][bot-log] add command 'тест установить статус участника никита модер' from chat 16
+2017-03-21 04:34:59 [info][bot-log] add command 'тест установить статус участника модер никита' from chat 16
+2017-03-21 05:09:14 [info][bot-log] start bot
+2017-03-21 05:09:24 [info][bot-log] add command 'тест статус участников' from chat 16
+2017-03-21 05:09:39 [info][bot-log] start bot
+2017-03-21 05:09:49 [info][bot-log] add command 'тест статус участников' from chat 16
+2017-03-21 05:28:43 [info][bot-log] start bot
+2017-03-21 05:28:52 [info][bot-log] add command 'тест команды' from chat 16

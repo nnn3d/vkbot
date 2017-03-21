@@ -22,7 +22,6 @@ class Bot {
 	{
 		header('Content-Type: text/html; charset=utf-8');
 		Yii::info('start bot', 'bot-log');
-		if (Params::get()->stop) return;
 		$this->init();
 		while (!Params::get()->stop) {
 			$this->cycle();
@@ -129,9 +128,15 @@ class Bot {
 
 	private function init($reinit = false)
 	{
+		if (Params::get()->stop) {
+			for ($i=0; $i < 12; $i++) { 
+				if (!Params::get()->stop) break;
+				sleep(1);
+			} 
+		}
 		if (Params::get()->run) {
 			Params::get()->stop = 1;
-			for ($i=0; $i < 10; $i++) { 
+			for ($i=0; $i < 8; $i++) { 
 				if (!Params::get()->run) break;
 				sleep(1);
 			}

@@ -20,6 +20,7 @@ Thumbs.db
 log.txt*
 info-log.txt*
 work-log.txt*
+log.html
 
 #sublime
 *.sublime-project

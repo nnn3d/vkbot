@@ -16,6 +16,9 @@ use app\models\Params;
  */
 class Commands extends \yii\db\ActiveRecord
 {
+
+    public $argsCountSkip = false;
+
     /**
      * @inheritdoc
      */
@@ -39,7 +42,7 @@ class Commands extends \yii\db\ActiveRecord
     }
 
 
-    public static function addFromMessage($chatId, $userId, $message, $command = 'user')
+    public static function addFromMessage($chatId, $userId, $message, $command = COMMAND_USER)
     {
         $botName = Params::bot('name');
         $args = explode(' ', $message);
@@ -50,7 +53,7 @@ class Commands extends \yii\db\ActiveRecord
         Yii::info("add command '$message' from chat $chatId", 'bot-log');
     }
 
-    public static function add($chatId, $userId, $args, $command = 'user')  
+    public static function add($chatId, $userId, $args, $command = COMMAND_USER)  
     {
         $self = new self([
             'chatId' => $chatId,
