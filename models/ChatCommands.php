@@ -35,7 +35,7 @@ class ChatCommands
     private function argsRegExp($set)
     {
         foreach ($set as $key => $arg) {
-            if (!preg_match("/{$arg}/iu", $this->args[$key])) {
+            if (isset($this->args[$key]) && !preg_match("/{$arg}/iu", $this->args[$key])) {
                 return false;
             }
 
