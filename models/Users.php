@@ -70,7 +70,7 @@ class Users extends \yii\db\ActiveRecord
 
     public static function getStatus($chatId, $userId)
     {
-        if (Params::get()->selfId == $userId) return COMMAND_STATUS_ADMIN;
+        if (Params::get()->selfId == $userId) return USER_STATUS_ADMIN;
         return static::getUser($chatId, $userId)->status;
     }
 
