@@ -368,35 +368,6 @@ class ChatCommands
             ['status' => USER_STATUS_ADMIN]
         );
 		
-		$commands[] = new ChatCommand(
-            'кикнуть участника { имя [ + фамилия ] участника }',
-            'Описание',
-            function ($command) use ($s) {
-                $s->load($command);
-                return $s->argsLarger(2) && $s->argsRegExp(['кикнуть', 'участника']);
-            },
-            function ($command) {
-                $chat  = Chats::getChat($command->chatId);
-            	$name       = $command->getArgs()[2];
-            	$secondName = isset($command->getArgs()[3]) ? $command->getArgs()[3] : '';
-            	$user       = Users::getUserByName($command->chatId, $name, $secondName);
-            	if (!$user) {
-            	    $chat->sendMessage("Не найден участник беседы '$name $secondName'");
-            	    return false;
-            	}
-            	if ($user->userId == $command->userId) {
-            		$chat->sendMessage("Нельзя себя кикнуть");
-            		return false;
-            	}
-            	if (Users::getStatus($command->chatId, $user->userId) == USER_STATUS_ADMIN) {
-            		$chat->sendMessage("Этого пользователя нельзя кикнуть");
-            		return false;
-            	}
-				$chat->sendMessage("писа лариса");
-            	$chat->kickUser($user);
-            }
-        );
-		
         $commands[] = new ChatCommand(
             'статус участников',
             'Описание',
