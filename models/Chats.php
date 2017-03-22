@@ -54,7 +54,15 @@ class Chats extends \yii\db\ActiveRecord
             'message' => $message,
         ]);
     }
-
+	
+	public function kickUser($user)
+	{
+		Vk::get()->messages->removeChatUser([
+			'chat_id' => $this->chatId,
+			'user_id' => $user->userId,
+		]);
+	}
+	
     public static function addChatFromMessage($message)
     {
         $chat = new self;
