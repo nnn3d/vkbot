@@ -73,7 +73,6 @@ class Bot {
 					break;
 			}
 		}
-		Params::get()->longPollTs = $result['ts'];
 		array_map(function ($res)
 		{
 			switch ($res[0]) {
@@ -93,6 +92,7 @@ class Bot {
 			}
 
 		}, is_array($result['updates']) ? $result['updates'] : []);
+		Params::get()->longPollTs = $result['ts'];
 		return $result;
 	}
 

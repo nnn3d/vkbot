@@ -53,7 +53,7 @@ class Commands extends \yii\db\ActiveRecord
         Yii::info("add command '$message' from chat $chatId", 'bot-log');
     }
 
-    public static function add($chatId, $userId, $args, $messageId = null, $command = COMMAND_USER)  
+    public static function add($chatId, $userId = null, $args, $messageId = null, $command = COMMAND_USER)  
     {
         $self = new self([
             'chatId' => $chatId,

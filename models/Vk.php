@@ -41,8 +41,9 @@ class Vk{
 
     static function get($noErrors = false)
     {
-        $this->noErrors = $noErrors;
-        return new self(\app\models\Params::bot('vkConfig'));
+        $vk = new self(\app\models\Params::bot('vkConfig'));
+        $vk->noErrors = $noErrors;
+        return $vk;
     }
 
     function getR($params = null)

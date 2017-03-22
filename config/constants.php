@@ -5,5 +5,6 @@ define('USER_STATUS_DEFAULT', 1);
 
 define('COMMAND_USER', 'user');
 define('COMMAND_BOT', 'bot');
+define('COMMAND_DUEL', 'duel');
 
 define('CHAT_PARAMS_COMMAND_PREFIX', 'status command ');

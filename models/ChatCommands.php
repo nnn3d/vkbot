@@ -54,6 +54,41 @@ class ChatCommands
         $commands = [];
 
         $commands[] = new ChatCommand(
+            'дуэль { имя [ + фамилия ] участника }',
+            'Описание',
+            function ($command) use ($s)
+            {
+                $s->load($command);
+                return $s->argsLarger(1) && $s->argsRegExp(['дуэль', '[^+-]']);
+            }, 
+            function ($command) 
+            {
+                $chat = Chats::getChat($command->chatId);
+                $name = $command->getArgs()[1];
+                $secondName = isset($command->getArgs()[2]) ? $command->getArgs()[2] : '';
+                $user = Users::getUserByName($command->chatId, $name, $secondName);
+                if (!$user) {
+                    $chat->sendMessage("Я не могу найти оппонента с таким именем среди участников конференции");
+                    return false;
+                } 
+                if ($command->userId == $user->userId) {
+                    $chat->sendMessage("Нельзя вызвать на дуэль самого себя");
+                    return false;
+                } 
+                $pioneerUser = Users::getUser($command->chatId, $command->userId);
+                $args = [
+                    $user->userId,
+                    $command->userId,
+                ];
+                $botName = Params::bot('name');
+                $message = "{$user->name} {$user->secondName}, вас приглашает на дуэль {$pioneerUser->name} {$pioneerUser->secondName}, заручившись подержкой боженьки.\n Принимаете ли вы вызов? (команда \"$botName дуэль +\" или \"$botName дуэль -\" для отказа)";
+                Commands::add($command->chatId, null, $args, null, COMMAND_DUEL);
+
+                $chat->sendMessage($message);
+            }
+        );
+
+        $commands[] = new ChatCommand(
             'повторяй { количество минут } { команда полностью }',
             'Описание',
             function ($command) use ($s) {
@@ -72,7 +107,7 @@ class ChatCommands
                     $chat->sendMessage("Команды '$taskArgsS' не существует или недостаточно прав");
                     return false;
                 }
-                PendingTasks::add($command->chatId, $taskArgs, $minutes * 60);
+                PendingTasks::add($command->chatId, $taskArgs, $minutes * 60, $command->messageId);
                 $chat->sendMessage("Добавлена команда '$taskArgsS' с повторением раз в $minutes мин.");
 	        },
             ['status' => USER_STATUS_ADMIN]
@@ -408,9 +443,12 @@ class ChatCommands
             },
             function ($command) {
                 $chat  = Chats::getChat($command->chatId);
-            	$commands = ChatCommands::getAllCommands();
+            	$commandsL = ChatCommands::getAllCommands();
             	$message = "Команды бота:\n";
-
+                $commands = array_map(function ($command)
+                {
+                    return $command->hidden != false;
+                }, $commandsL);
             	usort($commands, function ($a, $b) {
             	    return strcasecmp($a->getName(), $b->getName());
             	});
@@ -479,6 +517,7 @@ class ChatCommand
     private $run;
     private $status;
     private $statusDefault;
+    public $hidden;
 
     public function __construct($name, $desc, $condition, $run, $params = [])
     {
@@ -488,17 +527,18 @@ class ChatCommand
         if (strval(get_class($condition)) == 'Closure') {
             $this->condition = $condition;
         }
-
         if (strval(get_class($run)) == 'Closure') {
             $this->run = $run;
         }
+        $this->load($params);
+    }
 
-        if (isset($params['status'])) {
-            $this->status = intval($params['status']);
-        }
-
-        if (isset($params['statusDefault'])) {
-        	$this->statusDefault = intval($params['statusDefault']);
+    public function load($params)
+    {
+        foreach ($params as $key => $param) {
+            if (property_exists(__CLASS__, $key)) {
+                $this->$key = $param;
+            }
         }
     }
 

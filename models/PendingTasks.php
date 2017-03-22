@@ -52,14 +52,23 @@ class PendingTasks extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getArgs()
+    public function getAllArgs()
     {
         return unserialize($this->args);
     }
 
-    public static function add($chatId, $args, $timeRepeat, $task = COMMAND_USER, $lastRun = null)
+    public function getArgs()
+    {
+        return $this->getAllArgs()['commandArgs'];
+    }
+
+    public static function add($chatId, $args, $timeRepeat, $messageId = null, $task = COMMAND_USER, $lastRun = null)
     {
         empty($lastRun) && $lastRun = time();
+        $args = [
+            'commandArgs' => $args,
+            'messageId' => $messageId,
+        ];
         (new PendingTasks([
             'task' => $task,
             'chatId' => $chatId,
@@ -74,11 +83,11 @@ class PendingTasks extends \yii\db\ActiveRecord
         $time = time();
         foreach (static::find()->all() as $task) {
             if ($task->timeRepeat + $task->lastRun > $time) return;
-            $task->lastRun = $time;
+            $task->lastRun = $task->timeRepeat + $task->lastRun;
             $task->save();
             switch ($task->task) {
                 case COMMAND_USER:
-                    Commands::add($task->chatId, Params::get()->selfId, $task->getArgs());
+                    Commands::add($task->chatId, Params::get()->selfId, $task->getArgs(), $task->getAllArgs()['messageId']);
                     break;
                 
                 default:
