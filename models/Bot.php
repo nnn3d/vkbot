@@ -83,7 +83,8 @@ class Bot {
 					$userId = $res[7]['from'];
 					$time = $res[4];
 					$message = $res[6];
-					$this->messageWorker($chatId, $userId, $message, $time);
+					$messageId = $res[1];
+					$this->messageWorker($chatId, $userId, $message, $messageId, $time);
 					break;
 				
 				default:
@@ -104,10 +105,10 @@ class Bot {
 		Yii::info("get new longPoll params: \n server: {$settings['server']} \n key: {$settings['key']} \n ts: {$settings['ts']}", 'bot-log');
 	}
 
-	private function messageWorker($chatId, $userId, $message, $time = null)
+	private function messageWorker($chatId, $userId, $message, $messageId, $time = null)
 	{
 		Users::incrementCounter($chatId, $userId, strlen(str_replace(" ","",$message)), $time);
-		Commands::addFromMessage($chatId, $userId, $message);
+		Commands::addFromMessage($chatId, $userId, $message, $messageId);
 	}
 
 	private function loadNewMessages()
@@ -122,7 +123,7 @@ class Bot {
 		array_map(function ($message)
 		{
 			if (!isset($messages['chat_id'])) return;
-			$this->messageWorker($message['chat_id'], $message['user_id'], $message['body'], $message['dage']);	
+			$this->messageWorker($message['chat_id'], $message['user_id'], $message['body'], $message['date'], $message['id']);	
 		}, $response['messages']['items']);
 	}
 

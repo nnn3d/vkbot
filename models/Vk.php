@@ -24,6 +24,7 @@ class Vk{
     public $access_token= null;
     public $owner_id    = 0;
     public $debug       = false;
+    public $noErrors;
     private $_api_scope = '';
 
     public static $last_request_time;
@@ -38,8 +39,9 @@ class Vk{
         if (!static::$last_request_time) static::$last_request_time = microtime(true);
     }
 
-    static function get($params = null)
+    static function get($noErrors = false)
     {
+        $this->noErrors = $noErrors;
         return new self(\app\models\Params::bot('vkConfig'));
     }
 
@@ -145,6 +147,7 @@ class Vk{
         // Произошла ошибка на стороне VK, коды ошибок тут https://vk.com/dev/errors
         if(isset($json['error'], $json['error']['error_msg'], $json['error']['error_code'])){
             \Yii::error("vk error with code {$json['error']['error_code']} and message '{$json['error']['error_msg']}'", 'bot-log');
+            if ($this->noErrors) return false;
             throw new VkException("error #{$json['error']['error_code']}: {$json['error']['error_msg']}");
         }
         if(isset($json['response'])) return $json['response'];

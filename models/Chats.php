@@ -47,19 +47,20 @@ class Chats extends \yii\db\ActiveRecord
         ];
     }
 
-    public function sendMessage($message)
+    public function sendMessage($message, $forwardMessages = '')
     {
         Vk::get()->messages->send([
             'chat_id' => $this->chatId,
             'message' => $message,
+            'forward_messages' => $forwardMessages,
         ]);
     }
 	
-	public function kickUser($user)
+	public function kickUser($userId)
 	{
-		Vk::get()->messages->removeChatUser([
+		return Vk::get(true)->messages->removeChatUser([
 			'chat_id' => $this->chatId,
-			'user_id' => $user->userId,
+			'user_id' => $userId,
 		]);
 	}
 	

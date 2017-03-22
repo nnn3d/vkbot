@@ -18,6 +18,7 @@ class ChatCommands
     private function load($command)
     {
         $this->chatId = $command->chatId;
+        $this->chatId = $command->messageId;
         $this->userId = $command->userId;
         $this->args   = $command->getArgs();
         $this->argsCountSkip = $command->argsCountSkip;
@@ -263,8 +264,16 @@ class ChatCommands
                 $users = $chat->getAllActiveUsers();
                 $r     = mt_rand(0, count($users) - 1);
                 $c     = implode(' ', array_slice($command->getArgs(), 1));
-                $chat->sendMessage("считаю что '$c' - {$users[$r]->name} {$users[$r]->secondName}");
-	        }
+                $countC = substr_count($c, '?');
+                $c = trim($c, "?");
+                if ($countC == '1') {
+                    $chat->sendMessage("Cчитаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}", $command->messageId);
+                } else if (empty($c)) {
+                    return false;
+                } else {
+                    $chat->sendMessage("Я думаю, что {$users[$r]->name} {$users[$r]->secondName}", $command->messageId);
+                }
+            }
         );
 
         $commands[] = new ChatCommand(
@@ -323,12 +332,12 @@ class ChatCommands
             		$chat->sendMessage("Этого пользователя нельзя кикнуть");
             		return false;
             	}
-				else {
-				$chat->sendMessage("Пользователь '$name $secondName' будет кикнут");
-            	$chat->kickUser($user);
-				}
+                $chat->sendMessage("Пользователь {$user->name} {$user->secondName} будет кикнут");
+                if (!$chat->kickUser($user->userId)) {
+    				$chat->sendMessage("Не удалось кикнуть пользователя {$user->name} {$user->secondName}");
+                }
             },
-			['status' => USER_STATUS_MODER]
+			['statusDefault' => USER_STATUS_MODER]
         );
 		
         $commands[] = new ChatCommand(
@@ -469,6 +478,7 @@ class ChatCommand
     private $condition;
     private $run;
     private $status;
+    private $statusDefault;
 
     public function __construct($name, $desc, $condition, $run, $params = [])
     {
@@ -484,7 +494,11 @@ class ChatCommand
         }
 
         if (isset($params['status'])) {
-        	$this->status = intval($params['status']);
+            $this->status = intval($params['status']);
+        }
+
+        if (isset($params['statusDefault'])) {
+        	$this->statusDefault = intval($params['statusDefault']);
         }
     }
 
@@ -517,6 +531,7 @@ class ChatCommand
     	$name = CHAT_PARAMS_COMMAND_PREFIX . $this->name;
     	$neededStatus = $this->status;
     	if (empty($neededStatus)) $neededStatus = ChatParams::get($chatId)->$name;
+        if (empty($neededStatus)) $neededStatus = $this->statusDefault;
     	if (empty($neededStatus)) $neededStatus = USER_STATUS_DEFAULT;
     	return $neededStatus;
     }
