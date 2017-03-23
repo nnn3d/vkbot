@@ -10,6 +10,7 @@ use app\models\Params;
 use app\models\PendingTasks;
 use app\models\Commands;
 use app\models\CommandCaller;
+use app\models\BotCommands;
 
 class Bot {
 
@@ -23,6 +24,7 @@ class Bot {
 		header('Content-Type: text/html; charset=utf-8');
 		Yii::info('start bot', 'bot-log');
 		$this->init();
+		BotCommands::init();
 		while (!Params::get()->stop) {
 			$this->cycle();
 		}

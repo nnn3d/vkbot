@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use app\models\CommandCaller;
 use app\models\Commands;
+use app\models\BotCommands;
 use app\models\Params;
 
 /**
@@ -78,6 +79,13 @@ class PendingTasks extends \yii\db\ActiveRecord
         ]))->save();
     }
 
+    public static function deleteByTask($task)
+    {
+        foreach (static::findAll(['task' => $task]) as $item) {
+            $item->delete();
+        }
+    }
+
     public static function checkAll()
     {
         $time = time();
@@ -88,6 +96,10 @@ class PendingTasks extends \yii\db\ActiveRecord
             switch ($task->task) {
                 case COMMAND_USER:
                     Commands::add($task->chatId, Params::get()->selfId, $task->getArgs(), $task->getAllArgs()['messageId']);
+                    break;
+
+                case COMMAND_BOT:
+                    BotCommands::runPendingTask($task);
                     break;
                 
                 default:

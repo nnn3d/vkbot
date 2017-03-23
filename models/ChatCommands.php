@@ -64,6 +64,10 @@ class ChatCommands
             function ($command) 
             {
                 $chat = Chats::getChat($command->chatId);
+                if (Commands::find()->where(['command' => COMMAND_DUEL, 'chatId' => $command->chatId])->exists()) {
+                    $chat->sendMessage("Дуэль уже идет, для новой еще не время!");
+                    return false;
+                }
                 $name = $command->getArgs()[1];
                 $secondName = isset($command->getArgs()[2]) ? $command->getArgs()[2] : '';
                 $user = Users::getUserByName($command->chatId, $name, $secondName);
@@ -86,6 +90,73 @@ class ChatCommands
 
                 $chat->sendMessage($message);
             }
+        );
+
+        $commands[] = new ChatCommand(
+            'дуэль { + / - }',
+            'Описание',
+            function ($command) use ($s)
+            {
+                $s->load($command);
+                return $s->argsEqual(2) && $s->argsRegExp(['дуэль', '[+-]']);
+            }, 
+            function ($command) 
+            {
+                $chat = Chats::getChat($command->chatId);
+                $duel = Commands::findOne(['command' => COMMAND_DUEL, 'chatId' => $command->chatId]);
+                if (!$duel) return false;
+                $user1 = Users::getUser($command->chatId, $duel->getArgs()[0]);
+                if ($user1->userId != $command->userId) return false;
+                if ($command->getArgs()[1] == '-') {
+                    $chat->sendMessage("{$user1->name} {$user1->secondName} отклонил дуэль, жалкий трус!");
+                    return false;
+                }
+                $botName = Params::bot('name');
+                $prefix = "$botName битва ";
+                $str = substr(strtolower(md5(uniqid(rand(), true))),0,6);
+                preg_match_all('/./us', $prefix . $str, $ar);
+                $strrev = join('',array_reverse($ar[0]));
+                $args = [
+                    $user1->userId,
+                    $duel->getArgs()[1],
+                    $str,
+                ];
+                $duel->delete();
+                Commands::add($command->chatId, null, $args, null, COMMAND_DUEL);
+                $chat->sendMessage("Битва начинается! Победит тот, кто первым наберет строку '{$strrev}' наоборот!");
+            },
+            ['hidden' => true]
+        );
+
+        $commands[] = new ChatCommand(
+            'битва { ответ }',
+            'Описание',
+            function ($command) use ($s)
+            {
+                $s->load($command);
+                return $s->argsEqual(2) && $s->argsRegExp(['битва']);
+            }, 
+            function ($command) 
+            {
+                $chat = Chats::getChat($command->chatId);
+                $duel = Commands::findOne(['command' => COMMAND_DUEL, 'chatId' => $command->chatId]);
+                if (!$duel) return;
+                $user1 = Users::getUser($command->chatId, $duel->getArgs()[0]);
+                $user2 = Users::getUser($command->chatId, $duel->getArgs()[1]);
+                if ($command->userId == $user1->userId) {
+                    $winUser = $user1;
+                    $looseUser = $user2;
+                } else if ($command->userId == $user2->userId) {
+                    $winUser = $user2;
+                    $looseUser = $user1;
+                } else return false;
+                if ($command->getArgs()[1] == $duel->getArgs()[2]) {
+                    $chat->sendMessage("Поздравляю! {$winUser->name} {$winUser->secondName} победил, {$looseUser->name} {$looseUser->secondName} проиграл в этой честной битве!");
+                    $duel->delete();
+                }
+                return false;
+            },
+            ['hidden' => true]
         );
 
         $commands[] = new ChatCommand(
@@ -445,10 +516,10 @@ class ChatCommands
                 $chat  = Chats::getChat($command->chatId);
             	$commandsL = ChatCommands::getAllCommands();
             	$message = "Команды бота:\n";
-                $commands = array_map(function ($command)
+                $commands = array_filter($commandsL, function ($command)
                 {
-                    return $command->hidden != false;
-                }, $commandsL);
+                    return !$command->hidden;
+                });
             	usort($commands, function ($a, $b) {
             	    return strcasecmp($a->getName(), $b->getName());
             	});

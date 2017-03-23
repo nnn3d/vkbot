@@ -61,6 +61,7 @@ class Commands extends \yii\db\ActiveRecord
             'command' => $command,
             'messageId' => $messageId,
             'args' => serialize($args),
+            'time' => time(),
         ]);
         $self->save();
     }
