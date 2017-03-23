@@ -55,7 +55,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'дуэль { имя [ + фамилия ] участника }',
-            'Описание',
+            'Вызвать участника на дуэль.',
             function ($command) use ($s)
             {
                 $s->load($command);
@@ -162,7 +162,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'повторяй { количество минут } { команда полностью }',
-            'Описание',
+            'Добавить повторяющееся событие. Например /"$botName повторяй 5 кто бот/" будет выполнять команду /"кто/" каждые 5 мин.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsLarger(2) && $s->argsRegExp(['повторяй', '[\d]+']);
@@ -187,7 +187,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'не повторяй',
-            'Описание',
+            'Убирает повторяющуюся задачу. Посмотреть задачи можно командой "/$botName покажи повторения/".',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsLarger(2) && $s->argsRegExp(['не', 'повторяй']);
@@ -215,7 +215,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'покажи повторения',
-            'Описание',
+            'Показывает повторяющиеся задачи.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsEqual(2) && $s->argsRegExp(['покажи', 'повторения']);
@@ -241,7 +241,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'топ активность',
-            'Описание',
+            'Показывает время с последнего сообщения пользователя.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsEqual(2) && $s->argsRegExp(['топ', 'активность']);
@@ -267,7 +267,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'общий топ',
-            'Описание',
+            'Количесвто символов всех участников за все время.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsEqual(2) && $s->argsRegExp(['общий', 'топ']);
@@ -290,7 +290,7 @@ class ChatCommands
         // user stat by days
         $commands[] = new ChatCommand(
             'стат { имя [ + фамилия ] участника }',
-            'Описание',
+            'Количесвто символов участника за указанный срок.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsLarger(2) && $s->argsSmaller(5) && $s->argsRegExp(['стат', '[\d]{1,2}']);
@@ -330,7 +330,7 @@ class ChatCommands
         // chat top by days
         $commands[] = new ChatCommand(
             'топ { количество дней }',
-            'Описание',
+            'Количесвто символов всех участников указанный срок.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsEqual(2) && $s->argsRegExp(['топ', '[\d]{1,2}']);
@@ -361,7 +361,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'кто { любой вопрос }',
-            'Описание',
+            'В ответ дает случайного участника.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsEqual(1) && $s->argsRegExp(['кто']);
@@ -385,7 +385,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'установить статус команды { админ / модер / все } { название команды }',
-            'Описание',
+            'Выставляет уровень допуска для команды.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsLarger(4) && $s->argsRegExp(['установить', 'статус', 'команды']);
@@ -417,7 +417,7 @@ class ChatCommands
 		
 		$commands[] = new ChatCommand(
             'кикнуть участника { имя [ + фамилия ] участника }',
-            'Описание',
+            'Кикает указанного участника из беседы.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsLarger(2) && $s->argsRegExp(['кикнуть', 'участника']);
@@ -449,7 +449,7 @@ class ChatCommands
 		
         $commands[] = new ChatCommand(
             'установить статус участника { модер / юзер } { имя [ + фамилия ] участника }',
-            'Описание',
+            'Выставить уровень доступа к командам для участника.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsLarger(3) && $s->argsRegExp(['установить', 'статус', 'участника']);
@@ -486,7 +486,7 @@ class ChatCommands
 		
         $commands[] = new ChatCommand(
             'статус участников',
-            'Описание',
+            'Показать уровни доступов всех участников.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsEqual(2) && $s->argsRegExp(['статус', 'участников']);
@@ -508,7 +508,7 @@ class ChatCommands
 		
         $commands[] = new ChatCommand(
             'команды',
-            'Описание',
+            'Показать все команды.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsEqual(1) && $s->argsRegExp(['команды']);

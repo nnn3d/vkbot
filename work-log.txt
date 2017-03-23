@@ -8,3 +8,8 @@
 2017-03-23 01:35:13 [info][bot-log] start bot
 2017-03-23 01:35:37 [info][bot-log] add command 'торч дуэль пен' from chat 16
 2017-03-23 01:36:22 [info][bot-log] add command 'торч дуэль -' from chat 16
+2017-03-23 14:11:56 [info][bot-log] start bot
+2017-03-23 14:12:34 [info][bot-log] start bot
+2017-03-23 14:12:57 [info][bot-log] start bot
+2017-03-23 14:14:26 [info][bot-log] start bot
+2017-03-23 14:15:42 [info][bot-log] start bot
