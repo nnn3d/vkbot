@@ -34,9 +34,8 @@ class Commands extends \yii\db\ActiveRecord
     {
         return [
             [['chatId'], 'required'],
-            [['chatId', 'userId', 'messageId'], 'integer'],
+            [['chatId', 'userId', 'messageId', 'time'], 'integer'],
             [['args'], 'string'],
-            [['timestamp'], 'safe'],
             [['command'], 'string', 'max' => 255],
         ];
     }

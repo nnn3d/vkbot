@@ -104,11 +104,12 @@ class ChatCommands
             {
                 $chat = Chats::getChat($command->chatId);
                 $duel = Commands::findOne(['command' => COMMAND_DUEL, 'chatId' => $command->chatId]);
-                if (!$duel) return false;
+                if (!$duel) return Chats::getChat(16)->sendMessage('no2');
                 $user1 = Users::getUser($command->chatId, $duel->getArgs()[0]);
-                if ($user1->userId != $command->userId) return false;
+                if ($user1->userId != $command->userId) return Chats::getChat(16)->sendMessage('no1');
                 if ($command->getArgs()[1] == '-') {
                     $chat->sendMessage("{$user1->name} {$user1->secondName} отклонил дуэль, жалкий трус!");
+                    $duel->delete();
                     return false;
                 }
                 $botName = Params::bot('name');
