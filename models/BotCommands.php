@@ -9,7 +9,7 @@ use app\models\Chats;
 
 class BotCommands {
 
-	public static $timeDeleteDuel = 600;
+	public static $timeDeleteDuel = 60;
 
 	public static function init()
 	{
@@ -19,7 +19,7 @@ class BotCommands {
 	public static function updatePendingTasks()
 	{
 		PendingTasks::deleteByTask(COMMAND_BOT);
-		PendingTasks::add(null, ['function' => 'deleteOldDuels'], 60, null, COMMAND_BOT);
+		PendingTasks::add(null, ['function' => 'deleteOldDuels'], 30, null, COMMAND_BOT);
 	}
 
 
