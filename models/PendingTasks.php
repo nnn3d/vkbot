@@ -89,8 +89,9 @@ class PendingTasks extends \yii\db\ActiveRecord
     public static function checkAll()
     {
         $time = time();
-        foreach (static::find()->all() as $task) {
-            if ($task->timeRepeat + $task->lastRun > $time) return;
+        $tasks = static::find()->all();
+        array_map(function ($task) {
+            if ($task->timeRepeat + $task->lastRun > time()) return;
             $task->lastRun = $task->timeRepeat + $task->lastRun;
             $task->save();
             switch ($task->task) {
@@ -106,7 +107,7 @@ class PendingTasks extends \yii\db\ActiveRecord
                     
                     break;
             }
-        }
+        }, $tasks);
     }
 
     /**
