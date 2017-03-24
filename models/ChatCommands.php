@@ -24,11 +24,11 @@ class ChatCommands
         $this->argsCountSkip = $command->argsCountSkip;
     }
     private function argsEqual($set)
-    {return count($this->args) == $set || !$this->argsCountSkip;}
+    {return count($this->args) == $set;}
     private function argsLarger($set)
-    {return count($this->args) > $set || !$this->argsCountSkip;}
+    {return count($this->args) > $set;}
     private function argsSmaller($set)
-    {return count($this->args) < $set || !$this->argsCountSkip;}
+    {return count($this->args) < $set;}
     private function minStatus($status)
     {
         return Users::getStatus($this->chatId, $this->userId) >= $status;
