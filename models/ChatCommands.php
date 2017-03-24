@@ -364,7 +364,7 @@ class ChatCommands
             'В ответ дает случайного участника.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(1) && $s->argsRegExp(['кто']);
+                return $s->argsLarger(1) && $s->argsRegExp(['кто']);
             },
             function ($command) {
                 $chat  = Chats::getChat($command->chatId);
