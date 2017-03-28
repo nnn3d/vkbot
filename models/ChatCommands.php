@@ -52,7 +52,46 @@ class ChatCommands
 
         $s        = new self;
         $commands = [];
+	
+	$commands[] = new ChatCommand(
+            'брак { имя [ + фамилия ] участника }',
+            'Описание',
+            function ($command) use ($s)
+            {
+                $s->load($command);
+                return $s->argsLarger(1) && $s->argsRegExp(['брак', '[^+-]']);
+            }, 
+            function ($command) 
+            {
+                $chat = Chats::getChat($command->chatId);
+                if (Commands::find()->where(['command' => COMMAND_MARRIAGE, 'chatId' => $command->chatId])->exists()) {
+                    $chat->sendMessage("В данный момент регистрируется другая пара. Ждите.");
+                    return false;
+                }
+                $name = $command->getArgs()[1];
+                $secondName = isset($command->getArgs()[2]) ? $command->getArgs()[2] : '';
+                $user = Users::getUserByName($command->chatId, $name, $secondName);
+                if (!$user) {
+                    $chat->sendMessage("Я не могу найти человека с таким именем среди участников конференции");
+                    return false;
+                } 
+                if ($command->userId == $user->userId) {
+                    $chat->sendMessage("Жениться на самом себе пока нелья...");
+                    return false;
+                } 
+                $pioneerUser = Users::getUser($command->chatId, $command->userId);
+                $args = [
+                    $user->userId,
+                    $command->userId,
+                ];
+                $botName = Params::bot('name');
+                $message = "Брак между {$user->name} {$user->secondName} и {$pioneerUser->name} {$pioneerUser->secondName}.\n (команда \"$botName брак да\" или \"$botName брак нет\" для отказа)";
+                Commands::add($command->chatId, null, $args, null, COMMAND_MARRIAGE);
 
+                $chat->sendMessage($message);
+            }
+        );
+	    
         $commands[] = new ChatCommand(
             'дуэль { имя [ + фамилия ] участника }',
             'Вызвать участника на дуэль.',
