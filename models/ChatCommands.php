@@ -54,6 +54,36 @@ class ChatCommands
         $commands = [];
 	
 	$commands[] = new ChatCommand(
+            'брак { да или нет }',
+            'Описание',
+            function ($command) use ($s)
+            {
+                $s->load($command);
+                return $s->argsEqual(2) && $s->argsRegExp(['брак', '[^+-]']);
+            }, 
+            function ($command) 
+            {
+                $chat = Chats::getChat($command->chatId);
+                $brak = Commands::findOne(['command' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
+
+                $user1 = Users::getUser($command->chatId, $brak->getArgs()[0]);
+		$user2 = Users::getUser($command->chatId, $brak->getArgs()[1]);
+                
+		$botName = Params::bot('name');
+                if ($command->getArgs()[1] == 'нет') {
+                    $chat->sendMessage("{$user1->name} {$user1->secondName} не согласился");
+                    $brak->delete();
+                    return false;
+                } else if ($command->getArgs()[1] == 'да') {
+		    $chat->sendMessage("{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} теперь женаты!");
+		    $brak->delete();
+		    return false;
+		}
+            },
+            ['hidden' => true]
+        );
+	    
+	$commands[] = new ChatCommand(
             'брак { имя [ + фамилия ] участника }',
             'Описание',
             function ($command) use ($s)
