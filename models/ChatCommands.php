@@ -486,6 +486,45 @@ class ChatCommands
 			['statusDefault' => USER_STATUS_MODER]
         );
 		
+		$commands[] = new ChatCommand(
+			'правила',
+			'Выдает правила беседы',
+			function ($command) use ($s) {
+				$s->load($command);
+				return $s->argsEqual(1) && $s->argsRegExp(['правила']);
+			},
+			function ($command) {
+				$chat = Chats::getChat($command->chatId);
+				$rules = ChatParams::get($command->chatId)->rules;
+				$chat->sendMessage("Правила конфы:\n$rules");
+			},
+			['statusDefault' => USER_STATUS_MODER]
+		);
+		
+		$commands[] = new ChatCommand(
+			'установить правила',
+			'Выдает правила беседы',
+			function ($command) use ($s) {
+				$s->load($command);
+				return $s->argsLarger(2) && $s->argsRegExp(['установить', 'правила']);
+			},
+			function ($command) {
+				$chat = Chats::getChat($command->chatId);
+				$rules = ChatParams::get($command->chatId)->rules;
+				$chat->sendMessage("бубенчик '$rules' gb");
+				$c     = implode(' ', array_slice($command->getArgs(), 2));
+                $countC = substr_count($c, '?');
+                $c = trim($c, "?");
+                if (empty($c)) {
+                    return $chat->sendMessage("Правил нет ты пес", $command->messageId);
+                } else {
+					ChatParams::get($command->chatId)->rules = $c;
+                    $chat->sendMessage("Правила для беседы устанволены!", $command->messageId);
+                }
+			},
+			['statusDefault' => USER_STATUS_MODER]
+		);
+		
         $commands[] = new ChatCommand(
             'установить статус участника { модер / юзер } { имя [ + фамилия ] участника }',
             'Выставить уровень доступа к командам для участника.',

@@ -13,3 +13,23 @@
 2017-03-23 14:12:57 [info][bot-log] start bot
 2017-03-23 14:14:26 [info][bot-log] start bot
 2017-03-23 14:15:42 [info][bot-log] start bot
+2017-03-24 13:49:39 [info][bot-log] start bot
+2017-03-24 13:49:52 [warning][bot-log] longPoll failed with code 2
+2017-03-24 13:49:54 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: fb7b3144351fd23fab9933318a97285c9635d76b 
+ ts: 1828325983
+2017-03-24 13:49:55 [warning][bot-log] longPoll failed with code 1
+2017-03-24 14:07:56 [info][bot-log] start bot
+2017-03-24 14:08:39 [info][bot-log] start bot
+2017-03-28 11:57:07 [info][bot-log] start bot
+2017-03-28 11:57:19 [warning][bot-log] longPoll failed with code 2
+2017-03-28 11:57:22 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 7a84d697999b68ea1d3768b7336991d2194e581f 
+ ts: 1739175214
+2017-03-28 11:57:22 [warning][bot-log] longPoll failed with code 1
+2017-03-28 11:59:48 [info][bot-log] start bot
+2017-03-28 13:58:30 [info][bot-log] start bot
+2017-03-28 13:59:11 [info][bot-log] add command 'торч правила' from chat 16
+2017-03-28 13:59:31 [info][bot-log] add command 'торч устанвоить правила пес барбос' from chat 16
