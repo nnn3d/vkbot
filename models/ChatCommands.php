@@ -511,16 +511,11 @@ class ChatCommands
 			function ($command) {
 				$chat = Chats::getChat($command->chatId);
 				$rules = ChatParams::get($command->chatId)->rules;
-				$chat->sendMessage("бубенчик '$rules' gb");
 				$c     = implode(' ', array_slice($command->getArgs(), 2));
                 $countC = substr_count($c, '?');
                 $c = trim($c, "?");
-                if (empty($c)) {
-                    return $chat->sendMessage("Правил нет ты пес", $command->messageId);
-                } else {
-					ChatParams::get($command->chatId)->rules = $c;
-                    $chat->sendMessage("Правила для беседы устанволены!", $command->messageId);
-                }
+				ChatParams::get($command->chatId)->rules = $c;
+				$chat->sendMessage("Правила для беседы устанволены!", $command->messageId);
 			},
 			['statusDefault' => USER_STATUS_MODER]
 		);
