@@ -501,7 +501,7 @@ class ChatCommands
 			['statusDefault' => USER_STATUS_MODER]
 		);
 		
-		$commands[] = new ChatCommand(
+		$commands[] = new ChatCommand( 
 			'установить правила',
 			'Выдает правила беседы',
 			function ($command) use ($s) {
