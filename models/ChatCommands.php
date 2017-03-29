@@ -231,7 +231,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'повторяй { количество минут } { команда полностью }',
-            'Добавить повторяющееся событие. Например /"$botName повторяй 5 кто бот/" будет выполнять команду /"кто/" каждые 5 мин.',
+            'Добавить повторяющееся событие. Например "'.Params::bot('name').' повторяй 5 кто бот" будет выполнять команду "кто" каждые 5 мин.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsLarger(2) && $s->argsRegExp(['повторяй', '[\d]+']);
@@ -251,7 +251,7 @@ class ChatCommands
                 PendingTasks::add($command->chatId, $taskArgs, $minutes * 60, $command->messageId);
                 $chat->sendMessage("Добавлена команда '$taskArgsS' с повторением раз в $minutes мин.");
 	        },
-            ['status' => USER_STATUS_ADMIN]
+            ['statusDefault' => USER_STATUS_ADMIN]
         );
 
         $commands[] = new ChatCommand(
@@ -279,7 +279,7 @@ class ChatCommands
 
                 $chat->sendMessage($message);
 	        },
-            ['status' => USER_STATUS_ADMIN]
+            ['statusDefault' => USER_STATUS_ADMIN]
         );
 
         $commands[] = new ChatCommand(
@@ -305,7 +305,7 @@ class ChatCommands
 
                 $chat->sendMessage($message);
 	        },
-            ['status' => USER_STATUS_ADMIN]
+            ['statusDefault' => USER_STATUS_ADMIN]
         );
 
         $commands[] = new ChatCommand(
@@ -481,7 +481,7 @@ class ChatCommands
             	ChatParams::get($command->chatId)->$name = $status;
                 $chat->sendMessage("Статус выполнения команды '$commandName' установлен на '$statusArg'");
             },
-            ['status' => USER_STATUS_ADMIN]
+            ['statusDefault' => USER_STATUS_ADMIN]
         );
 		
 		$commands[] = new ChatCommand(
@@ -576,15 +576,19 @@ class ChatCommands
             		$chat->sendMessage("Собственный статус не может быть изменен");
             		return false;
             	}
-            	if (Users::getStatus($command->chatId, $user->userId) == USER_STATUS_ADMIN) {
-            		$chat->sendMessage("Статус данного пользователя не может быть изменен");
+                if (Users::getStatus($command->chatId, $user->userId) == USER_STATUS_ADMIN) {
+                    $chat->sendMessage("Статус данного пользователя не может быть изменен");
+                    return false;
+                }
+            	if (Users::getStatus($command->chatId, $command->userId) <= $status) {
+            		$chat->sendMessage("Вы не можете устанавливать данный статус");
             		return false;
             	}
             	$user->status = $status;
             	$user->save();
                 $chat->sendMessage("Статус пользователя '{$user->name} {$user->secondName}' установлен на '$statusArg'");
             },
-            ['status' => USER_STATUS_ADMIN]
+            ['statusDefault' => USER_STATUS_MODER]
         );
 		
         $commands[] = new ChatCommand(
