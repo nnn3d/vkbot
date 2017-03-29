@@ -83,7 +83,7 @@ class ChatCommands
                 } else if ($command->getArgs()[1] == 'да') {
 		    $marriage = ChatParams::findOne(['param' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
 		    if(!$marriage) ChatParams::setMarriage($command->chatId, COMMAND_MARRIAGE, '1');
-			
+		    ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, '235');	
 		    $chat->sendMessage("{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} теперь женаты!");
 		    $brak->delete();
 		    return false;
