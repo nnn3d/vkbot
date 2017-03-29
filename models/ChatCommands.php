@@ -76,9 +76,10 @@ class ChatCommands
                     $brak->delete();
                     return false;
                 } else if ($command->getArgs()[1] == 'да') {
+			/*
 		    $marriageSet = ChatParams::get($command->chatId)->brak;
 		    $value = '1';
-		    ChatParams::get($command->chatId)->brak = $value;
+		    ChatParams::get($command->chatId)->brak = $value;*/
 			
 		    $chat->sendMessage("{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} теперь женаты!");
 		    $brak->delete();
