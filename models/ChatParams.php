@@ -70,6 +70,20 @@ class ChatParams extends \yii\db\ActiveRecord
         ];
     }
 
+    
+    /**
+     * @inheritdoc
+     */
+    public function brak()
+    {
+        return [
+            [['chatId', 'param', 'value'], 'required'],
+            [['param'], 'string', 'max' => 255],
+            [['value'], 'string'],
+            [['chatId'], 'integer'],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
