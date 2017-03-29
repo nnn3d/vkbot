@@ -57,7 +57,7 @@ class ChatParams extends \yii\db\ActiveRecord
     }
 
     public function setMarriage($chatId, $params, $values){
-        $marriage = new marriage();
+        $marriage = new self($chatId);
         $marriage->chatId = $chatId;
         $marriage->param = strval($params);
         $marriage->value = serialize($values);
