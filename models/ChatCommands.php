@@ -64,7 +64,6 @@ class ChatCommands
             }, 
             function ($command) 
             {
-					return false;
                 $chat = Chats::getChat($command->chatId);
                 $brak = Commands::findOne(['command' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
 
