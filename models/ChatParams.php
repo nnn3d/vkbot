@@ -65,7 +65,7 @@ class ChatParams extends \yii\db\ActiveRecord
     }
     
     public function updateMarriage($chatId, $params, $values){
-        $marriage = static::findOne(['param' => $params, 'chatId' => $chatId]);
+        $marriage = self::findOne(['param' => $params, 'chatId' => $chatId]);
         $marriage->value = serialize($values);
         $marriage->save();
     }
