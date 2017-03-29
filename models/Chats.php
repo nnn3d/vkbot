@@ -52,7 +52,6 @@ class Chats extends \yii\db\ActiveRecord
         $p = [
             'chat_id' => $this->chatId,
             'message' => $message,
-            'forward_messages' => $forwardMessages,
         ];
         if (is_array($params)) {
             $p = array_merge($params, $p);

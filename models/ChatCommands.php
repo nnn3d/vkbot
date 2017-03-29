@@ -649,7 +649,7 @@ class ChatCommands
                 return $s->argsEqual(3) && $s->argsRegExp(['график', 'стат', '[\d]+']);
             },
             function ($command) {
-                $days = intval($command->getArgs()[1]);
+                $days = intval($command->getArgs()[2]);
                 $valArr = [];
                 $time = time();
                 $chat = Chats::getChat($command->chatId);
@@ -664,15 +664,17 @@ class ChatCommands
                     }
                     $valArr["{$user->name} {$user->secondName}"] = $count;
                 }
-
+                uasort($valArr,  function ($a, $b) use ($days)
+                {
+                    return $b[$days-1] - $a[$days-1];
+                });
                 $photoDir = PChart::drawAllStat($valArr, $days);
-                $res = static::saveMessagePhoto($photoDir);
-                $chat->sendMessage($res['id']);
-                $chat->sendMessage($res['pid']);
+                $res = ChatCommands::saveMessagePhoto($photoDir);
                 $chat->sendMessage($message, [
-                    "attachment" => "photo{$res['owner_id']}_{$res['id']}"
+                    "attachment" => "photo{$res[0]['owner_id']}_{$res[0]['id']}"
                 ]);
-            }
+            },
+            ['statusDefault' => USER_STATUS_MODER]
         );
 
         static::$commands = $commands;
@@ -725,12 +727,12 @@ class ChatCommands
 
     public static function saveMessagePhoto($photoDir)
     {
-        $res = Vk::get()->photo->getMessagesUploadServer();
+        $res = Vk::get()->photos->getMessagesUploadServer();
         $uploadUrl = $res['upload_url'];
 
         $ch = curl_init();
         $parameters = [
-            'photo' => new CURLFile($photoDir)
+            'photo' => class_exists('CurlFile', false) ? new CURLFile($photoDir, 'image/png') : "@{$photoDir}"
         ];
 
         curl_setopt($ch, CURLOPT_URL, $uploadUrl);
