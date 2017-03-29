@@ -82,12 +82,18 @@ class ChatCommands
                     return false;
                 } else if ($command->getArgs()[1] == 'да') {
 		    $marriage = ChatParams::findOne(['param' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
-		    $value = array($user1->userId, $user2->userId, time());
-		    $value = array($value);
-		    if(!$marriage) ChatParams::setMarriage($command->chatId, COMMAND_MARRIAGE, $value);
-		    $value = $marriage->value;
-		    $value = array_push($value, array($user1->userId, $user2->userId, time()));
-		    ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $value);	
+		   
+		    if(!$marriage) {
+			    $value = array($user1->userId, $user2->userId, time());
+		            $value = array($value);
+			    ChatParams::setMarriage($command->chatId, COMMAND_MARRIAGE, $value);
+		    } else {
+		    	    $value = $marriage->value;
+			    $strVal = array($user1->userId, $user2->userId, time());
+		    	    $value = array_push($value, $strVal);
+		    	    ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $value);	
+		    }
+			
 		    $chat->sendMessage("{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} теперь женаты!");
 		    $brak->delete();
 		    return false;
