@@ -7,6 +7,7 @@ use app\models\ChatParams;
 use app\models\MessagesCounter;
 use app\models\PendingTasks;
 use app\models\Users;
+use app\models\PChart;
 
 class ChatCommands
 {
@@ -358,7 +359,7 @@ class ChatCommands
 
         // user stat by days
         $commands[] = new ChatCommand(
-            'стат { имя [ + фамилия ] участника }',
+            'стат { количество дней } { имя [ + фамилия ] участника }',
             'Количесвто символов участника за указанный срок.',
             function ($command) use ($s) {
                 $s->load($command);
@@ -447,7 +448,7 @@ class ChatCommands
                 } else if (empty($c)) {
                     return false;
                 } else {
-                    $chat->sendMessage("Я думаю, что {$users[$r]->name} {$users[$r]->secondName}", $command->messageId);
+                    $chat->sendMessage("Я думаю, что {$users[$r]->name} {$users[$r]->secondName}", ['forward_messages'=>$command->messageId]);
                 }
             }
         );
@@ -545,7 +546,7 @@ class ChatCommands
                 $countC = substr_count($c, '?');
                 $c = trim($c, "?");
 				ChatParams::get($command->chatId)->rules = $c;
-				$chat->sendMessage("Правила для беседы устанволены!", $command->messageId);
+				$chat->sendMessage("Правила для беседы устанволены!", ['forward_messages'=>$command->messageId]);
 			},
 			['statusDefault' => USER_STATUS_MODER]
 		);
@@ -612,7 +613,7 @@ class ChatCommands
                 $chat->sendMessage($message);
             }
         );
-		
+        
         $commands[] = new ChatCommand(
             'команды',
             'Показать все команды.',
@@ -622,21 +623,55 @@ class ChatCommands
             },
             function ($command) {
                 $chat  = Chats::getChat($command->chatId);
-            	$commandsL = ChatCommands::getAllCommands();
-            	$message = "Команды бота:\n";
+                $commandsL = ChatCommands::getAllCommands();
+                $message = "Команды бота:\n";
                 $commands = array_filter($commandsL, function ($command)
                 {
                     return !$command->hidden;
                 });
-            	usort($commands, function ($a, $b) {
-            	    return strcasecmp($a->getName(), $b->getName());
-            	});
-            	foreach ($commands as $num => $c) {
-            		$n = $num + 1;
-            		$message .= "\n{$n}. '{$c->getName()}' - {$c->getDesc()}";
-            	}
-            	$message .= "\n\n{} - параметр \n[] - не обязательный параметр";
+                usort($commands, function ($a, $b) {
+                    return strcasecmp($a->getName(), $b->getName());
+                });
+                foreach ($commands as $num => $c) {
+                    $n = $num + 1;
+                    $message .= "\n{$n}. '{$c->getName()}' - {$c->getDesc()}";
+                }
+                $message .= "\n\n{} - параметр \n[] - не обязательный параметр";
                 $chat->sendMessage($message);
+            }
+        );
+		
+        $commands[] = new ChatCommand(
+            'график стат { количество дней }',
+            'Показать график статистики за несколько дней',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(3) && $s->argsRegExp(['график', 'стат', '[\d]+']);
+            },
+            function ($command) {
+                $days = intval($command->getArgs()[1]);
+                $valArr = [];
+                $time = time();
+                $chat = Chats::getChat($command->chatId);
+
+                $message = "Статистика пользователей за последние $days дней \n";
+                $users = $chat->getAllActiveUsers();
+                foreach ($users as $user) {
+                    $count = [];
+                    for ($i = $days - 1; $i >= 0; $i--) {
+                        $c     = MessagesCounter::getDayCount($command->chatId, $user->userId, $i, $time);
+                        $count[] = $c;
+                    }
+                    $valArr["{$user->name} {$user->secondName}"] = $count;
+                }
+
+                $photoDir = PChart::drawAllStat($valArr, $days);
+                $res = static::saveMessagePhoto($photoDir);
+                $chat->sendMessage($res['id']);
+                $chat->sendMessage($res['pid']);
+                $chat->sendMessage($message, [
+                    "attachment" => "photo{$res['owner_id']}_{$res['id']}"
+                ]);
             }
         );
 
@@ -684,6 +719,33 @@ class ChatCommands
         isset($times[1]) && $msg .= $times[1] . ' мин. ';
         isset($times[0]) && $msg .= $times[0] . ' сек.';
         return $msg;
+    }
+
+
+
+    public static function saveMessagePhoto($photoDir)
+    {
+        $res = Vk::get()->photo->getMessagesUploadServer();
+        $uploadUrl = $res['upload_url'];
+
+        $ch = curl_init();
+        $parameters = [
+            'photo' => new CURLFile($photoDir)
+        ];
+
+        curl_setopt($ch, CURLOPT_URL, $uploadUrl);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $parameters);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $curl_result = curl_exec($ch);
+        curl_close($ch);
+
+        $result = json_decode($curl_result);
+        return Vk::get(true)->photos->saveMessagesPhoto([
+            'photo' => stripslashes($result->photo),
+            'server' => $result->server,
+            'hash' => $result->hash,
+        ]);
     }
 
 }
