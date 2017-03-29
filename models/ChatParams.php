@@ -64,7 +64,8 @@ class ChatParams extends \yii\db\ActiveRecord
     {
         return [
             [['chatId', 'param', 'value'], 'required'],
-            [['param', 'value'], 'string', 'max' => 255],
+            [['param'], 'string', 'max' => 255],
+            [['value'], 'string'],
             [['chatId'], 'integer'],
         ];
     }

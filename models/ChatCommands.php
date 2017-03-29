@@ -36,7 +36,7 @@ class ChatCommands
     private function argsRegExp($set)
     {
         foreach ($set as $key => $arg) {
-            if (!isset($this->args[$key]) || !preg_match("/{$arg}/iu", $this->args[$key])) {
+            if (!isset($this->args[$key]) || !preg_match("/^{$arg}/iu", $this->args[$key])) {
                 return false;
             }
 
@@ -59,7 +59,7 @@ class ChatCommands
             function ($command) use ($s)
             {
                 $s->load($command);
-                return $s->argsEqual(2) && $s->argsRegExp(['брак', 'да|нет']);
+                return $s->argsEqual(2) && $s->argsRegExp(['брак', '(да|нет)']);
             }, 
             function ($command) 
             {
@@ -89,7 +89,7 @@ class ChatCommands
             function ($command) use ($s)
             {
                 $s->load($command);
-                return $s->argsLarger(1) && $s->argsRegExp(['брак', '[^да|нет]']);
+                return $s->argsLarger(1) && $s->argsRegExp(['брак', '(?!да|нет)']);
             }, 
             function ($command) 
             {
