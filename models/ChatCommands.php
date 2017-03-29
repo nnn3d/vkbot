@@ -67,8 +67,8 @@ class ChatCommands
                 $chat = Chats::getChat($command->chatId);
                 $brak = Commands::findOne(['command' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
 
-                $user1 = Users::getUser($command->chatId, $brak->getArgs()[0]);
-		$user2 = Users::getUser($command->chatId, $brak->getArgs()[1]);
+                //$user1 = Users::getUser($command->chatId, $brak->getArgs()[0]);
+		//$user2 = Users::getUser($command->chatId, $brak->getArgs()[1]);
                 
 		$botName = Params::bot('name');
                 if ($command->getArgs()[1] == 'нет') {
