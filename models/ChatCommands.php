@@ -91,6 +91,7 @@ class ChatCommands
             'Описание',
             function ($command) use ($s)
             {
+					return false;
                 $s->load($command);
                 return $s->argsLarger(1) && $s->argsRegExp(['брак', '(?!да|нет)']);
             }, 
