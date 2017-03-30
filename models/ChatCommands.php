@@ -89,7 +89,7 @@ class ChatCommands
 			    ChatParams::setMarriage($command->chatId, COMMAND_MARRIAGE, $value);
 		    } else {
 		    	    $value = $marriage->value;
-			    //$value = unserialize($value);
+			    $value = unserialize($value);
 			    $strVal = array($user1->userId, $user2->userId, time());
 			    $chat->sendMessage(gettype($value));
 			    return false;
