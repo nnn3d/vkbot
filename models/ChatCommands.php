@@ -81,8 +81,7 @@ class ChatCommands
                     $brak->delete();
                     return false;
                 } else if ($command->getArgs()[1] == 'да') {
-		    $marriage = ChatParams::get($command->chatId)->COMMAND_MARRIAGE;
-		    //$marriage = ChatParams::findOne(['param' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
+		    $marriage = ChatParams::findOne(['param' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
 		   
 		    if(!$marriage) {
 			    $value = array($user1->userId, $user2->userId, time());
