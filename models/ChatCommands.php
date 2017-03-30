@@ -91,10 +91,9 @@ class ChatCommands
 		    	    $value = $marriage->value;
 			    $value = unserialize($value);
 			    $strVal = array($user1->userId, $user2->userId, time());
-			    $chat->sendMessage(gettype($value));
-			    return false;
-		    	    $value = array_push($value, $strVal);
-		    	    ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $value);	
+
+		    	    $valueArray = array_push($value, $strVal);
+		    	    ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $valueArray);	
 		    }
 			
 		    $chat->sendMessage("{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} теперь женаты!");
