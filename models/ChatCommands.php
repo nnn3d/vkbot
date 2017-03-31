@@ -513,7 +513,7 @@ class ChatCommands
                 $countC = substr_count($c, '?');
                 $c = trim($c, "?");
                 if ($countC == '1') {
-                    $chat->sendMessage("Cчитаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}", $command->messageId);
+                    $chat->sendMessage("Cчитаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}", ['forward_messages'=>$command->messageId]);
                 } else if (empty($c)) {
                     return false;
                 } else {
