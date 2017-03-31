@@ -170,6 +170,7 @@ class ChatCommands
                     return false;
                 } 
 		$marriage = ChatParams::findOne(['param' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
+		$botName = Params::bot('name');
 		if($marriage) {
 			$value = $marriage->value;
 
@@ -186,7 +187,6 @@ class ChatCommands
                     $user->userId,
                     $command->userId,
                 ];
-                $botName = Params::bot('name');
                 $message = "Брак между {$user->name} {$user->secondName} и {$pioneerUser->name} {$pioneerUser->secondName}.\n (команда \"$botName брак да\" или \"$botName брак нет\" для отказа)";
                 Commands::add($command->chatId, null, $args, null, COMMAND_MARRIAGE);
 
