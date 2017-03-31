@@ -90,7 +90,6 @@ class ChatCommands
 			
 		$chat->sendMessage("Развод между {$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName}");
 		return false;
-		}
             }
         );
 	    
