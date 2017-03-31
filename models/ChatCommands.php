@@ -84,7 +84,7 @@ class ChatCommands
 		    $marriage = ChatParams::findOne(['param' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
 		   
 		    if(!$marriage) {
-			    $value = array(1 => $user1->userId, 2 => $user2->userId, 3 => time());
+			    $value = array($user1->userId, $user2->userId, time());
 		            $value = array($value);
 			    ChatParams::setMarriage($command->chatId, COMMAND_MARRIAGE, $value);
 			    
@@ -93,7 +93,7 @@ class ChatCommands
 		    } else {
 		    	    $value = $marriage->value;
 			    $value = unserialize($value);
-			    $strVal = array(4 => $user1->userId, 5 => $user2->userId, 6 => time());
+			    $strVal = array($user1->userId, $user2->userId, time());
 
 		    	    $valueArray = array_merge($value, $strVal);
 		    	    ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $valueArray);
