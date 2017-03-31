@@ -72,8 +72,8 @@ class ChatCommands
 		$user2 = Users::getUser($command->chatId, $brak->getArgs()[1]);
 		$pioneerUser = Users::getUser($command->chatId, $command->userId);
 		    
-		if ($pioneerUser == $user2) return false;
-		unset($pioneerUser);
+		//if ($pioneerUser == $user2) return false;
+		//unset($pioneerUser);
                 
 		$botName = Params::bot('name');
                 if ($command->getArgs()[1] == 'нет') {
