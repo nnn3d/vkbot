@@ -65,13 +65,12 @@ class ChatCommands
             {
                 $chat = Chats::getChat($command->chatId);
 		$marriage = ChatParams::findOne(['param' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
-		    
 		$value = $marriage->value;
 	        $value = unserialize($value);
                 $pioneerUser = $command->userId;
 		$whileStatus = '0';
 		$s = count($value);
-		    
+		$value = array_values($value);
 		    for ($i = 0; $i < $s; $i++) { 
 			    for ($j=0; $whileStatus == '0'; $j++) { 
 				    if($value[$i][$j] == $pioneerUser) {
@@ -79,15 +78,15 @@ class ChatCommands
 					    if (count($value) > 1) {
 						    unset($value[$i]);
 						    $value = array_values($value);
+						    ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $value);	
 						    } else {
 						    $marriage->delete();
 					    }
 				    }
 				    if($j == 2) $j = 0;
 			    } 
-		    } 
-	        ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $value);			
-		$chat->sendMessage("Развод!");
+		    } 		
+		if($whileStatus == '1') $chat->sendMessage("Развод!");
 		return false;
             }
         );
