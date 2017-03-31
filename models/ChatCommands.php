@@ -55,6 +55,46 @@ class ChatCommands
         $commands = [];
 	
 	$commands[] = new ChatCommand(
+            'развод',
+            'Описание',
+            function ($command) use ($s)
+            {
+                $s->load($command);
+                return $s->argsEqual(2) && $s->argsRegExp(['развод']);
+            }, 
+            function ($command) 
+            {
+                $chat = Chats::getChat($command->chatId);
+		$marriage = ChatParams::findOne(['param' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
+		    
+		$value = $marriage->value;
+	        $value = unserialize($value);
+                $pioneerUser = $command->userId;
+		    
+		if (count($value) > 1) {
+			
+		    $check == false;
+			
+		    for ($i = 0; $check == false; $i++) { 
+			    for ($j=0; $check == false; $j++) { 
+				    if($arr[$i][$j] == $pioneerUser) {
+					    $check == true;
+					    unset($arr[$i]);
+				    }
+			    } 
+		    } 
+			
+		} else {
+		 $marriage->delete();
+		}
+			
+		$chat->sendMessage("Развод между {$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName}");
+		return false;
+		}
+            }
+        );
+	    
+	$commands[] = new ChatCommand(
             'брак { да или нет }',
             'Описание',
             function ($command) use ($s)
@@ -135,10 +175,10 @@ class ChatCommands
 			$value = $marriage->value;
 
 			if(substr_count($value, $user->userId) >= 1) {
-			        $chat->sendMessage("К сожалению, я не могу этого сделать. Вы уже в счастливом браке.\n (команда \"$botName развод\" для развода)");
+				$chat->sendMessage("К сожалению, я не могу этого сделать. Партнер, которого вы выбрали, уже в счастливом браке.", ['forward_messages' => $command->messageId]);
 				return false;
 			} else if(substr_count($value, $command->userId) >= 1) {
-				$chat->sendMessage("К сожалению, я не могу этого сделать. Партнер, которого вы выбрали, уже в счастливом браке.");
+				$chat->sendMessage("К сожалению, я не могу этого сделать. Вы уже в счастливом браке.\n (команда \"$botName развод\" для развода)", ['forward_messages' => $command->messageId]);
 				return false;
 			}	
 		}
