@@ -57,10 +57,9 @@ class ChatCommands
 	$commands[] = new ChatCommand(
             'развод',
             'Описание',
-            function ($command) use ($s)
-            {
-                $s->load($command);
-                return $s->argsEqual(2) && $s->argsRegExp(['развод']);
+            function ($command) use ($s) {
+		    $s->load($command);
+		    return $s->argsEqual(1) && $s->argsRegExp(['развод']);
             }, 
             function ($command) 
             {
