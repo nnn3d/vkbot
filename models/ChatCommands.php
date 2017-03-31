@@ -132,10 +132,10 @@ class ChatCommands
                     $chat->sendMessage("Я не могу найти человека с таким именем среди участников конференции");
                     return false;
                 } 
-                if ($command->userId == $user->userId) {
+                /*if ($command->userId == $user->userId) {
                     $chat->sendMessage("Жениться на самом себе пока нелья...");
                     return false;
-                } 
+                } */
                 $pioneerUser = Users::getUser($command->chatId, $command->userId);
                 $args = [
                     $user->userId,
