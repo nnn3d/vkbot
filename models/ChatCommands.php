@@ -136,7 +136,7 @@ class ChatCommands
 			$checkUser1 = strstr($value, $user->userId);
 			$checkUser2 = strstr($value, $command->userId);
 			
-			$chat->sendMessage("К сожалению, я не могу этого сделать. Вы уже в счастливом браке.\n (команда \"$botName развод\" для развода)");
+			$chat->sendMessage("К сожалению, я не могу этого сделать. Вы уже в счастливом браке.");
 				return false;
 			/*if($checkUser1) {
 			        $chat->sendMessage("К сожалению, я не могу этого сделать. Вы уже в счастливом браке.\n (команда \"$botName развод\" для развода)");
