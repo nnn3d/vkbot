@@ -69,24 +69,20 @@ class ChatCommands
 		$value = $marriage->value;
 	        $value = unserialize($value);
                 $pioneerUser = $command->userId;
-		    
-		if (count($value) > 1) {
-			
-		    $check == false;
 			
 		    for ($i = 0; $check == false; $i++) { 
 			    for ($j=0; $check == false; $j++) { 
 				    if($value[$i][$j] == $pioneerUser) {
 					    $check == true;
-					    unset($value[$i]);
+					    if (count($value) > 1) {
+						    unset($value[$i]);
+						    } else {
+						    $marriage->delete();
+					    }
 				    }
 			    } 
 		    } 
-	        ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $value);
-		} else {
-		 $marriage->delete();
-		}
-			
+	        ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $value);			
 		$chat->sendMessage("Развод!");
 		return false;
             }
