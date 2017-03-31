@@ -65,6 +65,7 @@ class ChatCommands
             {
                 $chat = Chats::getChat($command->chatId);
 		$marriage = ChatParams::findOne(['param' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
+		if(!$marriage) return false;
 		$value = $marriage->value;
 	        $value = unserialize($value);
                 $pioneerUser = $command->userId;
