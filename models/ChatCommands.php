@@ -69,20 +69,21 @@ class ChatCommands
 		$value = $marriage->value;
 	        $value = unserialize($value);
                 $pioneerUser = $command->userId;
-		$whileStatus = 'abcd';
+		$whileStatus = '0';
 		$s = count($value);
 		    
 		    for ($i = 0; $i < $s; $i++) { 
-			    for ($j=0; isset($whileStatus); $j++) { 
+			    for ($j=0; $whileStatus == '0'; $j++) { 
 				    if($value[$i][$j] == $pioneerUser) {
-					    unset($whileStatus);
+					    $whileStatus = '1';
 					    if (count($value) > 1) {
 						    unset($value[$i]);
+						    $value = array_values($value);
 						    } else {
 						    $marriage->delete();
 					    }
 				    }
-				    //if($j == 2) $j = 0;
+				    if($j == 2) $j = 0;
 			    } 
 		    } 
 	        ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $value);			
