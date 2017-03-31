@@ -82,7 +82,7 @@ class ChatCommands
 						    $marriage->delete();
 					    }
 				    }
-				    if($j == 2) $j = 0;
+				    //if($j == 2) $j = 0;
 			    } 
 		    } 
 	        ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $value);			
