@@ -72,8 +72,8 @@ class ChatCommands
 		$user2 = Users::getUser($command->chatId, $brak->getArgs()[1]);
 		$pioneerUser = Users::getUser($command->chatId, $command->userId);
 		    
-		//if ($pioneerUser == $user2) return false;
-		//unset($pioneerUser);
+		if ($pioneerUser == $user2) return false;
+		unset($pioneerUser);
                 
 		$botName = Params::bot('name');
                 if ($command->getArgs()[1] == 'нет') {
@@ -87,9 +87,6 @@ class ChatCommands
 			    $value = array($user1->userId, $user2->userId, time());
 		            $value = array($value);
 			    ChatParams::setMarriage($command->chatId, COMMAND_MARRIAGE, $value);
-			    
-			    $value = serialize($value);
-			    $chat->sendMessage("$value");
 		    } else {
 		    	    $value = $marriage->value;
 			    $value = unserialize($value);
@@ -97,12 +94,9 @@ class ChatCommands
 
 		    	    $valueArray = array_merge($value, $strVal);
 		    	    ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $valueArray);
-			    
-			    $valueArray = serialize($valueArray);
-			    $chat->sendMessage("$valueArray");
 		    }
 			
-		    //$chat->sendMessage("{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} теперь женаты!");
+		    $chat->sendMessage("{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} теперь женаты!");
 		    $brak->delete();
 		    return false;
 		}
@@ -132,10 +126,23 @@ class ChatCommands
                     $chat->sendMessage("Я не могу найти человека с таким именем среди участников конференции");
                     return false;
                 } 
-                /*if ($command->userId == $user->userId) {
+                if ($command->userId == $user->userId) {
                     $chat->sendMessage("Жениться на самом себе пока нелья...");
                     return false;
-                } */
+                } 
+		$marriage = ChatParams::findOne(['param' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
+		if($marriage) {
+			$value = $marriage->value;
+			$checkUser1 = strstr($value, $user->userId);
+			$checkUser2 = strstr($value, $command->userId);
+			if($checkUser1) {
+			        $chat->sendMessage("К сожалению, я не могу этого сделать. Вы уже в счастливом браке.\n (команда \"$botName развод\" для развода)");
+				return false;
+			} else if($checkUser2) {
+				$chat->sendMessage("К сожалению, я не могу этого сделать. Партнер, которого вы выбрали, уже в счастливом браке.");
+				return false;
+			}			
+		}
                 $pioneerUser = Users::getUser($command->chatId, $command->userId);
                 $args = [
                     $user->userId,
