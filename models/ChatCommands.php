@@ -135,13 +135,16 @@ class ChatCommands
 			$value = $marriage->value;
 			$checkUser1 = strstr($value, $user->userId);
 			$checkUser2 = strstr($value, $command->userId);
-			if($checkUser1) {
+			
+			$chat->sendMessage("К сожалению, я не могу этого сделать. Вы уже в счастливом браке.\n (команда \"$botName развод\" для развода)");
+				return false;
+			/*if($checkUser1) {
 			        $chat->sendMessage("К сожалению, я не могу этого сделать. Вы уже в счастливом браке.\n (команда \"$botName развод\" для развода)");
 				return false;
 			} else if($checkUser2) {
 				$chat->sendMessage("К сожалению, я не могу этого сделать. Партнер, которого вы выбрали, уже в счастливом браке.");
 				return false;
-			}			
+			}	*/		
 		}
                 $pioneerUser = Users::getUser($command->chatId, $command->userId);
                 $args = [
