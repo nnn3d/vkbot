@@ -134,10 +134,10 @@ class ChatCommands
 		if($marriage) {
 			$value = $marriage->value;
 
-			if(preg_match("/\b".$user->userId."\b/i", $value))
+			if(strripos($value, $user->userId))
 			        $chat->sendMessage("К сожалению, я не могу этого сделать. Вы уже в счастливом браке.\n (команда \"$botName развод\" для развода)");
 				return false;
-			} else if(preg_match("/\b".$command->userId."\b/i", $value)) {
+			} else if(strripos($value, $command->userId)) {
 				$chat->sendMessage("К сожалению, я не могу этого сделать. Партнер, которого вы выбрали, уже в счастливом браке.");
 				return false;
 			}	
