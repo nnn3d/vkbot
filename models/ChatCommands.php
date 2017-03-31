@@ -77,13 +77,13 @@ class ChatCommands
 			
 		    for ($i = 0; $check == false; $i++) { 
 			    for ($j=0; $check == false; $j++) { 
-				    if($arr[$i][$j] == $pioneerUser) {
+				    if($value[$i][$j] == $pioneerUser) {
 					    $check == true;
-					    unset($arr[$i]);
+					    unset($value[$i]);
 				    }
 			    } 
 		    } 
-			
+	        ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $value);
 		} else {
 		 $marriage->delete();
 		}
