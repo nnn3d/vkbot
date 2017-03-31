@@ -69,12 +69,13 @@ class ChatCommands
 		$value = $marriage->value;
 	        $value = unserialize($value);
                 $pioneerUser = $command->userId;
-		$whileStatus = '1';
+		$whileStatus = 'abcd';
+		$s = count($value);
 		    
-		    for ($i = 0; $whileStatus == '1'; $i++) { 
-			    for ($j=0; $whileStatus == '1'; $j++) { 
+		    for ($i = 0; $i < $s; $i++) { 
+			    for ($j=0; isset($whileStatus); $j++) { 
 				    if($value[$i][$j] == $pioneerUser) {
-					    $whileStatus = '0';
+					    unset($whileStatus);
 					    if (count($value) > 1) {
 						    unset($value[$i]);
 						    } else {
