@@ -133,13 +133,11 @@ class ChatCommands
 		$marriage = ChatParams::findOne(['param' => COMMAND_MARRIAGE, 'chatId' => $command->chatId]);
 		if($marriage) {
 			$value = $marriage->value;
-			$checkUser1 = strstr($value, $user->userId);
-			$checkUser2 = strstr($value, $command->userId);
 
-			if($checkUser1) {
+			if(preg_match("/\b".$user->userId."\b/i", $value))
 			        $chat->sendMessage("К сожалению, я не могу этого сделать. Вы уже в счастливом браке.\n (команда \"$botName развод\" для развода)");
 				return false;
-			} else if($checkUser2) {
+			} else if(preg_match("/\b".$command->userId."\b/i", $value)) {
 				$chat->sendMessage("К сожалению, я не могу этого сделать. Партнер, которого вы выбрали, уже в счастливом браке.");
 				return false;
 			}	
