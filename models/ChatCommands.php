@@ -95,7 +95,7 @@ class ChatCommands
 			    $value = unserialize($value);
 			    $strVal = array(4 => $user1->userId, 5 => $user2->userId, 6 => time());
 
-		    	    $valueArray = array_push($value, $strVal);
+		    	    $valueArray = array_merge($value, $strVal);
 		    	    ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $valueArray);
 			    
 			    $valueArray = serialize($valueArray);
