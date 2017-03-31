@@ -87,16 +87,22 @@ class ChatCommands
 			    $value = array(1 => $user1->userId, 2 => $user2->userId, 3 => time());
 		            $value = array($value);
 			    ChatParams::setMarriage($command->chatId, COMMAND_MARRIAGE, $value);
+			    
+			    $value = serialize($value);
+			    $chat->sendMessage("$value");
 		    } else {
 		    	    $value = $marriage->value;
 			    $value = unserialize($value);
 			    $strVal = array(4 => $user1->userId, 5 => $user2->userId, 6 => time());
 
 		    	    $valueArray = array_push($value, $strVal);
-		    	    ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $valueArray);	
+		    	    ChatParams::updateMarriage($command->chatId, COMMAND_MARRIAGE, $valueArray);
+			    
+			    $valueArray = serialize($valueArray);
+			    $chat->sendMessage("$valueArray");
 		    }
 			
-		    $chat->sendMessage("{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} теперь женаты!");
+		    //$chat->sendMessage("{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} теперь женаты!");
 		    $brak->delete();
 		    return false;
 		}
