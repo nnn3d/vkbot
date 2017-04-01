@@ -368,7 +368,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'не повторяй',
-            'Убирает повторяющуюся задачу. Посмотреть задачи можно командой "/$botName покажи повторения/".',
+            'Убирает повторяющуюся задачу. Посмотреть задачи можно командой "'.Params::bot('name').' покажи повторения".',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsLarger(2) && $s->argsRegExp(['не', 'повторяй']);
@@ -511,7 +511,7 @@ class ChatCommands
         // chat top by days
         $commands[] = new ChatCommand(
             'топ { количество дней }',
-            'Количесвто символов всех участников указанный срок.',
+            'Количество символов всех участников указанный срок.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsEqual(2) && $s->argsRegExp(['топ', '[\d]{1,2}']);
@@ -565,7 +565,7 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'установить статус команды { админ / модер / все } { название команды }',
+            'установить статус команды { админ / модер / юзер } { название команды }',
             'Выставляет уровень допуска для команды.',
             function ($command) use ($s) {
                 $s->load($command);
@@ -646,7 +646,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'установить правила',
-            'Выдает правила беседы',
+            'Устанавливает правила беседы',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsLarger(2) && $s->argsRegExp(['установить', 'правила']);

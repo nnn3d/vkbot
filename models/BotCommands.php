@@ -10,6 +10,7 @@ use app\models\Chats;
 class BotCommands {
 
 	public static $timeDeleteDuel = 250;
+	public static $timeDeleteMarriage = 250;
 
 	public static function init()
 	{
@@ -20,6 +21,7 @@ class BotCommands {
 	{
 		PendingTasks::deleteByTask(COMMAND_BOT);
 		PendingTasks::add(null, ['function' => 'deleteOldDuels'], 60, null, COMMAND_BOT);
+		PendingTasks::add(null, ['function' => 'deleteOldMerriage'], 60, null, COMMAND_BOT);
 	}
 
 
@@ -35,6 +37,16 @@ class BotCommands {
 		$time = time();
 		foreach (Commands::findAll(['command' => COMMAND_DUEL]) as $command) {
 			if ($time - $command->time > static::$timeDeleteDuel) {
+				$command->delete();
+			}
+		}
+	}
+
+	public static function deleteOldMarriage()
+	{
+		$time = time();
+		foreach (Commands::findAll(['command' => COMMAND_MARRIAGE]) as $command) {
+			if ($time - $command->time > static::$timeDeleteMarriage) {
 				$command->delete();
 			}
 		}
