@@ -75,6 +75,7 @@ class ChatCommands
                 $pioneerUserId = $command->userId;
                 $pioneerUser   = Users::getUser($command->chatId, $command->userId);
                 $divorce       = false;
+                $arrayDataMarriage = array();
                 $newValue      = array_filter($value, function ($merr) use ($pioneerUserId, &$divorce, $arrayDataMarriage) {
                     if (in_array($pioneerUserId, $merr)) {
                         $divorce = true;
