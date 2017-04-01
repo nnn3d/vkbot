@@ -8,4 +8,6 @@ define('COMMAND_BOT', 'bot');
 define('COMMAND_DUEL', 'duel');
 define('COMMAND_MARRIAGE', 'marriage');
 
+
+define('CHAT_PARAM_MARRIAGE', 'marriage');
 define('CHAT_PARAMS_COMMAND_PREFIX', 'status command ');
