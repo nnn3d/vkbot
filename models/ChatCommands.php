@@ -75,16 +75,25 @@ class ChatCommands
                 $pioneerUserId = $command->userId;
                 $pioneerUser   = Users::getUser($command->chatId, $command->userId);
                 $divorce       = false;
-                $newValue      = array_filter($value, function ($merr) use ($pioneerUserId, &$divorce) {
+                $newValue      = array_filter($value, function ($merr) use ($pioneerUserId, &$divorce, $arrayDataMarriage) {
                     if (in_array($pioneerUserId, $merr)) {
                         $divorce = true;
+                        $arrayDataMarriage = $merr;
                         return false;
                     }
                     return true;
                 });
                 ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE} = serialize($newValue);
                 if ($divorce) {
-                    $chat->sendMessage("{$pioneerUser->name} {$pioneerUser->secondName} теперь не состоит в браке");
+                    $spouse1 = $arrayDataMarriage[0];
+                    $spouse2 = $arrayDataMarriage[1];
+                    $timeBeginMarriage = $arrayDataMarriage[2];
+                        
+                    $user1 = Users::getUser($command->chatId, $spouse1);
+                    $user2 = Users::getUser($command->chatId, $spouse2);
+
+                    $chat->sendMessage("С сожалением я помещаю запись №000rand(100, 999) в архив.
+{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} с данного момента в разводе.");
                 }
 
                 return false;
@@ -114,7 +123,7 @@ class ChatCommands
 
                 $botName = Params::bot('name');
                 if ($command->getArgs()[1] == 'нет') {
-                    $chat->sendMessage("{$user1->name} {$user1->secondName} не согласился");
+                    $chat->sendMessage("К моему сожалению, я слышу отказ. Я не могу зарегистрировать ваш брак.");
                     $brak->delete();
                     return false;
                 } else if ($command->getArgs()[1] == 'да') {
@@ -135,7 +144,9 @@ class ChatCommands
                     }
                     ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE} = serialize($value);
 
-                    $chat->sendMessage("{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} теперь в браке!");
+                    $chat->sendMessage("Уважаемые новобрачные, с полным соответствием c законодательством ваш брак зарегистрирован.
+Я торжественно объявляю вас мужем и женой!
+Поздравьте друг друга супружеским поцелуем!/nВ книге ЗАГСА создана запись №000".rand(100, 999));
                     $brak->delete();
                     return false;
                 }
@@ -164,12 +175,12 @@ class ChatCommands
                     return false;
                 }
 
-                $message = "Браки в этой беседе:\n";
+                $message = "Зарегистрированные браки в этой беседе:\n";
 
                 foreach ($marriages as $m) {
                     $user1 = Users::getUser($command->chatId, $m[0]);
                     $user2 = Users::getUser($command->chatId, $m[1]);
-                    $message .= "\n {$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName}";
+                    $message .= "\n {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName}";
                 }
 
                 $chat->sendMessage($message);
@@ -218,11 +229,11 @@ class ChatCommands
                     $user->userId,
                     $command->userId,
                 ];
-                $message = "Дорогие Жених и Невеста! Дорогие гости!\n
+                $message = "Дорогие Жених и Невеста! Дорогие гости!
 Мы рады приветствовать Вас на официальной церемонии бракосочетания. Двое счастливых сейчас находятся в нашем зале:
 \n\n
-{$pioneerUser->name} {$pioneerUser->secondName}\n
-и\n
+{$pioneerUser->name} {$pioneerUser->secondName}
+и
 {$user->name} {$user->secondName}
 \n\n
 Перед тем как официально заключить Ваш брак я хотела бы услышать: является ли Ваше желание свободным, искренним и взаимным, с открытым ли сердцем, по собственному ли желанию и доброй воле вы заключаете брак?
