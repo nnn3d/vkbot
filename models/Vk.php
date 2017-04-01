@@ -147,6 +147,9 @@ class Vk{
         static::$last_request_time = microtime(true);
         // Произошла ошибка на стороне VK, коды ошибок тут https://vk.com/dev/errors
         if(isset($json['error'], $json['error']['error_msg'], $json['error']['error_code'])){
+            if ($json['error']['error_code'] == 6) {
+                return $this->call($url);
+            }
             \Yii::error("vk error with code {$json['error']['error_code']} and message '{$json['error']['error_msg']}'", 'bot-log');
             if ($this->noErrors) return false;
             throw new VkException("error #{$json['error']['error_code']}: {$json['error']['error_msg']}");
