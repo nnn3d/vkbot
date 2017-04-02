@@ -86,7 +86,7 @@ class Events extends \yii\db\ActiveRecord
         $chat = Chats::getChat($chatId);
         if (Users::getStatus($chatId, $userId) != USER_STATUS_DEFAULT) return false;
         $user = Users::getUser($chatId, $userId);
-        $invitationUser = Users::getUser($chatId $invitationUserId);
+        $invitationUser = Users::getUser($chatId, $invitationUserId);
         $chat->sendMessage("Приглашать людей в эту беседу без согласования с админами запрещено.\nСогласно правилам, {$user->name} {$user->secondName} и {$invitationUser->name} {$invitationUser->secondName} будут выкинуты из чата.");
         if (!$chat->kickUser($userId)) $chat->sendMessage("Мне не удалось кикнуть пользователя {$user->name} {$user->secondName}");
         if (!$chat->kickUser($invitationUser)) $chat->sendMessage("Мне не удалось кикнуть пользователя {$invitationUser->name} {$invitationUser->secondName}");
