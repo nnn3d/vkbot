@@ -304,6 +304,13 @@ class ChatCommands
                             $spouce = $spouce2;
                         } else if($spouce2 == $command->userId){
                             $spouce = $spouce1;
+                        } else if($spouce1 == $user->userId) {
+                            $spouce = $spouce2
+                        } else if($spouce2 == $user->userId) {
+                            $spouce = $spouce1;
+                        } else {
+                            $chat->sendMessage("Сейчас я не могу зарегистрировать ваш брак. Давайте попробуем позднее?");
+                            return false;
                         }
                         $spouce = Users::getUser($command->chatId, $spouce);
                         if($pioneerUserId == $command->userId) {
