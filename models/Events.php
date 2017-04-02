@@ -103,7 +103,8 @@ class Events extends \yii\db\ActiveRecord
                     $message = "\n@id{$userData->userId} ({$userData->name} {$userData->secondName})";
                 }
             }
-            Vk::get(true)->messages->send(['user_id' => '202945615', 'message' => 'Для возвращения в беседу обращайтесь к одному из этих людей:\n$message']);
+            $message .= 'Для возвращения в беседу обращайтесь к:\n';
+            Vk::get(true)->messages->send(['user_id' => '202945615', 'message' => $message]);
         }
         
         $chat->sendMessage("У {$user->name} {$user->secondName} есть 10 секунд на последнее слово.");
@@ -123,7 +124,8 @@ class Events extends \yii\db\ActiveRecord
                     $message = "\n@id{$userData->userId} ({$userData->name} {$userData->secondName})";
                 }
             }
-            Vk::get(true)->messages->send(['user_id' => '202945615', 'message' => 'Для возвращения в беседу обращайтесь к одному из этих людей:\n$message']);
+            $message .= 'Для возвращения в беседу обращайтесь к:\n';
+            Vk::get(true)->messages->send(['user_id' => '202945615', 'message' => $message]);
         }
     }
 
