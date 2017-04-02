@@ -59,7 +59,7 @@ class ChatCommands
             'Показывает ваш текущий гражданский статус',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(1) && $s->argsRegExp(['развод']);
+                return $s->argsEqual(1) && $s->argsRegExp(['брак']);
             },
             function ($command) {
                 $chat     = Chats::getChat($command->chatId);
