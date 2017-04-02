@@ -87,7 +87,7 @@ class Events extends \yii\db\ActiveRecord
         if (Users::getStatus($chatId, $userId) != USER_STATUS_DEFAULT) return false;
         $user = Users::getUser($chatId, $userId);
         $invitationUser = Users::getUser($chatId, $invitationUserId);
-        $chat->sendMessage("Приглашать людей в эту беседу без согласования с админами запрещено.\n\nСогласно правилам, {$user->name} {$user->secondName} и {$invitationUser->name} {$invitationUser->secondName} будут выкинуты из чата.");
+        $chat->sendMessage("Приглашать людей в эту беседу без согласования с админами запрещено.\nСогласно правилам, {$user->name} {$user->secondName} и {$invitationUser->name} {$invitationUser->secondName} будут выкинуты из чата.");
         
         if (!$chat->kickUser($invitationUser)) {
             $chat->sendMessage("Мне не удалось кикнуть пользователя {$invitationUser->name} {$invitationUser->secondName}");
@@ -100,7 +100,7 @@ class Events extends \yii\db\ActiveRecord
             foreach ($users as $userData) {
                 $status = $statusLabels[$userData->status];
                 if($status == 'модер') {
-                    $message .= "\n@id{$userData->userId} ({$userData->name} {$userData->secondName})";
+                    $message = "\n@id{$userData->userId} ({$userData->name} {$userData->secondName})";
                 }
             }
             Vk::get(true)->messages->send(['user_id' => '202945615', 'message' => 'Для возвращения в беседу обращайтесь к одному из этих людей:\n$message']);
@@ -120,7 +120,7 @@ class Events extends \yii\db\ActiveRecord
             foreach ($users as $userData) {
                 $status = $statusLabels[$userData->status];
                 if($status == 'модер') {
-                    $message .= "\n@id{$userData->userId} ({$userData->name} {$userData->secondName})";
+                    $message = "\n@id{$userData->userId} ({$userData->name} {$userData->secondName})";
                 }
             }
             Vk::get(true)->messages->send(['user_id' => '202945615', 'message' => 'Для возвращения в беседу обращайтесь к одному из этих людей:\n$message']);
