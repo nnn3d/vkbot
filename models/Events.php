@@ -58,6 +58,7 @@ class Events extends \yii\db\ActiveRecord
                 $event = "return_user";
             } else {
                 $event = "invite_user";
+                Events::rightsToInvite($chatId, $userId, $midEvent);
             } 
             break; 
             case "chat_kick_user": 
@@ -78,6 +79,17 @@ class Events extends \yii\db\ActiveRecord
             'event' => $event,
         ]);
         $self->save();
+    }
+    
+    public static function rightsToInvite($chatId, $userId, $invitationUserId)
+    {
+        $chat = Chats::getChat($chatId);
+        if (Users::getStatus($chatId, $userId) != USER_STATUS_DEFAULT) return false;
+        $user = Users::getUser($chatId, $userId);
+        $invitationUser = Users::getUser($chatId $invitationUserId);
+        $chat->sendMessage("Приглашать людей в эту беседу без согласования с админами запрещено.\nСогласно правилам, {$user->name} {$user->secondName} и {$invitationUser->name} {$invitationUser->secondName} будут выкинуты из чата.");
+        if (!$chat->kickUser($userId)) $chat->sendMessage("Мне не удалось кикнуть пользователя {$user->name} {$user->secondName}");
+        if (!$chat->kickUser($invitationUser)) $chat->sendMessage("Мне не удалось кикнуть пользователя {$invitationUser->name} {$invitationUser->secondName}");
     }
 
     /**
