@@ -96,7 +96,7 @@ class ChatCommands
                             $spouce = $spouce1;
                         }
                         $spouce = Users::getUser($command->chatId, $spouce);
-                        $chat->sendMessage("Запись №.".rand(100, 999)."\nВы в счастливом браке c {$spouce->name} {$spouce->secondName} вот уже целых $messageTime", ['forward_messages' => $command->messageId]);
+                        $chat->sendMessage("Запись №".rand(100, 999)."\n{$pioneerUser->name} {$pioneerUser->secondName} в счастливом браке c {$spouce->name} {$spouce->secondName} вот уже целых $messageTime", ['forward_messages' => $command->messageId]);
                         return false;
                 } else {
                     $chat->sendMessage("В данной беседе вы не состоите ни с кем в браке.");
@@ -209,11 +209,11 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'брак',
+            'браки',
             'Показывает существующие браки',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(1) && $s->argsRegExp(['брак']);
+                return $s->argsEqual(1) && $s->argsRegExp(['браки']);
             },
             function ($command) {
                 $chat       = Chats::getChat($command->chatId);
