@@ -62,6 +62,7 @@ class ChatCommands
                 return $s->argsEqual(1) && $s->argsRegExp(['брак']);
             },
             function ($command) {
+                if ($command->getArgs()[0] == 'браки') return false;
                 $chat     = Chats::getChat($command->chatId);
                 $marriage = ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE};
                 $botName  = Params::bot('name');
