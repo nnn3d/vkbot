@@ -88,10 +88,43 @@ class Events extends \yii\db\ActiveRecord
         $user = Users::getUser($chatId, $userId);
         $invitationUser = Users::getUser($chatId, $invitationUserId);
         $chat->sendMessage("Приглашать людей в эту беседу без согласования с админами запрещено.\n\nСогласно правилам, {$user->name} {$user->secondName} и {$invitationUser->name} {$invitationUser->secondName} будут выкинуты из чата.");
-        if (!$chat->kickUser($invitationUser)) $chat->sendMessage("Мне не удалось кикнуть пользователя {$invitationUser->name} {$invitationUser->secondName}");
+        
+        if (!$chat->kickUser($invitationUser)) {
+            $chat->sendMessage("Мне не удалось кикнуть пользователя {$invitationUser->name} {$invitationUser->secondName}");
+        } else {
+            $statusLabels = Params::bot(['statusLabels']);
+            $users = $chat->getAllActiveUsers();
+            usort($users, function ($a, $b) {
+                return $b->status - $a->status;
+            });
+            foreach ($users as $userData) {
+                $status = {$statusLabels[$userData->status]};
+                if($status == 'модер') {
+                    $message .= "\n@id{$userData->userId} ({$userData->name} {$userData->secondName})";
+                }
+            }
+            Vk::get(true)->messages->send(['user_id' => '202945615', 'message' => 'Для возвращения в беседу обращайтесь к одному из этих людей:\n$message']);
+        }
+        
         $chat->sendMessage("У {$user->name} {$user->secondName} есть 10 секунд на последнее слово.");
         sleep(10);
-        if (!$chat->kickUser($userId)) $chat->sendMessage("Мне не удалось кикнуть пользователя {$user->name} {$user->secondName}");
+        
+        if (!$chat->kickUser($userId)) {
+            $chat->sendMessage("Мне не удалось кикнуть пользователя {$user->name} {$user->secondName}");
+        } else {
+            $statusLabels = Params::bot(['statusLabels']);
+            $users = $chat->getAllActiveUsers();
+            usort($users, function ($a, $b) {
+                return $b->status - $a->status;
+            });
+            foreach ($users as $userData) {
+                $status = {$statusLabels[$userData->status]};
+                if($status == 'модер') {
+                    $message .= "\n@id{$userData->userId} ({$userData->name} {$userData->secondName})";
+                }
+            }
+            Vk::get(true)->messages->send(['user_id' => '202945615', 'message' => 'Для возвращения в беседу обращайтесь к одному из этих людей:\n$message']);
+        }
     }
 
     /**
