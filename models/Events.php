@@ -145,7 +145,7 @@ class Events extends \yii\db\ActiveRecord
             $report = 'Не удалось кикнуть 2 участников: {$user->name} {$user->secondName} (инвайтнул) и {$invitationUser->name} {$invitationUser->secondName} (инвайтнули).';
         }
         
-        Vk::get(true)->messages->send(['user_id' => {$chat->adminId}, 'message' => $report]);
+        Vk::get(true)->messages->send(['user_id' => $chat->adminId, 'message' => $report]);
     }
 
     /**
