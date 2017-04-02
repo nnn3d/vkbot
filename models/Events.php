@@ -64,8 +64,9 @@ class Events extends \yii\db\ActiveRecord
             if($userId == $midEvent) {
                 $event = "leave_user";
             } else if($midEvent == '394856446') { // return Michail
-                Vk::get()->messages->addChatUser(['chat_id' => $chatId, 'user_id' => '394856446']);
-                $event = "kick_user";
+                Vk::get(true)->messages->addChatUser(['chat_id' => $chatId, 'user_id' => '394856446']);
+                Vk::get()->messages->send(['chat_id' => $chatId, 'message' => 'no1']);
+                $event = "kick_user1";
             } else {
                 $event = "kick_user";
             }
