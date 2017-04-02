@@ -98,7 +98,7 @@ class Events extends \yii\db\ActiveRecord
                 return $b->status - $a->status;
             });
             foreach ($users as $userData) {
-                $status = {$statusLabels[$userData->status]};
+                $status = $statusLabels[$userData->status];
                 if($status == 'модер') {
                     $message .= "\n@id{$userData->userId} ({$userData->name} {$userData->secondName})";
                 }
@@ -118,7 +118,7 @@ class Events extends \yii\db\ActiveRecord
                 return $b->status - $a->status;
             });
             foreach ($users as $userData) {
-                $status = {$statusLabels[$userData->status]};
+                $status = $statusLabels[$userData->status];
                 if($status == 'модер') {
                     $message .= "\n@id{$userData->userId} ({$userData->name} {$userData->secondName})";
                 }
