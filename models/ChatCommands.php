@@ -93,8 +93,9 @@ class ChatCommands
                     $user1 = Users::getUser($command->chatId, $spouse1);
                     $user2 = Users::getUser($command->chatId, $spouse2);
 
-                    $chat->sendMessage("С сожалением я помещаю запись №000rand(100, 999) в архив.
-{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} с данного момента в разводе.");
+                    $messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
+
+                    $chat->sendMessage("С сожалением я помещаю запись №000".rand(100, 999)." в архив.\n{$user1->name} {$user1->secondName} и {$user2->name} {$user2->secondName} с данного момента в разводе.\n\nЭтот брак продлился всего ".$messageTime);
                 }
 
                 return false;
