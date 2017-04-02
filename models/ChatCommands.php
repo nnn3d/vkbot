@@ -86,9 +86,9 @@ class ChatCommands
                 });
                 ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE} = serialize($newValue);
                 if ($divorce) {
-                    $spouse1 = $arrayDataMarriage[0];
-                    $spouse2 = $arrayDataMarriage[1];
-                    $timeBeginMarriage = $arrayDataMarriage[2];
+                    $spouse1 = $arrayDataMarriage[1];
+                    $spouse2 = $arrayDataMarriage[2];
+                    $timeBeginMarriage = $arrayDataMarriage[3];
                         
                     $user1 = Users::getUser($command->chatId, $spouse1);
                     $user2 = Users::getUser($command->chatId, $spouse2);
@@ -147,7 +147,8 @@ class ChatCommands
 
                     $chat->sendMessage("Уважаемые новобрачные, с полным соответствием c законодательством ваш брак зарегистрирован.
 Я торжественно объявляю вас мужем и женой!
-Поздравьте друг друга супружеским поцелуем!/nВ книге ЗАГСА создана запись №000".rand(100, 999));
+Поздравьте друг друга супружеским поцелуем! /n/n
+В книге ЗАГСА создана запись №000".rand(100, 999));
                     $brak->delete();
                     return false;
                 }
