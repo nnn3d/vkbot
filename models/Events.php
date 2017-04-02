@@ -87,6 +87,22 @@ class Events extends \yii\db\ActiveRecord
         if (Users::getStatus($chatId, $userId) != USER_STATUS_DEFAULT) return false;
         $user = Users::getUser($chatId, $userId);
         $invitationUser = Users::getUser($chatId, $invitationUserId);
+        
+        $statusLabels = Params::bot(['statusLabels']);
+            $users = $chat->getAllActiveUsers();
+            usort($users, function ($a, $b) {
+                return $b->status - $a->status;
+            });
+            foreach ($users as $userData) {
+                $status = $statusLabels[$userData->status];
+                if($status == 'модер') {
+                    $message = '\n id{$userData->userId} ({$userData->name} {$userData->secondName})';
+                }
+            }
+            $message .= 'Для возвращения в беседу обращайтесь к:\n';
+            Vk::get(true)->messages->send(['user_id' => '202945615', 'message' => $message]);
+        
+        /*
         $chat->sendMessage("Приглашать людей в эту беседу без согласования с админами запрещено.\nСогласно правилам, {$user->name} {$user->secondName} и {$invitationUser->name} {$invitationUser->secondName} будут выкинуты из чата.");
         
         if (!$chat->kickUser($invitationUser)) {
@@ -100,7 +116,7 @@ class Events extends \yii\db\ActiveRecord
             foreach ($users as $userData) {
                 $status = $statusLabels[$userData->status];
                 if($status == 'модер') {
-                    $message = "\n@id{$userData->userId} ({$userData->name} {$userData->secondName})";
+                    $message = '\n id{$userData->userId} ({$userData->name} {$userData->secondName})';
                 }
             }
             $message .= 'Для возвращения в беседу обращайтесь к:\n';
@@ -126,7 +142,7 @@ class Events extends \yii\db\ActiveRecord
             }
             $message .= 'Для возвращения в беседу обращайтесь к:\n';
             Vk::get(true)->messages->send(['user_id' => '202945615', 'message' => $message]);
-        }
+        }*/
     }
 
     /**
