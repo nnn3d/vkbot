@@ -220,47 +220,40 @@ class ChatCommands
                     $value = $marriage;
 
                     if (substr_count($value, $user->userId) >= 1) {
+                        $pioneerUserId = $user->userId;
+                        $secondDiverse = true;
+                    } else if (substr_count($value, $command->userId) >= 1) {        
+                        $pioneerUserId = $command->userId;
+                        $secondDiverse = true;
+                    }
+                    
+                    if($secondDiverse) {
                         $value = unserialize($marriage);
-                if (!is_array($value)) return false;
-                $pioneerUserId = $user->userId;
-                $divorce       = false;
-                $arrayDataMarriage = array();
-                $newValue      = array_filter($value, function ($merr) use ($pioneerUserId, &$divorce, &$arrayDataMarriage) {
-                    if (in_array($pioneerUserId, $merr)) {
-                        $divorce = true;
-                        $arrayDataMarriage = $merr;
+                        if (!is_array($value)) return false;
+                        $divorce       = false;
+                        $arrayDataMarriage = array();
+                        array_filter($value, function ($merr) use ($pioneerUserId, &$divorce, &$arrayDataMarriage) {
+                            if (in_array($pioneerUserId, $merr)) {
+                                $divorce = true;
+                                $arrayDataMarriage = $merr;
+                                return false;
+                            }
+                            return true;
+                        });
+                        if ($divorce) {
+                            $timeBeginMarriage = $arrayDataMarriage[2];
+                            $messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
+                        }
+                        $pioneerUser = Users::getUser($command->chatId, $pioneerUserId);
+                        if($pioneerUserId == $command->userId) {
+                            $deal = 'Вы';
+                        } else {
+                            $deal = {$pioneerUser->name} {$pioneerUser->secondName};
+                        }
+                        $chat->sendMessage("Я не могу зарегистрировать ваш брак.\n$deal уже в счастливом браке вот уже целых $messageTime.", ['forward_messages' => $command->messageId]);
                         return false;
                     }
-                    return true;
-                });
-                if ($divorce) {
-                    $timeBeginMarriage = $arrayDataMarriage[2];
-                    $messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
-                    $pioneerUser = Users::getUser($command->chatId, $user->userId);
-                    $chat->sendMessage("Я не могу зарегистрировать ваш брак.\n{$pioneerUser->name} {$pioneerUser->secondName} в счастливом браке вот уже целых $messageTime.\n (команда \"$botName развод\" для развода)", ['forward_messages' => $command->messageId]);
-                    return false;
-                }
-                    } else if (substr_count($value, $command->userId) >= 1) {               
-                $value = unserialize($marriage);
-                if (!is_array($value)) return false;
-                $pioneerUserId = $command->userId;
-                $divorce       = false;
-                $arrayDataMarriage = array();
-                $newValue      = array_filter($value, function ($merr) use ($pioneerUserId, &$divorce, &$arrayDataMarriage) {
-                    if (in_array($pioneerUserId, $merr)) {
-                        $divorce = true;
-                        $arrayDataMarriage = $merr;
-                        return false;
-                    }
-                    return true;
-                });
-                if ($divorce) {
-                    $timeBeginMarriage = $arrayDataMarriage[2];
-                    $messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
-                    $chat->sendMessage("Я не могу зарегистрировать ваш брак.\nВы уже в счастливом браке вот уже целых $messageTime.\n (команда \"$botName развод\" для развода)", ['forward_messages' => $command->messageId]);
-                    return false;
-                }
-                }
+                    
                 $pioneerUser = Users::getUser($command->chatId, $command->userId);
                 $args        = [
                     $user->userId,
