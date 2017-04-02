@@ -87,12 +87,15 @@ class Events extends \yii\db\ActiveRecord
         if (Users::getStatus($chatId, $userId) != USER_STATUS_DEFAULT) return false;
         $user = Users::getUser($chatId, $userId);
         $invitationUser = Users::getUser($chatId, $invitationUserId);
+        $kick1 = false;
+        $kick2 = false;
         
         $chat->sendMessage("Приглашать людей в эту беседу без согласования с админами запрещено.\nСогласно правилам, {$user->name} {$user->secondName} и {$invitationUser->name} {$invitationUser->secondName} будут выкинуты из чата.");
         
         if (!$chat->kickUser($invitationUserId)) {
             $chat->sendMessage("Мне не удалось кикнуть пользователя {$invitationUser->name} {$invitationUser->secondName}");
         } else {
+            $kick1 = true;
             $statusLabels = Params::bot(['statusLabels']);
             $users = $chat->getAllActiveUsers();
             $message = "Для возвращения в беседу обращайтесь к одному из следующего списка людей: \n";
@@ -115,6 +118,7 @@ class Events extends \yii\db\ActiveRecord
         if (!$chat->kickUser($userId)) {
             $chat->sendMessage("Мне не удалось кикнуть пользователя {$user->name} {$user->secondName}");
         } else {
+            $kick2 = true;
             $statusLabels = Params::bot(['statusLabels']);
             $users = $chat->getAllActiveUsers();
             $message = "Для возвращения в беседу обращайтесь к одному из следующего списка людей: \n";
@@ -130,6 +134,18 @@ class Events extends \yii\db\ActiveRecord
             
             Vk::get(true)->messages->send(['user_id' => $userId, 'message' => $message]);
         }
+        
+        if($kick1 === true && $kick2 === true) {
+            $report = 'Было кикнуто 2 участника: {$user->name} {$user->secondName} (инвайтнул) и {$invitationUser->name} {$invitationUser->secondName} (инвайтнули)';
+        } else if($kick1 === true && $kick2 === false){
+            $report = 'Был кикнут 1 участник: {$invitationUser->name} {$invitationUser->secondName} (инвайтнули). \n Кикнуть {$user->name} {$user->secondName} (инвайтнул) не удалось.';
+        } else if($kick1 === false && $kick2 === true){
+            $report = 'Был кикнут 1 участник: {$user->name} {$user->secondName} (инвайтнул). \n Кикнуть {$invitationUser->name} {$invitationUser->secondName} (инвайтнули) не удалось.';
+        } else {
+            $report = 'Не удалось кикнуть 2 участников: {$user->name} {$user->secondName} (инвайтнул) и {$invitationUser->name} {$invitationUser->secondName} (инвайтнули).';
+        }
+        
+        Vk::get(true)->messages->send(['user_id' => {$chat->adminId}, 'message' => $report]);
     }
 
     /**
