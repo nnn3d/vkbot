@@ -15,11 +15,13 @@ return [
         'statusLabels' => [
             USER_STATUS_ADMIN => 'админ',
             USER_STATUS_MODER => 'модер',
+            USER_STATUS_UNTOUCHABLE => 'неприкасаемый',
             USER_STATUS_DEFAULT => 'юзер',
         ],
         'statusMap' => [
             'админ' => USER_STATUS_ADMIN,
             'модер' => USER_STATUS_MODER,
+            'неприкасаемый' => USER_STATUS_UNTOUCHABLE,
             'юзер' => USER_STATUS_DEFAULT,
         ],
     	'bdVersion' => 1,
