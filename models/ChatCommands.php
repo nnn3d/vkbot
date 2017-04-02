@@ -66,17 +66,8 @@ class ChatCommands
                 $marriage = ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE};
                 $botName  = Params::bot('name');
                 if ($marriage) {
-                    $value = $marriage;
-
-                    if (substr_count($value, $user->userId) >= 1) {
-                        $pioneerUserId = $user->userId;
-                        $secondDiverse = true;
-                    } else if (substr_count($value, $command->userId) >= 1) {        
+                    $value = $marriage;  
                         $pioneerUserId = $command->userId;
-                        $secondDiverse = true;
-                    }
-                    
-                    if($secondDiverse) {
                         $value = unserialize($marriage);
                         if (!is_array($value)) return false;
                         $divorce       = false;
@@ -105,14 +96,8 @@ class ChatCommands
                             $spouce = $spouce1;
                         }
                         $spouce = Users::getUser($command->chatId, $spouce);
-                        if($pioneerUserId == $command->userId) {
-                            $deal = 'Вы';
-                        } else {
-                            $deal = "{$pioneerUser->name} {$pioneerUser->secondName}";
-                        }
-                        $chat->sendMessage("Запись №.".rand(100, 999)."\n$deal в счастливом браке c {$spouce->name} {$spouce->secondName} вот уже целых $messageTime", ['forward_messages' => $command->messageId]);
+                        $chat->sendMessage("Запись №.".rand(100, 999)."\nВы в счастливом браке c {$spouce->name} {$spouce->secondName} вот уже целых $messageTime", ['forward_messages' => $command->messageId]);
                         return false;
-                    }
                 } else {
                     $chat->sendMessage("В данной беседе вы не состоите ни с кем в браке.");
                     return false;
