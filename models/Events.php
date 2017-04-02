@@ -90,7 +90,7 @@ class Events extends \yii\db\ActiveRecord
         
         $chat->sendMessage("Приглашать людей в эту беседу без согласования с админами запрещено.\nСогласно правилам, {$user->name} {$user->secondName} и {$invitationUser->name} {$invitationUser->secondName} будут выкинуты из чата.");
         
-        if (!$chat->kickUser($invitationUser)) {
+        if (!$chat->kickUser($invitationUserId)) {
             $chat->sendMessage("Мне не удалось кикнуть пользователя {$invitationUser->name} {$invitationUser->secondName}");
         } else {
             $statusLabels = Params::bot(['statusLabels']);
@@ -106,7 +106,7 @@ class Events extends \yii\db\ActiveRecord
                 }
             }
             
-            Vk::get(true)->messages->send(['user_id' => $invitationUser, 'message' => $message]);
+            Vk::get(true)->messages->send(['user_id' => $invitationUserId, 'message' => $message]);
         }
         
         $chat->sendMessage("У {$user->name} {$user->secondName} есть 10 секунд на последнее слово.");
