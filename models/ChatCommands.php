@@ -241,16 +241,24 @@ class ChatCommands
                             return true;
                         });
                         if ($divorce) {
+                            $spouce1 = $arrayDataMarriage[0];
+                            $spouce2 = $arrayDataMarriage[1];
                             $timeBeginMarriage = $arrayDataMarriage[2];
                             $messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
                         }
                         $pioneerUser = Users::getUser($command->chatId, $pioneerUserId);
+                        if($spouce1 == $command->userId) {
+                            $spouce = $spouce2;
+                        } else if($spouce2 == $command->userId){
+                            $spouce = $spouce1;
+                        }
+                        $spouce = Users::getUser($command->chatId, $spouce);
                         if($pioneerUserId == $command->userId) {
                             $deal = 'Вы';
                         } else {
                             $deal = "{$pioneerUser->name} {$pioneerUser->secondName}";
                         }
-                        $chat->sendMessage("Я не могу зарегистрировать ваш брак.\n$deal уже в счастливом браке вот уже целых $messageTime.", ['forward_messages' => $command->messageId]);
+                        $chat->sendMessage("Я не могу зарегистрировать ваш брак.\n$deal уже в счастливом браке c {$spouce->name} {$spouce->secondName} вот уже целых $messageTime", ['forward_messages' => $command->messageId]);
                         return false;
                     }
                 }
