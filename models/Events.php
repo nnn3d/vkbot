@@ -90,14 +90,14 @@ class Events extends \yii\db\ActiveRecord
         
         $statusLabels = Params::bot(['statusLabels']);
             $users = $chat->getAllActiveUsers();
-            $message = 'Для возвращения в беседу обращайтесь к:\n';
+            $message = 'Для возвращения в беседу обращайтесь к: \n';
             usort($users, function ($a, $b) {
                 return $b->status - $a->status;
             });
             foreach ($users as $userData) {
                 $status = $statusLabels[$userData->status];
                 if($status == 'модер') {
-                    $message .= "\n @id{$userData->userId} ({$userData->name} {$userData->secondName})";
+                    $message .= "\n vk.com/id{$userData->userId} [{$userData->name} {$userData->secondName}]";
                 }
             }
             
