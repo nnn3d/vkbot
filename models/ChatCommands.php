@@ -253,6 +253,7 @@ class ChatCommands
                         $chat->sendMessage("Я не могу зарегистрировать ваш брак.\n$deal уже в счастливом браке вот уже целых $messageTime.", ['forward_messages' => $command->messageId]);
                         return false;
                     }
+                }
                     
                 $pioneerUser = Users::getUser($command->chatId, $command->userId);
                 $args        = [
