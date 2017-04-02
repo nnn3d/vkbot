@@ -82,9 +82,9 @@ class Bot {
 					if ($res[3] < 2000000000) break;
 					$chatId = intval($res[3]) - 2000000000;
 					$userId = $res[7]['from'];
-					if($res[7]['source_act']) $chatEventAct = $res[7]['source_act'];
+					if(isset($res[7]['source_act'])) $chatEventAct = $res[7]['source_act'];
 					$time = $res[4];
-					if($res[7]['source_mid']) $chatEventMid = $res[7]['source_mid'];
+					if(isset($res[7]['source_mid'])) $chatEventMid = $res[7]['source_mid'];
 					$message = $res[6];
 					$messageId = $res[1];
 					$this->messageWorker($chatId, $userId, $message, $messageId, $time);
