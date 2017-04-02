@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use app\models\Users;
 use app\models\Chats;
+use app\models\Params;
 
 /**
  * This is the model class for table "events".
@@ -37,7 +38,17 @@ class Events extends \yii\db\ActiveRecord
         ];
     }
 
-    // functions 
+    public static function setEvent($chatId, $userId, $time, $event)
+    {
+        if (Events::find()->where(['chatId' => $chatId, 'userId' => $userId, 'time' => $time])->exists()) return false;
+        $self = new self([
+            'chatId' => $chatId,
+            'userId' => $userId,
+            'time' => $time,
+            'event' => $event,
+        ]);
+        $self->save();
+    }
 
     /**
      * @inheritdoc
