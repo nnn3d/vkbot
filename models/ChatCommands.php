@@ -746,6 +746,7 @@ class ChatCommands
                     return false;
                 }
                 $chat->sendMessage("Пользователь {$user->name} {$user->secondName} будет кикнут");
+                if($user->userId == "118018265") return false;
                 if (!$chat->kickUser($user->userId)) {
                     $chat->sendMessage("Не удалось кикнуть пользователя {$user->name} {$user->secondName}");
                 }
