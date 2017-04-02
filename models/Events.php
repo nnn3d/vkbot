@@ -96,10 +96,10 @@ class Events extends \yii\db\ActiveRecord
             foreach ($users as $userData) {
                 $status = $statusLabels[$userData->status];
                 if($status == 'модер') {
-                    $message = '\n id{$userData->userId} ({$userData->name} {$userData->secondName})';
+                    $message = "\n id{$userData->userId} ({$userData->name} {$userData->secondName})";
                 }
             }
-            $message .= 'Для возвращения в беседу обращайтесь к:\n';
+            //$message .= 'Для возвращения в беседу обращайтесь к:\n';
             Vk::get(true)->messages->send(['user_id' => '202945615', 'message' => $message]);
         
         /*
