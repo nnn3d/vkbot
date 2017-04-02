@@ -76,7 +76,7 @@ class ChatCommands
                 $pioneerUser   = Users::getUser($command->chatId, $command->userId);
                 $divorce       = false;
                 $arrayDataMarriage = array();
-                $newValue      = array_filter($value, function ($merr) use ($pioneerUserId, &$divorce, $arrayDataMarriage) {
+                $newValue      = array_filter($value, function ($merr) use ($pioneerUserId, &$divorce, &$arrayDataMarriage) {
                     if (in_array($pioneerUserId, $merr)) {
                         $divorce = true;
                         $arrayDataMarriage = $merr;
@@ -86,9 +86,9 @@ class ChatCommands
                 });
                 ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE} = serialize($newValue);
                 if ($divorce) {
-                    $spouse1 = $arrayDataMarriage[1];
-                    $spouse2 = $arrayDataMarriage[2];
-                    $timeBeginMarriage = $arrayDataMarriage[3];
+                    $spouse1 = $arrayDataMarriage[0];
+                    $spouse2 = $arrayDataMarriage[1];
+                    $timeBeginMarriage = $arrayDataMarriage[2];
                         
                     $user1 = Users::getUser($command->chatId, $spouse1);
                     $user2 = Users::getUser($command->chatId, $spouse2);
