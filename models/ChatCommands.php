@@ -270,6 +270,7 @@ class ChatCommands
                 $botName  = Params::bot('name');
                 if ($marriage) {
                     $value = $marriage;
+                    $secondDiverse = false;
 
                     if (substr_count($value, $user->userId) >= 1) {
                         $pioneerUserId = $user->userId;
