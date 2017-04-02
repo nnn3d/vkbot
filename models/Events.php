@@ -135,11 +135,11 @@ class Events extends \yii\db\ActiveRecord
             Vk::get(true)->messages->send(['user_id' => $userId, 'message' => $message]);
         }
         
-        if($kick1 === true && $kick2 === true) {
+        if($kick1 == true && $kick2 == true) {
             $report = 'Было кикнуто 2 участника: {$user->name} {$user->secondName} (инвайтнул) и {$invitationUser->name} {$invitationUser->secondName} (инвайтнули)';
-        } else if($kick1 === true && $kick2 === false){
+        } else if($kick1 == true && $kick2 == false){
             $report = 'Был кикнут 1 участник: {$invitationUser->name} {$invitationUser->secondName} (инвайтнули). \n Кикнуть {$user->name} {$user->secondName} (инвайтнул) не удалось.';
-        } else if($kick1 === false && $kick2 === true){
+        } else if($kick1 == false && $kick2 == true){
             $report = 'Был кикнут 1 участник: {$user->name} {$user->secondName} (инвайтнул). \n Кикнуть {$invitationUser->name} {$invitationUser->secondName} (инвайтнули) не удалось.';
         } else {
             $report = 'Не удалось кикнуть 2 участников: {$user->name} {$user->secondName} (инвайтнул) и {$invitationUser->name} {$invitationUser->secondName} (инвайтнули).';
