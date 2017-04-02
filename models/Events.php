@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use app\models\Users;
+use app\models\Vk;
 use app\models\Chats;
 use app\models\Params;
 
