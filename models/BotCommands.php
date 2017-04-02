@@ -21,7 +21,7 @@ class BotCommands {
 	{
 		PendingTasks::deleteByTask(COMMAND_BOT);
 		PendingTasks::add(null, ['function' => 'deleteOldDuels'], 60, null, COMMAND_BOT);
-		PendingTasks::add(null, ['function' => 'deleteOldMerriage'], 60, null, COMMAND_BOT);
+		PendingTasks::add(null, ['function' => 'deleteOldMarriage'], 600, null, COMMAND_BOT);
 	}
 
 
