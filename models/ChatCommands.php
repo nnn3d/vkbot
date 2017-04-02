@@ -248,7 +248,7 @@ class ChatCommands
                         if($pioneerUserId == $command->userId) {
                             $deal = 'Вы';
                         } else {
-                            $deal = {$pioneerUser->name} {$pioneerUser->secondName};
+                            $deal = {$pioneerUser->name}.' '.{$pioneerUser->secondName};
                         }
                         $chat->sendMessage("Я не могу зарегистрировать ваш брак.\n$deal уже в счастливом браке вот уже целых $messageTime.", ['forward_messages' => $command->messageId]);
                         return false;
