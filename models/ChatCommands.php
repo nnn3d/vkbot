@@ -53,7 +53,73 @@ class ChatCommands
 
         $s        = new self;
         $commands = [];
+        
+        $commands[] = new ChatCommand(
+            'брак',
+            'Показывает ваш текущий гражданский статус',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(1) && $s->argsRegExp(['развод']);
+            },
+            function ($command) {
+                $chat     = Chats::getChat($command->chatId);
+                $marriage = ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE};
+                $botName  = Params::bot('name');
+                if ($marriage) {
+                    $value = $marriage;
 
+                    if (substr_count($value, $user->userId) >= 1) {
+                        $pioneerUserId = $user->userId;
+                        $secondDiverse = true;
+                    } else if (substr_count($value, $command->userId) >= 1) {        
+                        $pioneerUserId = $command->userId;
+                        $secondDiverse = true;
+                    }
+                    
+                    if($secondDiverse) {
+                        $value = unserialize($marriage);
+                        if (!is_array($value)) return false;
+                        $divorce       = false;
+                        $arrayDataMarriage = array();
+                        array_filter($value, function ($merr) use ($pioneerUserId, &$divorce, &$arrayDataMarriage) {
+                            if (in_array($pioneerUserId, $merr)) {
+                                $divorce = true;
+                                $arrayDataMarriage = $merr;
+                                return false;
+                            }
+                            return true;
+                        });
+                        if ($divorce) {
+                            $spouce1 = $arrayDataMarriage[0];
+                            $spouce2 = $arrayDataMarriage[1];
+                            $timeBeginMarriage = $arrayDataMarriage[2];
+                            $messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
+                        } else {
+                            $chat->sendMessage("В данной беседе вы не состоите ни с кем в браке.");
+                            return false;
+                        }
+                        $pioneerUser = Users::getUser($command->chatId, $pioneerUserId);
+                        if($spouce1 == $command->userId) {
+                            $spouce = $spouce2;
+                        } else if($spouce2 == $command->userId){
+                            $spouce = $spouce1;
+                        }
+                        $spouce = Users::getUser($command->chatId, $spouce);
+                        if($pioneerUserId == $command->userId) {
+                            $deal = 'Вы';
+                        } else {
+                            $deal = "{$pioneerUser->name} {$pioneerUser->secondName}";
+                        }
+                        $chat->sendMessage("Запись №.".rand(100, 999)."\n$deal в счастливом браке c {$spouce->name} {$spouce->secondName} вот уже целых $messageTime", ['forward_messages' => $command->messageId]);
+                        return false;
+                    }
+                } else {
+                    $chat->sendMessage("В данной беседе вы не состоите ни с кем в браке.");
+                    return false;
+                }   
+            }
+        );
+        
         $commands[] = new ChatCommand(
             'развод',
             'Расторгает брак, если вы в нем состоите',
