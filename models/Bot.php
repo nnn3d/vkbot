@@ -88,7 +88,7 @@ class Bot {
 					$message = $res[6];
 					$messageId = $res[1];
 					$this->messageWorker($chatId, $userId, $message, $messageId, $time);
-					if($chatEventAct) Events::setEvent($chatId, $userId, $time, $chatEventAct, $chatEventMid);
+					if(isset($chatEventAct)) Events::setEvent($chatId, $userId, $time, $chatEventAct, $chatEventMid);
 					break;
 				
 				default:
