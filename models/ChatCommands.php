@@ -266,10 +266,6 @@ class ChatCommands
                     $chat->sendMessage("Жениться на самом себе пока нельзя...");
                     return false;
                 }
-                if ($user->userId == "399829682") {
-                    $chat->sendMessage("Я говорю нет 😘");
-                    return false;
-                }
                 $marriage = ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE};
                 $botName  = Params::bot('name');
                 if ($marriage) {
