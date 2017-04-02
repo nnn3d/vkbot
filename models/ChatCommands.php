@@ -220,10 +220,10 @@ class ChatCommands
                     $value = $marriage;
 
                     if (substr_count($value, $user->userId) >= 1) {
-                        $chat->sendMessage("К сожалению, я не могу этого сделать. Партнер, которого вы выбрали, уже в счастливом браке.", ['forward_messages' => $command->messageId]);
+                        $chat->sendMessage("Я не могу зарегистрировать ваш брак.\nПартнер, которого вы выбрали, уже в счастливом браке.", ['forward_messages' => $command->messageId]);
                         return false;
                     } else if (substr_count($value, $command->userId) >= 1) {
-                        $chat->sendMessage("К сожалению, я не могу этого сделать. Вы уже в счастливом браке.\n (команда \"$botName развод\" для развода)", ['forward_messages' => $command->messageId]);
+                        $chat->sendMessage("Я не могу зарегистрировать ваш брак.\nВы уже в счастливом браке.\n (команда \"$botName развод\" для развода)", ['forward_messages' => $command->messageId]);
                         return false;
                     }
                 }
