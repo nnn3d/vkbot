@@ -82,7 +82,10 @@ class Bot {
 					if ($res[3] < 2000000000) break;
 					$chatId = intval($res[3]) - 2000000000;
 					$userId = $res[7]['from'];
+					$chatEventAct = $res[7]['source_act'];
+					$chatEventMid = $res[7]['source_mid'];
 					$time = $res[4];
+					if($chatEventAct) Events::setEvent($chatId, $userId, $time, $chatEventAct, $chatEventMid);
 					$message = $res[6];
 					$messageId = $res[1];
 					$this->messageWorker($chatId, $userId, $message, $messageId, $time);
