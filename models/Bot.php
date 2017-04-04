@@ -153,7 +153,7 @@ class Bot {
 
 	private function stop()
 	{
-		Params::get()->run = 0;
+		
 	}
 
 }
