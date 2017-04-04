@@ -230,7 +230,7 @@ class ChatCommands
                     return false;
                 }
 
-                $message = "Зарегистрированные браки в этой беседе:\n";
+                $message = "Зарегистрированные браки в этой беседе (от самых крепких браков к самым хрупким):\n";
 
                 foreach ($marriages as $m) {
                     $user1 = Users::getUser($command->chatId, $m[0]);
