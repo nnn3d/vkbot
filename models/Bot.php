@@ -14,6 +14,8 @@ use app\models\BotCommands;
 
 class Bot {
 
+	public $runCode;
+
 	public static function get ()
 	{
 		return new self;
@@ -25,7 +27,7 @@ class Bot {
 		Yii::info('start bot', 'bot-log');
 		$this->init();
 		BotCommands::init();
-		while (!Params::get()->stop) {
+		while (Params::get()->run == $this->runCode) {
 			$this->cycle();
 		}
 		$this->stop();
@@ -134,21 +136,8 @@ class Bot {
 
 	private function init($reinit = false)
 	{
-		if (Params::get()->stop) {
-			for ($i=0; $i < 12; $i++) { 
-				if (!Params::get()->stop) break;
-				sleep(1);
-			} 
-		}
-		if (Params::get()->run) {
-			Params::get()->stop = 1;
-			for ($i=0; $i < 8; $i++) { 
-				if (!Params::get()->run) break;
-				sleep(1);
-			}
-		}
-		Params::get()->stop = 0;
-		Params::get()->run = 1;
+		$this->runCode = microtime() . rand(1, 10000);
+		Params::get()->run = $this->runCode;
 
 		if (!Params::get()->bdVersion || $reinit) {
 			// first initial here
