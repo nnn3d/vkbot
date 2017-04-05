@@ -157,3 +157,19 @@
 2017-04-05 11:54:07 [warning][bot-log] longPoll failed with code 1
 2017-04-05 11:54:50 [info][bot-log] add command 'торч ливы' from chat 2
 2017-04-05 11:56:46 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 13:32:34 [info][bot-log] start bot
+2017-04-05 13:32:37 [warning][bot-log] longPoll failed with code 2
+2017-04-05 13:32:38 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: c2a8656bfde5f4380cc36cde85cc7973dd889d4f 
+ ts: 1701871939
+2017-04-05 13:33:08 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 13:33:22 [info][bot-log] start bot
+2017-04-05 13:48:36 [info][bot-log] start bot
+2017-04-05 13:50:46 [info][bot-log] start bot
+2017-04-05 13:50:54 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 13:52:33 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 13:53:28 [info][bot-log] add command 'торч кто папа' from chat 2
+2017-04-05 13:55:50 [info][bot-log] add command 'Торч стат 2 гоша' from chat 2
+2017-04-05 14:58:43 [info][bot-log] start bot
+2017-04-05 14:59:35 [info][bot-log] add command 'торч ливы 3' from chat 2

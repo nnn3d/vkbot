@@ -155,27 +155,31 @@ class ChatCommands
         );
 
 		$commands[] = new ChatCommand( 
-			'ливы', 
+			'ливы { количество дней }', 
 			'Последние выходы.', 
 			function ($command) use ($s) { 
 				$s->load($command); 
-				return $s->argsEqual(1) && $s->argsRegExp(['ливы']); 
+				return $s->argsEqual(2) && $s->argsRegExp(['ливы','[\d]{1,2}']); 
 			}, 
 			function ($command) { 
 				$message = "Из конфы вышли:\n"; 
 				$event = "leave_user"; 
+				$days   = intval($command->getArgs()[2]);
 				$chat = Chats::getChat($command->chatId); 
+				$users = $chat->getAllActiveUsers();
 				$eventList = Events::getEvent($chat->chatId, $event);
 			foreach ($eventList as $num=>$userId) { 
 				$n = $num + 1;
 				$user = Users::getUser($chat->chatId, $userId->userId);
 				$checkUs = Users::userExists($chat->chatId, $userId->userId);
-				if ($checkUs) {
+				if (in_array($user, $users)) {
 					$where='в конфе';
 				} else {
 					$where='вышел';
 				}
-				$messageTime = ChatCommands::timeToStr(time() - $userId->time);
+				$currenttime=time() - $userId->time;
+				$messageTime = ChatCommands::timeToStr($currenttime);
+				$timearr = ChatCommands::timeToArr($currenttime);
 				$message .= "\n{$n}. {$user->name} {$user->secondName} $messageTime $where"; 
 			} 
 			$chat->sendMessage($message); 
@@ -990,7 +994,25 @@ class ChatCommands
         isset($times[0]) && $msg .= $times[0] . ' сек.';
         return $msg;
     }
+	
+	public static function timeToArr($seconds){
+		$times = [];
+        $count_zero = false;
+        $periods    = [60, 3600, 86400];
 
+        for ($i = 2; $i >= 0; $i--) {
+            $period = floor($seconds / $periods[$i]);
+            if (($period > 0) || ($period == 0 && $count_zero)) {
+                $times[$i + 1] = $period;
+                $seconds -= $period * $periods[$i];
+
+                $count_zero = true;
+            }
+        }
+        $times[0] = $seconds;
+		return $times;
+	}
+	
     public static function saveMessagePhoto($photoDir)
     {
         $res       = Vk::get()->photos->getMessagesUploadServer();
