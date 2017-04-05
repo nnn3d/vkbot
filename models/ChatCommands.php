@@ -257,7 +257,7 @@ class ChatCommands
 		$countMarriages = count($marriages);
 
 		if($countMarriages > 5 && is_array($marriages)) {
-			$message = "Топ самых крепких пар:";
+			$message = "Топ самых крепких пар:\n";
 			$i = 1;
 			$timeBeginMarriage = 0;
 			
@@ -270,7 +270,7 @@ class ChatCommands
 				if($i < 4) {
 				        $message .= "\n $i. {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} \n🎀 $messageTime\n";
 				} else {
-					$message .= "\n $i. {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName} \n$messageTime\n";
+					$message .= "\n $i. {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName} ($messageTime)";
 				}
 				
 				$i++;
