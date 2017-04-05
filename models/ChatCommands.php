@@ -155,7 +155,7 @@ class ChatCommands
         );
 
 		$commands[] = new ChatCommand( 
-			'ливы { количество дней }', 
+			'ливы', 
 			'Последние выходы.', 
 			function ($command) use ($s) { 
 				$s->load($command); 
@@ -164,7 +164,6 @@ class ChatCommands
 			function ($command) { 
 				$message = "Из конфы вышли:\n"; 
 				$event = "leave_user"; 
-				$days   = intval($command->getArgs()[2]);
 				$chat = Chats::getChat($command->chatId); 
 				$users = $chat->getAllActiveUsers();
 				$eventList = Events::getEvent($chat->chatId, $event);
