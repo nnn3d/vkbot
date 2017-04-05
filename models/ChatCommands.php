@@ -257,7 +257,8 @@ class ChatCommands
                     return false;
                 }
                 $marriages = unserialize($marriage);
-                if (!is_array($marriages) || count($marriages) == 0) {
+		$countMarriages = count($marriages);
+                if (!is_array($marriages) || $countMarriages == 0) {
                     $chat->sendMessage($errMessage);
                     return false;
                 }
@@ -269,6 +270,24 @@ class ChatCommands
                     $user2 = Users::getUser($command->chatId, $m[1]);
                     $message .= "\n {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName}";
                 }
+		
+		if($countMarriages > 5) {
+			$message .= "\n\nТоп 3 самых крепких пар:\n";
+			$i = 0;
+			
+			foreach ($marriages as $m) {
+				if($i < 3) {
+					$user1 = Users::getUser($command->chatId, $m[0]);
+				        $user2 = Users::getUser($command->chatId, $m[1]);
+					$timeBeginMerriage = $m[2];
+					$messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
+				        $message .= "\n {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} [$messageTime]";
+					$i++;
+				} else {
+					break 1;
+				}
+			}
+		}
 
                 $chat->sendMessage($message);
             }
