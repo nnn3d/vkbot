@@ -173,3 +173,5 @@
 2017-04-05 13:55:50 [info][bot-log] add command 'Торч стат 2 гоша' from chat 2
 2017-04-05 14:58:43 [info][bot-log] start bot
 2017-04-05 14:59:35 [info][bot-log] add command 'торч ливы 3' from chat 2
+2017-04-05 15:04:40 [info][bot-log] start bot
+2017-04-05 15:04:50 [info][bot-log] add command 'торч ливы 123' from chat 2

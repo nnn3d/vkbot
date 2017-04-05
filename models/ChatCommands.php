@@ -159,7 +159,7 @@ class ChatCommands
 			'Последние выходы.', 
 			function ($command) use ($s) { 
 				$s->load($command); 
-				return $s->argsEqual(2) && $s->argsRegExp(['ливы','[\d]{1,2}']); 
+				return $s->argsEqual(1) && $s->argsRegExp(['ливы']); 
 			}, 
 			function ($command) { 
 				$message = "Из конфы вышли:\n"; 
