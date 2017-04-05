@@ -272,17 +272,17 @@ class ChatCommands
                 }
 		
 		if($countMarriages > 5) {
-			$message .= "\n\nТоп 3 самых крепких пар:\n";
-			$i = 0;
+			$message .= "\n\nТоп 3 самых крепких пар:";
+			$i = 1;
 			$timeBeginMarriage = 0;
 			
 			foreach ($marriages as $m) {
-				if($i < 3) {
+				if($i < 4) {
 					$user1 = Users::getUser($command->chatId, $m[0]);
 				        $user2 = Users::getUser($command->chatId, $m[1]);
 					$timeBeginMarriage = $m[2];
 					$messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
-				        $message .= "\n {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} [$messageTime]";
+				        $message .= "\n $i. {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} \n🎀 Их брак длится целых [$messageTime]\n";
 					$i++;
 				} else {
 					break 1;
