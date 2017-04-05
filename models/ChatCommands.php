@@ -242,6 +242,48 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
+            'топ браков',
+            'Показывает топ самых крепких браков',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(2) && $s->argsRegExp(['топ', 'браков']);
+            },
+            function ($command) {
+                $chat       = Chats::getChat($command->chatId);
+                $marriage   = ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE};
+
+                if (!$marriage) return false;
+                $marriages = unserialize($marriage);
+		$countMarriages = count($marriages);
+
+		if($countMarriages > 5 && is_array($marriages)) {
+			$message .= "Топ самых крепких пар:";
+			$i = 1;
+			$timeBeginMarriage = 0;
+			
+			foreach ($marriages as $m) {
+				$user1 = Users::getUser($command->chatId, $m[0]);
+				$user2 = Users::getUser($command->chatId, $m[1]);
+				$timeBeginMarriage = $m[2];
+				$messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
+				
+				if($i < 4) {
+				        $message .= "\n $i. {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} \n🎀 $messageTime\n";
+				} else {
+					$message .= "\n $i. {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName} \n$messageTime\n";
+				}
+				
+				$i++;
+			}
+	
+			$chat->sendMessage($message);
+		} else {
+			return false;
+		}
+            }
+        );
+	    
+        $commands[] = new ChatCommand(
             'браки',
             'Показывает существующие браки',
             function ($command) use ($s) {
@@ -272,22 +314,7 @@ class ChatCommands
                 }
 		
 		if($countMarriages > 5) {
-			$message .= "\n\nТоп 3 самых крепких пар:";
-			$i = 1;
-			$timeBeginMarriage = 0;
-			
-			foreach ($marriages as $m) {
-				if($i < 4) {
-					$user1 = Users::getUser($command->chatId, $m[0]);
-				        $user2 = Users::getUser($command->chatId, $m[1]);
-					$timeBeginMarriage = $m[2];
-					$messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
-				        $message .= "\n $i. {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} \n🎀 Их брак длится целых [$messageTime]\n";
-					$i++;
-				} else {
-					break 1;
-				}
-			}
+		    $message .= "\n Доступен топ самых крепких браков! (".Params::bot('name')." топ браков)";
 		}
 
                 $chat->sendMessage($message);
