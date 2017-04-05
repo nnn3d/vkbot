@@ -243,7 +243,7 @@ class ChatCommands
 
         $commands[] = new ChatCommand(
             'топ браков',
-            'Показывает топ самых крепких браков',
+            'Показывает топ самых крепких браков. Работает только в беседах, в которых больше 5 пар.',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsEqual(2) && $s->argsRegExp(['топ', 'браков']);
