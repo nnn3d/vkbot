@@ -22598,3 +22598,2321 @@ $_SERVER = [
     ]
     'argc' => 2
 ]
+2017-04-04 14:30:51 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-04-04 14:31:16 [][-][-][error][bot-log] vk error with code 10 and message 'Internal server error: engine not available, please try again later'
+2017-04-04 14:31:16 [][-][-][error][app\models\VkException] exception 'app\models\VkException' with message 'error #10: Internal server error: engine not available, please try again later' in C:\vkbot\models\Vk.php:156
+Stack trace:
+#0 C:\vkbot\models\Vk.php(83): app\models\Vk->call('https://api.vk....')
+#1 C:\vkbot\models\Vk.php(62): app\models\Vk->api('messages.getHis...', Array)
+#2 C:\vkbot\models\Vk.php(56): app\models\Vk->invoke('getHistory', Array)
+#3 C:\vkbot\models\Chats.php(87): app\models\Vk->__call('getHistory', Array)
+#4 C:\vkbot\models\Chats.php(87): app\models\Vk->getHistory(Array)
+#5 C:\vkbot\models\Chats.php(101): app\models\Chats::addChat(NULL)
+#6 C:\vkbot\models\Users.php(111): app\models\Chats::getChat(NULL)
+#7 C:\vkbot\models\Users.php(57): app\models\Users::updateUser(NULL, NULL)
+#8 C:\vkbot\models\ChatCommands.php(170): app\models\Users::getUser(NULL, NULL)
+#9 C:\vkbot\models\ChatCommands.php(1049): app\models\ChatCommands::app\models\{closure}(Object(app\models\Commands))
+#10 C:\vkbot\models\CommandCaller.php(27): app\models\ChatCommand->checkAndRun(Object(app\models\Commands))
+#11 C:\vkbot\models\CommandCaller.php(18): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#12 C:\vkbot\models\Bot.php(40): app\models\CommandCaller::checkAll()
+#13 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#14 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#15 [internal function]: app\controllers\SiteController->actionBot()
+#16 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#17 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#18 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#19 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#20 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#22 {main}
+2017-04-04 14:30:48 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491316248.8761
+    'REQUEST_TIME' => 1491316248
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-04 14:31:51 [][-][-][error][bot-log] vk error with code 10 and message 'Internal server error: engine not available, please try again later'
+2017-04-04 14:31:51 [][-][-][error][app\models\VkException] exception 'app\models\VkException' with message 'error #10: Internal server error: engine not available, please try again later' in C:\vkbot\models\Vk.php:156
+Stack trace:
+#0 C:\vkbot\models\Vk.php(83): app\models\Vk->call('https://api.vk....')
+#1 C:\vkbot\models\Vk.php(62): app\models\Vk->api('messages.getHis...', Array)
+#2 C:\vkbot\models\Vk.php(56): app\models\Vk->invoke('getHistory', Array)
+#3 C:\vkbot\models\Chats.php(87): app\models\Vk->__call('getHistory', Array)
+#4 C:\vkbot\models\Chats.php(87): app\models\Vk->getHistory(Array)
+#5 C:\vkbot\models\Chats.php(101): app\models\Chats::addChat(NULL)
+#6 C:\vkbot\models\Users.php(111): app\models\Chats::getChat(NULL)
+#7 C:\vkbot\models\Users.php(57): app\models\Users::updateUser(NULL, NULL)
+#8 C:\vkbot\models\ChatCommands.php(170): app\models\Users::getUser(NULL, NULL)
+#9 C:\vkbot\models\ChatCommands.php(1049): app\models\ChatCommands::app\models\{closure}(Object(app\models\Commands))
+#10 C:\vkbot\models\CommandCaller.php(27): app\models\ChatCommand->checkAndRun(Object(app\models\Commands))
+#11 C:\vkbot\models\CommandCaller.php(18): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#12 C:\vkbot\models\Bot.php(40): app\models\CommandCaller::checkAll()
+#13 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#14 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#15 [internal function]: app\controllers\SiteController->actionBot()
+#16 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#17 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#18 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#19 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#20 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#22 {main}
+2017-04-04 14:31:46 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491316306.2334
+    'REQUEST_TIME' => 1491316306
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-04 14:35:03 [][-][-][error][bot-log] vk error with code 10 and message 'Internal server error: engine not available, please try again later'
+2017-04-04 14:35:03 [][-][-][error][app\models\VkException] exception 'app\models\VkException' with message 'error #10: Internal server error: engine not available, please try again later' in C:\vkbot\models\Vk.php:156
+Stack trace:
+#0 C:\vkbot\models\Vk.php(83): app\models\Vk->call('https://api.vk....')
+#1 C:\vkbot\models\Vk.php(62): app\models\Vk->api('messages.getHis...', Array)
+#2 C:\vkbot\models\Vk.php(56): app\models\Vk->invoke('getHistory', Array)
+#3 C:\vkbot\models\Chats.php(87): app\models\Vk->__call('getHistory', Array)
+#4 C:\vkbot\models\Chats.php(87): app\models\Vk->getHistory(Array)
+#5 C:\vkbot\models\Chats.php(101): app\models\Chats::addChat(NULL)
+#6 C:\vkbot\models\Users.php(111): app\models\Chats::getChat(NULL)
+#7 C:\vkbot\models\Users.php(57): app\models\Users::updateUser(NULL, NULL)
+#8 C:\vkbot\models\ChatCommands.php(170): app\models\Users::getUser(NULL, NULL)
+#9 C:\vkbot\models\ChatCommands.php(1049): app\models\ChatCommands::app\models\{closure}(Object(app\models\Commands))
+#10 C:\vkbot\models\CommandCaller.php(27): app\models\ChatCommand->checkAndRun(Object(app\models\Commands))
+#11 C:\vkbot\models\CommandCaller.php(18): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#12 C:\vkbot\models\Bot.php(40): app\models\CommandCaller::checkAll()
+#13 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#14 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#15 [internal function]: app\controllers\SiteController->actionBot()
+#16 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#17 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#18 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#19 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#20 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#22 {main}
+2017-04-04 14:34:46 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491316486.9627
+    'REQUEST_TIME' => 1491316486
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-04 14:36:26 [][-][-][error][bot-log] vk error with code 10 and message 'Internal server error: engine not available, please try again later'
+2017-04-04 14:36:26 [][-][-][error][app\models\VkException] exception 'app\models\VkException' with message 'error #10: Internal server error: engine not available, please try again later' in C:\vkbot\models\Vk.php:156
+Stack trace:
+#0 C:\vkbot\models\Vk.php(83): app\models\Vk->call('https://api.vk....')
+#1 C:\vkbot\models\Vk.php(62): app\models\Vk->api('messages.getHis...', Array)
+#2 C:\vkbot\models\Vk.php(56): app\models\Vk->invoke('getHistory', Array)
+#3 C:\vkbot\models\Chats.php(87): app\models\Vk->__call('getHistory', Array)
+#4 C:\vkbot\models\Chats.php(87): app\models\Vk->getHistory(Array)
+#5 C:\vkbot\models\Chats.php(101): app\models\Chats::addChat(NULL)
+#6 C:\vkbot\models\Users.php(111): app\models\Chats::getChat(NULL)
+#7 C:\vkbot\models\Users.php(57): app\models\Users::updateUser(NULL, NULL)
+#8 C:\vkbot\models\ChatCommands.php(170): app\models\Users::getUser(NULL, NULL)
+#9 C:\vkbot\models\ChatCommands.php(1049): app\models\ChatCommands::app\models\{closure}(Object(app\models\Commands))
+#10 C:\vkbot\models\CommandCaller.php(27): app\models\ChatCommand->checkAndRun(Object(app\models\Commands))
+#11 C:\vkbot\models\CommandCaller.php(18): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#12 C:\vkbot\models\Bot.php(40): app\models\CommandCaller::checkAll()
+#13 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#14 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#15 [internal function]: app\controllers\SiteController->actionBot()
+#16 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#17 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#18 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#19 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#20 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#22 {main}
+2017-04-04 14:36:16 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491316576.1028
+    'REQUEST_TIME' => 1491316576
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-04 14:37:05 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-04-04 14:37:07 [][-][-][warning][bot-log] longPoll failed with code 1
+2017-04-04 14:37:10 [][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Setting unknown property: app\models\Commands::time' in C:\vkbot\vendor\yiisoft\yii2\base\Component.php:201
+Stack trace:
+#0 C:\vkbot\vendor\yiisoft\yii2\db\BaseActiveRecord.php(306): yii\base\Component->__set('time', 1491316630)
+#1 C:\vkbot\vendor\yiisoft\yii2\BaseYii.php(525): yii\db\BaseActiveRecord->__set('time', 1491316630)
+#2 C:\vkbot\vendor\yiisoft\yii2\base\Object.php(105): yii\BaseYii::configure(Object(app\models\Commands), Array)
+#3 C:\vkbot\models\Commands.php(64): yii\base\Object->__construct(Array)
+#4 C:\vkbot\models\Commands.php(51): app\models\Commands::add(2, '266979404', Array, 1521175, 'user')
+#5 C:\vkbot\models\Bot.php(118): app\models\Commands::addFromMessage(2, '266979404', '\xD1\x82\xD0\xB5\xD1\x81\xD1\x82 \xD0\xBA\xD1\x82\xD0\xBE...', 1521175)
+#6 C:\vkbot\models\Bot.php(92): app\models\Bot->messageWorker(2, '266979404', '\xD1\x82\xD0\xB5\xD1\x81\xD1\x82 \xD0\xBA\xD1\x82\xD0\xBE...', 1521175, 1491316631)
+#7 [internal function]: app\models\Bot->app\models\{closure}(Array)
+#8 C:\vkbot\models\Bot.php(101): array_map(Object(Closure), Array)
+#9 C:\vkbot\models\Bot.php(39): app\models\Bot->longPoll()
+#10 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#11 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#12 [internal function]: app\controllers\SiteController->actionBot()
+#13 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#14 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#15 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#16 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#17 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 C:\vkbot\web\test.php(17): yii\base\Application->run()
+#19 {main}
+2017-04-04 14:37:02 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/test.php'
+    'SCRIPT_NAME' => 'web/test.php'
+    'SCRIPT_FILENAME' => 'web/test.php'
+    'PATH_TRANSLATED' => 'web/test.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491316622.7455
+    'REQUEST_TIME' => 1491316622
+    'argv' => [
+        0 => 'web/test.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-04 14:58:11 [][-][-][error][yii\base\UnknownPropertyException] exception 'yii\base\UnknownPropertyException' with message 'Getting unknown property: app\models\Events::name' in C:\vkbot\vendor\yiisoft\yii2\base\Component.php:147
+Stack trace:
+#0 C:\vkbot\vendor\yiisoft\yii2\db\BaseActiveRecord.php(286): yii\base\Component->__get('name')
+#1 C:\vkbot\models\ChatCommands.php(171): yii\db\BaseActiveRecord->__get('name')
+#2 C:\vkbot\models\ChatCommands.php(1049): app\models\ChatCommands::app\models\{closure}(Object(app\models\Commands))
+#3 C:\vkbot\models\CommandCaller.php(27): app\models\ChatCommand->checkAndRun(Object(app\models\Commands))
+#4 C:\vkbot\models\CommandCaller.php(18): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#5 C:\vkbot\models\Bot.php(40): app\models\CommandCaller::checkAll()
+#6 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#7 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#8 [internal function]: app\controllers\SiteController->actionBot()
+#9 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#10 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#11 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#12 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#13 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#15 {main}
+2017-04-04 14:58:02 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491317882.2845
+    'REQUEST_TIME' => 1491317882
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-04 15:06:23 [][-][-][error][yii\base\ErrorException:4096] exception 'yii\base\ErrorException' with message 'Object of class app\models\Events could not be converted to string' in C:\vkbot\models\ChatCommands.php:172
+Stack trace:
+#0 C:\vkbot\models\ChatCommands.php(172): yii\base\ErrorHandler->handleError(4096, 'Object of class...', 'C:\\vkbot\\models...', 172, Array)
+#1 C:\vkbot\models\ChatCommands.php(1050): app\models\ChatCommands::app\models\{closure}(Object(app\models\Commands))
+#2 C:\vkbot\models\CommandCaller.php(27): app\models\ChatCommand->checkAndRun(Object(app\models\Commands))
+#3 C:\vkbot\models\CommandCaller.php(18): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#4 C:\vkbot\models\Bot.php(40): app\models\CommandCaller::checkAll()
+#5 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#6 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#7 [internal function]: app\controllers\SiteController->actionBot()
+#8 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#10 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#11 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#12 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#14 {main}
+2017-04-04 15:06:04 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491318364.6731
+    'REQUEST_TIME' => 1491318364
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-04 15:06:51 [][-][-][error][yii\base\ErrorException:4096] exception 'yii\base\ErrorException' with message 'Object of class app\models\Events could not be converted to string' in C:\vkbot\models\ChatCommands.php:172
+Stack trace:
+#0 C:\vkbot\models\ChatCommands.php(172): yii\base\ErrorHandler->handleError(4096, 'Object of class...', 'C:\\vkbot\\models...', 172, Array)
+#1 C:\vkbot\models\ChatCommands.php(1050): app\models\ChatCommands::app\models\{closure}(Object(app\models\Commands))
+#2 C:\vkbot\models\CommandCaller.php(27): app\models\ChatCommand->checkAndRun(Object(app\models\Commands))
+#3 C:\vkbot\models\CommandCaller.php(18): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#4 C:\vkbot\models\Bot.php(40): app\models\CommandCaller::checkAll()
+#5 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#6 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#7 [internal function]: app\controllers\SiteController->actionBot()
+#8 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#10 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#11 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#12 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#14 {main}
+2017-04-04 15:06:43 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491318403.8353
+    'REQUEST_TIME' => 1491318403
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-04 15:08:37 [][-][-][error][yii\base\ErrorException:4096] exception 'yii\base\ErrorException' with message 'Object of class app\models\Events could not be converted to string' in C:\vkbot\models\ChatCommands.php:172
+Stack trace:
+#0 C:\vkbot\models\ChatCommands.php(172): yii\base\ErrorHandler->handleError(4096, 'Object of class...', 'C:\\vkbot\\models...', 172, Array)
+#1 C:\vkbot\models\ChatCommands.php(1050): app\models\ChatCommands::app\models\{closure}(Object(app\models\Commands))
+#2 C:\vkbot\models\CommandCaller.php(27): app\models\ChatCommand->checkAndRun(Object(app\models\Commands))
+#3 C:\vkbot\models\CommandCaller.php(18): app\models\CommandCaller::runChatCommand(Object(app\models\Commands))
+#4 C:\vkbot\models\Bot.php(40): app\models\CommandCaller::checkAll()
+#5 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#6 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#7 [internal function]: app\controllers\SiteController->actionBot()
+#8 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#9 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#10 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#11 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#12 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#13 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#14 {main}
+2017-04-04 15:08:25 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491318505.8182
+    'REQUEST_TIME' => 1491318505
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 07:46:56 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-04-05 07:46:57 [][-][-][error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-05 07:46:57 [][-][-][error][app\models\VkException] exception 'app\models\VkException' with message 'error #5: User authorization failed: invalid session.' in C:\vkbot\models\Vk.php:156
+Stack trace:
+#0 C:\vkbot\models\Vk.php(83): app\models\Vk->call('https://api.vk....')
+#1 C:\vkbot\models\Vk.php(62): app\models\Vk->api('messages.getLon...', Array)
+#2 C:\vkbot\models\Vk.php(56): app\models\Vk->invoke('getLongPollServ...', Array)
+#3 C:\vkbot\models\Bot.php(108): app\models\Vk->__call('getLongPollServ...', Array)
+#4 C:\vkbot\models\Bot.php(108): app\models\Vk->getLongPollServer()
+#5 C:\vkbot\models\Bot.php(65): app\models\Bot->getLongPollSettings()
+#6 C:\vkbot\models\Bot.php(39): app\models\Bot->longPoll()
+#7 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#8 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#9 [internal function]: app\controllers\SiteController->actionBot()
+#10 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#13 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#14 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#16 {main}
+2017-04-05 07:46:54 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491378414.4918
+    'REQUEST_TIME' => 1491378414
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 07:49:43 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-04-05 07:49:44 [][-][-][error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-05 07:49:44 [][-][-][error][app\models\VkException] exception 'app\models\VkException' with message 'error #5: User authorization failed: invalid session.' in C:\vkbot\models\Vk.php:156
+Stack trace:
+#0 C:\vkbot\models\Vk.php(83): app\models\Vk->call('https://api.vk....')
+#1 C:\vkbot\models\Vk.php(62): app\models\Vk->api('messages.getLon...', Array)
+#2 C:\vkbot\models\Vk.php(56): app\models\Vk->invoke('getLongPollServ...', Array)
+#3 C:\vkbot\models\Bot.php(108): app\models\Vk->__call('getLongPollServ...', Array)
+#4 C:\vkbot\models\Bot.php(108): app\models\Vk->getLongPollServer()
+#5 C:\vkbot\models\Bot.php(65): app\models\Bot->getLongPollSettings()
+#6 C:\vkbot\models\Bot.php(39): app\models\Bot->longPoll()
+#7 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#8 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#9 [internal function]: app\controllers\SiteController->actionBot()
+#10 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#13 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#14 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#16 {main}
+2017-04-05 07:49:40 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491378580.1882
+    'REQUEST_TIME' => 1491378580
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 07:49:52 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-04-05 07:49:53 [][-][-][error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-05 07:49:53 [][-][-][error][app\models\VkException] exception 'app\models\VkException' with message 'error #5: User authorization failed: invalid session.' in C:\vkbot\models\Vk.php:156
+Stack trace:
+#0 C:\vkbot\models\Vk.php(83): app\models\Vk->call('https://api.vk....')
+#1 C:\vkbot\models\Vk.php(62): app\models\Vk->api('messages.getLon...', Array)
+#2 C:\vkbot\models\Vk.php(56): app\models\Vk->invoke('getLongPollServ...', Array)
+#3 C:\vkbot\models\Bot.php(108): app\models\Vk->__call('getLongPollServ...', Array)
+#4 C:\vkbot\models\Bot.php(108): app\models\Vk->getLongPollServer()
+#5 C:\vkbot\models\Bot.php(65): app\models\Bot->getLongPollSettings()
+#6 C:\vkbot\models\Bot.php(39): app\models\Bot->longPoll()
+#7 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#8 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#9 [internal function]: app\controllers\SiteController->actionBot()
+#10 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#13 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#14 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#16 {main}
+2017-04-05 07:49:49 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491378589.9288
+    'REQUEST_TIME' => 1491378589
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 08:14:58 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-04-05 08:14:59 [][-][-][error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-05 08:14:59 [][-][-][error][app\models\VkException] exception 'app\models\VkException' with message 'error #5: User authorization failed: invalid session.' in C:\vkbot\models\Vk.php:156
+Stack trace:
+#0 C:\vkbot\models\Vk.php(83): app\models\Vk->call('https://api.vk....')
+#1 C:\vkbot\models\Vk.php(62): app\models\Vk->api('messages.getLon...', Array)
+#2 C:\vkbot\models\Vk.php(56): app\models\Vk->invoke('getLongPollServ...', Array)
+#3 C:\vkbot\models\Bot.php(108): app\models\Vk->__call('getLongPollServ...', Array)
+#4 C:\vkbot\models\Bot.php(108): app\models\Vk->getLongPollServer()
+#5 C:\vkbot\models\Bot.php(65): app\models\Bot->getLongPollSettings()
+#6 C:\vkbot\models\Bot.php(39): app\models\Bot->longPoll()
+#7 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#8 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#9 [internal function]: app\controllers\SiteController->actionBot()
+#10 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#13 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#14 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#16 {main}
+2017-04-05 08:14:53 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491380093.2438
+    'REQUEST_TIME' => 1491380093
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:19:42 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-04-05 11:20:23 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM)' in C:\vkbot\models\ChatCommands.php:169
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:19:40 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491391180.4749
+    'REQUEST_TIME' => 1491391180
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:22:59 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM)' in C:\vkbot\models\ChatCommands.php:169
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:22:38 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491391358.4351
+    'REQUEST_TIME' => 1491391358
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:24:07 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM)' in C:\vkbot\models\ChatCommands.php:169
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:23:51 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491391431.9383
+    'REQUEST_TIME' => 1491391431
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:26:49 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-04-05 11:26:56 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected ')', expecting :: (T_PAAMAYIM_NEKUDOTAYIM)' in C:\vkbot\models\ChatCommands.php:169
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:26:46 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491391606.8273
+    'REQUEST_TIME' => 1491391606
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:46:11 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-04-05 11:46:24 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'else' (T_ELSE)' in C:\vkbot\models\ChatCommands.php:173
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:46:09 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491392769.0468
+    'REQUEST_TIME' => 1491392769
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:46:43 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'else' (T_ELSE)' in C:\vkbot\models\ChatCommands.php:173
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:46:39 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491392799.3075
+    'REQUEST_TIME' => 1491392799
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:47:28 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '?'' in C:\vkbot\models\ChatCommands.php:172
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:47:23 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491392843.7991
+    'REQUEST_TIME' => 1491392843
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:48:37 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in C:\vkbot\models\ChatCommands.php:173
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:48:30 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491392910.4339
+    'REQUEST_TIME' => 1491392910
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:48:43 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in C:\vkbot\models\ChatCommands.php:173
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:48:38 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491392918.9324
+    'REQUEST_TIME' => 1491392918
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:48:57 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'if' (T_IF)' in C:\vkbot\models\ChatCommands.php:173
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:48:53 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491392933.1572
+    'REQUEST_TIME' => 1491392933
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:49:07 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '?'' in C:\vkbot\models\ChatCommands.php:173
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:49:02 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491392942.6947
+    'REQUEST_TIME' => 1491392942
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:49:56 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected 'else' (T_ELSE)' in C:\vkbot\models\ChatCommands.php:173
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:49:51 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491392991.1985
+    'REQUEST_TIME' => 1491392991
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:51:19 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '}'' in C:\vkbot\models\ChatCommands.php:175
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:51:12 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491393072.1461
+    'REQUEST_TIME' => 1491393072
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:51:58 [][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '}'' in C:\vkbot\models\ChatCommands.php:175
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:51:53 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491393113.0835
+    'REQUEST_TIME' => 1491393113
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:53:07 [][-][-][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to undefined function app\models\userExists()' in C:\vkbot\models\ChatCommands.php:172
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2017-04-05 11:52:16 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491393136.4218
+    'REQUEST_TIME' => 1491393136
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-05 11:54:07 [][-][-][warning][bot-log] longPoll failed with code 1
+2017-04-05 11:54:04 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMMPath' => 'C:\\Program Files\\Lenovo\\Communications Utility'
+    'COMPUTERNAME' => 'NB-KAYURKOV'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'configsetroot' => 'C:\\Windows\\ConfigSetRoot'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\ka.yurkov'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\ka.yurkov\\AppData\\Local'
+    'LOGONSERVER' => '\\\\NB-KAYURKOV'
+    'LOG_FILE' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Intel\\iCLS Client\\;C:\\Program Files\\Intel\\iCLS Client\\;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\IPT;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Common Files\\Lenovo;C:\\Program Files\\Condusiv Technologies\\ExpressCache\\;C:\\ProgramData\\Lenovo\\ReadyApps;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\Program Files\\Git\\cmd;C:\\PHP\\;C:\\Program Files (x86)\\Skype\\Phone\\'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 61 Stepping 4, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3d04'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'READYAPPS' => 'C:\\ProgramData\\Lenovo\\ReadyApps'
+    'SESSIONNAME' => 'Console'
+    'SWSHARE' => 'C:\\SWSHARE'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KA7D1A~1.YUR\\AppData\\Local\\Temp'
+    'TVT' => 'C:\\Program Files (x86)\\Lenovo'
+    'TVTCOMMON' => 'C:\\Program Files (x86)\\Common Files\\Lenovo'
+    'USERDOMAIN' => 'nb-kayurkov'
+    'USERNAME' => 'ka.yurkov'
+    'USERPROFILE' => 'C:\\Users\\ka.yurkov'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'windows_tracing_flags' => '3'
+    'windows_tracing_logfile' => 'C:\\BVTBin\\Tests\\installpackage\\csilogfile.log'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1491393244.5
+    'REQUEST_TIME' => 1491393244
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]

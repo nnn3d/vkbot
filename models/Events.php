@@ -38,7 +38,13 @@ class Events extends \yii\db\ActiveRecord
             [['event'], 'string', 'max' => 20],
         ];
     }
-
+	
+	public static function getEvent($chatId, $event) 
+	{ 
+		$eventList = static::findAll(['chatId' => $chatId, 'event' => $event]); 
+		return $eventList; 
+	}
+	
     public static function setEvent($chatId, $userId, $time, $event, $midEvent = null)
     {
         if (Events::find()->where(['chatId' => $chatId, 'userId' => $userId, 'time' => $time])->exists()) return false;

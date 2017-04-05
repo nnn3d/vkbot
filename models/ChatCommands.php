@@ -154,6 +154,34 @@ class ChatCommands
             }
         );
 
+		$commands[] = new ChatCommand( 
+			'ливы', 
+			'Последние выходы.', 
+			function ($command) use ($s) { 
+				$s->load($command); 
+				return $s->argsEqual(1) && $s->argsRegExp(['ливы']); 
+			}, 
+			function ($command) { 
+				$message = "Из конфы вышли:\n"; 
+				$event = "leave_user"; 
+				$chat = Chats::getChat($command->chatId); 
+				$eventList = Events::getEvent($chat->chatId, $event);
+			foreach ($eventList as $num=>$userId) { 
+				$n = $num + 1;
+				$user = Users::getUser($chat->chatId, $userId->userId);
+				$checkUs = Users::userExists($chat->chatId, $userId->userId);
+				if ($checkUs) {
+					$where='в конфе';
+				} else {
+					$where='вышел';
+				}
+				$messageTime = ChatCommands::timeToStr(time() - $userId->time);
+				$message .= "\n{$n}. {$user->name} {$user->secondName} $messageTime $where"; 
+			} 
+			$chat->sendMessage($message); 
+			} 
+		);
+		
         $commands[] = new ChatCommand(
             'брак { да или нет }',
             '',
@@ -186,7 +214,8 @@ class ChatCommands
                     if (!$marriage) {
                         $value = [[$user1->userId, $user2->userId, time()]];
 
-                    } else {
+                    } 
+					{
                         $value = unserialize($marriage);
                         if (!is_array($value)) {
                             $value = [];
