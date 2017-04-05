@@ -246,7 +246,7 @@ class ChatCommands
             'Показывает топ самых крепких браков',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(2) && $s->argsRegExp(['топ', 'браков']);
+                return $s->argsEqual(2) && $s->argsRegExp(['топ', 'браков']);
             },
             function ($command) {
                 $chat       = Chats::getChat($command->chatId);
@@ -257,7 +257,7 @@ class ChatCommands
 		$countMarriages = count($marriages);
 
 		if($countMarriages > 5 && is_array($marriages)) {
-			$message .= "Топ самых крепких пар:";
+			$message = "Топ самых крепких пар:";
 			$i = 1;
 			$timeBeginMarriage = 0;
 			
@@ -314,7 +314,7 @@ class ChatCommands
                 }
 		
 		if($countMarriages > 5) {
-		    $message .= "\n Доступен топ самых крепких браков! (".Params::bot('name')." топ браков)";
+		    $message .= "\n\n Доступен топ самых крепких браков! (".Params::bot('name')." топ браков)";
 		}
 
                 $chat->sendMessage($message);
