@@ -270,7 +270,7 @@ class ChatCommands
 				if($i < 4) {
 				        $message .= "\n $i. {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} \n🎀 $messageTime";
 				} else {
-					$message .= "\n $i. {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName} \n($messageTime)";
+					$message .= "\n $i. {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName} \n🎀 $messageTime";
 				}
 				
 				$i++;
