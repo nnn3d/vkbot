@@ -761,10 +761,9 @@ class ChatCommands
                 $c      = implode(' ', array_slice($command->getArgs(), 1));
                 $countC = substr_count($c, '?');
                 $c      = trim($c, "?");
+		if (empty($c)) return false;
                 if ($countC == '1') {
                     $chat->sendMessage("Cчитаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}", ['forward_messages' => $command->messageId]);
-                } else if (empty($c)) {
-                    return false;
                 } else {
                     $chat->sendMessage("Я думаю, что {$users[$r]->name} {$users[$r]->secondName}", ['forward_messages' => $command->messageId]);
                 }
