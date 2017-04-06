@@ -184,3 +184,18 @@
 2017-04-06 07:56:39 [info][bot-log] start bot
 2017-04-06 07:56:53 [info][bot-log] add command 'торч ливы 2' from chat 2
 2017-04-06 07:59:24 [info][bot-log] start bot
+2017-04-06 08:35:15 [info][bot-log] start bot
+2017-04-06 08:35:30 [info][bot-log] add command 'торч статус юзер михаил ф' from chat 2
+2017-04-06 08:36:08 [info][bot-log] add command 'торч статус юзер михаил ф' from chat 2
+2017-04-06 08:39:24 [info][bot-log] add command 'торч статус модер вишня' from chat 2
+2017-04-06 08:41:22 [info][bot-log] add command 'торч статус модер ария' from chat 2
+2017-04-06 08:45:31 [info][bot-log] add command 'Торч кто хуй' from chat 2
+2017-04-06 08:55:20 [info][bot-log] add command 'торч спасибо кстате за хелпу по ливам, но траб оказался вот тут $days = intval($command-&gt;getArgs()[2]);' from chat 16
+2017-04-06 14:26:16 [info][bot-log] start bot
+2017-04-06 14:26:19 [warning][bot-log] longPoll failed with code 2
+2017-04-06 14:26:20 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 753777f55fdbe6ed1c7b6d84970ab9bd16d76b05 
+ ts: 1699162361
+2017-04-06 14:26:26 [info][bot-log] add command 'торч кого выебать' from chat 2
+2017-04-06 14:26:27 [info][bot-log] add command 'торч кто собака?' from chat 2

@@ -43,7 +43,7 @@ class Commands extends \yii\db\ActiveRecord
 
     public static function addFromMessage($chatId, $userId, $message, $messageId = null, $command = COMMAND_USER)
     {
-        $botName = Params::bot('name');
+        $botName= Params::bot('name');
         $args = explode(' ', $message);
         $msg = implode(' ', $args);
         // Yii::info("check name " . "/{$botName}[\W]{0, 1}/i" . "and $args[0]", 'bot-log');
