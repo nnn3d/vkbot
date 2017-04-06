@@ -175,3 +175,12 @@
 2017-04-05 14:59:35 [info][bot-log] add command 'торч ливы 3' from chat 2
 2017-04-05 15:04:40 [info][bot-log] start bot
 2017-04-05 15:04:50 [info][bot-log] add command 'торч ливы 123' from chat 2
+2017-04-06 07:41:04 [info][bot-log] start bot
+2017-04-06 07:41:47 [info][bot-log] add command 'торч ливы 2' from chat 2
+2017-04-06 07:42:06 [info][bot-log] start bot
+2017-04-06 07:42:10 [info][bot-log] add command 'торч сосешь хуй' from chat 2
+2017-04-06 07:42:10 [info][bot-log] add command 'торч ливы 2' from chat 2
+2017-04-06 07:42:11 [info][bot-log] add command 'торч в ебало ?' from chat 2
+2017-04-06 07:56:39 [info][bot-log] start bot
+2017-04-06 07:56:53 [info][bot-log] add command 'торч ливы 2' from chat 2
+2017-04-06 07:59:24 [info][bot-log] start bot

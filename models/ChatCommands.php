@@ -155,20 +155,20 @@ class ChatCommands
         );
 
 		$commands[] = new ChatCommand( 
-			'ливы', 
+			'ливы { количесвто дней }', 
 			'Последние выходы.', 
 			function ($command) use ($s) { 
 				$s->load($command); 
-				return $s->argsEqual(1) && $s->argsRegExp(['ливы']); 
+				return $s->argsEqual(2) && $s->argsRegExp(['ливы','[\d]{1,2}']); 
 			}, 
 			function ($command) { 
 				$message = "Из конфы вышли:\n"; 
 				$event = "leave_user"; 
+				$days = intval($command->getArgs()[1]);
 				$chat = Chats::getChat($command->chatId); 
 				$users = $chat->getAllActiveUsers();
 				$eventList = Events::getEvent($chat->chatId, $event);
-			foreach ($eventList as $num=>$userId) { 
-				$n = $num + 1;
+			foreach ($eventList as $userId) { 
 				$user = Users::getUser($chat->chatId, $userId->userId);
 				$checkUs = Users::userExists($chat->chatId, $userId->userId);
 				if (in_array($user, $users)) {
@@ -179,10 +179,13 @@ class ChatCommands
 				$currenttime=time() - $userId->time;
 				$messageTime = ChatCommands::timeToStr($currenttime);
 				$timearr = ChatCommands::timeToArr($currenttime);
+				if ($days > ($timearr[3])) {
+				$n++;
 				$message .= "\n{$n}. {$user->name} {$user->secondName} $messageTime $where"; 
+				}
 			} 
 			$chat->sendMessage($message); 
-			} 
+			}
 		);
 		
         $commands[] = new ChatCommand(
@@ -624,11 +627,11 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'топ активность',
+            'актив',
             'Показывает время с последнего сообщения пользователя.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(2) && $s->argsRegExp(['топ', 'активность']);
+                return $s->argsEqual(1) && $s->argsRegExp(['актив']);
             },
             function ($command) {
                 $time        = time();
@@ -768,15 +771,15 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'установить статус команды { админ / модер / юзер } { название команды }',
+            'доступ { админ / модер / юзер } { название команды }',
             'Выставляет уровень допуска для команды.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(4) && $s->argsRegExp(['установить', 'статус', 'команды']);
+                return $s->argsLarger(2) && $s->argsRegExp(['доступ']);
             },
             function ($command) {
                 $statusMap = Params::bot(['statusMap']);
-                $statusArg = $command->getArgs()[3];
+                $statusArg = $command->getArgs()[1];
                 if (isset($statusMap[$statusArg])) {
                     $status = $statusMap[$statusArg];
                 } else {
@@ -784,7 +787,7 @@ class ChatCommands
                 }
 
                 $chat           = Chats::getChat($command->chatId);
-                $commandArgsS   = implode(' ', array_slice($command->getArgs(), 4));
+                $commandArgsS   = implode(' ', array_slice($command->getArgs(), 2));
                 $changedCommand = ChatCommands::getCommandByRegExp($commandArgsS);
                 if (empty($changedCommand)) {
                     $chat->sendMessage("Команда '$commandArgsS' не найдена");
@@ -803,16 +806,16 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'кикнуть участника { имя [ + фамилия ] участника }',
+            'кик { имя [ + фамилия ] участника }',
             'Кикает указанного участника из беседы.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(2) && $s->argsRegExp(['кикнуть', 'участника']);
+                return $s->argsLarger(1) && $s->argsRegExp(['кик']);
             },
             function ($command) {
                 $chat       = Chats::getChat($command->chatId);
-                $name       = $command->getArgs()[2];
-                $secondName = isset($command->getArgs()[3]) ? $command->getArgs()[3] : '';
+                $name       = $command->getArgs()[1];
+                $secondName = isset($command->getArgs()[2]) ? $command->getArgs()[2] : '';
                 $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 if (!$user) {
                     $chat->sendMessage("Не найден участник беседы '$name $secondName'");
@@ -848,11 +851,11 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'установить правила',
+            'новые правила',
             'Устанавливает правила беседы',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(2) && $s->argsRegExp(['установить', 'правила']);
+                return $s->argsLarger(2) && $s->argsRegExp(['новые', 'правила']);
             },
             function ($command) {
                 $chat                                    = Chats::getChat($command->chatId);
@@ -867,15 +870,15 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'установить статус участника { модер / юзер } { имя [ + фамилия ] участника }',
+            'статус { модер / юзер } { имя [ + фамилия ] участника }',
             'Выставить уровень доступа к командам для участника.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(3) && $s->argsRegExp(['установить', 'статус', 'участника']);
+                return $s->argsLarger(1) && $s->argsRegExp(['статус']);
             },
             function ($command) {
                 $statusMap = Params::bot(['statusMap']);
-                $statusArg = $command->getArgs()[3];
+                $statusArg = $command->getArgs()[1];
                 if (isset($statusMap[$statusArg]) && $statusMap[$statusArg] != USER_STATUS_ADMIN) {
                     $status = $statusMap[$statusArg];
                 } else {
@@ -883,8 +886,8 @@ class ChatCommands
                 }
 
                 $chat       = Chats::getChat($command->chatId);
-                $name       = $command->getArgs()[4];
-                $secondName = isset($command->getArgs()[5]) ? $command->getArgs()[5] : '';
+                $name       = $command->getArgs()[2];
+                $secondName = isset($command->getArgs()[3]) ? $command->getArgs()[3] : '';
                 $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 if (!$user) {
                     $chat->sendMessage("Не найден участник беседы '$name $secondName'");
