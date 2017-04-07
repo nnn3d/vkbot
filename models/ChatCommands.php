@@ -841,9 +841,9 @@ class ChatCommands
 			$kickedBy = Users::getUser($command->chatId, $command->userId);
 			
 			if($command->userId == '266979404') {
-				$message = "Вас выкинули из беседы решением администрации.\n По всем вопросам к создателю конфы – Пен Мет (vk.com/id266979404)";
+				$message = "Вас выкинули из беседы решением администрации.\n По всем вопросам к создателю конфы – Пен Мет (vk.com/penmet)";
 			} else {
-				$message = "Вы были кикнуты из общей беседы.\n Вас выгнал модератор – $kickedBy->name $kickedBy->secondName.\n По всем вопросам к админу конфы – Пен Мет (vk.com/id266979404).";
+				$message = "Вы были кикнуты из общей беседы.\n Вас выгнал модератор – $kickedBy->name $kickedBy->secondName.\n По всем вопросам к админу конфы – Пен Мет (vk.com/penmet).";
 			}
 			
 			$rules = ChatParams::get($command->chatId)->rules;
