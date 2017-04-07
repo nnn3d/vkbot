@@ -199,3 +199,12 @@
  ts: 1699162361
 2017-04-06 14:26:26 [info][bot-log] add command 'торч кого выебать' from chat 2
 2017-04-06 14:26:27 [info][bot-log] add command 'торч кто собака?' from chat 2
+2017-04-07 07:11:37 [info][bot-log] start bot
+2017-04-07 07:11:40 [warning][bot-log] longPoll failed with code 2
+2017-04-07 07:11:41 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 207426d46974f78c36a63cd2325108d8cdf088e7 
+ ts: 1774575289
+2017-04-07 07:11:58 [info][bot-log] add command 'торч ливы 2' from chat 2
+2017-04-07 07:23:10 [info][bot-log] add command 'торч ливы 1' from chat 2
+2017-04-07 07:24:09 [info][bot-log] add command 'торч ливы 2' from chat 2

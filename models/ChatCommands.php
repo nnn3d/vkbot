@@ -168,6 +168,7 @@ class ChatCommands
 				$chat = Chats::getChat($command->chatId); 
 				$users = $chat->getAllActiveUsers();
 				$eventList = Events::getEvent($chat->chatId, $event);
+				$n=0;
 			foreach ($eventList as $userId) { 
 				$user = Users::getUser($chat->chatId, $userId->userId);
 				$checkUs = Users::userExists($chat->chatId, $userId->userId);
