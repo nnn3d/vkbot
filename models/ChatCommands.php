@@ -180,7 +180,7 @@ class ChatCommands
 				$currenttime=time() - $userId->time;
 				$messageTime = ChatCommands::timeToStr($currenttime);
 				$timearr = ChatCommands::timeToArr($currenttime);
-				if (!$timearr[3]){
+				if (!isset($timearr[3])){
 					$timearr[3]=0;
 				}
 				if ($days > ($timearr[3])) {
