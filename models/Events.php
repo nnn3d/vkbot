@@ -110,7 +110,7 @@ class Events extends \yii\db\ActiveRecord
             });
             foreach ($users as $userData) {
                 $status = $statusLabels[$userData->status];
-                if($status == 'модер') {
+                if($status == USER_STATUS_ADMIN) {
                     $message .= "\n vk.com/id{$userData->userId} ({$userData->name} {$userData->secondName})";
                 }
             }
@@ -133,7 +133,7 @@ class Events extends \yii\db\ActiveRecord
             });
             foreach ($users as $userData) {
                 $status = $statusLabels[$userData->status];
-                if($status == 'модер') {
+                if($status == USER_STATUS_ADMIN) {
                     $message .= "\n vk.com/id{$userData->userId} ({$userData->name} {$userData->secondName})";
                 }
             }
