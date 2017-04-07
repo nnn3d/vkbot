@@ -114,7 +114,7 @@ class Bot {
 
 	private function messageWorker($chatId, $userId, $message, $messageId, $time = null)
 	{
-		Users::incrementCounter($chatId, $userId, strlen(str_replace(" ","",$message)), $time);
+		Users::incrementCounter($chatId, $userId, mb_strlen(str_replace(" ","",$message), 'UTF-8'), $time);
 		Commands::addFromMessage($chatId, $userId, $message, $messageId);
 	}
 
