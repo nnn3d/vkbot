@@ -6,6 +6,7 @@ use app\models\ChatParams;
 use app\models\Chats;
 use app\models\MessagesCounter;
 use app\models\PChart;
+use app\models\Vk;
 use app\models\PendingTasks;
 use app\models\Users;
 
@@ -276,9 +277,9 @@ class ChatCommands
 				$messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
 				
 				if($i < 4) {
-				        $message .= "\n $i. {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} \n🎀 $messageTime";
+				        $message .= "\n $i. {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} \n($messageTime)";
 				} else {
-					$message .= "\n $i. {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName} \n🎀 $messageTime";
+					$message .= "\n $i. {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName} \n($messageTime)";
 				}
 				
 				$i++;
@@ -834,7 +835,25 @@ class ChatCommands
                 $chat->sendMessage("Пользователь {$user->name} {$user->secondName} будет кикнут");
                 if (!$chat->kickUser($user->userId)) {
                     $chat->sendMessage("Не удалось кикнуть пользователя {$user->name} {$user->secondName}");
-                }
+                } else {
+			$statusLabels = Params::bot(['statusLabels']);
+			$users = $chat->getAllActiveUsers();
+			$kickedBy = Users::getUser($command->chatId, $command->userId);
+			
+			if($command->userId == '266979404') {
+				$message = "Вы были кикнуты из общей беседы.\n По всем вопросам к админу конфы – Пен Мет (vk.com/id266979404)";
+			} else {
+				$message = "Вы были кикнуты из общей беседы.\n Вас выгнал модератор – $kickedBy->name $kickedBy->secondName (vk.com/$command->userId)";
+			}
+			
+			$rules = ChatParams::get($command->chatId)->rules;
+			
+			if(!empty($rules)){
+				$message .= "\n\nСоветуем еще раз изучить правила нашей беседы:\n $rules";
+			}
+			
+			Vk::get(true)->messages->send(['user_id' => $user->userId, 'message' => $message]);
+		}
             },
             ['statusDefault' => USER_STATUS_MODER]
         );
