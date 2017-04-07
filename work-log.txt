@@ -208,3 +208,12 @@
 2017-04-07 07:11:58 [info][bot-log] add command 'торч ливы 2' from chat 2
 2017-04-07 07:23:10 [info][bot-log] add command 'торч ливы 1' from chat 2
 2017-04-07 07:24:09 [info][bot-log] add command 'торч ливы 2' from chat 2
+2017-04-07 11:59:13 [info][bot-log] start bot
+2017-04-07 11:59:16 [warning][bot-log] longPoll failed with code 2
+2017-04-07 11:59:17 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 0427bdd8f7977c523596e96a60d152b411b39ed8 
+ ts: 1774595795
+2017-04-07 11:59:19 [info][bot-log] add command 'торч кто хохол' from chat 2
+2017-04-07 11:59:44 [info][bot-log] add command 'торч ливы 1' from chat 2
+2017-04-07 11:59:53 [info][bot-log] start bot
