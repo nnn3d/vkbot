@@ -468,7 +468,7 @@ class ChatCommands
                     $command->userId,
                 ];
                 $botName = Params::bot('name');
-                $message = "{$user->name} {$user->secondName}, вас приглашает на дуэль со случайным исходом {$pioneerUser->name} {$pioneerUser->secondName}, спросив разрешения у мамы.\n Рискнете своей удачей? (команда \"$botName дуэль +\" или \"$botName дуэль -\" для отказа)";
+                $message = "{$user->name} {$user->secondName}, вас приглашает на дуэль со случайным исходом {$pioneerUser->name} {$pioneerUser->secondName}, спросив разрешения у мамы.\n\n Рискнете своей удачей? (команда \"$botName дуэль +\" или \"$botName дуэль -\" для отказа)";
                 Commands::add($command->chatId, null, $args, null, COMMAND_RAND_DUEL);
 
                 $chat->sendMessage($message);
@@ -506,7 +506,7 @@ class ChatCommands
                     $command->userId,
                 ];
                 $botName = Params::bot('name');
-                $message = "{$user->name} {$user->secondName}, вас приглашает на дуэль {$pioneerUser->name} {$pioneerUser->secondName}, заручившись подержкой боженьки.\n Принимаете ли вы вызов? (команда \"$botName дуэль +\" или \"$botName дуэль -\" для отказа)";
+                $message = "{$user->name} {$user->secondName}, вас приглашает на дуэль {$pioneerUser->name} {$pioneerUser->secondName}, заручившись подержкой боженьки.\n\n Принимаете ли вы вызов? (команда \"$botName дуэль +\" или \"$botName дуэль -\" для отказа)";
                 Commands::add($command->chatId, null, $args, null, COMMAND_DUEL);
 
                 $chat->sendMessage($message);
@@ -540,7 +540,7 @@ class ChatCommands
 			$botName = Params::bot('name');
 			$winNumber = rand(1, 2);
 
-			$chat->sendMessage("{$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} взял в руки пистолет Макарова, но посмотрев на сухую корягу в руках оппонента, раздумал стрелять. \"О чем ты думал, когда шел на дуэль, днище?\"\n {$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} победитель! Цветы! Срочно нужны цветы!");
+			$chat->sendMessage("{$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} взял в руки пистолет Макарова, но посмотрев на сухую корягу в руках оппонента, раздумал стрелять. \"О чем ты думал, когда шел на дуэль, днище?\"\n\n {$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} победитель! Цветы! Срочно нужны цветы!");
 			$rand_duel->delete();
 			
 			return false;
