@@ -452,7 +452,7 @@ class ChatCommands
                 }
 		if(!isset($command->getArgs()[3])) return false;
                 $name       = $command->getArgs()[2];
-                $secondName = isset($command->getArgs()[3]) ? $command->getArgs()[2];
+                $secondName = $command->getArgs()[3];
                 $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 if (!$user) {
                     $chat->sendMessage("Я не могу найти оппонента с таким именем среди участников конференции");
