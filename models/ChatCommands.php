@@ -540,7 +540,7 @@ class ChatCommands
 			$botName = Params::bot('name');
 			$winNumber = rand(1, 2);
 
-			$chat->sendMessage("{$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} взял в руки пистолет Макарова, но посмотрев на сухую корягу в руках оппонента, раздумал стрелять. \"О чем ты думал, когда шел на дуэль, днище?\"\n\n {$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} победитель! Цветы! Срочно нужны цветы!");
+			$chat->sendMessage("{$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} взял в руки пистолет Макарова, но посмотрев на сухую корягу в руках оппонента, раздумал стрелять. \"О чем ты думал, когда шел на дуэль, днище?\"\n\n {$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} победитель! Цветы! Срочно нужны цветы! \n winNumber: $winNumber");
 			$rand_duel->delete();
 			
 			return false;
