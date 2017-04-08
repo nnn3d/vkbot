@@ -436,7 +436,45 @@ class ChatCommands
                 $chat->sendMessage($message);
             }
         );
+	    
+	    $commands[] = new ChatCommand(
+		    'дуэль рандом { имя [ + фамилия ] участника }',
+		    'Вызвать участника на дуэль со случайным исходом.',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(1) && $s->argsRegExp(['дуэль', 'рандом']);
+            },
+            function ($command) {
+                $chat = Chats::getChat($command->chatId);
+                if (Commands::find()->where(['command' => COMMAND_DUEL, 'chatId' => $command->chatId])->exists() || Commands::find()->where(['command' => COMMAND_RAND_DUEL, 'chatId' => $command->chatId])->exists()) {
+                    $chat->sendMessage("Дуэль уже идет, для новой еще не время!");
+                    return false;
+                }
+		if(!isset($command->getArgs()[3])) return false;
+                $name       = $command->getArgs()[2];
+                $secondName = isset($command->getArgs()[3]) ? $command->getArgs()[2];
+                $user       = Users::getUserByName($command->chatId, $name, $secondName);
+                if (!$user) {
+                    $chat->sendMessage("Я не могу найти оппонента с таким именем среди участников конференции");
+                    return false;
+                }
+                if ($command->userId == $user->userId) {
+                    $chat->sendMessage("Нельзя вызвать на дуэль самого себя");
+                    return false;
+                }
+                $pioneerUser = Users::getUser($command->chatId, $command->userId);
+                $args        = [
+                    $user->userId,
+                    $command->userId,
+                ];
+                $botName = Params::bot('name');
+                $message = "{$user->name} {$user->secondName}, вас приглашает на дуэль со случайным исходом {$pioneerUser->name} {$pioneerUser->secondName}, спросив разрешения у мамы.\n Рискнете своей удачей? (команда \"$botName дуэль +\" или \"$botName дуэль -\" для отказа)";
+                Commands::add($command->chatId, null, $args, null, COMMAND_RAND_DUEL);
 
+                $chat->sendMessage($message);
+            }
+        );
+	    
         $commands[] = new ChatCommand(
             'дуэль { имя [ + фамилия ] участника }',
             'Вызвать участника на дуэль.',
@@ -446,10 +484,11 @@ class ChatCommands
             },
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
-                if (Commands::find()->where(['command' => COMMAND_DUEL, 'chatId' => $command->chatId])->exists()) {
+                if (Commands::find()->where(['command' => COMMAND_DUEL, 'chatId' => $command->chatId])->exists() || Commands::find()->where(['command' => COMMAND_RAND_DUEL, 'chatId' => $command->chatId])->exists()) {
                     $chat->sendMessage("Дуэль уже идет, для новой еще не время!");
                     return false;
                 }
+		if($command->getArgs()[1] == 'рандом' && isset($command->getArgs()[3])) return false;
                 $name       = $command->getArgs()[1];
                 $secondName = isset($command->getArgs()[2]) ? $command->getArgs()[2] : '';
                 $user       = Users::getUserByName($command->chatId, $name, $secondName);
@@ -484,33 +523,54 @@ class ChatCommands
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
                 $duel = Commands::findOne(['command' => COMMAND_DUEL, 'chatId' => $command->chatId]);
-                if (!$duel) {
+		$rand_duel = Commands::findOne(['command' => COMMAND_RAND_DUEL, 'chatId' => $command->chatId]);
+                if (!$duel && !$rand_duel) {
                     return Chats::getChat(16)->sendMessage('no2');
                 }
+		    
+		if(!$duel) {
+			$userDuel = array();
+			$userDuel[1] = Users::getUser($command->chatId, $rand_duel->getArgs()[0]);
+			$userDuel[2] = Users::getUser($command->chatId, $rand_duel->getArgs()[0]);
+			if ($command->getArgs()[1] == '-') {
+				$chat->sendMessage("{$userDuel[1]->name} {$userDuel[1]->secondName} отклонил дуэль, жалкий трус!");
+				$rand_duel->delete();
+				return false;
+			}
+			$botName = Params::bot('name');
+			$winNumber = rand(1, 2);
 
-                $user1 = Users::getUser($command->chatId, $duel->getArgs()[0]);
-                if ($user1->userId != $command->userId) {
-                    return Chats::getChat(16)->sendMessage('no1');
-                }
-
-                if ($command->getArgs()[1] == '-') {
-                    $chat->sendMessage("{$user1->name} {$user1->secondName} отклонил дуэль, жалкий трус!");
-                    $duel->delete();
-                    return false;
-                }
-                $botName = Params::bot('name');
-                $prefix  = "$botName битва ";
-                $str     = substr(strtolower(md5(uniqid(rand(), true))), 0, 6);
-                preg_match_all('/./us', $prefix . $str, $ar);
-                $strrev = join('', array_reverse($ar[0]));
-                $args   = [
-                    $user1->userId,
-                    $duel->getArgs()[1],
-                    $str,
-                ];
-                $duel->delete();
-                Commands::add($command->chatId, null, $args, null, COMMAND_DUEL);
-                $chat->sendMessage("Битва начинается! Победит тот, кто первым наберет строку '{$strrev}' наоборот!");
+			$chat->sendMessage("{$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} взял в руки пистолет Макарова, но посмотрев на сухую корягу в руках оппонента, раздумал стрелять. \"О чем ты думал, когда шел на дуэль, днище?\"\n {$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} победитель! Цветы! Срочно нужны цветы!");
+			$rand_duel->delete();
+			
+			return false;
+		}
+		
+		if(!$rand_duel) {
+			$user1 = Users::getUser($command->chatId, $duel->getArgs()[0]);
+			if ($user1->userId != $command->userId) {
+				return Chats::getChat(16)->sendMessage('no1');
+			}
+			
+			if ($command->getArgs()[1] == '-') {
+				$chat->sendMessage("{$user1->name} {$user1->secondName} отклонил дуэль, жалкий трус!");
+				$duel->delete();
+				return false;
+			}
+			$botName = Params::bot('name');
+			$prefix  = "$botName битва ";
+			$str     = substr(strtolower(md5(uniqid(rand(), true))), 0, 6);
+			preg_match_all('/./us', $prefix . $str, $ar);
+			$strrev = join('', array_reverse($ar[0]));
+			$args   = [
+				$user1->userId,
+				$duel->getArgs()[1],
+				$str,
+			];
+			$duel->delete();
+			Commands::add($command->chatId, null, $args, null, COMMAND_DUEL);
+			$chat->sendMessage("Битва начинается! Победит тот, кто первым наберет строку '{$strrev}' наоборот!");
+		}
             },
             ['hidden' => true]
         );
