@@ -7,6 +7,7 @@ define('USER_STATUS_DEFAULT', 1);
 define('COMMAND_USER', 'user');
 define('COMMAND_BOT', 'bot');
 define('COMMAND_DUEL', 'duel');
+define('COMMAND_RAND_DUEL', 'rand_duel');
 define('COMMAND_MARRIAGE', 'marriage');
 
 
