@@ -446,11 +446,11 @@ class ChatCommands
             },
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
+		if(!isset($command->getArgs()[2])) return false;
                 if (Commands::find()->where(['command' => COMMAND_DUEL, 'chatId' => $command->chatId])->exists() || Commands::find()->where(['command' => COMMAND_RAND_DUEL, 'chatId' => $command->chatId])->exists()) {
                     $chat->sendMessage("Дуэль уже идет, для новой еще не время!");
                     return false;
                 }
-		if(!isset($command->getArgs()[3])) return false;
                 $name       = $command->getArgs()[2];
                 $secondName = $command->getArgs()[3];
                 $user       = Users::getUserByName($command->chatId, $name, $secondName);
@@ -484,11 +484,11 @@ class ChatCommands
             },
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
+		if($command->getArgs()[1] == 'рандом' && isset($command->getArgs()[2])) return false;
                 if (Commands::find()->where(['command' => COMMAND_DUEL, 'chatId' => $command->chatId])->exists() || Commands::find()->where(['command' => COMMAND_RAND_DUEL, 'chatId' => $command->chatId])->exists()) {
                     $chat->sendMessage("Дуэль уже идет, для новой еще не время!");
                     return false;
                 }
-		if($command->getArgs()[1] == 'рандом' && isset($command->getArgs()[3])) return false;
                 $name       = $command->getArgs()[1];
                 $secondName = isset($command->getArgs()[2]) ? $command->getArgs()[2] : '';
                 $user       = Users::getUserByName($command->chatId, $name, $secondName);
@@ -531,7 +531,7 @@ class ChatCommands
 		if(!$duel) {
 			$userDuel = array();
 			$userDuel[1] = Users::getUser($command->chatId, $rand_duel->getArgs()[0]);
-			$userDuel[2] = Users::getUser($command->chatId, $rand_duel->getArgs()[0]);
+			$userDuel[2] = Users::getUser($command->chatId, $rand_duel->getArgs()[1]);
 			if ($command->getArgs()[1] == '-') {
 				$chat->sendMessage("{$userDuel[1]->name} {$userDuel[1]->secondName} отклонил дуэль, жалкий трус!");
 				$rand_duel->delete();
