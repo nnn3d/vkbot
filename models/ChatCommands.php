@@ -524,10 +524,12 @@ class ChatCommands
                 $chat = Chats::getChat($command->chatId);
                 $duel = Commands::findOne(['command' => COMMAND_DUEL, 'chatId' => $command->chatId]);
 		$rand_duel = Commands::findOne(['command' => COMMAND_RAND_DUEL, 'chatId' => $command->chatId]);
-		$pionuser1 = Users::getUser($command->chatId, $duel->getArgs()[1]);
-		$pionuser2 = Users::getUser($command->chatId, $rand_duel->getArgs()[1]);
+		    
+		if($duel) $pionuser1 = Users::getUser($command->chatId, $duel->getArgs()[1]);
+		if($rand_duel)$pionuser2 = Users::getUser($command->chatId, $rand_duel->getArgs()[1]);
 		if($command->userId == $pionuser1->userId) return false;
 		if($command->userId == $pionuser2->userId) return false;
+		    
                 if (!$duel && !$rand_duel) {
                     return Chats::getChat(16)->sendMessage('no2');
                 }
