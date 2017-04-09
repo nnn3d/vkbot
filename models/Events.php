@@ -90,8 +90,15 @@ class Events extends \yii\db\ActiveRecord
     public static function rightsToInvite($chatId, $userId, $invitationUserId)
     {
         $chat = Chats::getChat($chatId);
-        if (Users::getStatus($chatId, $userId) != USER_STATUS_DEFAULT) return false;
-        $user = Users::getUser($chatId, $userId);
+	$user = Users::getUser($chatId, $userId);
+        if (Users::getStatus($chatId, $userId) != USER_STATUS_DEFAULT && Users::getStatus($chatId, $userId) != USER_STATUS_UNTOUCHABLE) {
+		return false;
+	} else if(Users::getStatus($chatId, $userId) == USER_STATUS_UNTOUCHABLE) {
+		$user->status = USER_STATUS_DEFAULT;
+		$user->save();
+		
+		$chat->sendMessage("{$user->name} {$user->secondName} использовал свое право пригласить человека.\n\nЯ уже изменила его статус.");
+	}
         $invitationUser = Users::getUser($chatId, $invitationUserId);
         $kick1 = false;
         $kick2 = false;
