@@ -110,20 +110,18 @@ class Events extends \yii\db\ActiveRecord
             $chat->sendMessage("Мне не удалось кикнуть пользователя {$invitationUser->name} {$invitationUser->secondName}");
         } else {
             $kick1 = true;
-            $statusLabels = Params::bot(['statusLabels']);
+            $setDo = false;
             $users = $chat->getAllActiveUsers();
             $message = "Для возвращения в беседу обращайтесь к одному из следующего списка людей: \n";
-            usort($users, function ($a, $b) {
-                return $b->status - $a->status;
-            });
             foreach ($users as $userData) {
-                $status = $statusLabels[$userData->status];
+                $status = $userData->status;
                 if($status == USER_STATUS_ADMIN) {
                     $message .= "\n vk.com/id{$userData->userId} ({$userData->name} {$userData->secondName})";
+		    $setDo = true;
                 }
             }
             
-            Vk::get(true)->messages->send(['user_id' => $invitationUserId, 'message' => $message]);
+            if($setDo) Vk::get(true)->messages->send(['user_id' => $userId, 'message' => $message]);
         }
         
         $chat->sendMessage("У {$user->name} {$user->secondName} есть 10 секунд на последнее слово.");
@@ -133,20 +131,17 @@ class Events extends \yii\db\ActiveRecord
             $chat->sendMessage("Мне не удалось кикнуть пользователя {$user->name} {$user->secondName}");
         } else {
             $kick2 = true;
-            $statusLabels = Params::bot(['statusLabels']);
+	    $setDo = false;	
             $users = $chat->getAllActiveUsers();
             $message = "Для возвращения в беседу обращайтесь к одному из следующего списка людей: \n";
-            usort($users, function ($a, $b) {
-                return $b->status - $a->status;
-            });
             foreach ($users as $userData) {
-                $status = $statusLabels[$userData->status];
+                $status = $userData->status;
                 if($status == USER_STATUS_ADMIN) {
                     $message .= "\n vk.com/id{$userData->userId} ({$userData->name} {$userData->secondName})";
+	            $setDo = true;
                 }
             }
-            
-            Vk::get(true)->messages->send(['user_id' => $userId, 'message' => $message]);
+            if($setDo) Vk::get(true)->messages->send(['user_id' => $userId, 'message' => $message]);
         }
         
         if($kick1 == true && $kick2 == true) {
