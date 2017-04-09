@@ -156,7 +156,7 @@ class ChatCommands
         );
 
 		$commands[] = new ChatCommand( 
-			'ливы { количесвто дней }', 
+			'ливы { количество дней }', 
 			'Последние выходы.', 
 			function ($command) use ($s) { 
 				$s->load($command); 
