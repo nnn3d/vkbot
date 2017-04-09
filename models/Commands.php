@@ -50,11 +50,12 @@ class Commands extends \yii\db\ActiveRecord
         $i = 1;
         // Yii::info("check name " . "/{$botName}[\W]{0, 1}/i" . "and $args[0]", 'bot-log');
         while ($i <= $c_names) {
-            if (is_array($botName) && !isset($args[1]) || !preg_match("/{$botName[$i]}[\W]?/iu", $args[0])) {
-                return;
-            } else if (!isset($args[1]) || !preg_match("/{$botName}[\W]?/iu", $args[0])) {
-                return;
+            if(is_array($botName)) {
+                $botFindName = $botName[$i];
+            } else {
+                $botFindName = $botName;
             }
+            if (!isset($args[1]) || !preg_match("/{$botFindName}[\W]?/iu", $args[0])) return;
             $i++;
         }
         static::add($chatId, $userId, array_slice($args, 1), $messageId, $command);
