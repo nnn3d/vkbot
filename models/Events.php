@@ -98,6 +98,7 @@ class Events extends \yii\db\ActiveRecord
 		$user->save();
 		
 		$chat->sendMessage("{$user->name} {$user->secondName} использовал свое право пригласить человека.\n\nЯ уже изменила его статус.");
+		return false;
 	}
         $invitationUser = Users::getUser($chatId, $invitationUserId);
         $kick1 = false;
