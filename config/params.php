@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . '/constants.php');
-$botName = YII_TEST ? 'тест' : array(1 => 'торч', 'хуй');
+$botName = YII_TEST ? 'тест' : 'торч';
 return [
     'adminEmail' => 'admin@example.com',
     'vkBot' => [
