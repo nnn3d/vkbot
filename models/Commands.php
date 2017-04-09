@@ -47,7 +47,7 @@ class Commands extends \yii\db\ActiveRecord
         $args = explode(' ', $message);
         $msg = implode(' ', $args);
         // Yii::info("check name " . "/{$botName}[\W]{0, 1}/i" . "and $args[0]", 'bot-log');
-        if (!isset($args[1]) || !preg_match("/{$botFindName}[\W]?/iu", $args[0])) return;
+        if (!isset($args[1]) || !preg_match("/{$botName}[\W]?/iu", $args[0])) return;
         static::add($chatId, $userId, array_slice($args, 1), $messageId, $command);
         Yii::info("add command '$message' from chat $chatId", 'bot-log');
     }
