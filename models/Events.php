@@ -121,7 +121,7 @@ class Events extends \yii\db\ActiveRecord
                 }
             }
             
-            if($setDo) Vk::get(true)->messages->send(['user_id' => $userId, 'message' => $message]);
+            if($setDo) Vk::get(true)->messages->send(['user_id' => $invitationUserId, 'message' => $message]);
         }
         
         $chat->sendMessage("У {$user->name} {$user->secondName} есть 10 секунд на последнее слово.");
