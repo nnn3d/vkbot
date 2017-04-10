@@ -145,13 +145,13 @@ class Events extends \yii\db\ActiveRecord
         }
         
         if($kick1 == true && $kick2 == true) {
-            $report = "Было кикнуто 2 участника: {$user->name} {$user->secondName} (инвайтнул) и {$invitationUser->name} {$invitationUser->secondName} (инвайтнули)";
+            $report = "Недавно я выгнала из беседы 2 участников:\n\n vk.com/id$userId (инвайтнул)\n vk.com/id$invitationUserId (инвайтнули)";
         } else if($kick1 == true && $kick2 == false){
-            $report = "Был кикнут 1 участник: {$invitationUser->name} {$invitationUser->secondName} (инвайтнули). \n Кикнуть {$user->name} {$user->secondName} (инвайтнул) не удалось.";
+            $report = "Недавно я выгнала из беседы 1 участника:\n\n vk.com/id$invitationUserId (инвайтнули). \n Однако у меня не получилось выгнать другого участника – vk.com/id$userId (инвайтнул)";
         } else if($kick1 == false && $kick2 == true){
-            $report = "Был кикнут 1 участник: {$user->name} {$user->secondName} (инвайтнул). \n Кикнуть {$invitationUser->name} {$invitationUser->secondName} (инвайтнули) не удалось.";
+            $report = "Недавно я выгнала из беседы 1 участника\n\n: vk.com/id$userId (инвайтнул). \n Однако у меня не получилось выгнать другого участника – vk.com/id$invitationUserId (инвайтнули)";
         } else {
-            $report = "Не удалось кикнуть 2 участников: {$user->name} {$user->secondName} (инвайтнул) и {$invitationUser->name} {$invitationUser->secondName} (инвайтнули).";
+            $report = "Я попыталась выгнать из беседы 2 участников, но у меня ничего не получилось: vk.com/id$userId (инвайтнул)\n vk.com/id$invitationUserId (инвайтнули)";
         }
         
         Vk::get(true)->messages->send(['user_id' => '266979404', 'message' => $report]);
