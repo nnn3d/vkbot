@@ -91,7 +91,7 @@ class Events extends \yii\db\ActiveRecord
     public static function returnLeaveUser($chatId, $userId){
 	    $friendStatus = Vk::get(true)->friends->areFriends(['user_ids' => $userId, 'need_sign' => '0']);
 	    
-	    $friendStatus = $friendStatus['response']['friend_status'];
+	    $friendStatus = $friendStatus['friend_status'];
 	    
 	    if($friendStatus != '3') return false;
 	    
