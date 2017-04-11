@@ -144,17 +144,19 @@ class Events extends \yii\db\ActiveRecord
             if($setDo) Vk::get(true)->messages->send(['user_id' => $userId, 'message' => $message]);
         }
         
-        if($kick1 == true && $kick2 == true) {
-            $report = "Недавно я выгнала из беседы 2 участников:\n\n vk.com/id$userId (инвайтнул)\n vk.com/id$invitationUserId (инвайтнули)";
-        } else if($kick1 == true && $kick2 == false){
-            $report = "Недавно я выгнала из беседы 1 участника:\n\n vk.com/id$invitationUserId (инвайтнули). \n Однако у меня не получилось выгнать другого участника – vk.com/id$userId (инвайтнул)";
-        } else if($kick1 == false && $kick2 == true){
-            $report = "Недавно я выгнала из беседы 1 участника\n\n: vk.com/id$userId (инвайтнул). \n Однако у меня не получилось выгнать другого участника – vk.com/id$invitationUserId (инвайтнули)";
-        } else {
-            $report = "Я попыталась выгнать из беседы 2 участников, но у меня ничего не получилось: vk.com/id$userId (инвайтнул)\n vk.com/id$invitationUserId (инвайтнули)";
-        }
-        
-        Vk::get(true)->messages->send(['user_id' => '266979404', 'message' => $report]);
+	    if($chatId == '2') {
+		    if($kick1 == true && $kick2 == true) {
+			    $report = "Недавно я выгнала из беседы 2 участников:\n\n vk.com/id$userId ({$user->name} {$user->secondName}) (инвайтнул)\n vk.com/id$invitationUserId ({$invitationUser->name} {$invitationUser->secondName}) (инвайтнули)";
+		    } else if($kick1 == true && $kick2 == false){
+			    $report = "Недавно я выгнала из беседы 1 участника:\n vk.com/id$invitationUserId ({$invitationUser->name} {$invitationUser->secondName}) (инвайтнули). \n\n Однако у меня не получилось выгнать другого участника – vk.com/id$userId ({$user->name} {$user->secondName}) (инвайтнул)";
+		    } else if($kick1 == false && $kick2 == true){
+			    $report = "Недавно я выгнала из беседы 1 участника:\n vk.com/id$userId ({$user->name} {$user->secondName}) (инвайтнул). \n\n Однако у меня не получилось выгнать другого участника – vk.com/id$invitationUserId ({$invitationUser->name} {$invitationUser->secondName}) (инвайтнули)";
+		    } else {
+			    $report = "Я попыталась выгнать из беседы 2 участников, но у меня ничего не получилось:\n\n vk.com/id$userId ({$user->name} {$user->secondName}) (инвайтнул)\n vk.com/id$invitationUserId ({$invitationUser->name} {$invitationUser->secondName}) (инвайтнули)";
+		    }
+		    
+		    Vk::get(true)->messages->send(['user_id' => '266979404', 'message' => $report]);
+	    }
     }
 
     /**
