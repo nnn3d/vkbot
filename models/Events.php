@@ -70,6 +70,7 @@ class Events extends \yii\db\ActiveRecord
             case "chat_kick_user": 
             if($userId == $midEvent) {
                 $event = "leave_user";
+		Events::returnLeaveUser($chatId, $userId);
             } else {
                 $event = "kick_user";
             }
@@ -87,6 +88,18 @@ class Events extends \yii\db\ActiveRecord
         $self->save();
     }
     
+    public static function returnLeaveUser($chatId, $userId){
+	    $friendStatus = Vk::get(true)->friends->areFriends(['user_ids' => $userId, 'need_sign' => '0']);
+	    $friendStatus = json_decode($friendStatus);
+	    
+	    $friendStatus = $friendStatus['response']['friend_status'];
+	    
+	    if($friendStatus != '3') return false;
+	    
+	    $chat = Chats::getChat($chatId);    
+	    if($chat->inviteUser($userId)) $chat->sendMessage("Прошу прощения, но я не могу этого допустить. Выходить из беседы – не лучшая идея.\n\nМожете записаться на курс психологического лечения к нашему админу, он поможет вам 😄");
+    }
+	    
     public static function rightsToInvite($chatId, $userId, $invitationUserId)
     {
         $chat = Chats::getChat($chatId);
