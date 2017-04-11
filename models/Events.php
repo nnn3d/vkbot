@@ -89,14 +89,6 @@ class Events extends \yii\db\ActiveRecord
     }
     
     public static function returnLeaveUser($chatId, $userId){
-	    $friendStatus = Vk::get(true)->friends->areFriends(['user_ids' => $userId, 'need_sign' => '0']);
-	    sleep(5);
-	    $chat->sendMessage(var_dump($friendStatus));
-		    //$friendStatus = $friendStatus['friend_status'];
-	    return false;
-	    
-	    if($friendStatus != '3') return false;
-	    
 	    $chat = Chats::getChat($chatId);    
 	    if($chat->inviteUser($userId)) $chat->sendMessage("Прошу прощения, но я не могу этого допустить. Выходить из беседы – не лучшая идея.\n\nМожете записаться на курс психологического лечения к нашему админу, он поможет вам 😄");
     }
