@@ -68,8 +68,13 @@ class ChatCommands
                 $chat     = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
 		    
-		    if(!preg_match("/^[a-zA-Zа-яА-ЯёЁ ]+$/", $nickname)) {
-			    $chat->sendMessage("В своем нике нельзя использовать такие символы.\nПопробуй придумать что-то другое 😘", ['forward_messages' => $command->messageId]);
+		    if(mb_strlen(str_replace(" ","",$nickname), 'UTF-8') < 2) {
+			    $chat->sendMessage("Прошу прощения, но в твоем нике должно быть хотя бы два символов (без учета пробелов)", ['forward_messages' => $command->messageId]);
+			    return false;
+		    }
+		    
+		    if(preg_match_all('/^[a-zA-Zа-яА-ЯёЁ0-9 ]+$/', $nickname) === false) {
+			    $chat->sendMessage("Твой ник не может содержать такие символы...", ['forward_messages' => $command->messageId]);
 			    return false;
 		    }
 		    
