@@ -58,6 +58,7 @@ class Events extends \yii\db\ActiveRecord
             break; 
             case "chat_photo_update": 
             $event = "photo_update";
+		Events::changePhoto($chatId, $userId);
             break; 
             case "chat_invite_user":
             if($userId == $midEvent) {
@@ -91,6 +92,12 @@ class Events extends \yii\db\ActiveRecord
     public static function returnLeaveUser($chatId, $userId){
 	    $chat = Chats::getChat($chatId);    
 	    if($chat->inviteUser($userId)) $chat->sendMessage("Прошу прощения, но я не могу этого допустить. Выходить из беседы – не лучшая идея.\n\nМожете записаться на курс психологического лечения к нашему админу, он поможет вам 😄");
+    }
+	
+    public static function changePhoto($chatId, $userId){
+	    $chat = Chats::getChat($chatId);    
+	    $chat->sendMessage("Боюсь, что в этой беседе нельзя менять фотографию диалога. Я вынуждена сейчас же её удалить.");
+	    if(!Vk::get(true)->messages->deleteChatPhoto(['chat_id' => $chatId)) $chat->sendMessage("Что-то пошло не так...");
     }
 	    
     public static function rightsToInvite($chatId, $userId, $invitationUserId)
