@@ -73,7 +73,12 @@ class ChatCommands
 			    return false;
 		    }
 		    
-		    if(!preg_match_all('/[a-zA-Zа-яА-ЯёЁ0-9 ]+/', $nickname)) {
+		    if(mb_strlen(str_replace(" ","",$nickname), 'UTF-8') > 32) {
+			    $chat->sendMessage("Слишком длинный ник!", ['forward_messages' => $command->messageId]);
+			    return false;
+		    }
+		    
+		    if(!preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9 ]+$/u', $nickname)) {
 			    $chat->sendMessage("Твой ник не может содержать такие символы...", ['forward_messages' => $command->messageId]);
 			    return false;
 		    }
