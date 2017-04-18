@@ -68,8 +68,8 @@ class ChatCommands
                 $chat     = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
 		    
-		    if(mb_strlen(str_replace(" ","",$nickname), 'UTF-8') < 2) {
-			    $chat->sendMessage("Прошу прощения, но в твоем нике должно быть хотя бы два символа, но без учета пробелов!", ['forward_messages' => $command->messageId]);
+		    if(mb_strlen(str_replace(" ","",$nickname), 'UTF-8') < 3) {
+			    $chat->sendMessage("Прошу прощения, но в твоем нике должно быть хотя бы три символа, но без учета пробелов!", ['forward_messages' => $command->messageId]);
 			    return false;
 		    }
 		    
