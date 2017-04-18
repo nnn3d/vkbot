@@ -64,7 +64,7 @@ class ChatCommands
             },
             function ($command) {
                 $nickname = implode(' ', array_slice($command->getArgs(), 2));
-		$nickname = ucwords(strtolower($nickname));
+		$nickname = mb_convert_case($nickname, MB_CASE_TITLE, "UTF-8");
                 $chat     = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);	
 		    
