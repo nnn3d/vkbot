@@ -73,7 +73,7 @@ class ChatCommands
 			    return false;
 		    }
 		    
-		    if(!preg_match_all('/^[a-zA-Zа-яА-ЯёЁ0-9 ]+$/', $nickname)) {
+		    if(!preg_match_all('/[a-zA-Zа-яА-ЯёЁ0-9 ]+/', $nickname)) {
 			    $chat->sendMessage("Твой ник не может содержать такие символы...", ['forward_messages' => $command->messageId]);
 			    return false;
 		    }
