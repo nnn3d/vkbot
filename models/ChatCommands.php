@@ -73,10 +73,15 @@ class ChatCommands
 			    return false;
 		    }
 		    
+		    if (Users::find()->where(['nickname' => $nickname, 'chatId' => $command->chatId])->exists()) {
+                    $chat->sendMessage("Боюсь, что этот ник уже занят другим пользователем 🙄");
+                    return false;
+		    }
+		    
 		$user->nickname = $nickname;
                 $user->save();
 		    
-                $message  = array(1 => "$nickname... Звучное имя.", "Как скажешь, $nickname", "Хорошо, я буду называть тебя $nickname", "Я успешно привязала новое имя к твоему аккаунту.\nОтныне я буду называть тебя $nickname"); // массив ответов
+                $message  = array(1 => "$nickname... Звучное имя.", "Как скажешь, $nickname...", "Хорошо, я буду называть тебя $nickname.", "Я успешно привязала новое имя к твоему аккаунту.\nОтныне я буду называть тебя $nickname"); // массив ответов
                 $chat->sendMessage($message[rand(1, count($message))], ['forward_messages' => $command->messageId]);
             }
         );
@@ -93,6 +98,9 @@ class ChatCommands
                 $chat     = Chats::getChat($command->chatId);
                 $marriage = ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE};
                 $botName  = Params::bot('name');
+		$pioneerUser = Users::getUser($command->chatId, $command->userId);
+		$messageNull = "В данной беседе вы не состоите ни с кем в браке.";    
+		if(!empty($pioneerUser->nickname)) $messageNull = "$pioneerUser->nickname, в  данной беседе вы не состоите ни с кем в браке.";
                 if ($marriage) {
                     $value = $marriage;  
                         $pioneerUserId = $command->userId;
@@ -114,10 +122,9 @@ class ChatCommands
                             $timeBeginMarriage = $arrayDataMarriage[2];
                             $messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
                         } else {
-                            $chat->sendMessage("В данной беседе вы не состоите ни с кем в браке.");
+                            $chat->sendMessage($messageNull);
                             return false;
                         }
-                        $pioneerUser = Users::getUser($command->chatId, $pioneerUserId);
                         if($spouce1 == $command->userId) {
                             $spouce = $spouce2;
                         } else if($spouce2 == $command->userId){
@@ -127,7 +134,7 @@ class ChatCommands
                         $chat->sendMessage("Запись №000".rand(100, 999)."\n{$pioneerUser->name} {$pioneerUser->secondName} в счастливом браке c {$spouce->name} {$spouce->secondName} вот уже целых $messageTime", ['forward_messages' => $command->messageId]);
                         return false;
                 } else {
-                    $chat->sendMessage("В данной беседе вы не состоите ни с кем в браке.");
+                    $chat->sendMessage($messageNull);
                     return false;
                 }   
             }
@@ -920,8 +927,12 @@ class ChatCommands
                 $secondName = isset($command->getArgs()[2]) ? $command->getArgs()[2] : '';
                 $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 if (!$user) {
-                    $chat->sendMessage("Не найден участник беседы '$name $secondName'");
-                    return false;
+		    $nickname = implode(' ', array_slice($command->getArgs(), 1));
+		    $user = Users::findOne(['nickname' => $nickname, 'chatId' => $command->chatId]);
+			if(!$user) {
+				$chat->sendMessage("Не найден участник беседы '$name $secondName'");
+				return false;
+			}
                 } else if ($user->userId == $command->userId) {
                     $chat->sendMessage("Нельзя себя кикнуть");
                     return false;
