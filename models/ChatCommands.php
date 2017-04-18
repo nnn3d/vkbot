@@ -63,8 +63,8 @@ class ChatCommands
                 return $s->argsLarger(2) && $s->argsRegExp(['называй', 'меня']);
             },
             function ($command) {
-                $nickname = $command->getArgs()[2];
-		$nickname = ucwords($nickname);
+                $nickname = implode(' ', array_slice($command->getArgs(), 2));
+		$nickname = ucwords(strtolower($nickname));
                 $chat     = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);	
 		    
@@ -76,7 +76,7 @@ class ChatCommands
 		$user->nickname = $nickname;
                 $user->save();
 		    
-                $message  = array(1 => "$nickname... Звучное имя.", "Как скажешь, $nickname", "Хорошо, я буду называть тебя $nickname", "Я успешно привязала новое имя к твоему аккаунту. Отныне я буду называть тебя $nickname"); // массив ответов
+                $message  = array(1 => "$nickname... Звучное имя.", "Как скажешь, $nickname", "Хорошо, я буду называть тебя $nickname", "Я успешно привязала новое имя к твоему аккаунту.\nОтныне я буду называть тебя $nickname"); // массив ответов
                 $chat->sendMessage($message[rand(1, count($message))], ['forward_messages' => $command->messageId]);
             }
         );
@@ -984,7 +984,7 @@ class ChatCommands
                 $countC                                  = substr_count($c, '?');
                 $c                                       = trim($c, "?");
                 ChatParams::get($command->chatId)->rules = $c;
-                $chat->sendMessage("Правила для беседы устанволены!", ['forward_messages' => $command->messageId]);
+                $chat->sendMessage("Правила для беседы установлены!", ['forward_messages' => $command->messageId]);
             },
             ['statusDefault' => USER_STATUS_MODER]
         );
