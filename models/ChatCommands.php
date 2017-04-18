@@ -54,6 +54,32 @@ class ChatCommands
 
         $s        = new self;
         $commands = [];
+	    
+        $commands[] = new ChatCommand(
+            'называй меня',
+            'Привязывает к вашему настоящему имени никнейм',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(2) && $s->argsRegExp(['называй', 'меня']);
+            },
+            function ($command) {
+                $nickname = $command->getArgs()[2];
+		$nickname = ucwords($nickname);
+                $chat     = Chats::getChat($command->chatId);
+		$user = Users::getUser($command->chatId, $command->userId);	
+		    
+		    if($user->nickname == $nickname) {
+			    $chat->sendMessage("Но я итак называю тебя $nickname...", ['forward_messages' => $command->messageId]);
+			    return false;
+		    }
+		    
+		$user->nickname = $nickname;
+                $user->save();
+		    
+                $message  = array(1 => "$nickname... Звучное имя.", "Как скажешь, $nickname", "Хорошо, я буду называть тебя $nickname", "Я успешно привязала новое имя к твоему аккаунту. Отныне я буду называть тебя $nickname"); // массив ответов
+                $chat->sendMessage($message[rand(1, count($message))], ['forward_messages' => $command->messageId]);
+            }
+        );
         
         $commands[] = new ChatCommand(
             'брак',
