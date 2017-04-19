@@ -884,7 +884,7 @@ class ChatCommands
                 });
                 foreach ($usersCount as $num => $item) {
                     $n = $num + 1;
-					$ivitetime=time-($item['time']);
+					$ivitetime=time()-$item['time'];
 					$finaltime=ChatCommands::timeToArr($item['time']);
                     $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']})";
                 }
