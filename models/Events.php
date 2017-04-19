@@ -99,7 +99,7 @@ class Events extends \yii\db\ActiveRecord
 	{ 
 		$chat = Chats::getChat($chatId);
 		$timevents = static::findAll(['chatId' => $chatId, 'event' => 'invite_user', 'userId' => $midEvent]);
-		if(empty($timevents)) return false;
+		if(empty($timevents)) return time();
 		usort($timevents, function ($a, $b) {
                     return $b->time - $a->time;
                 });
