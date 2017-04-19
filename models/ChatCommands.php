@@ -879,7 +879,6 @@ class ChatCommands
 						'time' => Events::getLastInvite($command->chatId, $user->userId),
                     ];
                 }
-		    if(!$usersCount['time']) $usersCount['time'] = time();
                 usort($usersCount, function ($a, $b) {
                     return $b['count'] - $a['count'];
                 });
