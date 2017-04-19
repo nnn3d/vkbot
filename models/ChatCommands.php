@@ -865,7 +865,7 @@ class ChatCommands
                 });
                 foreach ($usersCount as $num => $item) {
                     $n = $num + 1;
-                    $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']})";
+                    $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']} {$item['user']->invdate})";
                 }
                 $chat->sendMessage($message);
             }
