@@ -104,9 +104,8 @@ class Events extends \yii\db\ActiveRecord
                 });
 		$timevent = array_pop($timevents);
 		$user = Users::getUser($chatId, $midEvent);
-		if (!is_object($timevent->time)) return false;
-		$user->invdate = $timevent->time; 
-		$user->save();
+		//$user->invdate = $timevent->time; 
+		//$user->save();
 		return $timevent->time; 
 	}
 	
