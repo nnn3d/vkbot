@@ -38,7 +38,13 @@ class Events extends \yii\db\ActiveRecord
             [['event'], 'string', 'max' => 20],
         ];
     }
-
+	
+	public static function getEvent($chatId, $event) 
+	{ 
+		$eventList = static::findAll(['chatId' => $chatId, 'event' => $event]); 
+		return $eventList; 
+	}
+	
     public static function setEvent($chatId, $userId, $time, $event, $midEvent = null)
     {
         if (Events::find()->where(['chatId' => $chatId, 'userId' => $userId, 'time' => $time])->exists()) return false;
@@ -52,6 +58,7 @@ class Events extends \yii\db\ActiveRecord
             break; 
             case "chat_photo_update": 
             $event = "photo_update";
+		Events::changePhoto($chatId, $userId);
             break; 
             case "chat_invite_user":
             if($userId == $midEvent) {
@@ -64,6 +71,7 @@ class Events extends \yii\db\ActiveRecord
             case "chat_kick_user": 
             if($userId == $midEvent) {
                 $event = "leave_user";
+		Events::returnLeaveUser($chatId, $userId);
             } else {
                 $event = "kick_user";
             }
@@ -81,11 +89,30 @@ class Events extends \yii\db\ActiveRecord
         $self->save();
     }
     
+    public static function returnLeaveUser($chatId, $userId){
+	    $chat = Chats::getChat($chatId);    
+	    if($chat->inviteUser($userId)) $chat->sendMessage("Прошу прощения, но я не могу этого допустить. Выходить из беседы – не лучшая идея.\n\nМожете записаться на курс психологического лечения к нашему админу, он поможет вам 😄");
+    }
+	
+    public static function changePhoto($chatId, $userId){
+	    $chat = Chats::getChat($chatId);    
+	    $chat->sendMessage("Боюсь, что в этой беседе нельзя менять фотографию диалога. Я вынуждена сейчас же её удалить.");
+	    // Vk::get(true)->messages->deleteChatPhoto(['chat_id' => $chatId]);
+    }
+	    
     public static function rightsToInvite($chatId, $userId, $invitationUserId)
     {
         $chat = Chats::getChat($chatId);
-        if (Users::getStatus($chatId, $userId) != USER_STATUS_DEFAULT) return false;
-        $user = Users::getUser($chatId, $userId);
+	$user = Users::getUser($chatId, $userId);
+        if (Users::getStatus($chatId, $userId) != USER_STATUS_DEFAULT && Users::getStatus($chatId, $userId) != USER_STATUS_UNTOUCHABLE) {
+		return false;
+	} else if(Users::getStatus($chatId, $userId) == USER_STATUS_UNTOUCHABLE) {
+		$user->status = USER_STATUS_DEFAULT;
+		$user->save();
+		
+		$chat->sendMessage("{$user->name} {$user->secondName} использовал свое право пригласить человека.\n\nЯ уже изменила его статус.");
+		return false;
+	}
         $invitationUser = Users::getUser($chatId, $invitationUserId);
         $kick1 = false;
         $kick2 = false;
@@ -96,20 +123,18 @@ class Events extends \yii\db\ActiveRecord
             $chat->sendMessage("Мне не удалось кикнуть пользователя {$invitationUser->name} {$invitationUser->secondName}");
         } else {
             $kick1 = true;
-            $statusLabels = Params::bot(['statusLabels']);
+            $setDo = false;
             $users = $chat->getAllActiveUsers();
             $message = "Для возвращения в беседу обращайтесь к одному из следующего списка людей: \n";
-            usort($users, function ($a, $b) {
-                return $b->status - $a->status;
-            });
             foreach ($users as $userData) {
-                $status = $statusLabels[$userData->status];
-                if($status == 'модер') {
+                $status = $userData->status;
+                if($status == USER_STATUS_ADMIN) {
                     $message .= "\n vk.com/id{$userData->userId} ({$userData->name} {$userData->secondName})";
+		    $setDo = true;
                 }
             }
             
-            Vk::get(true)->messages->send(['user_id' => $invitationUserId, 'message' => $message]);
+            if($setDo) Vk::get(true)->messages->send(['user_id' => $invitationUserId, 'message' => $message]);
         }
         
         $chat->sendMessage("У {$user->name} {$user->secondName} есть 10 секунд на последнее слово.");
@@ -119,33 +144,32 @@ class Events extends \yii\db\ActiveRecord
             $chat->sendMessage("Мне не удалось кикнуть пользователя {$user->name} {$user->secondName}");
         } else {
             $kick2 = true;
-            $statusLabels = Params::bot(['statusLabels']);
+	    $setDo = false;	
             $users = $chat->getAllActiveUsers();
             $message = "Для возвращения в беседу обращайтесь к одному из следующего списка людей: \n";
-            usort($users, function ($a, $b) {
-                return $b->status - $a->status;
-            });
             foreach ($users as $userData) {
-                $status = $statusLabels[$userData->status];
-                if($status == 'модер') {
+                $status = $userData->status;
+                if($status == USER_STATUS_ADMIN) {
                     $message .= "\n vk.com/id{$userData->userId} ({$userData->name} {$userData->secondName})";
+	            $setDo = true;
                 }
             }
-            
-            Vk::get(true)->messages->send(['user_id' => $userId, 'message' => $message]);
+            if($setDo) Vk::get(true)->messages->send(['user_id' => $userId, 'message' => $message]);
         }
         
-        if($kick1 == true && $kick2 == true) {
-            $report = "Было кикнуто 2 участника: {$user->name} {$user->secondName} (инвайтнул) и {$invitationUser->name} {$invitationUser->secondName} (инвайтнули)";
-        } else if($kick1 == true && $kick2 == false){
-            $report = "Был кикнут 1 участник: {$invitationUser->name} {$invitationUser->secondName} (инвайтнули). \n Кикнуть {$user->name} {$user->secondName} (инвайтнул) не удалось.";
-        } else if($kick1 == false && $kick2 == true){
-            $report = "Был кикнут 1 участник: {$user->name} {$user->secondName} (инвайтнул). \n Кикнуть {$invitationUser->name} {$invitationUser->secondName} (инвайтнули) не удалось.";
-        } else {
-            $report = "Не удалось кикнуть 2 участников: {$user->name} {$user->secondName} (инвайтнул) и {$invitationUser->name} {$invitationUser->secondName} (инвайтнули).";
-        }
-        
-        Vk::get(true)->messages->send(['user_id' => '266979404', 'message' => $report]);
+	    if($chatId == '2') {
+		    if($kick1 == true && $kick2 == true) {
+			    $report = "Недавно я выгнала из беседы 2 участников:\n\n vk.com/id$userId ({$user->name} {$user->secondName}) (инвайтнул)\n vk.com/id$invitationUserId ({$invitationUser->name} {$invitationUser->secondName}) (инвайтнули)";
+		    } else if($kick1 == true && $kick2 == false){
+			    $report = "Недавно я выгнала из беседы 1 участника:\n vk.com/id$invitationUserId ({$invitationUser->name} {$invitationUser->secondName}) (инвайтнули). \n\n Однако у меня не получилось выгнать другого участника – vk.com/id$userId ({$user->name} {$user->secondName}) (инвайтнул)";
+		    } else if($kick1 == false && $kick2 == true){
+			    $report = "Недавно я выгнала из беседы 1 участника:\n vk.com/id$userId ({$user->name} {$user->secondName}) (инвайтнул). \n\n Однако у меня не получилось выгнать другого участника – vk.com/id$invitationUserId ({$invitationUser->name} {$invitationUser->secondName}) (инвайтнули)";
+		    } else {
+			    $report = "Я попыталась выгнать из беседы 2 участников, но у меня ничего не получилось:\n\n vk.com/id$userId ({$user->name} {$user->secondName}) (инвайтнул)\n vk.com/id$invitationUserId ({$invitationUser->name} {$invitationUser->secondName}) (инвайтнули)";
+		    }
+		    
+		    Vk::get(true)->messages->send(['user_id' => '266979404', 'message' => $report]);
+	    }
     }
 
     /**

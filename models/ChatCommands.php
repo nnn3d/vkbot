@@ -6,6 +6,7 @@ use app\models\ChatParams;
 use app\models\Chats;
 use app\models\MessagesCounter;
 use app\models\PChart;
+use app\models\Vk;
 use app\models\PendingTasks;
 use app\models\Users;
 
@@ -53,6 +54,70 @@ class ChatCommands
 
         $s        = new self;
         $commands = [];
+	    
+	$commands[] = new ChatCommand(
+            'зови меня по имени',
+            'Удаляет ваш никнейм',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(4) && $s->argsRegExp(['зови', 'меня', 'по', 'имени']);
+            },
+            function ($command) {
+                $chat = Chats::getChat($command->chatId);
+		$user = Users::getUser($command->chatId, $command->userId);
+		$user->nickname = null;
+                $user->save();
+		    
+                $message  = array(1 => "Хорошо, отныне я буду звать тебя как раньше.", "Удалила твой ник. Я буду обращаться к тебе просто и холодно – {$user->name} {$user->secondName}.", "Как пожелаешь, {$user->name} {$user->secondName}.");
+                $chat->sendMessage($message[rand(1, count($message))], ['forward_messages' => $command->messageId]);
+            }
+        );
+	    
+        $commands[] = new ChatCommand(
+            'называй меня',
+            'Привязывает к вашему настоящему имени никнейм',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(2) && $s->argsRegExp(['называй', 'меня']);
+            },
+            function ($command) {
+                $nickname = implode(' ', array_slice($command->getArgs(), 2));
+		$nickname = mb_convert_case($nickname, MB_CASE_TITLE, "UTF-8");
+                $chat     = Chats::getChat($command->chatId);
+		$user = Users::getUser($command->chatId, $command->userId);
+		    
+		    if(mb_strlen(str_replace(" ","",$nickname), 'UTF-8') < 3) {
+			    $chat->sendMessage("Прошу прощения, но в твоем нике должно быть хотя бы три символа, но без учета пробелов!", ['forward_messages' => $command->messageId]);
+			    return false;
+		    }
+		    
+		    if(mb_strlen(str_replace(" ","",$nickname), 'UTF-8') > 32) {
+			    $chat->sendMessage("Слишком длинный ник!", ['forward_messages' => $command->messageId]);
+			    return false;
+		    }
+		    
+		    if(!preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9 ]+$/u', $nickname)) {
+			    $chat->sendMessage("Твой ник не может содержать такие символы...", ['forward_messages' => $command->messageId]);
+			    return false;
+		    }
+		    
+		    if($user->nickname == $nickname) {
+			    $chat->sendMessage("Но я итак называю тебя $nickname...", ['forward_messages' => $command->messageId]);
+			    return false;
+		    }
+		    
+		    if (Users::find()->where(['nickname' => $nickname, 'chatId' => $command->chatId])->exists()) {
+                    $chat->sendMessage("Боюсь, что этот ник уже занят другим пользователем 🙄");
+                    return false;
+		    }
+		    
+		$user->nickname = $nickname;
+                $user->save();
+		    
+                $message  = array(1 => "$nickname... Звучное имя.", "Как скажешь, $nickname...", "Хорошо, я буду называть тебя $nickname.", "Я успешно привязала новое имя к твоему аккаунту.\nОтныне я буду называть тебя $nickname"); // массив ответов
+                $chat->sendMessage($message[rand(1, count($message))], ['forward_messages' => $command->messageId]);
+            }
+        );
         
         $commands[] = new ChatCommand(
             'брак',
@@ -66,6 +131,9 @@ class ChatCommands
                 $chat     = Chats::getChat($command->chatId);
                 $marriage = ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE};
                 $botName  = Params::bot('name');
+		$pioneerUser = Users::getUser($command->chatId, $command->userId);
+		$messageNull = "В данной беседе вы не состоите ни с кем в браке.";    
+		if(!empty($pioneerUser->nickname)) $messageNull = "$pioneerUser->nickname, в  данной беседе вы не состоите ни с кем в браке.";
                 if ($marriage) {
                     $value = $marriage;  
                         $pioneerUserId = $command->userId;
@@ -87,10 +155,9 @@ class ChatCommands
                             $timeBeginMarriage = $arrayDataMarriage[2];
                             $messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
                         } else {
-                            $chat->sendMessage("В данной беседе вы не состоите ни с кем в браке.");
+                            $chat->sendMessage($messageNull);
                             return false;
                         }
-                        $pioneerUser = Users::getUser($command->chatId, $pioneerUserId);
                         if($spouce1 == $command->userId) {
                             $spouce = $spouce2;
                         } else if($spouce2 == $command->userId){
@@ -100,7 +167,7 @@ class ChatCommands
                         $chat->sendMessage("Запись №000".rand(100, 999)."\n{$pioneerUser->name} {$pioneerUser->secondName} в счастливом браке c {$spouce->name} {$spouce->secondName} вот уже целых $messageTime", ['forward_messages' => $command->messageId]);
                         return false;
                 } else {
-                    $chat->sendMessage("В данной беседе вы не состоите ни с кем в браке.");
+                    $chat->sendMessage($messageNull);
                     return false;
                 }   
             }
@@ -154,6 +221,45 @@ class ChatCommands
             }
         );
 
+		$commands[] = new ChatCommand( 
+			'ливы { количество дней }', 
+			'Последние выходы.', 
+			function ($command) use ($s) { 
+				$s->load($command); 
+				return $s->argsEqual(2) && $s->argsRegExp(['ливы','[\d]{1,2}']); 
+			}, 
+			function ($command) { 
+				$message = "Из конфы вышли:\n"; 
+				$event = "leave_user"; 
+				$days = intval($command->getArgs()[1]);
+				$chat = Chats::getChat($command->chatId); 
+				$users = $chat->getAllActiveUsers();
+				$eventList = Events::getEvent($chat->chatId, $event);
+				$n=0;
+			foreach ($eventList as $userId) { 
+				$user = Users::getUser($chat->chatId, $userId->userId);
+				$checkUs = Users::userExists($chat->chatId, $userId->userId);
+				if (in_array($user, $users)) {
+					$where='в конфе';
+				} else {
+					$where='вышел';
+				}
+				$currenttime=time() - $userId->time;
+				$messageTime = ChatCommands::timeToStr($currenttime);
+				$timearr = ChatCommands::timeToArr($currenttime);
+				if (!isset($timearr[3])){
+					$timearr[3]=0;
+				}
+				if ($days > ($timearr[3])) {
+				$n++;
+				$message .= "\n{$n}. {$user->name} {$user->secondName} $messageTime $where"; 
+				}
+			} 
+			$chat->sendMessage($message); 
+			}
+		);
+		
+		
         $commands[] = new ChatCommand(
             'брак { да или нет }',
             '',
@@ -186,7 +292,8 @@ class ChatCommands
                     if (!$marriage) {
                         $value = [[$user1->userId, $user2->userId, time()]];
 
-                    } else {
+                    } 
+					{
                         $value = unserialize($marriage);
                         if (!is_array($value)) {
                             $value = [];
@@ -210,6 +317,48 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
+            'топ браков',
+            'Показывает топ самых крепких браков. Работает только в беседах, в которых больше 5 пар.',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(2) && $s->argsRegExp(['топ', 'браков']);
+            },
+            function ($command) {
+                $chat       = Chats::getChat($command->chatId);
+                $marriage   = ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE};
+
+                if (!$marriage) return false;
+                $marriages = unserialize($marriage);
+		$countMarriages = count($marriages);
+
+		if($countMarriages > 5 && is_array($marriages)) {
+			$message = "Топ самых крепких пар:\n";
+			$i = 1;
+			$timeBeginMarriage = 0;
+			
+			foreach ($marriages as $m) {
+				$user1 = Users::getUser($command->chatId, $m[0]);
+				$user2 = Users::getUser($command->chatId, $m[1]);
+				$timeBeginMarriage = $m[2];
+				$messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
+				
+				if($i < 4) {
+				        $message .= "\n $i. {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} \n($messageTime)";
+				} else {
+					$message .= "\n $i. {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName} \n($messageTime)";
+				}
+				
+				$i++;
+			}
+	
+			$chat->sendMessage($message);
+		} else {
+			return false;
+		}
+            }
+        );
+	    
+        $commands[] = new ChatCommand(
             'браки',
             'Показывает существующие браки',
             function ($command) use ($s) {
@@ -225,7 +374,8 @@ class ChatCommands
                     return false;
                 }
                 $marriages = unserialize($marriage);
-                if (!is_array($marriages) || count($marriages) == 0) {
+		$countMarriages = count($marriages);
+                if (!is_array($marriages) || $countMarriages == 0) {
                     $chat->sendMessage($errMessage);
                     return false;
                 }
@@ -237,6 +387,10 @@ class ChatCommands
                     $user2 = Users::getUser($command->chatId, $m[1]);
                     $message .= "\n {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName}";
                 }
+		
+		if($countMarriages > 5) {
+		    $message .= "\n\n Доступен топ самых крепких браков! (".Params::bot('name')." топ браков)";
+		}
 
                 $chat->sendMessage($message);
             }
@@ -348,7 +502,45 @@ class ChatCommands
                 $chat->sendMessage($message);
             }
         );
+	    
+	    $commands[] = new ChatCommand(
+		    'дуэль рандом { имя [ + фамилия ] участника }',
+		    'Вызвать участника на дуэль со случайным исходом.',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(1) && $s->argsRegExp(['дуэль', 'рандом']);
+            },
+            function ($command) {
+                $chat = Chats::getChat($command->chatId);
+		if(!isset($command->getArgs()[2])) return false;
+                if (Commands::find()->where(['command' => COMMAND_DUEL, 'chatId' => $command->chatId])->exists() || Commands::find()->where(['command' => COMMAND_RAND_DUEL, 'chatId' => $command->chatId])->exists()) {
+                    $chat->sendMessage("Дуэль уже идет, для новой еще не время!");
+                    return false;
+                }
+                $name       = $command->getArgs()[2];
+		$secondName = isset($command->getArgs()[3]) ? $command->getArgs()[3] : '';
+                $user       = Users::getUserByName($command->chatId, $name, $secondName);
+                if (!$user) {
+                    $chat->sendMessage("Я не могу найти оппонента с таким именем среди участников конференции");
+                    return false;
+                }
+                if ($command->userId == $user->userId) {
+                    $chat->sendMessage("Нельзя вызвать на дуэль самого себя");
+                    return false;
+                }
+                $pioneerUser = Users::getUser($command->chatId, $command->userId);
+                $args        = [
+                    $user->userId,
+                    $command->userId,
+                ];
+                $botName = Params::bot('name');
+                $message = "{$user->name} {$user->secondName}, вас приглашает на дуэль со случайным исходом {$pioneerUser->name} {$pioneerUser->secondName}, спросив разрешения у мамы.\n\n Рискнете своей удачей? (команда \"$botName дуэль +\" или \"$botName дуэль -\" для отказа)";
+                Commands::add($command->chatId, null, $args, null, COMMAND_RAND_DUEL);
 
+                $chat->sendMessage($message);
+            }
+        );
+	    
         $commands[] = new ChatCommand(
             'дуэль { имя [ + фамилия ] участника }',
             'Вызвать участника на дуэль.',
@@ -358,7 +550,8 @@ class ChatCommands
             },
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
-                if (Commands::find()->where(['command' => COMMAND_DUEL, 'chatId' => $command->chatId])->exists()) {
+		if($command->getArgs()[1] == 'рандом' && isset($command->getArgs()[2])) return false;
+                if (Commands::find()->where(['command' => COMMAND_DUEL, 'chatId' => $command->chatId])->exists() || Commands::find()->where(['command' => COMMAND_RAND_DUEL, 'chatId' => $command->chatId])->exists()) {
                     $chat->sendMessage("Дуэль уже идет, для новой еще не время!");
                     return false;
                 }
@@ -379,7 +572,7 @@ class ChatCommands
                     $command->userId,
                 ];
                 $botName = Params::bot('name');
-                $message = "{$user->name} {$user->secondName}, вас приглашает на дуэль {$pioneerUser->name} {$pioneerUser->secondName}, заручившись подержкой боженьки.\n Принимаете ли вы вызов? (команда \"$botName дуэль +\" или \"$botName дуэль -\" для отказа)";
+                $message = "{$user->name} {$user->secondName}, вас приглашает на дуэль {$pioneerUser->name} {$pioneerUser->secondName}, заручившись подержкой боженьки.\n\n Принимаете ли вы вызов? (команда \"$botName дуэль +\" или \"$botName дуэль -\" для отказа)";
                 Commands::add($command->chatId, null, $args, null, COMMAND_DUEL);
 
                 $chat->sendMessage($message);
@@ -396,33 +589,65 @@ class ChatCommands
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
                 $duel = Commands::findOne(['command' => COMMAND_DUEL, 'chatId' => $command->chatId]);
-                if (!$duel) {
+		$rand_duel = Commands::findOne(['command' => COMMAND_RAND_DUEL, 'chatId' => $command->chatId]);
+		    
+		if($duel) {
+			$pionuser1 = Users::getUser($command->chatId, $duel->getArgs()[1]);
+			if($command->userId == $pionuser1->userId) return false;
+		}
+		    
+		if($rand_duel) {
+			$pionuser2 = Users::getUser($command->chatId, $rand_duel->getArgs()[1]);
+			if($command->userId == $pionuser2->userId) return false;
+		}
+		    
+                if (!$duel && !$rand_duel) {
                     return Chats::getChat(16)->sendMessage('no2');
                 }
+		    
+		if(!$duel) {
+			$userDuel = array();
+			$userDuel[1] = Users::getUser($command->chatId, $rand_duel->getArgs()[0]);
+			$userDuel[2] = Users::getUser($command->chatId, $rand_duel->getArgs()[1]);
+			if ($command->getArgs()[1] == '-') {
+				$chat->sendMessage("{$userDuel[1]->name} {$userDuel[1]->secondName} отклонил дуэль, жалкий трус!");
+				$rand_duel->delete();
+				return false;
+			}
+			$botName = Params::bot('name');
+			$winNumber = rand(1, 2);
 
-                $user1 = Users::getUser($command->chatId, $duel->getArgs()[0]);
-                if ($user1->userId != $command->userId) {
-                    return Chats::getChat(16)->sendMessage('no1');
-                }
-
-                if ($command->getArgs()[1] == '-') {
-                    $chat->sendMessage("{$user1->name} {$user1->secondName} отклонил дуэль, жалкий трус!");
-                    $duel->delete();
-                    return false;
-                }
-                $botName = Params::bot('name');
-                $prefix  = "$botName битва ";
-                $str     = substr(strtolower(md5(uniqid(rand(), true))), 0, 6);
-                preg_match_all('/./us', $prefix . $str, $ar);
-                $strrev = join('', array_reverse($ar[0]));
-                $args   = [
-                    $user1->userId,
-                    $duel->getArgs()[1],
-                    $str,
-                ];
-                $duel->delete();
-                Commands::add($command->chatId, null, $args, null, COMMAND_DUEL);
-                $chat->sendMessage("Битва начинается! Победит тот, кто первым наберет строку '{$strrev}' наоборот!");
+			$chat->sendMessage("Оппоненты подошли к друг другу и стали меряться членами. {$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} обладатель более длиного. Все ясно, расходимся!\n\n {$userDuel[$winNumber]->name} {$userDuel[$winNumber]->secondName} уходит с поля с победой, собирая по дороге мокрые трусы болельщиц... 😋");
+			$rand_duel->delete();
+			
+			return false;
+		}
+		
+		if(!$rand_duel) {
+			$user1 = Users::getUser($command->chatId, $duel->getArgs()[0]);
+			if ($user1->userId != $command->userId) {
+				return Chats::getChat(16)->sendMessage('no1');
+			}
+			
+			if ($command->getArgs()[1] == '-') {
+				$chat->sendMessage("{$user1->name} {$user1->secondName} отклонил дуэль, жалкий трус!");
+				$duel->delete();
+				return false;
+			}
+			$botName = Params::bot('name');
+			$prefix  = "$botName битва ";
+			$str     = substr(strtolower(md5(uniqid(rand(), true))), 0, 6);
+			preg_match_all('/./us', $prefix . $str, $ar);
+			$strrev = join('', array_reverse($ar[0]));
+			$args   = [
+				$user1->userId,
+				$duel->getArgs()[1],
+				$str,
+			];
+			$duel->delete();
+			Commands::add($command->chatId, null, $args, null, COMMAND_DUEL);
+			$chat->sendMessage("Битва начинается! Победит тот, кто первым наберет строку '{$strrev}' наоборот!");
+		}
             },
             ['hidden' => true]
         );
@@ -545,11 +770,11 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'топ активность',
+            'актив',
             'Показывает время с последнего сообщения пользователя.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(2) && $s->argsRegExp(['топ', 'активность']);
+                return $s->argsEqual(1) && $s->argsRegExp(['актив']);
             },
             function ($command) {
                 $time        = time();
@@ -658,18 +883,18 @@ class ChatCommands
                 });
                 foreach ($usersCount as $num => $item) {
                     $n = $num + 1;
-                    $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']})";
+                    $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']} {$item['user']->invdate})";
                 }
                 $chat->sendMessage($message);
             }
         );
 
         $commands[] = new ChatCommand(
-            'кто { любой вопрос }',
+            'кто или кого { любой вопрос }',
             'В ответ дает случайного участника.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(1) && $s->argsRegExp(['кто']);
+                return $s->argsLarger(1) && $s->argsRegExp(['(кто|кого)']);
             },
             function ($command) {
                 $chat   = Chats::getChat($command->chatId);
@@ -678,10 +903,9 @@ class ChatCommands
                 $c      = implode(' ', array_slice($command->getArgs(), 1));
                 $countC = substr_count($c, '?');
                 $c      = trim($c, "?");
+		if (empty($c)) return false;
                 if ($countC == '1') {
                     $chat->sendMessage("Cчитаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}", ['forward_messages' => $command->messageId]);
-                } else if (empty($c)) {
-                    return false;
                 } else {
                     $chat->sendMessage("Я думаю, что {$users[$r]->name} {$users[$r]->secondName}", ['forward_messages' => $command->messageId]);
                 }
@@ -689,15 +913,15 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'установить статус команды { админ / модер / юзер } { название команды }',
+            'доступ { админ / модер / юзер } { название команды }',
             'Выставляет уровень допуска для команды.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(4) && $s->argsRegExp(['установить', 'статус', 'команды']);
+                return $s->argsLarger(2) && $s->argsRegExp(['доступ']);
             },
             function ($command) {
                 $statusMap = Params::bot(['statusMap']);
-                $statusArg = $command->getArgs()[3];
+                $statusArg = $command->getArgs()[1];
                 if (isset($statusMap[$statusArg])) {
                     $status = $statusMap[$statusArg];
                 } else {
@@ -705,7 +929,7 @@ class ChatCommands
                 }
 
                 $chat           = Chats::getChat($command->chatId);
-                $commandArgsS   = implode(' ', array_slice($command->getArgs(), 4));
+                $commandArgsS   = implode(' ', array_slice($command->getArgs(), 2));
                 $changedCommand = ChatCommands::getCommandByRegExp($commandArgsS);
                 if (empty($changedCommand)) {
                     $chat->sendMessage("Команда '$commandArgsS' не найдена");
@@ -724,20 +948,24 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'кикнуть участника { имя [ + фамилия ] участника }',
+            'кик { имя [ + фамилия ] участника }',
             'Кикает указанного участника из беседы.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(2) && $s->argsRegExp(['кикнуть', 'участника']);
+                return $s->argsLarger(1) && $s->argsRegExp(['кик']);
             },
             function ($command) {
                 $chat       = Chats::getChat($command->chatId);
-                $name       = $command->getArgs()[2];
-                $secondName = isset($command->getArgs()[3]) ? $command->getArgs()[3] : '';
+                $name       = $command->getArgs()[1];
+                $secondName = isset($command->getArgs()[2]) ? $command->getArgs()[2] : '';
                 $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 if (!$user) {
-                    $chat->sendMessage("Не найден участник беседы '$name $secondName'");
-                    return false;
+		    $nickname = implode(' ', array_slice($command->getArgs(), 1));
+		    $user = Users::findOne(['nickname' => $nickname, 'chatId' => $command->chatId]);
+			if(!$user) {
+				$chat->sendMessage("Не найден участник беседы '$name $secondName'");
+				return false;
+			}
                 } else if ($user->userId == $command->userId) {
                     $chat->sendMessage("Нельзя себя кикнуть");
                     return false;
@@ -748,7 +976,25 @@ class ChatCommands
                 $chat->sendMessage("Пользователь {$user->name} {$user->secondName} будет кикнут");
                 if (!$chat->kickUser($user->userId)) {
                     $chat->sendMessage("Не удалось кикнуть пользователя {$user->name} {$user->secondName}");
-                }
+                } else {
+			$statusLabels = Params::bot(['statusLabels']);
+			$users = $chat->getAllActiveUsers();
+			$kickedBy = Users::getUser($command->chatId, $command->userId);
+			
+			if($command->userId == '266979404') {
+				$message = "Вас выкинули из беседы решением администрации.\n По всем вопросам к создателю конфы – Пен Мет (vk.com/penmet)";
+			} else {
+				$message = "Вы были кикнуты из общей беседы.\n Вас выгнал модератор – $kickedBy->name $kickedBy->secondName.\n По всем вопросам к админу конфы – Пен Мет (vk.com/penmet).";
+			}
+			
+			$rules = ChatParams::get($command->chatId)->rules;
+			
+			if(!empty($rules)){
+				$message .= "\n\nСоветуем еще раз изучить правила нашей беседы:\n $rules";
+			}
+			
+			Vk::get(true)->messages->send(['user_id' => $user->userId, 'message' => $message]);
+		}
             },
             ['statusDefault' => USER_STATUS_MODER]
         );
@@ -769,11 +1015,11 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'установить правила',
+            'новые правила',
             'Устанавливает правила беседы',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(2) && $s->argsRegExp(['установить', 'правила']);
+                return $s->argsLarger(2) && $s->argsRegExp(['новые', 'правила']);
             },
             function ($command) {
                 $chat                                    = Chats::getChat($command->chatId);
@@ -782,21 +1028,21 @@ class ChatCommands
                 $countC                                  = substr_count($c, '?');
                 $c                                       = trim($c, "?");
                 ChatParams::get($command->chatId)->rules = $c;
-                $chat->sendMessage("Правила для беседы устанволены!", ['forward_messages' => $command->messageId]);
+                $chat->sendMessage("Правила для беседы установлены!", ['forward_messages' => $command->messageId]);
             },
             ['statusDefault' => USER_STATUS_MODER]
         );
 
         $commands[] = new ChatCommand(
-            'установить статус участника { модер / юзер } { имя [ + фамилия ] участника }',
+            'статус { модер / юзер } { имя [ + фамилия ] участника }',
             'Выставить уровень доступа к командам для участника.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(3) && $s->argsRegExp(['установить', 'статус', 'участника']);
+                return $s->argsLarger(1) && $s->argsRegExp(['статус']);
             },
             function ($command) {
                 $statusMap = Params::bot(['statusMap']);
-                $statusArg = $command->getArgs()[3];
+                $statusArg = $command->getArgs()[1];
                 if (isset($statusMap[$statusArg]) && $statusMap[$statusArg] != USER_STATUS_ADMIN) {
                     $status = $statusMap[$statusArg];
                 } else {
@@ -804,8 +1050,8 @@ class ChatCommands
                 }
 
                 $chat       = Chats::getChat($command->chatId);
-                $name       = $command->getArgs()[4];
-                $secondName = isset($command->getArgs()[5]) ? $command->getArgs()[5] : '';
+                $name       = $command->getArgs()[2];
+                $secondName = isset($command->getArgs()[3]) ? $command->getArgs()[3] : '';
                 $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 if (!$user) {
                     $chat->sendMessage("Не найден участник беседы '$name $secondName'");
@@ -961,7 +1207,25 @@ class ChatCommands
         isset($times[0]) && $msg .= $times[0] . ' сек.';
         return $msg;
     }
+	
+	public static function timeToArr($seconds){
+		$times = [];
+        $count_zero = false;
+        $periods    = [60, 3600, 86400];
 
+        for ($i = 2; $i >= 0; $i--) {
+            $period = floor($seconds / $periods[$i]);
+            if (($period > 0) || ($period == 0 && $count_zero)) {
+                $times[$i + 1] = $period;
+                $seconds -= $period * $periods[$i];
+
+                $count_zero = true;
+            }
+        }
+        $times[0] = $seconds;
+		return $times;
+	}
+	
     public static function saveMessagePhoto($photoDir)
     {
         $res       = Vk::get()->photos->getMessagesUploadServer();

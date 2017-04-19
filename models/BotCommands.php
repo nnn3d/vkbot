@@ -21,6 +21,7 @@ class BotCommands {
 	{
 		PendingTasks::deleteByTask(COMMAND_BOT);
 		PendingTasks::add(null, ['function' => 'deleteOldDuels'], 60, null, COMMAND_BOT);
+		PendingTasks::add(null, ['function' => 'deleteOldRandDuels'], 60, null, COMMAND_BOT);
 		PendingTasks::add(null, ['function' => 'deleteOldMarriage'], 600, null, COMMAND_BOT);
 	}
 
@@ -36,6 +37,16 @@ class BotCommands {
 	{
 		$time = time();
 		foreach (Commands::findAll(['command' => COMMAND_DUEL]) as $command) {
+			if ($time - $command->time > static::$timeDeleteDuel) {
+				$command->delete();
+			}
+		}
+	}
+	
+	public static function deleteOldRandDuels()
+	{
+		$time = time();
+		foreach (Commands::findAll(['command' => COMMAND_RAND_DUEL]) as $command) {
 			if ($time - $command->time > static::$timeDeleteDuel) {
 				$command->delete();
 			}

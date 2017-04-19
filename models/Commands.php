@@ -67,7 +67,8 @@ class Commands extends \yii\db\ActiveRecord
 
     public function getArgs()
     {
-        return unserialize($this->args);
+        $data = preg_replace('!s:(\d+):"(.*?)";!e', "'s:'.strlen('$2').':\"$2\";'", $this->args);
+        return unserialize($data);
     }
 
     public function setArgs($args)

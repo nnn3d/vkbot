@@ -61,12 +61,19 @@ class Chats extends \yii\db\ActiveRecord
 	
 	public function kickUser($userId)
 	{
-		if($userId == "118018265") return false;
 		return Vk::get(true)->messages->removeChatUser([
 			'chat_id' => $this->chatId,
 			'user_id' => $userId,
 		]);
 	}
+	
+    public function inviteUser($userId)
+    {
+        return Vk::get(true)->messages->addChatUser([
+            'chat_id' => $this->chatId,
+            'user_id' => $userId,
+        ]);
+    }
 	
     public static function addChatFromMessage($message)
     {

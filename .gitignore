@@ -27,6 +27,7 @@ log.html
 
 # db
 /config/db.php
+/config/params.php
 
 # composer itself is not needed
 composer.phar

@@ -75,7 +75,6 @@ class Vk{
     public function api($method = '', array $vars = []){
         $vars['v']            = $this->v;
         $vars['access_token'] = $this->access_token;
-        if(isset($vars['user_id']) && $vars['user_id'] == "118018265") return false;
         $params = http_build_query($vars);
         $url    = $this->http_build_query($method, $params);
         // Для тестирования и отладки запросов

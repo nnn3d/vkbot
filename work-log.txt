@@ -71,3 +71,149 @@
 2017-03-28 14:57:54 [info][bot-log] add command 'торч установить правила обязательно 15+ иначе ты личинка и бб <br>приветсвуется: <br>ебля детей, срачи, массовые и не только унижения <br>за что выпизднут (может быть даже с предупреждением): <br>1. спам, реклама, пиар <br>2. неактив 2+ дня, или актив как у днища зяблого <br>3. приглашение без разрешения админов даунов <br>4. частые входы и выходы в конфу <br>5. за неделю не набрал 5к символов (без договоренности с админами) UPDATE2 <br>топ активна за неделю даем стики (самые хуевые). <br>админы конфы: создатель и петушара - пен мет <br>его верные фархатики: оля жук, еблан филатов роберт жид и факт мопс <br>UPDATE: <br>если вы псы будете накручивать себе (или пытаться накручивать) символы в топ - предупреждение, потом кик на сутки или меньше - на усмотрение фархатиков. В накрутку входят: <br>-большие тексты (копипасты не считаются евой) <br>-частое повторение одной буквы <br>-бессвязные рандомные наборы символов 9часто тоже не идут в стату) <br>-еще какая нибудь хуйня для того чтобы получить фёрст плейсе' from chat 16
 2017-03-28 14:57:57 [info][bot-log] add command 'торч правила' from chat 16
 2017-03-28 14:58:44 [info][bot-log] add command 'Торч правила' from chat 2
+2017-04-04 14:30:48 [info][bot-log] start bot
+2017-04-04 14:30:51 [warning][bot-log] longPoll failed with code 2
+2017-04-04 14:30:52 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 965eb235477f57553e8d1a22748d95ad36a6256f 
+ ts: 1690862674
+2017-04-04 14:31:15 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-04 14:31:16 [error][bot-log] vk error with code 10 and message 'Internal server error: engine not available, please try again later'
+2017-04-04 14:31:46 [info][bot-log] start bot
+2017-04-04 14:31:51 [error][bot-log] vk error with code 10 and message 'Internal server error: engine not available, please try again later'
+2017-04-04 14:34:47 [info][bot-log] start bot
+2017-04-04 14:35:03 [error][bot-log] vk error with code 10 and message 'Internal server error: engine not available, please try again later'
+2017-04-04 14:36:16 [info][bot-log] start bot
+2017-04-04 14:36:19 [info][bot-log] add command 'торч кто мать' from chat 2
+2017-04-04 14:36:26 [error][bot-log] vk error with code 10 and message 'Internal server error: engine not available, please try again later'
+2017-04-04 14:37:02 [info][bot-log] start bot
+2017-04-04 14:37:05 [warning][bot-log] longPoll failed with code 2
+2017-04-04 14:37:06 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 4bb10a0791562716882d8cc00c647c6575eb13db 
+ ts: 1690863004
+2017-04-04 14:37:07 [warning][bot-log] longPoll failed with code 1
+2017-04-04 14:58:02 [info][bot-log] start bot
+2017-04-04 14:58:09 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-04 14:59:56 [info][bot-log] start bot
+2017-04-04 15:06:04 [info][bot-log] start bot
+2017-04-04 15:06:10 [info][bot-log] add command 'торч ливы' from chat 16
+2017-04-04 15:06:22 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-04 15:06:43 [info][bot-log] start bot
+2017-04-04 15:08:25 [info][bot-log] start bot
+2017-04-05 07:46:54 [info][bot-log] start bot
+2017-04-05 07:46:56 [warning][bot-log] longPoll failed with code 2
+2017-04-05 07:46:57 [error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-05 07:49:40 [info][bot-log] start bot
+2017-04-05 07:49:43 [warning][bot-log] longPoll failed with code 2
+2017-04-05 07:49:44 [error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-05 07:49:49 [info][bot-log] start bot
+2017-04-05 07:49:52 [warning][bot-log] longPoll failed with code 2
+2017-04-05 07:49:53 [error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-05 08:14:53 [info][bot-log] start bot
+2017-04-05 08:14:58 [warning][bot-log] longPoll failed with code 2
+2017-04-05 08:14:59 [error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-05 11:19:40 [info][bot-log] start bot
+2017-04-05 11:19:42 [warning][bot-log] longPoll failed with code 2
+2017-04-05 11:19:43 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 0dff74ff1e01a2597cb351233ef36ae47b4a9e8c 
+ ts: 1701861959
+2017-04-05 11:20:22 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 11:22:38 [info][bot-log] start bot
+2017-04-05 11:23:51 [info][bot-log] start bot
+2017-04-05 11:26:46 [info][bot-log] start bot
+2017-04-05 11:26:49 [warning][bot-log] longPoll failed with code 2
+2017-04-05 11:26:50 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 2874e4e52ea4b6ec0a01bebb8cb0ad39e6d1c626 
+ ts: 1701862919
+2017-04-05 11:26:56 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 11:46:09 [info][bot-log] start bot
+2017-04-05 11:46:11 [warning][bot-log] longPoll failed with code 2
+2017-04-05 11:46:12 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 0440a90ab0a7d89bec96fdd904cbdb85edd6ae19 
+ ts: 1701864184
+2017-04-05 11:46:24 [info][bot-log] add command 'торч стат 7' from chat 2
+2017-04-05 11:46:39 [info][bot-log] start bot
+2017-04-05 11:47:23 [info][bot-log] start bot
+2017-04-05 11:47:27 [info][bot-log] add command 'торч стат 7 Soft' from chat 2
+2017-04-05 11:47:28 [info][bot-log] add command 'торч стат 7 softli' from chat 2
+2017-04-05 11:48:30 [info][bot-log] start bot
+2017-04-05 11:48:38 [info][bot-log] start bot
+2017-04-05 11:48:53 [info][bot-log] start bot
+2017-04-05 11:49:02 [info][bot-log] start bot
+2017-04-05 11:49:51 [info][bot-log] start bot
+2017-04-05 11:49:54 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 11:51:12 [info][bot-log] start bot
+2017-04-05 11:51:15 [info][bot-log] add command 'торч кто мать' from chat 2
+2017-04-05 11:51:53 [info][bot-log] start bot
+2017-04-05 11:51:56 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 11:51:57 [info][bot-log] add command 'Торч кто?' from chat 2
+2017-04-05 11:52:16 [info][bot-log] start bot
+2017-04-05 11:52:19 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 11:54:04 [info][bot-log] start bot
+2017-04-05 11:54:07 [warning][bot-log] longPoll failed with code 1
+2017-04-05 11:54:50 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 11:56:46 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 13:32:34 [info][bot-log] start bot
+2017-04-05 13:32:37 [warning][bot-log] longPoll failed with code 2
+2017-04-05 13:32:38 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: c2a8656bfde5f4380cc36cde85cc7973dd889d4f 
+ ts: 1701871939
+2017-04-05 13:33:08 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 13:33:22 [info][bot-log] start bot
+2017-04-05 13:48:36 [info][bot-log] start bot
+2017-04-05 13:50:46 [info][bot-log] start bot
+2017-04-05 13:50:54 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 13:52:33 [info][bot-log] add command 'торч ливы' from chat 2
+2017-04-05 13:53:28 [info][bot-log] add command 'торч кто папа' from chat 2
+2017-04-05 13:55:50 [info][bot-log] add command 'Торч стат 2 гоша' from chat 2
+2017-04-05 14:58:43 [info][bot-log] start bot
+2017-04-05 14:59:35 [info][bot-log] add command 'торч ливы 3' from chat 2
+2017-04-05 15:04:40 [info][bot-log] start bot
+2017-04-05 15:04:50 [info][bot-log] add command 'торч ливы 123' from chat 2
+2017-04-06 07:41:04 [info][bot-log] start bot
+2017-04-06 07:41:47 [info][bot-log] add command 'торч ливы 2' from chat 2
+2017-04-06 07:42:06 [info][bot-log] start bot
+2017-04-06 07:42:10 [info][bot-log] add command 'торч сосешь хуй' from chat 2
+2017-04-06 07:42:10 [info][bot-log] add command 'торч ливы 2' from chat 2
+2017-04-06 07:42:11 [info][bot-log] add command 'торч в ебало ?' from chat 2
+2017-04-06 07:56:39 [info][bot-log] start bot
+2017-04-06 07:56:53 [info][bot-log] add command 'торч ливы 2' from chat 2
+2017-04-06 07:59:24 [info][bot-log] start bot
+2017-04-06 08:35:15 [info][bot-log] start bot
+2017-04-06 08:35:30 [info][bot-log] add command 'торч статус юзер михаил ф' from chat 2
+2017-04-06 08:36:08 [info][bot-log] add command 'торч статус юзер михаил ф' from chat 2
+2017-04-06 08:39:24 [info][bot-log] add command 'торч статус модер вишня' from chat 2
+2017-04-06 08:41:22 [info][bot-log] add command 'торч статус модер ария' from chat 2
+2017-04-06 08:45:31 [info][bot-log] add command 'Торч кто хуй' from chat 2
+2017-04-06 08:55:20 [info][bot-log] add command 'торч спасибо кстате за хелпу по ливам, но траб оказался вот тут $days = intval($command-&gt;getArgs()[2]);' from chat 16
+2017-04-06 14:26:16 [info][bot-log] start bot
+2017-04-06 14:26:19 [warning][bot-log] longPoll failed with code 2
+2017-04-06 14:26:20 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 753777f55fdbe6ed1c7b6d84970ab9bd16d76b05 
+ ts: 1699162361
+2017-04-06 14:26:26 [info][bot-log] add command 'торч кого выебать' from chat 2
+2017-04-06 14:26:27 [info][bot-log] add command 'торч кто собака?' from chat 2
+2017-04-07 07:11:37 [info][bot-log] start bot
+2017-04-07 07:11:40 [warning][bot-log] longPoll failed with code 2
+2017-04-07 07:11:41 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 207426d46974f78c36a63cd2325108d8cdf088e7 
+ ts: 1774575289
+2017-04-07 07:11:58 [info][bot-log] add command 'торч ливы 2' from chat 2
+2017-04-07 07:23:10 [info][bot-log] add command 'торч ливы 1' from chat 2
+2017-04-07 07:24:09 [info][bot-log] add command 'торч ливы 2' from chat 2
+2017-04-07 11:59:13 [info][bot-log] start bot
+2017-04-07 11:59:16 [warning][bot-log] longPoll failed with code 2
+2017-04-07 11:59:17 [info][bot-log] get new longPoll params: 
+ server: newimv4.vk.com/nim1682 
+ key: 0427bdd8f7977c523596e96a60d152b411b39ed8 
+ ts: 1774595795
+2017-04-07 11:59:19 [info][bot-log] add command 'торч кто хохол' from chat 2
+2017-04-07 11:59:44 [info][bot-log] add command 'торч ливы 1' from chat 2
+2017-04-07 11:59:53 [info][bot-log] start bot
