@@ -86,7 +86,7 @@ class ChatCommands
                 $chat     = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
 		    
-		    if(preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9 ]+$/u', $nickname)) {
+		    if(!preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9 ]+$/u', $nickname)) {
 			    $chat->sendMessage("Твой ник не может содержать такие символы...", ['forward_messages' => $command->messageId]);
 			    return false;
 		    }
