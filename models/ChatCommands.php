@@ -55,6 +55,24 @@ class ChatCommands
         $s        = new self;
         $commands = [];
 	    
+	$commands[] = new ChatCommand(
+            'зови меня по имени',
+            'Удаляет ваш никнейм',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(4) && $s->argsRegExp(['зови', 'меня', 'по', 'имени']);
+            },
+            function ($command) {
+                $chat = Chats::getChat($command->chatId);
+		$user = Users::getUser($command->chatId, $command->userId);
+		$user->nickname = null;
+                $user->save();
+		    
+                $message  = array(1 => "Хорошо, отныне я буду звать тебя как раньше.", "Удалила твой ник. Я буду обращаться к тебе просто и холодно – {$user->name} {$user->secondName}.", "Как пожелаешь, {$user->name} {$user->secondName}.");
+                $chat->sendMessage($message[rand(1, count($message))], ['forward_messages' => $command->messageId]);
+            }
+        );
+	    
         $commands[] = new ChatCommand(
             'называй меня',
             'Привязывает к вашему настоящему имени никнейм',
