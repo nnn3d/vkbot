@@ -60,7 +60,7 @@ class ChatCommands
             'Удаляет ваш никнейм',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(4) && $s->argsRegExp(['зови', 'меня', 'по', 'имени']);
+                return $s->argsEqual(4) && $s->argsRegExp(['зови', 'меня', 'по', 'имени']);
             },
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
@@ -969,10 +969,12 @@ class ChatCommands
 				$chat->sendMessage("Не найден участник беседы '$name $secondName'");
 				return false;
 			}
-                } else if ($user->userId == $command->userId) {
+                }
+		if ($user->userId == $command->userId) {
                     $chat->sendMessage("Нельзя себя кикнуть");
                     return false;
-                } else if (Users::getStatus($command->chatId, $user->userId) != USER_STATUS_DEFAULT) {
+                }
+		if (Users::getStatus($command->chatId, $user->userId) != USER_STATUS_DEFAULT) {
                     $chat->sendMessage("Этого пользователя нельзя кикнуть");
                     return false;
                 }
