@@ -901,6 +901,9 @@ class ChatCommands
             },
             function ($command) {
                 $chat   = Chats::getChat($command->chatId);
+		$pUser = Users::getUser($command->chatId, $command->userId);
+		if(!empty($pUser->nickname)){
+		}
                 $users  = $chat->getAllActiveUsers();
                 $r      = mt_rand(0, count($users) - 1);
                 $c      = implode(' ', array_slice($command->getArgs(), 1));
@@ -908,8 +911,12 @@ class ChatCommands
                 $c      = trim($c, "?");
 		if (empty($c)) return false;
                 if ($countC == '1') {
+		    $message = "Cчитаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}";
+			if(!empty($pUser->nickname)) $message = "{$pUser->nickname}, cчитаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}";
                     $chat->sendMessage("Cчитаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}", ['forward_messages' => $command->messageId]);
                 } else {
+		    $message = "Я думаю, что {$users[$r]->name} {$users[$r]->secondName}";
+			if(!empty($pUser->nickname)) $message = "{$pUser->nickname}, я думаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}";
                     $chat->sendMessage("Я думаю, что {$users[$r]->name} {$users[$r]->secondName}", ['forward_messages' => $command->messageId]);
                 }
             }
