@@ -104,9 +104,9 @@ class Events extends \yii\db\ActiveRecord
                 });
 		$timevent = array_pop($timevents);
 		$user = Users::getUser($chatId, $midEvent);
-		//$user->invdate = $timevent->time; 
-		//$user->save();
-		//return $timevent->time; 
+		$user->invdate = $timevent; 
+		$user->save();
+		return $timevent; 
 	}
 	
     public static function changePhoto($chatId, $userId){
