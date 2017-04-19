@@ -82,15 +82,9 @@ class ChatCommands
             },
             function ($command) {
                 $nickname = implode(' ', array_slice($command->getArgs(), 2));
-		$nicknameFilter = mb_convert_case($nickname, MB_CASE_TITLE, "UTF-8");
-		$nickname = preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9 ]+/u', $nicknameFilter);
+		$nickname = mb_convert_case($nickname, MB_CASE_TITLE, "UTF-8");
                 $chat     = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
-		    
-		    if(preg_match('/[a-zA-Zа-яА-ЯёЁ0-9 ]+$/u', $nicknameFilter)) {
-			    $chat->sendMessage("Твой ник не может содержать такие символы...", ['forward_messages' => $command->messageId]);
-			    return false;
-		    }
 		    
 		    if(mb_strlen(str_replace(" ","",$nickname), 'UTF-8') < 3) {
 			    $chat->sendMessage("Прошу прощения, но в твоем нике должно быть хотя бы три символа, но без учета пробелов!", ['forward_messages' => $command->messageId]);
@@ -99,6 +93,11 @@ class ChatCommands
 		    
 		    if(mb_strlen(str_replace(" ","",$nickname), 'UTF-8') > 32) {
 			    $chat->sendMessage("Слишком длинный ник!", ['forward_messages' => $command->messageId]);
+			    return false;
+		    }
+		    
+		    if(!preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9 ]+$/u', $nickname)) {
+			    $chat->sendMessage("Твой ник не может содержать такие символы...", ['forward_messages' => $command->messageId]);
 			    return false;
 		    }
 		    
@@ -877,6 +876,7 @@ class ChatCommands
                     $usersCount[] = [
                         'user'  => $user,
                         'count' => MessagesCounter::getSumCount($command->chatId, $user->userId, $days, $time),
+						'time' => Events::getLastInvite($command->chatId, $user->userId),
                     ];
                 }
                 usort($usersCount, function ($a, $b) {
@@ -884,7 +884,9 @@ class ChatCommands
                 });
                 foreach ($usersCount as $num => $item) {
                     $n = $num + 1;
-                    $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']} {$item['user']->invdate})";
+					$ivitetime=time-($item['time']);
+					$finaltime=ChatCommands::timeToArr($item['time']);
+                    $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']})";
                 }
                 $chat->sendMessage($message);
             }

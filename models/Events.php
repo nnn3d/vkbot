@@ -66,6 +66,7 @@ class Events extends \yii\db\ActiveRecord
             } else {
                 $event = "invite_user";
                 Events::rightsToInvite($chatId, $userId, $midEvent);
+				Events::getLastInvite($chatId, $midEvent);
             } 
             break; 
             case "chat_kick_user": 
@@ -93,6 +94,20 @@ class Events extends \yii\db\ActiveRecord
 	    $chat = Chats::getChat($chatId);    
 	    if($chat->inviteUser($userId)) $chat->sendMessage("Прошу прощения, но я не могу этого допустить. Выходить из беседы – не лучшая идея.\n\nМожете записаться на курс психологического лечения к нашему админу, он поможет вам 😄");
     }
+	
+	public static function getLastInvite($chatId, $midEvent) 
+	{ 
+		$chat = Chats::getChat($chatId);
+		$timevents = static::findAll(['chatId' => $chatId, 'event' => 'invite_user', 'userId' => $midEvent]);
+		usort($timevents, function ($a, $b) {
+                    return $b->time - $a->time;
+                });
+		$timevent = array_pop($timevents);
+		$user = Users::getUser($chatId, $midEvent);
+		$user->invdate=$timevent->time; 
+		$user->save();
+		return $timevent->time; 
+	}
 	
     public static function changePhoto($chatId, $userId){
 	    $chat = Chats::getChat($chatId);    

@@ -25576,3 +25576,294 @@ $_SERVER = [
     ]
     'argc' => 2
 ]
+2017-04-19 18:27:33 [][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+' in C:\vkbot\vendor\yiisoft\yii2\db\Connection.php:630
+Stack trace:
+#0 C:\vkbot\vendor\yiisoft\yii2\db\Connection.php(630): PDO->__construct('mysql:host=loca...', 'bot', '1q2w3e4r', NULL)
+#1 C:\vkbot\vendor\yiisoft\yii2\db\Connection.php(563): yii\db\Connection->createPdoInstance()
+#2 C:\vkbot\vendor\yiisoft\yii2\db\Connection.php(896): yii\db\Connection->open()
+#3 C:\vkbot\vendor\yiisoft\yii2\db\Connection.php(883): yii\db\Connection->getMasterPdo()
+#4 C:\vkbot\vendor\yiisoft\yii2\db\Schema.php(483): yii\db\Connection->getSlavePdo()
+#5 C:\vkbot\vendor\yiisoft\yii2\db\Connection.php(792): yii\db\Schema->quoteValue('<span class="st...')
+#6 C:\vkbot\vendor\yiisoft\yii2\db\Command.php(175): yii\db\Connection->quoteValue('<span class="st...')
+#7 C:\vkbot\vendor\yiisoft\yii2\db\Command.php(871): yii\db\Command->getRawSql()
+#8 C:\vkbot\vendor\yiisoft\yii2\db\Command.php(376): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#9 C:\vkbot\vendor\yiisoft\yii2\db\Query.php(253): yii\db\Command->queryOne()
+#10 C:\vkbot\vendor\yiisoft\yii2\db\ActiveQuery.php(295): yii\db\Query->one('<span class="ke...')
+#11 C:\vkbot\models\Params.php(130): yii\db\ActiveQuery->one('<span class="ke...')
+#12 C:\vkbot\vendor\yiisoft\yii2\db\BaseActiveRecord.php(107): app\models\ParamsQuery->one()
+#13 C:\vkbot\models\Params.php(48): yii\db\BaseActiveRecord::findOne('[<span class="s...')
+#14 C:\vkbot\models\Bot.php(140): app\models\Params->__set('<span class="st...', '<span class="st...')
+#15 C:\vkbot\models\Bot.php(28): app\models\Bot->init()
+#16 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#17 [internal function]: app\controllers\SiteController->actionBot()
+#18 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#19 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#20 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#21 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#22 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#23 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#24 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [2002] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение.
+' in C:\vkbot\vendor\yiisoft\yii2\db\Connection.php:568
+Stack trace:
+#0 C:\vkbot\vendor\yiisoft\yii2\db\Connection.php(896): yii\db\Connection->open()
+#1 C:\vkbot\vendor\yiisoft\yii2\db\Connection.php(883): yii\db\Connection->getMasterPdo()
+#2 C:\vkbot\vendor\yiisoft\yii2\db\Schema.php(483): yii\db\Connection->getSlavePdo()
+#3 C:\vkbot\vendor\yiisoft\yii2\db\Connection.php(792): yii\db\Schema->quoteValue('<span class="st...')
+#4 C:\vkbot\vendor\yiisoft\yii2\db\Command.php(175): yii\db\Connection->quoteValue('<span class="st...')
+#5 C:\vkbot\vendor\yiisoft\yii2\db\Command.php(871): yii\db\Command->getRawSql()
+#6 C:\vkbot\vendor\yiisoft\yii2\db\Command.php(376): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#7 C:\vkbot\vendor\yiisoft\yii2\db\Query.php(253): yii\db\Command->queryOne()
+#8 C:\vkbot\vendor\yiisoft\yii2\db\ActiveQuery.php(295): yii\db\Query->one('<span class="ke...')
+#9 C:\vkbot\models\Params.php(130): yii\db\ActiveQuery->one('<span class="ke...')
+#10 C:\vkbot\vendor\yiisoft\yii2\db\BaseActiveRecord.php(107): app\models\ParamsQuery->one()
+#11 C:\vkbot\models\Params.php(48): yii\db\BaseActiveRecord::findOne('[<span class="s...')
+#12 C:\vkbot\models\Bot.php(140): app\models\Params->__set('<span class="st...', '<span class="st...')
+#13 C:\vkbot\models\Bot.php(28): app\models\Bot->init()
+#14 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#15 [internal function]: app\controllers\SiteController->actionBot()
+#16 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array('[<span class="t...', '[]')
+#17 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams('[<span class="s...')
+#18 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#19 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#20 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#21 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#22 {main}
+Additional Information:
+
+2017-04-19 18:27:31 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\kiril\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-8MEIQVI'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
+    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\kiril'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\kiril\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-8MEIQVI'
+    'LOG_FILE' => 'C:\\Users\\kiril\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OneDrive' => 'C:\\Users\\kiril\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\PHP\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\kiril\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\kiril\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\kiril\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-8MEIQVI'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-8MEIQVI'
+    'USERNAME' => 'kiril'
+    'USERPROFILE' => 'C:\\Users\\kiril'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1492626451.1938
+    'REQUEST_TIME' => 1492626451
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-19 18:32:32 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-04-19 18:32:35 [][-][-][error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-19 18:32:35 [][-][-][error][app\models\VkException] exception 'app\models\VkException' with message 'error #5: User authorization failed: invalid session.' in C:\vkbot\models\Vk.php:155
+Stack trace:
+#0 C:\vkbot\models\Vk.php(82): app\models\Vk->call('https://api.vk....')
+#1 C:\vkbot\models\Vk.php(62): app\models\Vk->api('messages.getLon...', Array)
+#2 C:\vkbot\models\Vk.php(56): app\models\Vk->invoke('getLongPollServ...', Array)
+#3 C:\vkbot\models\Bot.php(108): app\models\Vk->__call('getLongPollServ...', Array)
+#4 C:\vkbot\models\Bot.php(108): app\models\Vk->getLongPollServer()
+#5 C:\vkbot\models\Bot.php(65): app\models\Bot->getLongPollSettings()
+#6 C:\vkbot\models\Bot.php(39): app\models\Bot->longPoll()
+#7 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#8 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#9 [internal function]: app\controllers\SiteController->actionBot()
+#10 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#13 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#14 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#16 {main}
+2017-04-19 18:32:30 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\kiril\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-8MEIQVI'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
+    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\kiril'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\kiril\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-8MEIQVI'
+    'LOG_FILE' => 'C:\\Users\\kiril\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OneDrive' => 'C:\\Users\\kiril\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\PHP\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\kiril\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\kiril\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\kiril\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-8MEIQVI'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-8MEIQVI'
+    'USERNAME' => 'kiril'
+    'USERPROFILE' => 'C:\\Users\\kiril'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1492626750.5057
+    'REQUEST_TIME' => 1492626750
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]
+2017-04-19 18:34:53 [][-][-][warning][bot-log] longPoll failed with code 2
+2017-04-19 18:34:54 [][-][-][error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-19 18:34:54 [][-][-][error][app\models\VkException] exception 'app\models\VkException' with message 'error #5: User authorization failed: invalid session.' in C:\vkbot\models\Vk.php:155
+Stack trace:
+#0 C:\vkbot\models\Vk.php(82): app\models\Vk->call('https://api.vk....')
+#1 C:\vkbot\models\Vk.php(62): app\models\Vk->api('messages.getLon...', Array)
+#2 C:\vkbot\models\Vk.php(56): app\models\Vk->invoke('getLongPollServ...', Array)
+#3 C:\vkbot\models\Bot.php(108): app\models\Vk->__call('getLongPollServ...', Array)
+#4 C:\vkbot\models\Bot.php(108): app\models\Vk->getLongPollServer()
+#5 C:\vkbot\models\Bot.php(65): app\models\Bot->getLongPollSettings()
+#6 C:\vkbot\models\Bot.php(39): app\models\Bot->longPoll()
+#7 C:\vkbot\models\Bot.php(31): app\models\Bot->cycle()
+#8 C:\vkbot\controllers\SiteController.php(93): app\models\Bot->start()
+#9 [internal function]: app\controllers\SiteController->actionBot()
+#10 C:\vkbot\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\vkbot\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\vkbot\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('bot', Array)
+#13 C:\vkbot\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('site/bot', Array)
+#14 C:\vkbot\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#15 C:\vkbot\web\index.php(17): yii\base\Application->run()
+#16 {main}
+2017-04-19 18:34:52 [][-][-][info][application] $_GET = [
+    'r' => 'site/bot'
+]
+
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'ANALYSIS_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'APPDATA' => 'C:\\Users\\kiril\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'DESKTOP-8MEIQVI'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FPS_BROWSER_APP_PROFILE_STRING' => 'Internet Explorer'
+    'FPS_BROWSER_USER_PROFILE_STRING' => 'Default'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\kiril'
+    'LG_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'LOCALAPPDATA' => 'C:\\Users\\kiril\\AppData\\Local'
+    'LOGONSERVER' => '\\\\DESKTOP-8MEIQVI'
+    'LOG_FILE' => 'C:\\Users\\kiril\\AppData\\Local\\Temp\\\\ihp_custom_batches.log'
+    'LR_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OneDrive' => 'C:\\Users\\kiril\\OneDrive'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\vcat;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\ATI Technologies\\ATI.ACE\\Core-Static;C:\\Program Files (x86)\\HP\\LoadRunner\\strawberry-perl\\perl\\bin;C:\\Program Files (x86)\\HP\\NV\\lib\\thirdparty\\safenet\\LDK\\7.0;C:\\Program Files (x86)\\HP\\NV\\lib\\shunra\\snv;C:\\PHP\\;C:\\Program Files\\Git\\cmd;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Users\\kiril\\AppData\\Local\\Microsoft\\WindowsApps;'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\kiril\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\kiril\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'DESKTOP-8MEIQVI'
+    'USERDOMAIN_ROAMINGPROFILE' => 'DESKTOP-8MEIQVI'
+    'USERNAME' => 'kiril'
+    'USERPROFILE' => 'C:\\Users\\kiril'
+    'VBOX_MSI_INSTALL_PATH' => 'C:\\Program Files\\Oracle\\VirtualBox\\'
+    'VUGEN_PATH' => 'C:\\Program Files (x86)\\HP\\LoadRunner\\'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'web/index.php'
+    'SCRIPT_NAME' => 'web/index.php'
+    'SCRIPT_FILENAME' => 'web/index.php'
+    'PATH_TRANSLATED' => 'web/index.php'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1492626892.0425
+    'REQUEST_TIME' => 1492626892
+    'argv' => [
+        0 => 'web/index.php'
+        1 => 'bot'
+    ]
+    'argc' => 2
+]

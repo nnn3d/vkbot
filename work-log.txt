@@ -217,3 +217,18 @@
 2017-04-07 11:59:19 [info][bot-log] add command 'торч кто хохол' from chat 2
 2017-04-07 11:59:44 [info][bot-log] add command 'торч ливы 1' from chat 2
 2017-04-07 11:59:53 [info][bot-log] start bot
+2017-04-19 18:27:31 [info][bot-log] start bot
+2017-04-19 18:32:30 [info][bot-log] start bot
+2017-04-19 18:32:32 [warning][bot-log] longPoll failed with code 2
+2017-04-19 18:32:35 [error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-19 18:34:52 [info][bot-log] start bot
+2017-04-19 18:34:53 [warning][bot-log] longPoll failed with code 2
+2017-04-19 18:34:54 [error][bot-log] vk error with code 5 and message 'User authorization failed: invalid session.'
+2017-04-19 18:44:30 [info][bot-log] start bot
+2017-04-19 18:45:11 [info][bot-log] add command 'Торч актив' from chat 2
+2017-04-19 18:45:52 [info][bot-log] add command 'Торч кто пидор?' from chat 2
+2017-04-19 18:46:12 [info][bot-log] add command 'Торч стат 1 Андрей' from chat 2
+2017-04-19 18:46:35 [info][bot-log] add command 'Торч топ 3' from chat 2
+2017-04-19 18:46:54 [info][bot-log] add command 'Торч стат Дима Керченский' from chat 2
+2017-04-19 18:47:49 [info][bot-log] add command 'Торч топ 1' from chat 2
+2017-04-19 18:52:09 [info][bot-log] add command 'торч кик дим керч' from chat 2
