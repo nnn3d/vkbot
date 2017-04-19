@@ -68,7 +68,7 @@ class ChatCommands
 		$user->nickname = null;
                 $user->save();
 		    
-                $message  = array(1 => "Хорошо, отныне я буду звать тебя как раньше.", "Удалила твой ник. Я буду обращаться к тебе просто и холодно – {$user->name} {$user->secondName}.", "Как пожелаешь, {$user->name} {$user->secondName}.");
+                $message  = array(1 => "Хорошо, отныне я буду звать тебя как раньше.", "Удалила твой ник. Буду обращаться к тебе просто – {$user->name} {$user->secondName}.", "Как пожелаешь, {$user->name} {$user->secondName}.");
                 $chat->sendMessage($message[rand(1, count($message))], ['forward_messages' => $command->messageId]);
             }
         );
@@ -82,12 +82,11 @@ class ChatCommands
             },
             function ($command) {
                 $nickname = implode(' ', array_slice($command->getArgs(), 2));
-		$nicknameFilter = mb_convert_case($nickname, MB_CASE_TITLE, "UTF-8");
-		$nickname = preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9 ]+/u', $nicknameFilter);
+		$nickname = mb_convert_case($nickname, MB_CASE_TITLE, "UTF-8");
                 $chat     = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
 		    
-		    if(preg_match('/[a-zA-Zа-яА-ЯёЁ0-9 ]+$/u', $nicknameFilter)) {
+		    if(preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9 ]+$/u', $nickname)) {
 			    $chat->sendMessage("Твой ник не может содержать такие символы...", ['forward_messages' => $command->messageId]);
 			    return false;
 		    }
