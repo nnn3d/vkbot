@@ -99,14 +99,15 @@ class Events extends \yii\db\ActiveRecord
 	{ 
 		$chat = Chats::getChat($chatId);
 		$timevents = static::findAll(['chatId' => $chatId, 'event' => 'invite_user', 'userId' => $midEvent]);
+		if(empty($timevents)) return false;
 		usort($timevents, function ($a, $b) {
                     return $b->time - $a->time;
                 });
 		$timevent = array_pop($timevents);
 		$user = Users::getUser($chatId, $midEvent);
-		$user->invdate = $timevent; 
+		$user->invdate = $timevent->time; 
 		$user->save();
-		return $timevent; 
+		return $timevent->time; 
 	}
 	
     public static function changePhoto($chatId, $userId){
