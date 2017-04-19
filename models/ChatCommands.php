@@ -902,8 +902,6 @@ class ChatCommands
             function ($command) {
                 $chat   = Chats::getChat($command->chatId);
 		$pUser = Users::getUser($command->chatId, $command->userId);
-		if(!empty($pUser->nickname)){
-		}
                 $users  = $chat->getAllActiveUsers();
                 $r      = mt_rand(0, count($users) - 1);
                 $c      = implode(' ', array_slice($command->getArgs(), 1));
