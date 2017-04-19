@@ -911,11 +911,11 @@ class ChatCommands
                 if ($countC == '1') {
 		    $message = "Cчитаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}";
 			if(!empty($pUser->nickname)) $message = "{$pUser->nickname}, cчитаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}";
-                    $chat->sendMessage("Cчитаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}", ['forward_messages' => $command->messageId]);
+                    $chat->sendMessage($message, ['forward_messages' => $command->messageId]);
                 } else {
 		    $message = "Я думаю, что {$users[$r]->name} {$users[$r]->secondName}";
 			if(!empty($pUser->nickname)) $message = "{$pUser->nickname}, я думаю, что \"$c\" - {$users[$r]->name} {$users[$r]->secondName}";
-                    $chat->sendMessage("Я думаю, что {$users[$r]->name} {$users[$r]->secondName}", ['forward_messages' => $command->messageId]);
+                    $chat->sendMessage($message, ['forward_messages' => $command->messageId]);
                 }
             }
         );
