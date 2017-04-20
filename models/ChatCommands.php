@@ -876,7 +876,7 @@ class ChatCommands
                     $usersCount[] = [
                         'user'  => $user,
                         'count' => MessagesCounter::getSumCount($command->chatId, $user->userId, $days, $time),
-						'time' => Events::getLastInvite($command->chatId, $user->userId),
+					//	'time' => Events::getLastInvite($command->chatId, $user->userId),
                     ];
                 }
                 usort($usersCount, function ($a, $b) {
@@ -884,9 +884,12 @@ class ChatCommands
                 });
                 foreach ($usersCount as $num => $item) {
                     $n = $num + 1;
-					$ivitetime=time()-$item['time'];
-					$finaltime=ChatCommands::timeToArr($item['time']);
-                    $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']})";
+                    $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']}) ";
+					/*if  (isset($item['time'])) {
+					$ivitetime=time() - intval($item['time']);
+					$finaltime=ChatCommands::timeToArr($ivitetime);
+					$message .=" за {$finaltime[3]} д. {$finaltime[2]} ч.";
+					}*/
                 }
                 $chat->sendMessage($message);
             }

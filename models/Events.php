@@ -95,20 +95,23 @@ class Events extends \yii\db\ActiveRecord
 	    if($chat->inviteUser($userId)) $chat->sendMessage("Прошу прощения, но я не могу этого допустить. Выходить из беседы – не лучшая идея.\n\nМожете записаться на курс психологического лечения к нашему админу, он поможет вам 😄");
     }
 	
-	public static function getLastInvite($chatId, $midEvent) 
+	/*public static function getLastInvite($chatId, $userId, $invitationUserId) 
 	{ 
 		$chat = Chats::getChat($chatId);
-		$timevents = static::findAll(['chatId' => $chatId, 'event' => 'invite_user', 'userId' => $midEvent]);
-		if(empty($timevents)) return time();
+		$timevents = static::findAll(['chatId' => $chatId, 'event' => 'invite_user', 'userId' => $userId]);
 		usort($timevents, function ($a, $b) {
                     return $b->time - $a->time;
                 });
-		$timevent = array_pop($timevents);
-		$user = Users::getUser($chatId, $midEvent);
-		$user->invdate = $timevent->time; 
+		foreach timevents as $times {
+			$user = Users::getUser($chatId, $invitationUserId);
+			$user->invdate=timeevents
+		}
+		$timevent =$timevents[1];
+		$user = Users::getUser($chatId, $invitationUserId);
+		$user->invdate=$timevent->time; 
 		$user->save();
 		return $timevent->time; 
-	}
+	}*/
 	
     public static function changePhoto($chatId, $userId){
 	    $chat = Chats::getChat($chatId);    
