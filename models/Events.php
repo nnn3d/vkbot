@@ -66,7 +66,6 @@ class Events extends \yii\db\ActiveRecord
             } else {
                 $event = "invite_user";
                 Events::rightsToInvite($chatId, $userId, $midEvent);
-				Events::getLastInvite($chatId, $midEvent);
             } 
             break; 
             case "chat_kick_user": 
