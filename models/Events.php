@@ -112,8 +112,10 @@ class Events extends \yii\db\ActiveRecord
 		return $timevent->time; 
 	}*/
 	
-    public static function changePhoto($chatId, $userId){
-	    $chat = Chats::getChat($chatId);    
+    public static function changePhoto($chatId, $userId){   
+	    $user = Users::getUser($chatId, $userId);
+	    if (Users::getStatus($chatId, $userId) == USER_STATUS_ADMIN || Users::getStatus($chatId, $userId) == USER_STATUS_MODER) return false;
+	    $chat = Chats::getChat($chatId); 
 	    $chat->sendMessage("Боюсь, что в этой беседе нельзя менять фотографию диалога. Я вынуждена сейчас же её удалить.");
 	    if(!Vk::get(true)->messages->deleteChatPhoto(['chat_id' => $chatId])) $chat->sendMessage("Что-то пошло не так... Я займусь этим позже.");
     }
