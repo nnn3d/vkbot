@@ -115,7 +115,7 @@ class Events extends \yii\db\ActiveRecord
     public static function changePhoto($chatId, $userId){
 	    $chat = Chats::getChat($chatId);    
 	    $chat->sendMessage("Боюсь, что в этой беседе нельзя менять фотографию диалога. Я вынуждена сейчас же её удалить.");
-	    // Vk::get(true)->messages->deleteChatPhoto(['chat_id' => $chatId]);
+	    if(!Vk::get(true)->messages->deleteChatPhoto(['chat_id' => $chatId])) $chat->sendMessage("Что-то пошло не так... Я займусь этим позже.");
     }
 	    
     public static function rightsToInvite($chatId, $userId, $invitationUserId)
