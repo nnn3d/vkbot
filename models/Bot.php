@@ -143,6 +143,14 @@ class Bot {
 		$this->runCode = microtime() . rand(1, 10000);
 		Params::get()->run = $this->runCode;
 
+		
+		foreach (Chats::getAllChats() as $chat) {
+			foreach ($chat->getAllUsers() as $user) {
+				$user->invdate = 0;
+				$user->save();
+			}
+		}
+
 		if (!Params::get()->bdVersion || $reinit) {
 			// first initial here
 			Yii::info("first init", 'bot-log');
