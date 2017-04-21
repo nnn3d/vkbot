@@ -35,16 +35,29 @@ class Users extends \yii\db\ActiveRecord
     {
         return [
             [['userId', 'name', 'secondName', 'chatId'], 'required'],
-            [['userId', 'status', 'chatId', 'messages', 'lastActivity'], 'integer'],
-            [['name', 'secondName'], 'string', 'max' => 255],
+            [['userId', 'status', 'chatId', 'messages', 'lastActivity', 'invdate'], 'integer'],
+            [['name', 'secondName', 'nickname'], 'string', 'max' => 255],
         ];
     }
 
     public function beforeSave($insert)
     {
         !$this->lastActivity && $this->lastActivity = time();
+        $this->isNewRecord && $this->invdate = time();
+        if ($this->invdate == 0) {
+            $c = MessagesCounter::find()->where(['userId' => $this->userId, 'chatId' => $this->chatId])
+                ->orderBy(['year' => SORT_ASC, 'month' => SORT_ASC, 'day' => SORT_ASC])
+                ->one();
+            if (isset($c)) {
+                $month = $c->month > 9 ? $c->month : '0' . $c->month;
+                $day = $c->day > 9 ? $c->day : '0' . $c->day;
+                $date = "20{$c->year}:{$month}:{$day} 01:00:00 ";
+                $this->invdate = strtotime($date);
+            } else {
+                $this->invdate = time();
+            }
+        }
         if (parent::beforeSave($insert)) {
-            
             return true;
         } else {
             return false;
