@@ -811,7 +811,8 @@ class ChatCommands
                 });
                 foreach ($users as $num => $user) {
                     $n = $num + 1;
-                    $message .= "\n{$n}. {$user->name} {$user->secondName} ({$user->messages})";
+                    $date = ChatCommands::timeToStr(time() - $user->invdate);
+                    $message .= "\n{$n}. {$user->name} {$user->secondName} ({$user->messages}) за $date";
                 }
                 $chat->sendMessage($message);
             }
@@ -884,7 +885,26 @@ class ChatCommands
                 });
                 foreach ($usersCount as $num => $item) {
                     $n = $num + 1;
-                    $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']}) ";
+                    $dates= array();
+                    $date = ChatCommands::timeToStr(time() - $item['user']->invdate);
+                    $message .= "\n{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']}), $date";
+                   /* $m=3;
+                    $l=2;
+                    if (!$date[3]) {
+                        $m=2;
+                        $l=1;
+                        $message .="  в конфе $date[$m] ч. $date[$l] мин.";
+                    } else if (!$date[3] && !$date[2]) {
+                        $m=1;
+                        $l=0;
+                        $message .="  в конфе $date[$m] мин. $date[$l] сек.";
+                    } else if (!$date[3] && !$date[2] && !$date[1]) {
+                        $m=0;
+                        $l=0;
+                        $message .="  в конфе $date[$l] сек.";
+                    } else {
+                        $message .="  в конфе $date[$m] дн. $date[$l] час.";
+                    }*/
 					/*if  (isset($item['time'])) {
 					$ivitetime=time() - intval($item['time']);
 					$finaltime=ChatCommands::timeToArr($ivitetime);
@@ -1355,3 +1375,4 @@ class ChatCommand
         return $this->status;
     }
 }
+
