@@ -60,7 +60,7 @@ class ChatCommands
             'Показывает ваш никнейм.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(2) && $s->argsRegExp(['список', 'ников']);
+                return $s->argsEqual(3) && $s->argsRegExp(['как', 'меня', 'зовут']);
             },
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
@@ -433,9 +433,8 @@ class ChatCommands
 			    $globalTime = time()-86400;
 			    $time1 = Events::find()->where(['chatId' => $command->chatId, 'userId' => $user1], ['BETWEEN', 'time', '$globalTime AND time()']) ? false : true;
 			    $time2 = Events::find()->where(['chatId' => $command->chatId, 'userId' => $user2], ['BETWEEN', 'time', '$globalTime AND time()']) ? false : true;
-			    if($time1 == true && $time2 == true) {
-				    $message .= "\nЯ бы удалила следующую пару:";
-			    }
+			    if($time1) $message .= "\nЯ бы удалила следующую пару: (отсутсвует user1)";
+			    if($time2) $message .= "\nЯ бы удалила следующую пару: (отсутсвует user2)";
 		    }
                     $message .= "\n {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName}";
                 }
