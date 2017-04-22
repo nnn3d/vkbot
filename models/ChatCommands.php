@@ -70,9 +70,9 @@ class ChatCommands
 			$message = "Вы сказали мне звать вас {$user->nickname}";
 		} else {
 			$botName  = Params::bot('name');
-			$message = "Вы еще не говорили, как мне нужно называть вас.\nДля регистрации ника используйте: $botName называй меня [ник]";
+			$message = "Вы еще не говорили, как мне нужно называть вас.\nДля регистрации ника используйте:\n $botName называй меня [ник]";
 		}
-		$chat->sendMessage($message);
+		$chat->sendMessage($message, ['forward_messages' => $command->messageId]);
             }
         );
 	    
@@ -94,7 +94,7 @@ class ChatCommands
 				$i++;
 			}
                 }
-                $chat->sendMessage($message, ['forward_messages' => $command->messageId]);
+                $chat->sendMessage($message);
             }
         );
 	    
@@ -431,8 +431,14 @@ class ChatCommands
                     $user2 = Users::getUser($command->chatId, $m[1]);
 		    if (!in_array($user1, $users) && !in_array($user2, $users)) {
 			    $globalTime = time()-86400;
-			    $time1 = Events::find()->where(['chatId' => $command->chatId, 'userId' => $user1], ['BETWEEN', 'time', '$globalTime AND time()']) ? false : true;
-			    $time2 = Events::find()->where(['chatId' => $command->chatId, 'userId' => $user2], ['BETWEEN', 'time', '$globalTime AND time()']) ? false : true;
+			    $time1 = Events::find()->where(['chatId' => $command->chatId, 'userId' => $user1]);
+			    $time1 = array_pop($time1);
+			    $time2 = Events::find()->where(['chatId' => $command->chatId, 'userId' => $user2]);
+			    $time2 = array_pop($time2);
+			    
+			    if($time1->time < $globalTime) $time1 = true;
+			    if($time2->time < $globalTime) $time2 = true;
+			    
 			    if($time1) $message .= "\nЯ бы удалила следующую пару: (отсутсвует user1)";
 			    if($time2) $message .= "\nЯ бы удалила следующую пару: (отсутсвует user2)";
 		    }
