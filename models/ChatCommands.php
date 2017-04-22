@@ -56,6 +56,26 @@ class ChatCommands
         $commands = [];
 	    
 	$commands[] = new ChatCommand(
+            'список ников',
+            'Показать список всех установленных никнеймов.',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(2) && $s->argsRegExp(['список', 'ников']);
+            },
+            function ($command) {
+                $chat         = Chats::getChat($command->chatId);
+                $users        = $chat->getAllActiveUsers();
+                $message      = "Список никнеймов участников беседы, зафиксированных мной:\n";
+                foreach ($users as $user) {
+			if(!empty($user->nickname)) {
+				$message .= "\n{$user->nickname} ({$user->name} {$user->secondName})";
+			}
+                }
+                $chat->sendMessage($message);
+            }
+        );
+	    
+	$commands[] = new ChatCommand(
             'зови меня по имени',
             'Удаляет ваш никнейм',
             function ($command) use ($s) {
@@ -369,6 +389,7 @@ class ChatCommands
                 $chat       = Chats::getChat($command->chatId);
                 $marriage   = ChatParams::get($command->chatId)->{CHAT_PARAM_MARRIAGE};
                 $errMessage = "Нет браков в этой беседе";
+		$users = $chat->getAllActiveUsers();
                 if (!$marriage) {
                     $chat->sendMessage($errMessage);
                     return false;
@@ -385,6 +406,7 @@ class ChatCommands
                 foreach ($marriages as $m) {
                     $user1 = Users::getUser($command->chatId, $m[0]);
                     $user2 = Users::getUser($command->chatId, $m[1]);
+		    if (!in_array($user1, $users) && !in_array($user2, $users)) $message .= "\nЯ бы удалила следующую пару:";
                     $message .= "\n {$user1->name} {$user1->secondName} ❤ {$user2->name} {$user2->secondName}";
                 }
 		
