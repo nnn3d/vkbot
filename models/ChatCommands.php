@@ -431,8 +431,8 @@ class ChatCommands
                     $user2 = Users::getUser($command->chatId, $m[1]);
 		    if (!in_array($user1, $users) && !in_array($user2, $users)) {
 			    $globalTime = time()-86400;
-			    $time1 = Events::find()->where(['chatId' => $command->chatId, 'userId' => $user1], ['<', 'time', '$globalTime']) ? true : false;
-			    $time2 = Events::find()->where(['chatId' => $command->chatId, 'userId' => $user2], ['<', 'time', '$globalTime']) ? true : false;
+			    $time1 = Events::findOne()->where(['chatId' => $command->chatId, 'userId' => $user1]->orderBy(['time' => SORT_DESC]), ['<', 'time', '$globalTime']) ? true : false;
+			    $time2 = Events::findOne()->where(['chatId' => $command->chatId, 'userId' => $user2]->orderBy(['time' => SORT_DESC]), ['<', 'time', '$globalTime']) ? true : false;
 
 			    
 			    if($time1) $message .= "\nЯ бы удалила следующую пару: (отсутсвует user1)";
