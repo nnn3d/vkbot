@@ -287,9 +287,9 @@ class ChatCommands
 				$messageTime = ChatCommands::timeToStr($currenttime);
 				if (in_array($user, $users)) {
 					$returnedUsers = array();
-					array_push($returnedUsers, $user->userId);
+					array_push($returnedUsers, array('userId' => $userId->userId, 'time' => $userId->time);
 					$return = true;
-					break;
+					continue;
 				} else {
 					$where="($messageTime назад)";
 				}
@@ -303,12 +303,13 @@ class ChatCommands
 				}
 			} 
 			if(!$return) $chat->sendMessage($message);
+			if($return == true && $n == 1) $message .= '';
 			$message .= "\n\nВ конфу уже вернулись:\n"; 
 			$n = 0;
 			foreach ($returnedUsers as $returnDatas) { 
-				$user = Users::getUser($chat->chatId, $userId->userId);
-				$checkUs = Users::userExists($chat->chatId, $userId->userId);
-				$currenttime=time() - $userId->time;
+				$user = Users::getUser($chat->chatId, $returnDatas['userId']);
+				$checkUs = Users::userExists($chat->chatId, $returnDatas['userId']);
+				$currenttime=time() - $returnDatas['time'];
 				$messageTime = ChatCommands::timeToStr($currenttime);
 				$timearr = ChatCommands::timeToArr($currenttime);
 				if (!isset($timearr[3])){
