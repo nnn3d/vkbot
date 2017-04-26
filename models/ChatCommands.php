@@ -279,17 +279,15 @@ class ChatCommands
 				$users = $chat->getAllActiveUsers();
 				$eventList = Events::getEvent($chat->chatId, $event);
 				$n=0;
-				$return = false;
+				$returnedUsers = array();
 			foreach ($eventList as $userId) { 
 				$user = Users::getUser($chat->chatId, $userId->userId);
 				$checkUs = Users::userExists($chat->chatId, $userId->userId);
 				$currenttime=time() - $userId->time;
 				$messageTime = ChatCommands::timeToStr($currenttime);
 				if (in_array($user, $users)) {
-					$returnedUsers = array();
 					array_push($returnedUsers, array('userId' => $userId->userId, 'time' => $userId->time));
-					$return = true;
-					continue;
+					$where="($messageTime назад)";
 				} else {
 					$where="($messageTime назад)";
 				}
@@ -302,9 +300,11 @@ class ChatCommands
 				$message .= "\n{$n}. {$user->name} {$user->secondName} $where"; 
 				}
 			} 
-			if(!$return) $chat->sendMessage($message);
-			if($return == true && $n == 1) $message .= '';
-			$message .= "\n\nВ конфу уже вернулись:\n"; 
+			if(empty($returnedUsers)) {
+				$chat->sendMessage($message);
+				return false;
+			}
+			$message .= "\n\nОднако в конфу успели вернуться:\n"; 
 			$n = 0;
 			foreach ($returnedUsers as $returnDatas) { 
 				$user = Users::getUser($chat->chatId, $returnDatas['userId']);
