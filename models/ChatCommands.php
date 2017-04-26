@@ -286,13 +286,14 @@ class ChatCommands
 				$currenttime=time() - $userId->time;
 				$messageTime = ChatCommands::timeToStr($currenttime);
 				if (!isset($timearr[3])) $timearr[3]=0;
-				if ($days < ($timearr[3])) continue;
+				if ($days > ($timearr[3])) {
 				if (in_array($user, $users)) array_push($returnedUsers, $userId->userId);
 				$where="($messageTime назад)";
 				$timearr = ChatCommands::timeToArr($currenttime);
 				
 				$n++;
 				$message .= "\n{$n}. {$user->name} {$user->secondName} $where"; 
+				}
 			} 
 			if(empty($returnedUsers)) {
 				$chat->sendMessage($message);
