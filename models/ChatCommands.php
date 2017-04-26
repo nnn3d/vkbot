@@ -279,14 +279,35 @@ class ChatCommands
 				$users = $chat->getAllActiveUsers();
 				$eventList = Events::getEvent($chat->chatId, $event);
 				$n=0;
+				$return = false;
 			foreach ($eventList as $userId) { 
 				$user = Users::getUser($chat->chatId, $userId->userId);
 				$checkUs = Users::userExists($chat->chatId, $userId->userId);
+				$currenttime=time() - $userId->time;
+				$messageTime = ChatCommands::timeToStr($currenttime);
 				if (in_array($user, $users)) {
-					$where='в конфе';
+					$returnedUsers = array();
+					array_push($returnedUsers, $user->userId);
+					$return = true;
+					break;
 				} else {
-					$where='вышел';
+					$where="($messageTime назад)";
 				}
+				$timearr = ChatCommands::timeToArr($currenttime);
+				if (!isset($timearr[3])){
+					$timearr[3]=0;
+				}
+				if ($days > ($timearr[3])) {
+				$n++;
+				$message .= "\n{$n}. {$user->name} {$user->secondName} $where"; 
+				}
+			} 
+			if(!$return) $chat->sendMessage($message);
+			$message .= "\n\nВ конфу уже вернулись:\n"; 
+			$n = 0;
+			foreach ($returnedUsers as $returnDatas) { 
+				$user = Users::getUser($chat->chatId, $userId->userId);
+				$checkUs = Users::userExists($chat->chatId, $userId->userId);
 				$currenttime=time() - $userId->time;
 				$messageTime = ChatCommands::timeToStr($currenttime);
 				$timearr = ChatCommands::timeToArr($currenttime);
@@ -295,7 +316,7 @@ class ChatCommands
 				}
 				if ($days > ($timearr[3])) {
 				$n++;
-				$message .= "\n{$n}. {$user->name} {$user->secondName} $messageTime $where"; 
+				$message .= "\n{$n}. {$user->name} {$user->secondName} (выходил $messageTime назад)"; 
 				}
 			} 
 			$chat->sendMessage($message); 
