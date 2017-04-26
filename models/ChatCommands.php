@@ -287,7 +287,7 @@ class ChatCommands
 				$messageTime = ChatCommands::timeToStr($currenttime);
 				if (in_array($user, $users)) {
 					$returnedUsers = array();
-					array_push($returnedUsers, array('userId' => $userId->userId, 'time' => $userId->time);
+					array_push($returnedUsers, array('userId' => $userId->userId, 'time' => $userId->time));
 					$return = true;
 					continue;
 				} else {
