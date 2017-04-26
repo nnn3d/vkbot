@@ -285,20 +285,14 @@ class ChatCommands
 				$checkUs = Users::userExists($chat->chatId, $userId->userId);
 				$currenttime=time() - $userId->time;
 				$messageTime = ChatCommands::timeToStr($currenttime);
-				if (in_array($user, $users)) {
-					array_push($returnedUsers, $userId->userId);
-					$where="($messageTime назад)";
-				} else {
-					$where="($messageTime назад)";
-				}
+				if (!isset($timearr[3])) $timearr[3]=0;
+				if ($days < ($timearr[3])) continue;
+				if (in_array($user, $users)) array_push($returnedUsers, $userId->userId);
+				$where="($messageTime назад)";
 				$timearr = ChatCommands::timeToArr($currenttime);
-				if (!isset($timearr[3])){
-					$timearr[3]=0;
-				}
-				if ($days > ($timearr[3])) {
+				
 				$n++;
 				$message .= "\n{$n}. {$user->name} {$user->secondName} $where"; 
-				}
 			} 
 			if(empty($returnedUsers)) {
 				$chat->sendMessage($message);
@@ -969,13 +963,13 @@ class ChatCommands
                     }
                     $message .= "\n{$bad}{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']}),";
                     if (isset($dates[3])) {
-                        $message .="  в конфе более $dates[3] дн.";
+                        $message .=" возраст: $dates[3] дн. $dates[2] час.";
                     }  else if (isset($dates[2])) {
-                        $message .="  в конфе более $dates[2] ч.";
+                        $message .=" возраст: $dates[2] ч. $dates[1] мин.";
                     } else if (isset($dates[1])) {
-                        $message .="  в конфе более $dates[1] мин.";
+                        $message .=" возраст: $dates[1] мин.";
                     } else {
-                        $message .="  в конфе $dates[0] сек.";
+                        $message .=" возраст: $dates[0] сек.";
                     } 
 					/*if  (isset($item['time'])) {
 					$ivitetime=time() - intval($item['time']);
