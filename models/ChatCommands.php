@@ -964,9 +964,9 @@ class ChatCommands
                     }
                     $message .= "\n{$bad}{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']}),";
                     if (isset($dates[3])) {
-                        $message .=" возраст: $dates[3] дн. $dates[2] час.";
+                        $message .=" возраст: +$dates[3] дн.";
                     }  else if (isset($dates[2])) {
-                        $message .=" возраст: $dates[2] ч. $dates[1] мин.";
+                        $message .=" возраст: $dates[2] ч.";
                     } else if (isset($dates[1])) {
                         $message .=" возраст: $dates[1] мин.";
                     } else {
