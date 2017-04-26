@@ -285,12 +285,11 @@ class ChatCommands
 				$checkUs = Users::userExists($chat->chatId, $userId->userId);
 				$currenttime=time() - $userId->time;
 				$messageTime = ChatCommands::timeToStr($currenttime);
+				$timearr = ChatCommands::timeToArr($currenttime);
 				if (!isset($timearr[3])) $timearr[3]=0;
 				if ($days > ($timearr[3])) {
 				if (in_array($user, $users)) array_push($returnedUsers, $userId->userId);
 				$where="($messageTime назад)";
-				$timearr = ChatCommands::timeToArr($currenttime);
-				
 				$n++;
 				$message .= "\n{$n}. {$user->name} {$user->secondName} $where"; 
 				}
@@ -964,7 +963,7 @@ class ChatCommands
                     }
                     $message .= "\n{$bad}{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']}),";
                     if (isset($dates[3])) {
-                        $message .=" возраст: +$dates[3] дн.";
+                        $message .=" возраст: $dates[3] дн.";
                     }  else if (isset($dates[2])) {
                         $message .=" возраст: $dates[2] ч.";
                     } else if (isset($dates[1])) {
