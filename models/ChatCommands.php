@@ -963,13 +963,13 @@ class ChatCommands
                     }
                     $message .= "\n{$bad}{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']}),";
                     if (isset($dates[3])) {
-                        $message .=" возраст: $dates[3] дн.";
+                        $message .=" в конфе $dates[3] дн.";
                     }  else if (isset($dates[2])) {
-                        $message .=" возраст: $dates[2] ч.";
+                        $message .=" в конфе $dates[2] ч.";
                     } else if (isset($dates[1])) {
-                        $message .=" возраст: $dates[1] мин.";
+                        $message .=" в конфе $dates[1] мин.";
                     } else {
-                        $message .=" возраст: $dates[0] сек.";
+                        $message .=" в конфе $dates[0] сек.";
                     } 
 					/*if  (isset($item['time'])) {
 					$ivitetime=time() - intval($item['time']);
