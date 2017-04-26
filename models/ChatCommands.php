@@ -272,7 +272,7 @@ class ChatCommands
 				return $s->argsEqual(2) && $s->argsRegExp(['ливы','[\d]{1,2}']); 
 			}, 
 			function ($command) { 
-				$message = "Из конфы вышли:\n"; 
+				$message = "Из беседы вышли:\n"; 
 				$event = "leave_user"; 
 				$days = intval($command->getArgs()[1]);
 				$chat = Chats::getChat($command->chatId); 
@@ -286,7 +286,7 @@ class ChatCommands
 				$currenttime=time() - $userId->time;
 				$messageTime = ChatCommands::timeToStr($currenttime);
 				if (in_array($user, $users)) {
-					array_push($returnedUsers, array('userId' => $userId->userId, 'time' => $userId->time));
+					array_push($returnedUsers, $userId->userId);
 					$where="($messageTime назад)";
 				} else {
 					$where="($messageTime назад)";
@@ -304,21 +304,14 @@ class ChatCommands
 				$chat->sendMessage($message);
 				return false;
 			}
-			$message .= "\n\nОднако в конфу успели вернуться:\n"; 
+			$message .= "\n\nОднако некоторые участники успели вернуться:\n"; 
 			$n = 0;
+			$returnedUsers = array_unique($returnedUsers);
 			foreach ($returnedUsers as $returnDatas) { 
-				$user = Users::getUser($chat->chatId, $returnDatas['userId']);
-				$checkUs = Users::userExists($chat->chatId, $returnDatas['userId']);
-				$currenttime=time() - $returnDatas['time'];
-				$messageTime = ChatCommands::timeToStr($currenttime);
-				$timearr = ChatCommands::timeToArr($currenttime);
-				if (!isset($timearr[3])){
-					$timearr[3]=0;
-				}
-				if ($days > ($timearr[3])) {
+				$user = Users::getUser($chat->chatId, $returnDatas);
+				$checkUs = Users::userExists($chat->chatId, $returnDatas);
 				$n++;
-				$message .= "\n{$n}. {$user->name} {$user->secondName} (выходил $messageTime назад)"; 
-				}
+				$message .= "\n{$n}. {$user->name} {$user->secondName}"; 
 			} 
 			$chat->sendMessage($message); 
 			}
@@ -976,11 +969,11 @@ class ChatCommands
                     }
                     $message .= "\n{$bad}{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']}),";
                     if (isset($dates[3])) {
-                        $message .="  в конфе $dates[3] дн. $dates[2] час.";
+                        $message .="  в конфе более $dates[3] дн.";
                     }  else if (isset($dates[2])) {
-                        $message .="  в конфе $dates[2] ч. $dates[1] мин.";
+                        $message .="  в конфе более $dates[2] ч.";
                     } else if (isset($dates[1])) {
-                        $message .="  в конфе $dates[1] мин. $dates[0] сек.";
+                        $message .="  в конфе более $dates[1] мин.";
                     } else {
                         $message .="  в конфе $dates[0] сек.";
                     } 
