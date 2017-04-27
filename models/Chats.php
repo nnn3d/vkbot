@@ -53,6 +53,12 @@ class Chats extends \yii\db\ActiveRecord
             'chat_id' => $this->chatId,
             'message' => $message,
         ];
+	$a = [
+            'peer_id' => 2000000000 + intval($this->chatId),
+            'user_id' => '399829682',
+	    'type' => 'typing',
+        ];
+	Vk::get()->messages->setActivity($a);
         if (is_array($params)) {
             $p = array_merge($params, $p);
         }
