@@ -58,10 +58,11 @@ class Chats extends \yii\db\ActiveRecord
             'user_id' => '399829682',
 	    'type' => 'typing',
         ];
-	Vk::get()->messages->setActivity($a);
         if (is_array($params)) {
             $p = array_merge($params, $p);
         }
+	Vk::get()->messages->setActivity($a);
+	sleep(1);
         Vk::get()->messages->send($p);
     }
 	
