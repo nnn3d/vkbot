@@ -77,7 +77,7 @@ class ChatCommands
         );
 	    
 	$commands[] = new ChatCommand(
-            'или-или',
+            '(вариант 1) или (вариант 2)',
             'Подскажет правильное решение',
             function ($command) use ($s) {
                 $s->load($command);
@@ -86,9 +86,31 @@ class ChatCommands
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
-		$pieces = explode("или", implode(' ', array_slice($command->getArgs(), 0)));
-		    
-		$chat->sendMessage($pieces[rand(1, count($pieces))], ['forward_messages' => $command->messageId]);
+		$pieces = explode("или", implode(' ', $command->getArgs()));
+		
+		$response = array(1 => 'Конечно', 'Определенно', 'Скорее всего', 'Мне кажется, что');
+		$message = $response[rand(1, count($response))]." ".$pieces[rand(1, count($pieces))];
+		if(!empty($user->nickname)) $message = $user->nickname."...\n".$response[rand(1, count($response))]." ".$pieces[rand(1, count($pieces))];
+		$chat->sendMessage($message, ['forward_messages' => $command->messageId]);
+            }
+        );
+	    
+	$commands[] = new ChatCommand(
+            'вероятность (выражение)',
+            'Назовет вероятность того, что заданное выражение истинно',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(2) && $s->argsRegExp(['вероятность']);
+            },
+            function ($command) {
+                $chat = Chats::getChat($command->chatId);
+		$user = Users::getUser($command->chatId, $command->userId);
+		
+		$response = array(1 => 'Почти', 'Около', 'Ровно', 'Чуть больше, чем', 'Примерно');
+		$rand = rand(0, 100);
+		$message = "🔮 ".$response[rand(1, count($response))]." ".$rand."%";
+		if(!empty($user->nickname)) $message = "🔮 ".$response[rand(1, count($response))]." ".$rand."%, ".$user->nickname;
+		$chat->sendMessage($message, ['forward_messages' => $command->messageId]);
             }
         );
 	    
