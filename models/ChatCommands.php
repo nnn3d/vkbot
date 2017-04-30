@@ -84,9 +84,10 @@ class ChatCommands
                 return $s->argsLarger(2) && $s->argsRegExp(['[a-zA-ZА-Яа-яЁё1-9 ]+']);
             },
             function ($command) {
+		$pieces = explode("или", implode(' ', $command->getArgs()));
+		if(count($pieces) == '1') return false;
                 $chat = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
-		$pieces = explode("или", implode(' ', $command->getArgs()));
 		
 		$response = array(1 => "Конечно", "Определенно", "Скорее всего", "Мне кажется, что");
 		$c_a = count($pieces)-1;
@@ -104,6 +105,7 @@ class ChatCommands
                 return $s->argsLarger(2) && $s->argsRegExp(['вероятность', '.*']);
             },
             function ($command) {
+		if (strripos(implode(' ', $command->getArgs()), 'или') === true) return false;
                 $chat = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
 		
