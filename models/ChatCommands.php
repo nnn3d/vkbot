@@ -81,14 +81,14 @@ class ChatCommands
             'Подскажет правильное решение',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(2) && $s->argsRegExp(['[a-zA-ZА-Яа-яЁё1-9 ]+', 'или', '[a-zA-ZА-Яа-яЁё1-9 ]+']);
+                return $s->argsLarger(2) && $s->argsRegExp(['[a-zA-ZА-Яа-яЁё1-9 ]+']);
             },
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
+		$pieces = explode("или", implode(' ', array_slice($command->getArgs(), 0)));
 		    
-		$response = array(1 => $command->getArgs()[0], $command->getArgs()[2]);
-		$chat->sendMessage($response[rand(1, count($response))], ['forward_messages' => $command->messageId]);
+		$chat->sendMessage($pieces[rand(1, count($pieces))], ['forward_messages' => $command->messageId]);
             }
         );
 	    
