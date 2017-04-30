@@ -74,7 +74,7 @@ class ChatCommands
 		if(!empty($user->nickname)) {
 			$message = $user->nickname.", ты определенно...\n".$a_sector[rand(0, count($a_sector))]." ".$b_sector[rand(0, count($b_sector))]." ".$c_sector[rand(0, count($c_sector))].".";
 		} else {
-			$message = "".$a_sector[rand(0, count($a_sector))]." ".$b_sector[rand(0, count($b_sector))]." ".$c_sector[rand(0, count($c_sector))].".";
+			$message = "Ты определенно...\n".$a_sector[rand(0, count($a_sector))]." ".$b_sector[rand(0, count($b_sector))]." ".$c_sector[rand(0, count($c_sector))].".";
 		}
                 $chat->sendMessage($message, ['forward_messages' => $command->messageId]);
             }
