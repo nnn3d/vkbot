@@ -88,7 +88,7 @@ class ChatCommands
 		$user = Users::getUser($command->chatId, $command->userId);
 		$pieces = explode("или", implode(' ', $command->getArgs()));
 		
-		$response = array(1 => 'конечно', 'определенно', 'скорее всего', 'мне кажется, что');
+		$response = array(1 => "конечно", "определенно", "скорее всего", "мне кажется, что");
 		$message = $response[rand(1, count($response))]." ".$pieces[rand(1, count($pieces))];
 		if(!empty($user->nickname)) $message = $user->nickname.", ".$response[rand(1, count($response))]." ".$pieces[rand(1, count($pieces))];
 		$chat->sendMessage($message, ['forward_messages' => $command->messageId]);
@@ -106,7 +106,7 @@ class ChatCommands
                 $chat = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
 		
-		$response = array(1 => 'Почти', 'Около', 'Ровно', 'Чуть больше, чем', 'Примерно');
+		$response = array(1 => "Почти", "Около", "Ровно", "Чуть больше, чем", "Примерно");
 		$rand = rand(0, 100);
 		$message = "🔮 ".$response[rand(1, count($response))]." ".$rand."%";
 		if(!empty($user->nickname)) $message = "🔮 ".$response[rand(1, count($response))]." ".$rand."%, ".$user->nickname;
