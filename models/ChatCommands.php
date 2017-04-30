@@ -65,17 +65,13 @@ class ChatCommands
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
-		if(!empty($user->nickname))
 		    
 		$a_sector  = array("Пират", "Киборг", "Алкаш", "Урод", "Повелитель", "Жирдяй", "Админ", "Пенсионер", "Ассасин", "Владыка", "Лицушник", "Сталкер", "Разработчик", "Паркурщик", "Спринтер", "Задротище", "Довакин", "Опустошитель");
 		$b_sector  = array("карательных", "избирательных", "уродливых", "домашних", "четких", "святых", "школьных", "предвзятых", "овощных", "шальных", "игривых", "кричащих", "быстрых", "аномальных", "страшных", "тупых", "консольных", "черных");
 		$c_sector  = array("тамплиеров", "сисек", "детей", "ведьмаков", "распродаж", "игр", "школьников", "девчат", "драконов", "некроморфов", "зомби", "сиджеев", "азиатов", "американцев", "старцев", "потомков", "магов", "гоблинов", "призраков");
 		
-		if(!empty($user->nickname)) {
-			$message = $user->nickname.", ты определенно...\n".$a_sector[rand(0, count($a_sector))]." ".$b_sector[rand(0, count($b_sector))]." ".$c_sector[rand(0, count($c_sector))].".";
-		} else {
-			$message = "Ты определенно...\n".$a_sector[rand(0, count($a_sector))]." ".$b_sector[rand(0, count($b_sector))]." ".$c_sector[rand(0, count($c_sector))].".";
-		}
+		$message = $a_sector[rand(0, count($a_sector))]." ".$b_sector[rand(0, count($b_sector))]." ".$c_sector[rand(0, count($c_sector))].".";
+		if(!empty($user->nickname)) $message = $user->nickname.", ты определенно...\n".$a_sector[rand(0, count($a_sector))]." ".$b_sector[rand(0, count($b_sector))]." ".$c_sector[rand(0, count($c_sector))].".";
                 $chat->sendMessage($message, ['forward_messages' => $command->messageId]);
             }
         );
