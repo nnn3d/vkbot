@@ -89,7 +89,8 @@ class ChatCommands
 		$pieces = explode("или", implode(' ', $command->getArgs()));
 		
 		$response = array(1 => "Конечно", "Определенно", "Скорее всего", "Мне кажется, что");
-		$message = $response[rand(1, count($response))]." ".$pieces[rand(1, count($pieces))];
+		$c_a = count($pieces)-1;
+		$message = $response[rand(1, count($response))]." ".$pieces[rand(0, $c_a)];
 		if(!empty($user->nickname)) $message = $user->nickname.", ".mb_strtolower($response[rand(1, count($response))], 'UTF-8')." ".$pieces[rand(1, count($pieces))];
 		$chat->sendMessage($message, ['forward_messages' => $command->messageId]);
             }
