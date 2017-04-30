@@ -64,12 +64,16 @@ class ChatCommands
             },
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
+		$user = Users::getUser($command->chatId, $command->userId);
+		if(!empty($user->nickname))
 		    
 		$a_sector  = array("Пират", "Киборг", "Алкаш", "Урод", "Повелитель", "Жирдяй", "Админ", "Пенсионер", "Ассасин", "Владыка", "Лицушник", "Сталкер", "Разработчик", "Паркурщик", "Спринтер", "Задротище", "Довакин", "Опустошитель");
 		$b_sector  = array("карательных", "избирательных", "уродливых", "домашних", "четких", "святых", "школьных", "предвзятых", "овощных", "шальных", "игривых", "кричащих", "быстрых", "аномальных", "страшных", "тупых", "консольных", "черных");
 		$c_sector  = array("тамплиеров", "сисек", "детей", "ведьмаков", "распродаж", "игр", "школьников", "девчат", "драконов", "некроморфов", "зомби", "сиджеев", "азиатов", "американцев", "старцев", "потомков", "магов", "гоблинов", "призраков");
-		    
-                $chat->sendMessage($a_sector[rand(0, count($a_sector))]." ".$b_sector[rand(0, count($b_sector))]." ".$c_sector[rand(0, count($c_sector))].".", ['forward_messages' => $command->messageId]);
+		
+		$message = $a_sector[rand(0, count($a_sector))]." ".$b_sector[rand(0, count($b_sector))]." ".$c_sector[rand(0, count($c_sector))].".";
+		if(!empty($user->nickname)) $message = $user->nickname.", ты определенно...".$a_sector[rand(0, count($a_sector))]." ".$b_sector[rand(0, count($b_sector))]." ".$c_sector[rand(0, count($c_sector))]."."
+                $chat->sendMessage($message, ['forward_messages' => $command->messageId]);
             }
         );
 	    
@@ -1007,8 +1011,9 @@ class ChatCommands
                 return $s->argsLarger(1) && $s->argsRegExp(['(кто|кого)']);
             },
             function ($command) {
+		if ($command->getArgs()[0] == 'кто' && $command->getArgs()[1] == 'я') return false;
                 $chat   = Chats::getChat($command->chatId);
-		$pUser = Users::getUser($command->chatId, $command->userId);
+		$pUser = Users::getUser($command->chatId, $command->userId); 
                 $users  = $chat->getAllActiveUsers();
                 $r      = mt_rand(0, count($users) - 1);
                 $c      = implode(' ', array_slice($command->getArgs(), 1));
