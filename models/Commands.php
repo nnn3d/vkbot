@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use app\models\Params;
+use app\models\Chats;
 
 /**
  * This is the model class for table "commands".
@@ -43,6 +44,8 @@ class Commands extends \yii\db\ActiveRecord
 
     public static function addFromMessage($chatId, $userId, $message, $messageId = null, $command = COMMAND_USER)
     {
+        if($args[0] == "всем" && $args[1] == "привет!") $chat->sendMessage("Привет-привет! 😇");
+        if($args[0] == "спокойной" && $args[1] == "ночи") $chat->sendMessage("Всем, кто ложится спать, спокойного сна!");
         $botName = array('торч', 'мия', 'миечка', 'миячка', 'миюшечка', 'эмилия');
         $args = explode(' ', $message);
         $msg = implode(' ', $args);
