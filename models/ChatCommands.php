@@ -100,7 +100,7 @@ class ChatCommands
             'Назовет вероятность того, что заданное выражение истинно',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(2) && $s->argsRegExp(['вероятность']);
+                return $s->argsLarger(2) && $s->argsRegExp(['вероятность', '.*']);
             },
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
