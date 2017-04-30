@@ -44,6 +44,7 @@ class Commands extends \yii\db\ActiveRecord
 
     public static function addFromMessage($chatId, $userId, $message, $messageId = null, $command = COMMAND_USER)
     {
+        $chat = Chats::getChat($chatId);
         if($message == "всем привет!") $chat->sendMessage("Привет-привет! 😇");
         if($message == "спокойной ночи") $chat->sendMessage("Споки ноки, няш, сладеньких и чудесных снов.");
         $botName = array('торч', 'мия', 'миечка', 'миячка', 'миюшечка', 'эмилия');
