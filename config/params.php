@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . '/constants.php');
-$botName = YII_TEST ? 'тест' : 'торч';
+$botName = YII_TEST ? 'тест' : 'Мия'; // основное имя. в помощи и подсказках будет использоваться это имя.
 return [
     'adminEmail' => 'admin@example.com',
     'vkBot' => [
