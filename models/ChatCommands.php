@@ -81,6 +81,22 @@ class ChatCommands
             'Показывает ваш никнейм.',
             function ($command) use ($s) {
                 $s->load($command);
+                return $s->argsLarger(3) && $s->argsRegExp(['[a-zA-ZА-Яа-яЁё]+', 'или', '[a-zA-ZА-Яа-яЁё]+']);
+            },
+            function ($command) {
+                $chat = Chats::getChat($command->chatId);
+		$user = Users::getUser($command->chatId, $command->userId);
+		    
+		$response = array(1 => $command->getArgs()[0], $command->getArgs()[2]);
+		$chat->sendMessage($response[rand(1, count($response))], ['forward_messages' => $command->messageId]);
+            }
+        );
+	    
+	$commands[] = new ChatCommand(
+            'как меня зовут',
+            'Показывает ваш никнейм.',
+            function ($command) use ($s) {
+                $s->load($command);
                 return $s->argsEqual(3) && $s->argsRegExp(['как', 'меня', 'зовут']);
             },
             function ($command) {
