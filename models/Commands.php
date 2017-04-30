@@ -49,7 +49,8 @@ class Commands extends \yii\db\ActiveRecord
         if (!isset($args[1])) return;
         $check = false;
         for ($i = 0; $i < count($botName); $i++) {
-            if(preg_match("/{$botName[$i]}[\W]?/iu", $args[0])) $check = true;
+            $name = $botName[$i];
+            if(preg_match("/{$name}[\W]?/iu", $args[0])) $check = true;
         }
         // Yii::info("check name " . "/{$botName}[\W]{0, 1}/i" . "and $args[0]", 'bot-log');
         if (!$check) return;
