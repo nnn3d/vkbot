@@ -187,7 +187,11 @@ class ChatCommands
             },
             function ($command) {
                 $nickname = implode(' ', array_slice($command->getArgs(), 2));
-		$nickname = mb_convert_case($nickname, MB_CASE_TITLE, "UTF-8");
+		if(mb_strtoupper($nickname, "UTF-8") != $nickname) {
+			$nickname = explode(' ', $nickname);
+			$firstWord = mb_convert_case($nickname[0], MB_CASE_TITLE, "UTF-8");
+			$nickname = $firstWord.' '.implode(' ', array_slice($nickname, 1));
+		}
                 $chat     = Chats::getChat($command->chatId);
 		$user = Users::getUser($command->chatId, $command->userId);
 		    
