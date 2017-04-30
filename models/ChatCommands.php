@@ -69,7 +69,7 @@ class ChatCommands
 		$b_sector  = array("карательных", "избирательных", "уродливых", "домашних", "четких", "святых", "школьных", "предвзятых", "овощных", "шальных", "игривых", "кричащих", "быстрых", "аномальных", "страшных", "тупых", "консольных", "черных");
 		$c_sector  = array("тамплиеров", "сисек", "детей", "ведьмаков", "распродаж", "игр", "школьников", "девчат", "драконов", "некроморфов", "зомби", "сиджеев", "азиатов", "американцев", "старцев", "потомков", "магов", "гоблинов", "призраков");
 		    
-                $chat->sendMessage("$a_sector[rand(0, count($a_sector))] $b_sector[rand(0, count($b_sector)) $c_sector[rand(0, count($c_sector)).", ['forward_messages' => $command->messageId]);
+                $chat->sendMessage("$a_sector[rand(0, count($a_sector))] $b_sector[rand(0, count($b_sector))] $c_sector[rand(0, count($c_sector))].", ['forward_messages' => $command->messageId]);
             }
         );
 	    
