@@ -77,8 +77,8 @@ class ChatCommands
         );
 	    
 	$commands[] = new ChatCommand(
-            'как меня зовут',
-            'Показывает ваш никнейм.',
+            'или-или',
+            'Подскажет правильное решение',
             function ($command) use ($s) {
                 $s->load($command);
                 return $s->argsLarger(3) && $s->argsRegExp(['[a-zA-ZА-Яа-яЁё]+', 'или', '[a-zA-ZА-Яа-яЁё]+']);
