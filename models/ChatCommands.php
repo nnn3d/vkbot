@@ -81,7 +81,7 @@ class ChatCommands
             'Подскажет правильное решение',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(3) && $s->argsRegExp(['[a-zA-ZА-Яа-яЁё]+', 'или', '[a-zA-ZА-Яа-яЁё]+']);
+                return $s->argsLarger(2) && $s->argsRegExp(['[a-zA-ZА-Яа-яЁё]+', 'или', '[a-zA-ZА-Яа-яЁё]+']);
             },
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
