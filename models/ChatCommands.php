@@ -988,7 +988,7 @@ class ChatCommands
 		}
 		$message .= "\nСумма за $days - $fullactiv";
 		if ($days>0) {
-			$part=$fullactiv/$days;
+			$part=round($fullactiv/$days,0);
 			$message .=" ($part в день)";
 		};
                 $chat->sendMessage($message);
@@ -1052,7 +1052,7 @@ class ChatCommands
                 }
 		$message .= "\nСумма за $days - $fullactive";
 		if ($days>0) {
-			$part=$fullactive/$days;
+			$part=round($fullactive/$days,0);
 			$message .=" ($part в день)";
 		};
                 $chat->sendMessage($message);
