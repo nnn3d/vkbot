@@ -1010,6 +1010,8 @@ class ChatCommands
                 $chat       = Chats::getChat($command->chatId);
                 $users      = $chat->getAllActiveUsers();
                 $usersCount = [];
+		$part=0;
+		$fullactive = 0;
                 $message    = "Топ активности участников в течении последних $days дней (кол-во символов):";
                 foreach ($users as $user) {
                     $usersCount[] = [
@@ -1026,8 +1028,6 @@ class ChatCommands
                     $date= time() - $item['user']->invdate;
                     $dates = ChatCommands::timeToArr($date); 
                     $bad="";
-		    $part=0;
-		    $fullactive = 0;
                     if (isset($dates[3])) {
                         if ($dates[3]<$days) {
                         $active = $item['count']/$dates[3];
@@ -1053,7 +1053,7 @@ class ChatCommands
 		$message .= "\nСумма за $days - $fullactive";
 		if ($days>0) {
 			$part=$fullactive/$days;
-			$message .="($part в день)";
+			$message .=" ($part в день)";
 		};
                 $chat->sendMessage($message);
             }
