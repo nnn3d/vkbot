@@ -989,7 +989,7 @@ class ChatCommands
 		$message .= "\nСумма за $days - $fullactiv";
 		if ($days>0) {
 			$part=$fullactiv/$days;
-			$message .="($part в день)";
+			$message .=" ($part в день)";
 		};
                 $chat->sendMessage($message);
 		
@@ -1039,6 +1039,7 @@ class ChatCommands
                     }
                     }
                     $message .= "\n{$bad}{$n}. {$item['user']->name} {$item['user']->secondName} ({$item['count']}),";
+		    $fullactive=$fullactive+$item['count'];
                     if (isset($dates[3])) {
                         $message .=" в конфе $dates[3] дн.";
                     }  else if (isset($dates[2])) {
@@ -1048,7 +1049,6 @@ class ChatCommands
                     } else {
                         $message .=" в конфе $dates[0] сек.";
                     } 
-		$fullactive=$fullactive+$item['count'];
                 }
 		$message .= "\nСумма за $days - $fullactive";
 		if ($days>0) {
