@@ -967,8 +967,9 @@ class ChatCommands
                     $chat->sendMessage("Не найден участник беседы $name $secondName");
                     return false;
                 }
-                $message = "Статистика пользователя {$user->name} {$user->secondName} за последние $days дней (кол-во символов):\n";
+                $message = "Статистика пользователя {$user->name} {$user->secondName} за последние $days дней (кол-во символов):";
                 $count   = [];
+		$fullactiv = 0;
                 $write   = false;
                 for ($i = $days - 1; $i >= 0; $i--) {
                     $c     = MessagesCounter::getDayCount($command->chatId, $user->userId, $i, $time);
@@ -982,8 +983,12 @@ class ChatCommands
                 }
                 foreach (array_reverse($count) as $item) {
                     $message .= "\n{$item['date']} - {$item['count']} символов";
-                }
+		$fullactiv=$fullactiv+$item['count'];
+		}
+		$chat->sendMessage("\nСумма за $days - $fullactiv");
+		if ($days>0) {$chat->sendMessage(" ($fullactive/$days в день)")};
                 $chat->sendMessage($message);
+		
             }
         );
 
@@ -1001,7 +1006,7 @@ class ChatCommands
                 $chat       = Chats::getChat($command->chatId);
                 $users      = $chat->getAllActiveUsers();
                 $usersCount = [];
-                $message    = "Топ активности участников в течении последних $days дней (кол-во символов):\n";
+                $message    = "Топ активности участников в течении последних $days дней (кол-во символов):";
                 foreach ($users as $user) {
                     $usersCount[] = [
                         'user'  => $user,
@@ -1017,6 +1022,7 @@ class ChatCommands
                     $date= time() - $item['user']->invdate;
                     $dates = ChatCommands::timeToArr($date); 
                     $bad="";
+		    $fullactive = 0;
                     if (isset($dates[3])) {
                         if ($dates[3]<$days) {
                         $active = $item['count']/$dates[3];
@@ -1037,12 +1043,10 @@ class ChatCommands
                     } else {
                         $message .=" в конфе $dates[0] сек.";
                     } 
-					/*if  (isset($item['time'])) {
-					$ivitetime=time() - intval($item['time']);
-					$finaltime=ChatCommands::timeToArr($ivitetime);
-					$message .=" за {$finaltime[3]} д. {$finaltime[2]} ч.";
-					}*/
+		$fullactive=$fullactive+$item['count'];
                 }
+		$chat->sendMessage("\nСумма за $days - $fullactive");
+		if ($days>0) {$chat->sendMessage(" ($fullactive/$days в день)")};
                 $chat->sendMessage($message);
             }
         );
