@@ -453,7 +453,7 @@ class ChatCommands
 			$message = "Топ самых крепких пар:\n";
 			$i = 1;
 			$timeBeginMarriage = 0;
-			$actuser=Chats::getAllActiveUsers();
+			$actuser=$chat->getAllActiveUsers();
 			foreach ($marriages as $m) {
 				$user1 = Users::getUser($command->chatId, $m[0]);
 				$user2 = Users::getUser($command->chatId, $m[1]);
