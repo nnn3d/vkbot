@@ -459,7 +459,7 @@ class ChatCommands
 				$user2 = Users::getUser($command->chatId, $m[1]);
 				$timeBeginMarriage = $m[2];
 				$messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
-				if ((in_array($user1, $actuser)) || (in_array($user1, $actuser))) {
+				if ((in_array($user1, $actuser)) && (in_array($user1, $actuser))) {
 				if($i < 4) {
 				        $message .= "\n $i. {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} \n($messageTime)";
 				} else {
@@ -1125,7 +1125,7 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'кик { имя [ + фамилия ] участника }',
+            'кик { имя [ + фамилия ] участника или id }',
             'Кикает указанного участника из беседы.',
             function ($command) use ($s) {
                 $s->load($command);
@@ -1133,9 +1133,14 @@ class ChatCommands
             },
             function ($command) {
                 $chat       = Chats::getChat($command->chatId);
+		if preg_match("/[\d]+/",'$command->getArgs()[1]) {
+		$id =  $command->getArgs()[1];
+		$user = Users::getUser($command->chatId, $id);
+		} else {
                 $name       = $command->getArgs()[1];
                 $secondName = isset($command->getArgs()[2]) ? $command->getArgs()[2] : '';
                 $user       = Users::getUserByName($command->chatId, $name, $secondName);
+		}
                 if (!$user) {
 		    $nickname = implode(' ', array_slice($command->getArgs(), 1));
 		    $user = Users::findOne(['nickname' => $nickname, 'chatId' => $command->chatId]);
