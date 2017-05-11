@@ -459,7 +459,7 @@ class ChatCommands
 				$user2 = Users::getUser($command->chatId, $m[1]);
 				$timeBeginMarriage = $m[2];
 				$messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
-				
+				if((Chats::userExists($command->chatId,$user1->userId)) || (Chats::userExists($command->chatId,$user2->userId))) {
 				if($i < 4) {
 				        $message .= "\n $i. {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} \n($messageTime)";
 				} else {
@@ -467,6 +467,7 @@ class ChatCommands
 				}
 				
 				$i++;
+				}
 			}
 	
 			$chat->sendMessage($message);
