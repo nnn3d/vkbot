@@ -1133,7 +1133,7 @@ class ChatCommands
             },
             function ($command) {
                 $chat       = Chats::getChat($command->chatId);
-		if preg_match("/[\d]+/",$command->getArgs()[1]) {
+		if (preg_match("/[\d]+/", $command->getArgs()[1])) {
 		$id =  $command->getArgs()[1];
 		$user = Users::getUser($command->chatId, $id);
 		} else {
