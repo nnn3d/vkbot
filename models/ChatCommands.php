@@ -453,13 +453,13 @@ class ChatCommands
 			$message = "Топ самых крепких пар:\n";
 			$i = 1;
 			$timeBeginMarriage = 0;
-			
+			$actuser=Chats::getAllActiveUsers();
 			foreach ($marriages as $m) {
 				$user1 = Users::getUser($command->chatId, $m[0]);
 				$user2 = Users::getUser($command->chatId, $m[1]);
 				$timeBeginMarriage = $m[2];
 				$messageTime = ChatCommands::timeToStr(time() - $timeBeginMarriage);
-				if((Users::userExists($command->chatId,$user1->userId)) || (Users::userExists($command->chatId,$user2->userId))) {
+				if ((in_array($user1->userId, $actuser)) || (in_array($user1->userId, $actuser))) {
 				if($i < 4) {
 				        $message .= "\n $i. {$user1->name} {$user1->secondName} 💝 {$user2->name} {$user2->secondName} \n($messageTime)";
 				} else {
