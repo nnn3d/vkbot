@@ -1136,7 +1136,6 @@ class ChatCommands
 		if (preg_match("/[\d]+/", $command->getArgs()[1])) {
 		$id =  $command->getArgs()[1];
 		$user = Users::getUser($command->chatId, $id);
-		return false;
 		} else {
                 $name       = $command->getArgs()[1];
                 $secondName = isset($command->getArgs()[2]) ? $command->getArgs()[2] : '';
