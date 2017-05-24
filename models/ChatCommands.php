@@ -435,7 +435,7 @@ class ChatCommands
         );
 
         $commands[] = new ChatCommand(
-            'топ браков',
+            'список браков',
             'Показывает топ самых крепких браков. Работает только в беседах, в которых больше 5 пар.',
             function ($command) use ($s) {
                 $s->load($command);
@@ -829,7 +829,9 @@ class ChatCommands
                 if ($minutes < 1) {
                     $minutes = 1;
                 }
-
+		if ($minutes > 1440) {
+                    $minutes = 1440;
+                }
                 $taskArgs  = array_slice($command->getArgs(), 2);
                 $taskArgsS = implode(' ', $taskArgs);
                 $chat      = Chats::getChat($command->chatId);
@@ -950,7 +952,7 @@ class ChatCommands
 
         // user stat by days
         $commands[] = new ChatCommand(
-            'стат { количество дней } { имя [ + фамилия ] участника }',
+            'стат { количество дней } { имя [ + фамилия ] участника или id}',
             'Количесвто символов участника за указанный срок.',
             function ($command) use ($s) {
                 $s->load($command);
@@ -960,12 +962,25 @@ class ChatCommands
                 $days = intval($command->getArgs()[1]);
                 $time = time();
                 $chat = Chats::getChat($command->chatId);
-
+		if (preg_match("/[\d]+/", $command->getArgs()[2])) {
+		$id =  $command->getArgs()[2];
+		$user = Users::getUser($command->chatId, $id);
+		} else {
                 $name       = $command->getArgs()[2];
                 $secondName = isset($command->getArgs()[3]) ? $command->getArgs()[3] : '';
                 $user       = Users::getUserByName($command->chatId, $name, $secondName);
+		}
                 if (!$user) {
                     $chat->sendMessage("Не найден участник беседы $name $secondName");
+                    return false;
+                }
+		if (!$days) {
+                    $chat->sendMessage("Не указано количество дней");
+                    return false;
+                }
+		$thisstatus = Users::getStatus($command->chatId, $user->userID);
+		if (($days>100) && ($thisstatus<5)) {
+                    $chat->sendMessage("Максимальное количество дней для статистики 100");
                     return false;
                 }
                 $message = "Статистика пользователя {$user->name} {$user->secondName} за последние $days дней (кол-во символов):";
@@ -1013,6 +1028,10 @@ class ChatCommands
                 $usersCount = [];
 		$part=0;
 		$fullactive = 0;
+		if ($days>100) {
+                    $chat->sendMessage("Максимальное количество дней для топа 100, используйте команду 'общий топ'");
+                    return false;
+                }
                 $message    = "Топ активности участников в течении последних $days дней (кол-во символов):";
                 foreach ($users as $user) {
                     $usersCount[] = [
