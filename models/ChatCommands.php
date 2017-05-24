@@ -952,7 +952,7 @@ class ChatCommands
 
         // user stat by days
         $commands[] = new ChatCommand(
-            'стат { количество дней } { имя [ + фамилия ] участника или id}',
+            'стат { количество дней } { имя [ + фамилия ] участника или id }',
             'Количесвто символов участника за указанный срок.',
             function ($command) use ($s) {
                 $s->load($command);
@@ -978,11 +978,11 @@ class ChatCommands
                     $chat->sendMessage("Не указано количество дней");
                     return false;
                 }
-		$thisstatus = Users::getStatus($command->chatId, $user->userID);
+		/*$thisstatus = Users::getStatus($command->chatId, $user->userID);
 		if (($days>100) && ($thisstatus<5)) {
                     $chat->sendMessage("Максимальное количество дней для статистики 100");
                     return false;
-                }
+                }*/
                 $message = "Статистика пользователя {$user->name} {$user->secondName} за последние $days дней (кол-во символов):";
                 $count   = [];
 		$fullactiv = 0;
