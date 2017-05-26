@@ -124,11 +124,12 @@ class Events extends \yii\db\ActiveRecord
     {
         $chat = Chats::getChat($chatId);
 	$user = Users::getUser($chatId, $userId);
+	$invitationUser = Users::getUser($chatId, $invitationUserId);
         if (Users::getStatus($chatId, $userId) != USER_STATUS_DEFAULT && Users::getStatus($chatId, $userId) != USER_STATUS_UNTOUCHABLE) {
 		$rules = ChatParams::get($chat->chatId)->rules;
 		$welcome = ChatParams::get($chat->chatId)->welcome;
 		if (!$welcome) return false;
-		$chat->sendMessage("{$user->name} {$user->secondName} {$welcome}");
+		$chat->sendMessage("{$invitationUser->name} {$invitationUser->secondName} {$welcome}");
 		if (!$rules) return false;
 		$chat->sendMessage("Правила конфы:\n {$rules}");
 		return false;
@@ -138,7 +139,6 @@ class Events extends \yii\db\ActiveRecord
 		$chat->sendMessage("{$user->name} {$user->secondName} использовал свое право пригласить человека.\n\nЯ уже изменила его статус.");
 		return false;
 	}
-        $invitationUser = Users::getUser($chatId, $invitationUserId);
         $kick1 = false;
         $kick2 = false;
         
