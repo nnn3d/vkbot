@@ -1235,6 +1235,25 @@ class ChatCommands
             },
             ['statusDefault' => USER_STATUS_MODER]
         );
+	    
+	$commands[] = new ChatCommand(
+            'приветствие',
+            'устанавливает приветствие',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(1) && $s->argsRegExp(['приветствие']);
+            },
+            function ($command) {
+                $chat                                    = Chats::getChat($command->chatId);
+                $welcome                                   = ChatParams::get($command->chatId)->rules;
+                $c                                       = implode(' ', array_slice($command->getArgs(), 1));
+                $countC                                  = substr_count($c, '?');
+                $c                                       = trim($c, "?");
+                ChatParams::get($command->chatId)->welcome = $c;
+                $chat->sendMessage("Приветствие установлено, пригласи кого нибудь скорее!", ['forward_messages' => $command->messageId]);
+            },
+            ['statusDefault' => USER_STATUS_MODER]
+        );
 
         $commands[] = new ChatCommand(
             'статус { модер / юзер } { имя [ + фамилия ] участника }',
