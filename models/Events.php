@@ -129,7 +129,7 @@ class Events extends \yii\db\ActiveRecord
 		$rules = ChatParams::get($chat->chatId)->rules;
 		$welcome = ChatParams::get($chat->chatId)->welcome;
 		if (!$welcome) return false;
-		$chat->sendMessage("{$invitationUser->name} {$invitationUser->secondName} {$welcome}");
+		$chat->sendMessage("[*id{$invitationUserId}|{$invitationUser->name} {$invitationUser->secondName}], {$welcome}");
 		if (!$rules) return false;
 		$chat->sendMessage("Правила конфы:\n {$rules}");
 		return false;
