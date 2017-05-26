@@ -132,6 +132,7 @@ class Users extends \yii\db\ActiveRecord
     public static function incrementCounter($chatId, $userId, $newMessages, $time = null)   
     {
         if (!$user = static::getUser($chatId, $userId)) return false;
+        if ($newMessages>700) return false;
         $user->messages = $user->messages + $newMessages;
         $user->lastActivity = $time;
         $user->save();
