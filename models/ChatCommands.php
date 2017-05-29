@@ -1321,7 +1321,38 @@ class ChatCommands
             },
             ['statusDefault' => USER_STATUS_MODER]
         );
-
+		
+		$commands[] = new ChatCommand(
+            'название { текст названия }',
+            'блокирует название',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(1) && $s->argsRegExp(['название']);
+            },
+            function ($command) {
+                $chat                                      = Chats::getChat($command->chatId);
+                $chatName = ChatParams::get($command->chatId)->chatName;
+                $c                                         = implode(' ', array_slice($command->getArgs(), 1));
+                ChatParams::get($command->chatId)->chatName = $c;
+                $chat->sendMessage("Название заблокировано - не пытайтесь менять!", ['forward_messages' => $command->messageId]);
+            },
+            ['statusDefault' => USER_STATUS_MODER]
+        );
+		
+		$commands[] = new ChatCommand(
+            'разблокируй',
+            'разблокируй название',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(1) && $s->argsRegExp(['разблокируй']);
+            },
+            function ($command) {
+                $chat                                      = Chats::getChat($command->chatId);
+                ChatParams::get($command->chatId)->chatName = '';
+                $chat->sendMessage("Название разблокировано!", ['forward_messages' => $command->messageId]);
+            },
+            ['statusDefault' => USER_STATUS_MODER]
+        );
         $commands[] = new ChatCommand(
             'статус { модер / юзер } { имя [ + фамилия ] участника }',
             'Выставить уровень доступа к командам для участника.',
