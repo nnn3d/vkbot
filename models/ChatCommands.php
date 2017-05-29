@@ -1009,7 +1009,7 @@ class ChatCommands
             'Количесвто символов участника за указанный срок.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(2) && $s->argsSmaller(5) && $s->argsRegExp(['стат', '[\d]{1,2}']);
+                return $s->argsLarger(2) && $s->argsSmaller(5) && $s->argsRegExp(['стат', '[\d]{1,2}']) && $s->argMinNumSet(1, 1) && $s->argMaxNumSet(100, 1);
             },
             function ($command) {
                 $days = intval($command->getArgs()[1]);
@@ -1071,7 +1071,7 @@ class ChatCommands
             'Количество символов всех участников указанный срок.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(2) && $s->argsRegExp(['топ', '[\d]{1,2}']);
+                return $s->argsEqual(2) && $s->argsRegExp(['топ', '[\d]{1,2}']) && $s->argMinNumSet(1, 1) && $s->argMaxNumSet(50, 1);
             },
             function ($command) {
                 $days       = intval($command->getArgs()[1]);
@@ -1416,7 +1416,7 @@ class ChatCommands
             'Показать график статистики за несколько дней',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(3) && $s->argsRegExp(['график', 'стат', '[\d]+']);
+                return $s->argsEqual(3) && $s->argsRegExp(['график', 'стат', '[\d]+']) && $s->argMinNumSet(1, 2) && $s->argMaxNumSet(100, 2);
             },
             function ($command) {
                 $days   = intval($command->getArgs()[2]);
