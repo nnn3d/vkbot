@@ -5,7 +5,7 @@
 	"default": {
 
 		"host": "82.146.45.63",
-		"username": "user",  // or null for anonymous login
+		"username": "torch",  // or null for anonymous login
 		"password": "1qaz@WSX",
 		"path": "/www/123.123",
 

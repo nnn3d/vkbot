@@ -232,3 +232,28 @@
 2017-04-19 18:46:54 [info][bot-log] add command 'Торч стат Дима Керченский' from chat 2
 2017-04-19 18:47:49 [info][bot-log] add command 'Торч топ 1' from chat 2
 2017-04-19 18:52:09 [info][bot-log] add command 'торч кик дим керч' from chat 2
+2017-05-29 22:16:38 [info][bot-log] start bot
+2017-05-29 22:17:09 [error][bot-log] vk error with code 5 and message 'User authorization failed: invalid access_token (4).'
+2017-05-29 22:17:10 [error][bot-log] vk error with code 5 and message 'User authorization failed: invalid access_token (4).'
+2017-05-29 22:17:47 [info][bot-log] start bot
+2017-05-29 22:23:26 [info][bot-log] start bot
+2017-05-29 22:23:34 [info][bot-log] add command 'Торч называй меня мамка драконов' from chat 2
+2017-05-29 22:23:42 [info][bot-log] add command 'мия стат 1' from chat 2
+2017-05-29 22:23:46 [info][bot-log] add command 'мия стат 1 пен' from chat 2
+2017-05-29 22:23:58 [info][bot-log] add command 'мия топ 3' from chat 2
+2017-05-29 22:24:17 [info][bot-log] add command 'мия топ -1' from chat 2
+2017-05-29 22:24:24 [info][bot-log] add command 'мия кто мать' from chat 2
+2017-05-29 22:24:55 [info][bot-log] add command 'мия стат 101 пен' from chat 2
+2017-05-29 22:25:06 [info][bot-log] add command 'мия стат 1 маша' from chat 2
+2017-05-29 22:25:27 [info][bot-log] add command 'мия топ 80' from chat 2
+2017-05-29 22:26:35 [info][bot-log] add command 'Торч стат 1 Robert' from chat 2
+2017-05-29 22:26:35 [info][bot-log] add command 'Мия, с кем я сегодня сплю' from chat 2
+2017-05-29 22:26:35 [info][bot-log] add command 'Торч слит.' from chat 2
+2017-05-29 22:28:39 [info][bot-log] add command 'мия кто мать😥' from chat 2
+2017-05-29 22:30:30 [info][bot-log] start bot
+2017-05-29 22:30:31 [info][bot-log] add command 'мия кто мертв' from chat 2
+2017-05-29 22:30:31 [info][bot-log] add command 'мия че сломалась совсеи' from chat 2
+2017-05-29 22:30:50 [info][bot-log] start bot
+2017-05-29 22:30:51 [info][bot-log] add command 'мия кто машонка' from chat 2
+2017-05-29 22:31:19 [info][bot-log] start bot
+2017-05-29 22:31:20 [info][bot-log] add command 'мия кто машонка' from chat 2
