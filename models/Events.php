@@ -96,8 +96,8 @@ class Events extends \yii\db\ActiveRecord
     }
 	public static function changeName($chatId) {
 		$chat = Chats::getChat($chatId);
-		if (isset($chatName = ChatParams::get($chat)->chatName));
-		Vk::get(true)->messages->editChat(['chat_id' => $chatId, 'title'=>$chatName]);
+		if ($chatName = ChatParams::get($chat)->chatName)
+    		Vk::get(true)->messages->editChat(['chat_id' => $chatId, 'title'=>$chatName]);
 	}
 	/*public static function getLastInvite($chatId, $userId, $invitationUserId) 
 	{ 
