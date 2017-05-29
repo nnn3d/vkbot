@@ -42,11 +42,13 @@ class ChatCommands
     {
         $this->args[$arg] = min($maxNum, intval($this->args[$arg]));
         $this->command->setArgs($this->args);
+        return true;
     }
     private function argMinNumSet($minNum, $arg)
     {
         $this->args[$arg] = max($minNum, intval($this->args[$arg]));
         $this->command->setArgs($this->args);
+        return true;
     }
     private function argsRegExp($set)
     {

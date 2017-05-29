@@ -57,7 +57,7 @@ class Chats extends \yii\db\ActiveRecord
             $msg = array_shift($messageArrSet);
             $this->sendMessage(substr($msg, 0, $maxMessageSize));
             array_unshift($messageArrSet, substr($msg, $maxMessageSize));
-            return $this->sendMessage(implode("\n", $messageSend));
+            return $this->sendMessage(implode("\n", $messageArrSet));
         }
         while (
             count($messageArrSet) > 0 
@@ -65,9 +65,9 @@ class Chats extends \yii\db\ActiveRecord
             ) {
             $messageSend .= array_shift($messageArrSet) . "\n";
         }
-        if ( count($messageArrSet) > 0) {
+        if (count($messageArrSet) > 0) {
             $this->sendMessage($messageSend);
-            return $this->sendMessage(implode("\n", $messageSend));
+            return $this->sendMessage(implode("\n", $messageArrSet));
         }
         $p = [
             'chat_id' => $this->chatId,
