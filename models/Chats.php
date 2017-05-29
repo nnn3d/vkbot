@@ -50,24 +50,24 @@ class Chats extends \yii\db\ActiveRecord
 
     public function sendMessage($message, $params = '')
     {
-        $messageArrSet = explode('\n', $message);
+        $messageArrSet = explode("\n", $message);
         $messageSend = "";
         $maxMessageSize = 4000;
         if (strlen($messageArrSet[0]) > $maxMessageSize) {
             $msg = array_shift($messageArrSet);
             $this->sendMessage(substr($msg, 0, $maxMessageSize));
             array_unshift($messageArrSet, substr($msg, $maxMessageSize));
-            return $this->sendMessage(implode('\n', $messageSend));
+            return $this->sendMessage(implode("\n", $messageSend));
         }
         while (
             count($messageArrSet) > 0 
             && strlen($messageArrSet[0]) + strlen($messageSend) < $maxMessageSize
             ) {
-            $messageSend .= array_shift($messageArrSet) . '\n';
+            $messageSend .= array_shift($messageArrSet) . "\n";
         }
         if ( count($messageArrSet) > 0) {
             $this->sendMessage($messageSend);
-            return $this->sendMessage(implode('\n', $messageSend));
+            return $this->sendMessage(implode("\n", $messageSend));
         }
         $p = [
             'chat_id' => $this->chatId,
