@@ -2,9 +2,10 @@
 
 namespace app\models;
 
-use Yii;
-use app\models\Vk;
 use app\models\Users;
+use app\models\Vk;
+use app\models\Params;
+use Yii;
 
 /**
  * This is the model class for table "chats".
@@ -40,40 +41,59 @@ class Chats extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'chatId' => 'Chat ID',
-            'adminId' => 'Admin ID',
+            'id'            => 'ID',
+            'chatId'        => 'Chat ID',
+            'adminId'       => 'Admin ID',
             'lastMessageId' => 'Last Message ID',
         ];
     }
 
     public function sendMessage($message, $params = '')
     {
+        $messageArrSet = explode('\n', $message);
+        $messageSend = "";
+        $maxMessageSize = 4000;
+        if (strlen($messageArrSet[0]) > $maxMessageSize) {
+            $msg = array_shift($messageArrSet);
+            $this->sendMessage(substr($msg, 0, $maxMessageSize));
+            array_unshift($messageArrSet, substr($msg, $maxMessageSize));
+            return $this->sendMessage(implode('\n', $messageSend));
+        }
+        while (
+            count($messageArrSet) > 0 
+            && strlen($messageArrSet[0]) + strlen($messageSend) < $maxMessageSize
+            ) {
+            $messageSend .= array_shift($messageArrSet) . '\n';
+        }
+        if ( count($messageArrSet) > 0) {
+            $this->sendMessage($messageSend);
+            return $this->sendMessage(implode('\n', $messageSend));
+        }
         $p = [
             'chat_id' => $this->chatId,
-            'message' => $message,
+            'message' => $messageSend,
         ];
-	$a = [
+        $a = [
             'peer_id' => 2000000000 + intval($this->chatId),
-            'user_id' => '399829682',
-	    'type' => 'typing',
+            'user_id' => Params::get()->selfId,
+            'type'    => 'typing',
         ];
         if (is_array($params)) {
             $p = array_merge($params, $p);
         }
-	Vk::get()->messages->setActivity($a);
-	sleep(1);
+        Vk::get()->messages->setActivity($a);
+        usleep(1000);
         Vk::get()->messages->send($p);
     }
-	
-	public function kickUser($userId)
-	{
-		return Vk::get(true)->messages->removeChatUser([
-			'chat_id' => $this->chatId,
-			'user_id' => $userId,
-		]);
-	}
-	
+
+    public function kickUser($userId)
+    {
+        return Vk::get(true)->messages->removeChatUser([
+            'chat_id' => $this->chatId,
+            'user_id' => $userId,
+        ]);
+    }
+
     public function inviteUser($userId)
     {
         return Vk::get(true)->messages->addChatUser([
@@ -81,12 +101,12 @@ class Chats extends \yii\db\ActiveRecord
             'user_id' => $userId,
         ]);
     }
-	
+
     public static function addChatFromMessage($message)
     {
-        $chat = new self;
-        $chat->chatId = $message['chat_id'];
-        $chat->adminId = $message['admin_id'];
+        $chat                = new self;
+        $chat->chatId        = $message['chat_id'];
+        $chat->adminId       = $message['admin_id'];
         $chat->lastMessageId = $message['id'];
         return $chat;
     }
@@ -97,13 +117,13 @@ class Chats extends \yii\db\ActiveRecord
         if (!$chat) {
             $chatInfo = Vk::get()->messages->getHistory([
                 'peer_id' => 2000000000 + intval($chatId),
-                'count' => 1,
+                'count'   => 1,
             ]);
             $chatInfo2 = Vk::get()->messages->getChat([
                 'chat_id' => $chatId,
             ]);
             $chatInfo['items'][0]['admin_id'] = $chatInfo2['admin_id'];
-            $chat = static::addChatFromMessage($chatInfo['items'][0]);
+            $chat                             = static::addChatFromMessage($chatInfo['items'][0]);
             $chat->save();
         }
         return $chat;
@@ -112,7 +132,10 @@ class Chats extends \yii\db\ActiveRecord
     public static function getChat($chatId)
     {
         $chat = static::findOne(['chatId' => $chatId]);
-        if (!$chat) $chat = static::addChat($chatId);
+        if (!$chat) {
+            $chat = static::addChat($chatId);
+        }
+
         return $chat;
     }
 
@@ -123,26 +146,34 @@ class Chats extends \yii\db\ActiveRecord
 
     public static function getAllChats($load = false)
     {
-        if ($load) static::updateChats();
+        if ($load) {
+            static::updateChats();
+        }
+
         return static::find()->all();
     }
 
     public function getAllUsers($load = false)
     {
-        if ($load) $this->updateUsers();
+        if ($load) {
+            $this->updateUsers();
+        }
+
         return Users::findAll(['chatId' => $this->chatId]);
     }
 
     public function getAllActiveUsers()
     {
-        $users = $this->getAllUsers(true);
-        $activeUsers = array_map(function ($user)
-        {
+        $users       = $this->getAllUsers(true);
+        $activeUsers = array_map(function ($user) {
             return $user['id'];
         }, $this->loadUsers());
         $resultUsers = [];
         foreach ($users as $user) {
-           if (in_array($user->userId, $activeUsers)) $resultUsers[] = $user; 
+            if (in_array($user->userId, $activeUsers)) {
+                $resultUsers[] = $user;
+            }
+
         }
         return $resultUsers;
     }
@@ -183,7 +214,7 @@ class Chats extends \yii\db\ActiveRecord
     private static function loadChatsRecursive($unread = false, $offset = 0, $prevCount = 0)
     {
         $params = [
-            'count' => 200,
+            'count'  => 200,
             'offset' => $offset,
             'unread' => $unread,
         ];
@@ -191,21 +222,19 @@ class Chats extends \yii\db\ActiveRecord
         $items = $chats['items'];
         if (count($items) + $prevCount < $chats['count']) {
             $items = array_merge(
-                $items, 
+                $items,
                 static::loadChatsRecursive(
-                    $unread, 
-                    $offset + $params['count'], 
+                    $unread,
+                    $offset + $params['count'],
                     count($items) + $prevCount
                 )
             );
         }
-        $itemsF = array_filter($items, function ($var)
-        {
+        $itemsF = array_filter($items, function ($var) {
             return isset($var['message']['chat_id']);
         });
         return $itemsF;
     }
-
 
     /**
      * @inheritdoc
@@ -226,7 +255,7 @@ class ChatsQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
-        return $this->andWhere('[[status]]=1');
+    return $this->andWhere('[[status]]=1');
     }*/
 
     /**
