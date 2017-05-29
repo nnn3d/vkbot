@@ -14,16 +14,19 @@ class ChatCommands
 {
     private static $commands;
     private $chatId;
+    private $messageId;
     private $userId;
     private $args;
     private $argsCountSkip;
+    private $command;
     private function load($command)
     {
         $this->chatId        = $command->chatId;
-        $this->chatId        = $command->messageId;
+        $this->messageId     = $command->messageId;
         $this->userId        = $command->userId;
         $this->args          = $command->getArgs();
         $this->argsCountSkip = $command->argsCountSkip;
+        $this->command       = &$command;
     }
     private function argsEqual($set)
     {return count($this->args) == $set;}
@@ -34,6 +37,16 @@ class ChatCommands
     private function minStatus($status)
     {
         return Users::getStatus($this->chatId, $this->userId) >= $status;
+    }
+    private function argMaxNumSet($maxNum, $arg)
+    {
+        $this->args[$arg] = min($maxNum, intval($this->args[$arg]));
+        $this->command->setArgs($this->args);
+    }
+    private function argMinNumSet($minNum, $arg)
+    {
+        $this->args[$arg] = max($minNum, intval($this->args[$arg]));
+        $this->command->setArgs($this->args);
     }
     private function argsRegExp($set)
     {
@@ -868,16 +881,10 @@ class ChatCommands
             'Добавить повторяющееся событие. Например "' . Params::bot('name') . ' повторяй 5 кто бот" будет выполнять команду "кто" каждые 5 мин.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(2) && $s->argsRegExp(['повторяй', '[\d]+']);
+                return $s->argsLarger(2) && $s->argsRegExp(['повторяй', '[\d]+']) && $s->argMinNumSet(1, 1) && $s->argMaxNumSet(1440, 1);
             },
             function ($command) {
                 $minutes = intval($command->getArgs()[1]);
-                if ($minutes < 1) {
-                    $minutes = 1;
-                }
-                if ($minutes > 1440) {
-                    $minutes = 1440;
-                }
                 $taskArgs  = array_slice($command->getArgs(), 2);
                 $taskArgsS = implode(' ', $taskArgs);
                 $chat      = Chats::getChat($command->chatId);
