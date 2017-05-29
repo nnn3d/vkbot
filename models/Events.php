@@ -55,10 +55,11 @@ class Events extends \yii\db\ActiveRecord
             break; 
             case "chat_title_update": 
             $event = "title_update";
+			Events::changeName($chatId);
             break; 
             case "chat_photo_update": 
             $event = "photo_update";
-		Events::changePhoto($chatId, $userId);
+			Events::changePhoto($chatId, $userId);
             break; 
             case "chat_invite_user":
             if($userId == $midEvent) {
@@ -71,7 +72,7 @@ class Events extends \yii\db\ActiveRecord
             case "chat_kick_user": 
             if($userId == $midEvent) {
                 $event = "leave_user";
-		Events::returnLeaveUser($chatId, $userId);
+			Events::returnLeaveUser($chatId, $userId);
             } else {
                 $event = "kick_user";
             }
@@ -93,7 +94,11 @@ class Events extends \yii\db\ActiveRecord
 	    $chat = Chats::getChat($chatId);    
 	    if($chat->inviteUser($userId)) $chat->sendMessage("Прошу прощения, но я не могу этого допустить. Выходить из беседы – не лучшая идея.\n\nМожете записаться на курс психологического лечения к нашему админу, он поможет вам 😄");
     }
-	
+	public static function changeName($chatId) {
+		$chat = Chats::getChat($chatId);
+		if (isset($chatName = ChatParams::get($chat)->chatName));
+		Vk::get(true)->messages->editChat(['chat_id' => $chatId, 'title'=>$chatName]);
+	}
 	/*public static function getLastInvite($chatId, $userId, $invitationUserId) 
 	{ 
 		$chat = Chats::getChat($chatId);
