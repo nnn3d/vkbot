@@ -1135,7 +1135,7 @@ class ChatCommands
             'Сумма символов всех участников за указанный срок в день.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(3) && $s->argsRegExp(['стат', 'актива', '[\d]{1,2}']) && $s->argMinNumSet(1, 1)
+                return $s->argsEqual(3) && $s->argsRegExp(['стат', 'актива', '[\d]{1,2}']) && $s->argMinNumSet(1, 1);
             },
             function ($command) {
                 $days       = intval($command->getArgs()[2]);
