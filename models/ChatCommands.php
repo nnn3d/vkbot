@@ -1339,12 +1339,12 @@ class ChatCommands
             ['statusDefault' => USER_STATUS_MODER]
         );
 		
-		$commands[] = new ChatCommand(
+	$commands[] = new ChatCommand(
             'разблокируй',
             'разблокируй название',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsLarger(1) && $s->argsRegExp(['разблокируй']);
+                return $s->argsEqual(1) && $s->argsRegExp(['разблокируй']);
             },
             function ($command) {
                 $chat                                      = Chats::getChat($command->chatId);
