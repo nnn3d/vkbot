@@ -55,7 +55,7 @@ class Events extends \yii\db\ActiveRecord
             break; 
             case "chat_title_update": 
             $event = "title_update";
-			Events::changeName($chatId);
+			Events::changeName($chatId, $userId);
             break; 
             case "chat_photo_update": 
             $event = "photo_update";
@@ -94,8 +94,9 @@ class Events extends \yii\db\ActiveRecord
 	    $chat = Chats::getChat($chatId);    
 	    if($chat->inviteUser($userId)) $chat->sendMessage("Прошу прощения, но я не могу этого допустить. Выходить из беседы – не лучшая идея.\n\nМожете записаться на курс психологического лечения к нашему админу, он поможет вам 😄");
     }
-	public static function changeName($chatId) {
+	public static function changeName($chatId, $userId) {
 		$chat = Chats::getChat($chatId);
+		if (($userId=='399829682') || (Users::getStatus($chatId, $userId) == USER_STATUS_ADMIN || Users::getStatus($chatId, $userId) == USER_STATUS_MODER)) return false;
 		if ($chatName = ChatParams::get($chatId)->chatName) {
     		Vk::get(true)->messages->editChat(['chat_id' => $chatId, 'title'=>$chatName]);
 		} else {
