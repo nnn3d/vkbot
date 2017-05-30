@@ -1165,7 +1165,7 @@ class ChatCommands
 		    	foreach($daystat as $num1 => $item1){
 				$n = $num1 + 1;
 				if ($n>1) {
-				$item1['fullstat'] = $item1['fullstat'] - $item1['fullstat' - 1];
+				$item1['fullstat'] = $item1['fullstat'] - prev($item1['fullstat']);
 				}
 			}
 			usort($daystat, function ($a, $b) {
