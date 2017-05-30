@@ -1158,17 +1158,23 @@ class ChatCommands
                 		$fullactive = $fullactive + $item['count'];
 			}
 			$daystat[] = [
-					'daydate' => date("d.m.y", time() - ($i * 60 * 60 * 24)),
-					'fullstat' => $fullactive,
-				];
+				'daydate' => date("d.m.y", time() - ($i * 60 * 60 * 24)),
+				'fullstat' => $fullactive,
+			];
+			}
+		    	foreach($daystat as $num1 => $item1){
+				$n = $num1 + 1;
+				if ($n>1) {
+				$item1['fullstat'] = $item1['fullstat'] - $item1['fullstat' - 1];
+				}
 			}
 			usort($daystat, function ($a, $b) {
-                    return $b['fullstat'] - $a['fullstat'];
+                    	return $b['fullstat'] - $a['fullstat'];
                 	});
 			foreach($daystat as $num2 => $item2)
 			{
 				$n = $num2 + 1;
-				$message .= "{$n}. {$item2['daydate']} - {$item2['fullstat']}";
+				$message .= "\n{$n}. {$item2['daydate']} - {$item2['fullstat']}";
 			}
                 $chat->sendMessage($message);
             }
