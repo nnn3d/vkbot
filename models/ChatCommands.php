@@ -1165,7 +1165,7 @@ class ChatCommands
 			usort($daystat, function ($a, $b) {
                     return $b['fullstat'] - $a['fullstat'];
                 	});
-			foreach($daystat as $num2 => $intem2)
+			foreach($daystat as $num2 => $item2)
 			{
 				$n = $num2 + 1;
 				$message .= "{$n}. {$item2['daydate']} - {$item2['fullstat']}";
