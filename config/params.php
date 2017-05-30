@@ -9,7 +9,7 @@ return [
     		// 'scope' => '69634',
     		// 'secret_key' => 'z10qtaeMP0UoNGBobIxz',
     		'v' => '5.60',
-			'access_token' => 'fdec60ac1f13e4e2454d8d39883f284ed4dc18e47ef3e37747bbd09d0387e1212b9c0429cfa54fb35f533',
+			'access_token' => '111',
     	],
         'statusLabels' => [
             USER_STATUS_ADMIN => 'админ',
