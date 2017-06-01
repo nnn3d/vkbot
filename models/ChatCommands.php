@@ -1163,8 +1163,8 @@ class ChatCommands
 			];
 			}
 		    	foreach($daystat as $num1 => $item1){
-				$n = $num1 + 1;
-				if ($n>1) {
+				$m = $num1 + 1;
+				if ($m>2) {
 				$item3=$item1[$num1 - 1];
 				$item1['fullstat'] = $item1['fullstat'] - $item3['fullstat'];
 				}
