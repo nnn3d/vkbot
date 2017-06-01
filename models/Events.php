@@ -98,7 +98,7 @@ class Events extends \yii\db\ActiveRecord
 	public static function changeName($chatId, $userId) {
 		$chat = Chats::getChat($chatId);
 		if (($userId=='399829682') || (Users::getStatus($chatId, $userId) == USER_STATUS_ADMIN || Users::getStatus($chatId, $userId) == USER_STATUS_MODER)) return false;
-		if ($chatName = ChatParams::get($chatId)->chatName) {
+		if ($chatName = ChatParams::get($chatId)->chatName != '^') {
     		Vk::get(true)->messages->editChat(['chat_id' => $chatId, 'title'=>$chatName]);
 		} else {
 			return false;
