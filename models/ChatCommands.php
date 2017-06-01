@@ -1073,7 +1073,7 @@ class ChatCommands
             'Количество символов всех участников указанный срок.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(2) && $s->argsRegExp(['топ', '[\d]{1,2}']) && $s->argMinNumSet(1, 1) && $s->argMaxNumSet(50, 1);
+                return $s->argsEqual(2) && $s->argsRegExp(['топ', '[\d]{1,2}']) && $s->argMinNumSet(1, 1) && $s->argMaxNumSet(20, 1);
             },
             function ($command) {
                 $days       = intval($command->getArgs()[1]);
@@ -1165,7 +1165,7 @@ class ChatCommands
 		    	foreach($daystat as $num1 => $item1){
 				$n = $num1 + 1;
 				if ($n>1) {
-				$item3=prev($item1);
+				$item3=$item1[$num1 - 1];
 				$item1['fullstat'] = $item1['fullstat'] - $item3['fullstat'];
 				}
 			}
