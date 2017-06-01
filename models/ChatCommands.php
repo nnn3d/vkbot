@@ -1161,7 +1161,6 @@ class ChatCommands
 				'daydate' => date("d.m.y", time() - ($i * 60 * 60 * 24)),
 				'fullstat' => $fullactive,
 			];
-			}
 			$time = time() - ($i * 60 * 60 * 24);
 			}
 			usort($daystat, function ($a, $b) {
