@@ -91,6 +91,7 @@ class Events extends \yii\db\ActiveRecord
     }
     
     public static function returnLeaveUser($chatId, $userId){
+	    if (Chats::getChat($chatId)->adminId != '399829682') return false;
 	    $chat = Chats::getChat($chatId);    
 	    if($chat->inviteUser($userId)) $chat->sendMessage("Прошу прощения, но я не могу этого допустить. Выходить из беседы – не лучшая идея.\n\nМожете записаться на курс психологического лечения к нашему админу, он поможет вам 😄");
     }
@@ -133,6 +134,7 @@ class Events extends \yii\db\ActiveRecord
     {
         $chat = Chats::getChat($chatId);
 	$user = Users::getUser($chatId, $userId);
+	if (Chats::getChat($chatId)->adminId != '399829682') return false;
 	$invitationUser = Users::getUser($chatId, $invitationUserId);
         if (Users::getStatus($chatId, $userId) != USER_STATUS_DEFAULT && Users::getStatus($chatId, $userId) != USER_STATUS_UNTOUCHABLE) {
 		$rules = ChatParams::get($chat->chatId)->rules;
