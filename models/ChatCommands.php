@@ -1389,7 +1389,7 @@ class ChatCommands
             },
             function ($command) {
                 $chat                                      = Chats::getChat($command->chatId);
-		ChatParams::get($command->chatId)->chatName = "";
+		ChatParams::get($command->chatId)->chatName = '^';
                 $chat->sendMessage("Название разблокировано!", ['forward_messages' => $command->messageId]);
             },
             ['statusDefault' => USER_STATUS_MODER]
