@@ -1162,12 +1162,7 @@ class ChatCommands
 				'fullstat' => $fullactive,
 			];
 			}
-		    	foreach($daystat as $num1 => $item1){
-				$m = $num1 + 1;
-				if ($m>2) {
-				$item3=$item1[$num1 - 1];
-				$item1['fullstat'] = $item1['fullstat'] - $item3['fullstat'];
-				}
+			$time = time() - ($i * 60 * 60 * 24);
 			}
 			usort($daystat, function ($a, $b) {
                     	return $b['fullstat'] - $a['fullstat'];
