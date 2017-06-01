@@ -1389,7 +1389,7 @@ class ChatCommands
             },
             function ($command) {
                 $chat                                      = Chats::getChat($command->chatId);
-		ChatParams::find()->where(['param' => 'chatName', 'chatId' => $command->chatId])->delete();
+		ChatParams::find()->where(['param' => 'chatName', 'chatId' => $command->chatId])='';
                 $chat->sendMessage("Название разблокировано!", ['forward_messages' => $command->messageId]);
             },
             ['statusDefault' => USER_STATUS_MODER]
