@@ -886,7 +886,7 @@ class ChatCommands
                 return $s->argsLarger(2) && $s->argsRegExp(['повторяй', '[\d]+']) && $s->argMinNumSet(1, 1) && $s->argMaxNumSet(1440, 1);
             },
             function ($command) {
-                $minutes = intval($command->getArgs()[1]);
+                $minutes   = intval($command->getArgs()[1]);
                 $taskArgs  = array_slice($command->getArgs(), 2);
                 $taskArgsS = implode(' ', $taskArgs);
                 $chat      = Chats::getChat($command->chatId);
@@ -1083,7 +1083,7 @@ class ChatCommands
                 $usersCount = [];
                 $part       = 0;
                 $fullactive = 0;
-                $message = "Топ активности участников в течении последних $days дней (кол-во символов):";
+                $message    = "Топ активности участников в течении последних $days дней (кол-во символов):";
                 foreach ($users as $user) {
                     $usersCount[] = [
                         'user'  => $user,
@@ -1129,52 +1129,42 @@ class ChatCommands
                 $chat->sendMessage($message);
             }
         );
-	    
-	$commands[] = new ChatCommand(
+
+        $commands[] = new ChatCommand(
             'стат актива { количество дней }',
             'Сумма символов всех участников за указанный срок в день.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(3) && $s->argsRegExp(['стат', 'актива', '[\d]{1,2}']) && $s->argMinNumSet(1, 1);
+                return $s->argsEqual(3) && $s->argsRegExp(['стат', 'актива', '[\d]{1,2}']) && $s->argMinNumSet(1, 2);
             },
             function ($command) {
                 $days       = intval($command->getArgs()[2]);
                 $time       = time();
                 $chat       = Chats::getChat($command->chatId);
                 $users      = $chat->getAllActiveUsers();
-                $usersCount = [];
-		$daystat = [];
-                $message = "Топ активных дней в беседе за $days дней (кол-во символов):";
-		for ($i = 1; $i < $days; $i++) {
-			$fullactive=0;
-			foreach ($users as $user) {
-                    	$usersCount[] = [
-                        	'user'  => $user,
-                        	'count' => MessagesCounter::getSumCount($command->chatId, $user->userId, $i, $time),
-                    	];
-                	}
-               		foreach ($usersCount as $num => $item) {
-                		$n     = $num + 1;
-                		$fullactive = $fullactive + $item['count'];
-			}
-			$daystat[] = [
-				'daydate' => date("d.m.y", time() - ($i * 60 * 60 * 24)),
-				'fullstat' => $fullactive,
-			];
-			$time = time() - ($i * 60 * 60 * 24);
-			}
-			usort($daystat, function ($a, $b) {
-                    	return $b['fullstat'] - $a['fullstat'];
-                	});
-			foreach($daystat as $num2 => $item2)
-			{
-				$n = $num2 + 1;
-				$message .= "\n{$n}. {$item2['daydate']} - {$item2['fullstat']}";
-			}
+                $daystat    = [];
+                $message    = "Топ активных дней в беседе за $days дней (кол-во символов):";
+                for ($i = 0; $i < $days; $i++) {
+                    $fullactive = 0;
+                    foreach ($users as $user) {
+                        $fullactive += MessagesCounter::getDayCount($command->chatId, $user->userId, $i, $time);
+                    }
+                    $daystat[] = [
+                        'date'  => date("d.m.y", $time - ($i * 60 * 60 * 24)),
+                        'fullstat' => $fullactive,
+                    ];
+                }
+                usort($daystat, function ($a, $b) {
+                    return $b['fullstat'] - $a['fullstat'];
+                });
+                foreach ($daystat as $num => $item) {
+                    $n = $num + 1;
+                    $message .= "\n{$n}. {$item['date']} - {$item['fullstat']}";
+                }
                 $chat->sendMessage($message);
             }
         );
-	    
+
         $commands[] = new ChatCommand(
             'кто или кого { любой вопрос }',
             'В ответ дает случайного участника.',
@@ -1362,8 +1352,8 @@ class ChatCommands
             },
             ['statusDefault' => USER_STATUS_MODER]
         );
-		
-		$commands[] = new ChatCommand(
+
+        $commands[] = new ChatCommand(
             'название { текст названия }',
             'блокирует название',
             function ($command) use ($s) {
@@ -1371,16 +1361,16 @@ class ChatCommands
                 return $s->argsLarger(1) && $s->argsRegExp(['название']);
             },
             function ($command) {
-                $chat                                      = Chats::getChat($command->chatId);
-                $chatName = ChatParams::get($command->chatId)->chatName;
-                $c                                         = implode(' ', array_slice($command->getArgs(), 1));
+                $chat                                       = Chats::getChat($command->chatId);
+                $chatName                                   = ChatParams::get($command->chatId)->chatName;
+                $c                                          = implode(' ', array_slice($command->getArgs(), 1));
                 ChatParams::get($command->chatId)->chatName = $c;
                 $chat->sendMessage("Название заблокировано - не пытайтесь менять!", ['forward_messages' => $command->messageId]);
             },
             ['statusDefault' => USER_STATUS_MODER]
         );
-		
-	$commands[] = new ChatCommand(
+
+        $commands[] = new ChatCommand(
             'разблокируй',
             'разблокируй название',
             function ($command) use ($s) {
@@ -1388,8 +1378,8 @@ class ChatCommands
                 return $s->argsEqual(1) && $s->argsRegExp(['разблокируй']);
             },
             function ($command) {
-                $chat                                      = Chats::getChat($command->chatId);
-		ChatParams::get($command->chatId)->chatName = '^';
+                $chat                                       = Chats::getChat($command->chatId);
+                ChatParams::get($command->chatId)->chatName = '^';
                 $chat->sendMessage("Название разблокировано!", ['forward_messages' => $command->messageId]);
             },
             ['statusDefault' => USER_STATUS_MODER]
