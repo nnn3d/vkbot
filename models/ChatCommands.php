@@ -1185,8 +1185,12 @@ class ChatCommands
                 while (($i<5) || (!$online)){
                 $r      = mt_rand(0, count($users) - 1);
                 $i=$i+1;
-                $chat->sendMessage("{$users[$r]->userId}\n");
                 $online = Users::isOnline($users[$r]->userId);
+                if ($online) {
+                $chat->sendMessage("{$users[$r]->userId} - онлайн {$online}\n");
+                } else
+                $chat->sendMessage("{$users[$r]->userId} - не онлайн - {$online}\n");
+                }
                 }
                 $c      = implode(' ', array_slice($command->getArgs(), 1));
                 $countC = substr_count($c, '?');
