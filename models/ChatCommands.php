@@ -1188,7 +1188,7 @@ class ChatCommands
                 $online = Users::isOnline($users[$r]->userId);
                 if ($online) {
                 $chat->sendMessage("{$users[$r]->userId} - онлайн {$online}\n");
-                } else
+                } else {
                 $chat->sendMessage("{$users[$r]->userId} - не онлайн - {$online}\n");
                 }
                 }
