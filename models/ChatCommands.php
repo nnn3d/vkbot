@@ -133,7 +133,7 @@ class ChatCommands
                 if (Users::isOnline($userId)) {
                     $chat->sendMessage("хач");
                    }
-                    $chat->sendMessage(" не хач")
+                    $chat->sendMessage(" не хач");
                     return false;
                 }
                };
