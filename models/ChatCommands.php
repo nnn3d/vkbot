@@ -136,7 +136,7 @@ class ChatCommands
                     $chat->sendMessage(" не хач");
                     return false;
                 },
-               };
+               );
 
         
         $commands[] = new ChatCommand(
