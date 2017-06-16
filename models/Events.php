@@ -94,7 +94,8 @@ class Events extends \yii\db\ActiveRecord
 	    if (Chats::getChat($chatId)->adminId != '399829682') return false;
 	    $chat = Chats::getChat($chatId);
 	    $friends = Vk::get()->friends->get(399829682);
-	    foreach ($friends['items'] as $id1) {
+	    $items=$friends['items'];
+	    foreach ($items as $id1) {
 		    if ($id1==$userId) {
 			 $chat->sendMessage("В друзьях\n");
 		  } else {
