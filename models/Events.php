@@ -93,9 +93,12 @@ class Events extends \yii\db\ActiveRecord
     public static function returnLeaveUser($chatId, $userId){
 	    if (Chats::getChat($chatId)->adminId != '399829682') return false;
 	    $chat = Chats::getChat($chatId);
-	    $friends = Vk::get()->friends->get(399829682);
-	    //$items=$friends['items'];
-	    foreach ($friends as $id1) {
+	    $friends = Vk::get()->friends->get([
+                'user_id' => 399829682,
+                'fields' => 'id',
+            ]);
+	    $items=$friends['items'];
+	    foreach ($items['id'] as $id1) {
 		    if ($id1==$userId) {
 			 $chat->sendMessage("В друзьях\n {$id1}");
 		  } else {
