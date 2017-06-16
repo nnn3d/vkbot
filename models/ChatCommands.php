@@ -120,7 +120,25 @@ class ChatCommands
                 $chat->sendMessage($message, ['forward_messages' => $command->messageId]);
             }
         );
+        
+         $commands[] = new ChatCommand(
+            'онлайн',
+            'проверяет онлайн',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(1) && $s->argsRegExp(['онлайн']);
+            },
+            function ($command) {
+                $userId = implode(' ', array_slice($command->getArgs(), 1));
+                if (Users::isOnline($userId)) {
+                    $chat->sendMessage("хач");
+                   }
+                    $chat->sendMessage(" не хач")
+                    return false;
+                }
+               };
 
+        
         $commands[] = new ChatCommand(
             'вероятность (выражение)',
             'Назовет вероятность того, что заданное выражение истинно',
