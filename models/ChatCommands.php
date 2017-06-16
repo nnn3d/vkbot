@@ -1397,7 +1397,7 @@ class ChatCommands
                 $chatName                                   = ChatParams::get($command->chatId)->chatName;
                 $c                                          = implode(' ', array_slice($command->getArgs(), 1));
                 ChatParams::get($command->chatId)->chatName = $c;
-                $chat->sendMessage("Название "{$c}" заблокировано - не пытайтесь менять!", ['forward_messages' => $command->messageId]);
+                $chat->sendMessage("Название {$c} заблокировано - не пытайтесь менять!", ['forward_messages' => $command->messageId]);
             },
             ['statusDefault' => USER_STATUS_MODER]
         );
