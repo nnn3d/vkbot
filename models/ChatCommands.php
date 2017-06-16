@@ -1182,7 +1182,7 @@ class ChatCommands
                 $pUser  = Users::getUser($command->chatId, $command->userId);
                 $users  = $chat->getAllActiveUsers();
                 $i=0;
-                while (($i<5) || (!$online)){
+                while (($i<5) || ($online==1)){
                 $r      = mt_rand(0, count($users) - 1);
                 $i=$i+1;
                 $online = Users::isOnline($users[$r]->userId);
