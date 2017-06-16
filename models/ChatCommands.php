@@ -1212,7 +1212,32 @@ class ChatCommands
                 }
             }
         );
-
+        
+        $commands[] = new ChatCommand(
+            'онлайн',
+            'Выдает участников беседы, находящихся в сети.',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsEqual(1) && $s->argsRegExp(['онлайн']);
+            },
+            function ($command) {
+                $chat   = Chats::getChat($command->chatId);
+                $users  = $chat->getAllActiveUsers();
+                $n=0;
+                $online=0;
+                $message .= "Список людей, которые находятся в сети";
+                for ($i=0; $i<count($users); $i++) {
+                    $online = Users::isOnline($users[$i]->userId);
+                    if ($online==1) {
+                        $n++;
+                        $message .= "\n{$n}. {$users[$i]->name} {$users[$i]->secondName}";
+                    }
+                }
+                $chat->sendMessage($message);
+            },
+            ['statusDefault' => USER_STATUS_MODER]
+        );
+        
         $commands[] = new ChatCommand(
             'доступ { админ / модер / юзер } { название команды }',
             'Выставляет уровень допуска для команды.',
