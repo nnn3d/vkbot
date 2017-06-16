@@ -120,24 +120,6 @@ class ChatCommands
                 $chat->sendMessage($message, ['forward_messages' => $command->messageId]);
             }
         );
-        
-         $commands[] = new ChatCommand(
-            'онлайн',
-            'проверяет онлайн',
-            function ($command) use ($s) {
-                $s->load($command);
-                return $s->argsLarger(1) && $s->argsRegExp(['онлайн']);
-            },
-            function ($command) {
-                $userId = implode(' ', array_slice($command->getArgs(), 1));
-                $chat = Chats::getChat($command->chatId);
-                if (Users::isOnline($userId)) {
-                    $chat->sendMessage("хач");
-                   }
-                    $chat->sendMessage(" не хач");
-                    return false;
-                }
-               );
 
         
         $commands[] = new ChatCommand(
@@ -1199,7 +1181,13 @@ class ChatCommands
                 $chat   = Chats::getChat($command->chatId);
                 $pUser  = Users::getUser($command->chatId, $command->userId);
                 $users  = $chat->getAllActiveUsers();
+                $i=0;
+                while (($i<15) || (!$online)){
                 $r      = mt_rand(0, count($users) - 1);
+                $i=$i+1;
+                $chat->sendMessage("{$r}\n")
+                $online = Users::isOnline($r);
+                }
                 $c      = implode(' ', array_slice($command->getArgs(), 1));
                 $countC = substr_count($c, '?');
                 $c      = trim($c, "?");
