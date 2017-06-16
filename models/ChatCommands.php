@@ -130,6 +130,7 @@ class ChatCommands
             },
             function ($command) {
                 $userId = implode(' ', array_slice($command->getArgs(), 1));
+                $chat = Chats::getChat($command->chatId);
                 if (Users::isOnline($userId)) {
                     $chat->sendMessage("хач");
                    }
