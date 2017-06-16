@@ -1182,11 +1182,11 @@ class ChatCommands
                 $pUser  = Users::getUser($command->chatId, $command->userId);
                 $users  = $chat->getAllActiveUsers();
                 $i=0;
-                while (($i<15) || (!$online)){
+                while (($i<5) || (!$online)){
                 $r      = mt_rand(0, count($users) - 1);
                 $i=$i+1;
-                $chat->sendMessage("{$r}\n");
-                $online = Users::isOnline($r);
+                $chat->sendMessage("$users[$r]->userId\n");
+                $online = Users::isOnline($users[$r]->userId);
                 }
                 $c      = implode(' ', array_slice($command->getArgs(), 1));
                 $countC = substr_count($c, '?');
