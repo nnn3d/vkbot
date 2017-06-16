@@ -1183,18 +1183,10 @@ class ChatCommands
                 $users  = $chat->getAllActiveUsers();
                 $i=0;
                 $online=0;
-                while ($online==0) {
+                while (($i>10) || ($online==0)) {
                 $r      = mt_rand(0, count($users) - 1);
                 $i=$i+1;
-                $online = Users::isOnline($users[$r]->userId);
-                if ($online) {
-                $chat->sendMessage("{$users[$r]->userId} - онлайн {$online}\n");
-                } else {
-                $chat->sendMessage("{$users[$r]->userId} - не онлайн - {$online}\n");
-                }
-                if ($i>4) {
-                    $online=1;
-                }
+                $online = Users::isOnline($users[$r]->userId);      
                 }
                 $c      = implode(' ', array_slice($command->getArgs(), 1));
                 $countC = substr_count($c, '?');
