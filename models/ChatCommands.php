@@ -1225,7 +1225,7 @@ class ChatCommands
                 $users  = $chat->getAllActiveUsers();
                 $n=0;
                 $online=0;
-                $message .= "Список людей, которые находятся в сети";
+                $message = "Список людей, которые находятся в сети:";
                 for ($i=0; $i<count($users); $i++) {
                     $online = Users::isOnline($users[$i]->userId);
                     if ($online==1) {
