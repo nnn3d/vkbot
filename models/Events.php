@@ -97,9 +97,8 @@ class Events extends \yii\db\ActiveRecord
                 'user_id' => 399829682,
                 'fields' => 'id',
             ]);
-	    $items=$friends['items'];
-	    foreach ($items['id'] as $id1) {
-		    if ($id1==$userId) {
+	    foreach ($friends as $id1) {
+		    if ($id1['id']==$userId) {
 			 $chat->sendMessage("В друзьях\n {$id1}");
 		  } else {
 			 $chat->sendMessage("не в друзьях\n {$id1}"); 
