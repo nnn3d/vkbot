@@ -155,7 +155,6 @@ class Events extends \yii\db\ActiveRecord
 		$chat->sendMessage("[id{$invitationUserId}|{$invitationUser->name} {$invitationUser->secondName}], {$welcome}");
 		if (!$rules) return false;
 		$chat->sendMessage("Правила конфы:\n {$rules}");
-		return false;
 		$user->status = USER_STATUS_DEFAULT;
 		$user->save();
 		$chat->sendMessage("{$user->name} {$user->secondName} использовал свое право пригласить человека.\n\nЯ уже изменила его статус.");
