@@ -94,8 +94,12 @@ class Events extends \yii\db\ActiveRecord
 	    if (Chats::getChat($chatId)->adminId != '399829682') return false;
 	    $chat = Chats::getChat($chatId);
 	    $user = users::userExists($chatId, $userId);
-	    if (($chat->inviteUser($userId)) || ($user)) {
-		    $chat->sendMessage("Выход из беседы для вас крайне не желателен!");
+	    $isfriend = Vk::get()->friends->areFriends([
+	    'user_ids' => $userId,
+	    'need_sign' => 0,
+	    ]);
+	    if (($chat->inviteUser($userId)) && ($isfriend['friend_status']==3)) {
+		    $chat->sendMessage("Выход из беседы для тебя крайне не желателен!");
 	    }
     }
 	public static function changeName($chatId, $userId) {
@@ -164,45 +168,18 @@ class Events extends \yii\db\ActiveRecord
         $kick2 = false;
         
         $chat->sendMessage("Приглашать людей в эту беседу без согласования с админами запрещено.\nСогласно правилам, {$user->name} {$user->secondName} и {$invitationUser->name} {$invitationUser->secondName} будут выкинуты из чата.");
-        
         if (!$chat->kickUser($invitationUserId)) {
             $chat->sendMessage("Мне не удалось кикнуть пользователя {$invitationUser->name} {$invitationUser->secondName}");
         } else {
             $kick1 = true;
-            $setDo = false;
-            $users = $chat->getAllActiveUsers();
-            $message = "Для возвращения в беседу обращайтесь к одному из следующего списка людей: \n";
-            foreach ($users as $userData) {
-                $status = $userData->status;
-                if($status == USER_STATUS_ADMIN) {
-                    $message .= "\n vk.com/id{$userData->userId} ({$userData->name} {$userData->secondName})";
-		    $setDo = true;
-                }
-            }
-            
-            if($setDo) Vk::get(true)->messages->send(['user_id' => $invitationUserId, 'message' => $message]);
         }
-        
         $chat->sendMessage("У {$user->name} {$user->secondName} есть 10 секунд на последнее слово.");
         sleep(10);
-        
         if (!$chat->kickUser($userId)) {
             $chat->sendMessage("Мне не удалось кикнуть пользователя {$user->name} {$user->secondName}");
         } else {
             $kick2 = true;
-	    $setDo = false;	
-            $users = $chat->getAllActiveUsers();
-            $message = "Для возвращения в беседу обращайтесь к одному из следующего списка людей: \n";
-            foreach ($users as $userData) {
-                $status = $userData->status;
-                if($status == USER_STATUS_ADMIN) {
-                    $message .= "\n vk.com/id{$userData->userId} ({$userData->name} {$userData->secondName})";
-	            $setDo = true;
-                }
-            }
-            if($setDo) Vk::get(true)->messages->send(['user_id' => $userId, 'message' => $message]);
         }
-        
 	    if($chatId == '2') {
 		    if($kick1 == true && $kick2 == true) {
 			    $report = "Недавно я выгнала из беседы 2 участников:\n\n vk.com/id$userId ({$user->name} {$user->secondName}) (инвайтнул)\n vk.com/id$invitationUserId ({$invitationUser->name} {$invitationUser->secondName}) (инвайтнули)";
