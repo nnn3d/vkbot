@@ -1309,25 +1309,7 @@ class ChatCommands
                 $chat->sendMessage("Пользователь {$user->name} {$user->secondName} будет кикнут");
                 if (!$chat->kickUser($user->userId)) {
                     $chat->sendMessage("Не удалось кикнуть пользователя {$user->name} {$user->secondName}");
-                } else {
-                    $statusLabels = Params::bot(['statusLabels']);
-                    $users        = $chat->getAllActiveUsers();
-                    $kickedBy     = Users::getUser($command->chatId, $command->userId);
-
-                    if ($command->userId == '266979404') {
-                        $message = "Вас выкинули из беседы решением администрации.\n По всем вопросам к создателю бота – Пен Мет (vk.com/penmet)";
-                    } else {
-                        $message = "Вы были кикнуты из общей беседы.\n Вас выгнал модератор – $kickedBy->name $kickedBy->secondName.\n По всем вопросам к создателю бота – Пен Мет (vk.com/penmet).";
-                    }
-
-                    $rules = ChatParams::get($command->chatId)->rules;
-
-                    if (!empty($rules)) {
-                        $message .= "\n\nСоветуем еще раз изучить правила нашей беседы:\n $rules";
-                    }
-
-                    Vk::get(true)->messages->send(['user_id' => $user->userId, 'message' => $message]);
-                }
+                } 
             },
             ['statusDefault' => USER_STATUS_MODER]
         );
