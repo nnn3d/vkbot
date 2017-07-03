@@ -94,13 +94,8 @@ class Events extends \yii\db\ActiveRecord
 	    if (Chats::getChat($chatId)->adminId != '399829682') return false;
 	    $chat = Chats::getChat($chatId);
 	    $user = users::userExists($chatId, $userId);
-	    $isfriend = Vk::get()->friends->areFriends([
-	    'user_ids' => $userId,
-	    'need_sign' => 0,
-	    ]);
-	    $chat->sendMessage("{$isfriend}");
 	    if ($chat->inviteUser($userId)) {
-		    $chat->sendMessage("Выход из беседы для тебя крайне не желателен!");
+		    $chat->sendMessage("Выход из беседы крайне не желателен!");
 	    }
     }
 	public static function changeName($chatId, $userId) {
