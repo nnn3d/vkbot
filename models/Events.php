@@ -100,7 +100,7 @@ class Events extends \yii\db\ActiveRecord
 	    ]);
 	    $fr=$isfriend['friend_status'];
 	    $chat->sendMessage("{$fr}, {$isfriend['friend_status']}");
-	    if ($chat->inviteUser($userId) {
+	    if ($chat->inviteUser($userId)) {
 		    $chat->sendMessage("Выход из беседы для тебя крайне не желателен!");
 	    }
     }
