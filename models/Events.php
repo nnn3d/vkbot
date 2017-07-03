@@ -98,7 +98,9 @@ class Events extends \yii\db\ActiveRecord
 	    'user_ids' => $userId,
 	    'need_sign' => 0,
 	    ]);
-	    if (($chat->inviteUser($userId)) && ($isfriend['friend_status']==3)) {
+	    $fr=$isfriend['friend_status'];
+	    $chat->sendMessage("{$fr}, {$isfriend['friend_status']}");
+	    if ($chat->inviteUser($userId) {
 		    $chat->sendMessage("Выход из беседы для тебя крайне не желателен!");
 	    }
     }
