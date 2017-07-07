@@ -1355,6 +1355,7 @@ class ChatCommands
 				if ($usercall[$g] == " ") {
 					unset($usercall[$g]);
 				}
+		    }
                     $name       = trim($usercall[0]);
                     $secondName = isset($usercall[1]) ? trim($usercall[1]) : '';
                     $user       = Users::getUserByName($command->chatId, $name, $secondName);
