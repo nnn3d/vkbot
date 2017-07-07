@@ -1346,13 +1346,13 @@ class ChatCommands
                 $n=1;
                 foreach ($kickmass as $kickuser) {
                 if (preg_match("/[\d]+/", $kickuser)) {
-                    $id   = $kickuser;
+                    $id   = trim($kickuser);
                     $user = Users::getUser($command->chatId, $id);
                 } else {
 		    $chat->sendMessage("ЩОРСУНЧИК {$kickuser}");
                     $usercall=explode(" ", implode($kickmass));
-                    $name       = $usercall[0];
-                    $secondName = isset($usercall[1]) ? $usercall[1] : '';
+                    $name       = trim($usercall[0]);
+                    $secondName = isset($usercall[1]) ? trim($usercall[1]) : '';
                     $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 }
                 if (!$user) {
