@@ -1332,6 +1332,7 @@ class ChatCommands
                     $k=1;
                 }
 		$kicklist = '';
+		$mess='';
                 while ($k==0) {
                     if (isset($command->getArgs()[$n])) {
                     $kicklist.= $command->getArgs()[$n];
@@ -1350,18 +1351,10 @@ class ChatCommands
                     $user = Users::getUser($command->chatId, $id);
                 } else {
 			$ki=0;
-		    $chat->sendMessage("ЩОРСУНЧИК {$kickuser}");
                     $usercall=explode(" ",$kickuser);
 		    $on = array_search('',$usercall);
 		    if ($on !== false) {
 			    unset($usercall[$on1]);
-			    $chat->sendMessage("мама я полюбила ингуша1 {$on1}");
-			    $ki=$ki+1;
-		    }
-		    $on1 = array_search(' ',$usercall);
-		    if ($on1 !== false) {
-			    unset($usercall[$on1]);
-			    $chat->sendMessage("мама я полюбила ингуша1?5");
 			    $ki=$ki+1;
 		    }
                     $name       = trim($usercall[$ki]);
@@ -1369,20 +1362,19 @@ class ChatCommands
                     $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 }
                 if (!$user) {
-                        $chat->sendMessage("Не найден участник беседы имя - '$name', '$secondName'");
+			$mess .= "\nНе найден участник беседы '$name' '$secondName'"
                         return false;
                 }
                 if ($user->userId == $command->userId) {
-                    $chat->sendMessage("Нельзя себя кикнуть");
+                    $mess .= "\nНельзя себя кикнуть";
                     return false;
                 }
                 if (Users::getStatus($command->chatId, $user->userId) != USER_STATUS_DEFAULT) {
-                    $chat->sendMessage("Этого пользователя нельзя кикнуть");
+                   $mess .= "\nЭтого пользователя нельзя кикнуть {$user->name} {$user->secondName}";
                     return false;
                 }
-                $chat->sendMessage("Пользователь {$user->name} {$user->secondName} будет кикнут");
                 if (!$chat->kickUser($user->userId)) {
-                    $chat->sendMessage("Не удалось кикнуть пользователя {$user->name} {$user->secondName}");
+                    $mess .= "\nНе удалось кикнуть пользователя {$user->name} {$user->secondName}";
                 } 
             }
             },
