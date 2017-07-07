@@ -1340,6 +1340,7 @@ class ChatCommands
                     $k=1;
                     }
                 }
+		$chat->sendMessage("Щоблинг {$kicklist}");
                 $kickmass=array();
 		$kickmass=explode(",", $kicklist);
 		$outs=implode($kickmass);
