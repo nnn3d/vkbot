@@ -72,7 +72,6 @@ class Events extends \yii\db\ActiveRecord
             case "chat_kick_user": 
             if($userId == $midEvent) {
                 $event = "leave_user";
-			Events::returnLeaveUser($chatId, $userId);
             } else {
                 $event = "kick_user";
             }
@@ -90,10 +89,6 @@ class Events extends \yii\db\ActiveRecord
         $self->save();
     }
     
-    public static function returnLeaveUser($chatId, $userId){
-	    if (Chats::getChat($chatId)->adminId != '399829682') return false;
-	    $chat->sendMessage("Выход из беседы крайне не желателен!");
-    }
 	public static function changeName($chatId, $userId) {
 		$chat = Chats::getChat($chatId);
 		if ($userId=='399829682') return false;
