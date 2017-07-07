@@ -1351,12 +1351,16 @@ class ChatCommands
                 } else {
 		    $chat->sendMessage("ЩОРСУНЧИК {$kickuser}");
                     $usercall=explode(" ",$kickuser);
+		    for($g=0;$g<count($usercall);$g++) {
+				if ($usercall[$g] == " ") {
+					unset($usercall[$g]);
+				}
                     $name       = trim($usercall[0]);
                     $secondName = isset($usercall[1]) ? trim($usercall[1]) : '';
                     $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 }
                 if (!$user) {
-                        $chat->sendMessage("Не найден участник беседы '$name $secondName'");
+                        $chat->sendMessage("Не найден участник беседы имя - '$name', '$secondName'");
                         return false;
                 }
                 if ($user->userId == $command->userId) {
