@@ -1362,7 +1362,7 @@ class ChatCommands
                     $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 }
                 if (!$user) {
-			$mess .= "\nНе найден участник беседы '$name' '$secondName'"
+			$mess .= "\nНе найден участник беседы '$name' '$secondName'";
                         return false;
                 }
                 if ($user->userId == $command->userId) {
