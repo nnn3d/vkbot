@@ -1363,15 +1363,12 @@ class ChatCommands
                 }
                 if (!$user) {
 			$mess .= "\nНе найден участник беседы '$name' '$secondName'";
-                        return false;
                 }
                 if ($user->userId == $command->userId) {
                     $mess .= "\nНельзя себя кикнуть";
-                    return false;
                 }
                 if (Users::getStatus($command->chatId, $user->userId) != USER_STATUS_DEFAULT) {
                    $mess .= "\nЭтого пользователя нельзя кикнуть {$user->name} {$user->secondName}";
-                    return false;
                 }
                 if (!$chat->kickUser($user->userId)) {
                     $mess .= "\nНе удалось кикнуть пользователя {$user->name} {$user->secondName}";
