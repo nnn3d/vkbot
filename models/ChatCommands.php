@@ -1349,8 +1349,8 @@ class ChatCommands
                     $user = Users::getUser($command->chatId, $id);
                 } else {
                     $usercall=explode(" ", implode($kickmass));
-                    $name       = $usercall[1];
-                    $secondName = isset($usercall[2]) ? $usercall[2] : '';
+                    $name       = $usercall[0];
+                    $secondName = isset($usercall[1]) ? $usercall[1] : '';
                     $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 }
                 if (!$user) {
