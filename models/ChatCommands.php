@@ -1352,8 +1352,9 @@ class ChatCommands
 		    $chat->sendMessage("ЩОРСУНЧИК {$kickuser}");
                     $usercall=explode(" ",$kickuser);
 		    for($g=0;$g<count($usercall);$g++) {
-				if ($usercall[$g] == " ") {
+				if (($usercall[$g] == " ") || ($usercall[$g] == "")) {
 					unset($usercall[$g]);
+					$chat->sendMessage("мама я полюбила ингуша {$usercall[$g]}");
 				}
 		    }
                     $name       = trim($usercall[0]);
