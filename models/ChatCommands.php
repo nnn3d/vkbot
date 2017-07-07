@@ -1313,7 +1313,66 @@ class ChatCommands
             },
             ['statusDefault' => USER_STATUS_MODER]
         );
-
+        
+        $commands[] = new ChatCommand(
+            'масскик { имя [ + фамилия ] участника или ид, через запятую }',
+            'Массово кикает участников из беседы.',
+            function ($command) use ($s) {
+                $s->load($command);
+                return $s->argsLarger(1) && $s->argsRegExp(['масскик']);
+            },
+            function ($command) {
+                $chat = Chats::getChat($command->chatId);
+                $command->getArgs()[1]));
+                if ($command->getArgs()[1]) {
+                    $m=0;
+                    $n=1;
+                    $k=0;
+                } else { 
+                    $m=1;
+                    $k=1;
+                }
+                while ($k==0) {
+                    if (isset($command->getArgs()[$n])) {
+                    $kicklist.= $command->getArgs()[$n];
+                    $n=$n+1;
+                    } else {
+                    $k=1;
+                    }
+                }
+                $n=1;
+                $kickmass=$implode(",", $kicklist);
+                foreach $kickmass as $kickuser {
+                if (preg_match("/[\d]+/", $kickuser)) {
+                    $id   = $kickuser;
+                    $user = Users::getUser($command->chatId, $id);
+                } else {
+                    $usercall=$implode(" ", $kickmass);
+                    $name       = $usercall[1];
+                    $secondName = isset($usercall[2]) ? $usercall[2] : '';
+                    $user       = Users::getUserByName($command->chatId, $name, $secondName);
+                }
+                if (!$user) {
+                        $chat->sendMessage("Не найден участник беседы '$name $secondName'");
+                        return false;
+                }
+                if ($user->userId == $command->userId) {
+                    $chat->sendMessage("Нельзя себя кикнуть");
+                    return false;
+                }
+                if (Users::getStatus($command->chatId, $user->userId) != USER_STATUS_DEFAULT) {
+                    $chat->sendMessage("Этого пользователя нельзя кикнуть");
+                    return false;
+                }
+                $chat->sendMessage("Пользователь {$user->name} {$user->secondName} будет кикнут");
+                if (!$chat->kickUser($user->userId)) {
+                    $chat->sendMessage("Не удалось кикнуть пользователя {$user->name} {$user->secondName}");
+                } 
+            }
+            },
+            ['statusDefault' => USER_STATUS_MODER]
+        );
+        
         $commands[] = new ChatCommand(
             'правила',
             'Выдает правила беседы',
