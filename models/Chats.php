@@ -82,7 +82,6 @@ class Chats extends \yii\db\ActiveRecord
             $p = array_merge($params, $p);
         }
         Vk::get()->messages->setActivity($a);
-        usleep(330000);
         Vk::get()->messages->send($p);
     }
 
