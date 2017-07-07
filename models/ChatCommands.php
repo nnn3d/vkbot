@@ -1350,6 +1350,8 @@ class ChatCommands
                     $id   = $kickuser;
                     $user = Users::getUser($command->chatId, $id);
                 } else {
+		     $outss=implode($kickmass);
+		    $chat->sendMessage("ЩОРСУНЧИК {$outss}");
                     $usercall=explode(" ", implode($kickmass));
                     $name       = $usercall[0];
                     $secondName = isset($usercall[1]) ? $usercall[1] : '';
