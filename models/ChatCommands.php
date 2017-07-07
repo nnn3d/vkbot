@@ -1332,7 +1332,7 @@ class ChatCommands
                     $k=1;
                 }
 		$kicklist = '';
-		$mess='';
+		$mess='Отчет по массовому удалению пользователей:';
                 while ($k==0) {
                     if (isset($command->getArgs()[$n])) {
                     $kicklist.= $command->getArgs()[$n];
