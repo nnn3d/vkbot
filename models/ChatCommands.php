@@ -1340,13 +1340,13 @@ class ChatCommands
                     }
                 }
                 $n=1;
-                $kickmass=implode(",", $kicklist);
+                $kickmass=explode(",", $kicklist);
                 foreach $kickmass as $kickuser {
                 if (preg_match("/[\d]+/", $kickuser)) {
                     $id   = $kickuser;
                     $user = Users::getUser($command->chatId, $id);
                 } else {
-                    $usercall=$implode(" ", $kickmass);
+                    $usercall=$explode(" ", $kickmass);
                     $name       = $usercall[1];
                     $secondName = isset($usercall[2]) ? $usercall[2] : '';
                     $user       = Users::getUserByName($command->chatId, $name, $secondName);
