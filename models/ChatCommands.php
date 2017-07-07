@@ -1364,13 +1364,6 @@ class ChatCommands
 			    $chat->sendMessage("мама я полюбила ингуша1?5");
 			    $ki=$ki+1;
 		    }
-		    for($g=0;$g<count($usercall);$g++) {
-				if (($usercall[$g] == " ") || ($usercall[$g] == "")) {
-					unset($usercall[$g]);
-					$chat->sendMessage("мама я полюбила ингуша2 {$usercall[$g]}");
-					$ki=$ki+1;
-				}
-		    }
                     $name       = trim($usercall[$ki]);
                     $secondName = isset($usercall[$ki+1]) ? trim($usercall[$ki+1]) : '';
                     $user       = Users::getUserByName($command->chatId, $name, $secondName);
