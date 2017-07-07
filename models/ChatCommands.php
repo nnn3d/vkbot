@@ -1354,7 +1354,7 @@ class ChatCommands
                     $usercall=explode(" ",$kickuser);
 		    $on = array_search('',$usercall);
 		    if ($on !== false) {
-			    unset($usercall[$on1]);
+			    unset($usercall[$on]);
 			    $ki=$ki+1;
 		    }
                     $name       = trim($usercall[$ki]);
