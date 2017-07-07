@@ -1331,6 +1331,7 @@ class ChatCommands
                     $m=1;
                     $k=1;
                 }
+		$kicklist = '';
                 while ($k==0) {
                     if (isset($command->getArgs()[$n])) {
                     $kicklist.= $command->getArgs()[$n];
