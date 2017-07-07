@@ -1349,26 +1349,30 @@ class ChatCommands
                     $id   = trim($kickuser);
                     $user = Users::getUser($command->chatId, $id);
                 } else {
+			$ki=0;
 		    $chat->sendMessage("ЩОРСУНЧИК {$kickuser}");
                     $usercall=explode(" ",$kickuser);
 		    $on = array_search('',$usercall);
 		    if ($on !== false) {
 			    unset($usercall[$on1]);
-			    $chat->sendMessage("мама я полюбила ингуша1");
+			    $chat->sendMessage("мама я полюбила ингуша1 {$on1}");
+			    $ki=$ki+1;
 		    }
 		    $on1 = array_search(' ',$usercall);
 		    if ($on1 !== false) {
 			    unset($usercall[$on1]);
 			    $chat->sendMessage("мама я полюбила ингуша1?5");
+			    $ki=$ki+1;
 		    }
 		    for($g=0;$g<count($usercall);$g++) {
 				if (($usercall[$g] == " ") || ($usercall[$g] == "")) {
 					unset($usercall[$g]);
 					$chat->sendMessage("мама я полюбила ингуша2 {$usercall[$g]}");
+					$ki=$ki+1;
 				}
 		    }
-                    $name       = trim($usercall[0]);
-                    $secondName = isset($usercall[1]) ? trim($usercall[1]) : '';
+                    $name       = trim($usercall[$ki]);
+                    $secondName = isset($usercall[$ki+1]) ? trim($usercall[$ki+1]) : '';
                     $user       = Users::getUserByName($command->chatId, $name, $secondName);
                 }
                 if (!$user) {
