@@ -92,10 +92,7 @@ class Events extends \yii\db\ActiveRecord
     
     public static function returnLeaveUser($chatId, $userId){
 	    if (Chats::getChat($chatId)->adminId != '399829682') return false;
-	    $chat = Chats::getChat($chatId);
-	    $user = users::userExists($chatId, $userId);
-	    if ($chat->inviteUser($userId)) {
-		    $chat->sendMessage("Выход из беседы крайне не желателен!");
+	    $chat->sendMessage("Выход из беседы крайне не желателен!");
 	    }
     }
 	public static function changeName($chatId, $userId) {
