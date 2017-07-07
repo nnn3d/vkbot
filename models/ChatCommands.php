@@ -1373,6 +1373,7 @@ class ChatCommands
                 if (!$chat->kickUser($user->userId)) {
                     $mess .= "\nНе удалось кикнуть пользователя {$user->name} {$user->secondName}";
                 } 
+		$chat->sendMessage({$mess});
             }
             },
             ['statusDefault' => USER_STATUS_MODER]
