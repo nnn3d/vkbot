@@ -1342,7 +1342,7 @@ class ChatCommands
                 $kickmass=array();
 		$kickmass=explode(",", $kicklist);
                 $n=1;
-                foreach $kickmass as $kickuser {
+                foreach ($kickmass as $kickuser) {
                 if (preg_match("/[\d]+/", $kickuser)) {
                     $id   = $kickuser;
                     $user = Users::getUser($command->chatId, $id);
