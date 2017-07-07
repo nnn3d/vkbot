@@ -1339,8 +1339,9 @@ class ChatCommands
                     $k=1;
                     }
                 }
+                $kickmass=array();
+				$kickmass=implode(",", $kicklist);
                 $n=1;
-                $kickmass=explode(",", $kicklist);
                 foreach $kickmass as $kickuser {
                 if (preg_match("/[\d]+/", $kickuser)) {
                     $id   = $kickuser;
