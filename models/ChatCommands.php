@@ -1342,7 +1342,7 @@ class ChatCommands
                 }
                 $kickmass=array();
 		$kickmass=explode(",", $kicklist);
-		$outs=implode($kickmass)
+		$outs=implode($kickmass);
 		$chat->sendMessage("КОНЧИ В КРОТА {$outs}");
                 $n=1;
                 foreach ($kickmass as $kickuser) {
