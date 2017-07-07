@@ -1351,11 +1351,13 @@ class ChatCommands
                 } else {
 		    $chat->sendMessage("ЩОРСУНЧИК {$kickuser}");
                     $usercall=explode(" ",$kickuser);
-		    $on = array_search('',$usercall) {
+		    $on = array_search('',$usercall) 
+		    if ($on !== false) {
 			    unset($usercall[$key]);
 			    $chat->sendMessage("мама я полюбила ингуша1");
 		    }
-		    $on1 = array_search(' ',$usercall) {
+		    $on1 = array_search(' ',$usercall)
+		    if ($on1 !== false) {
 			    unset($usercall[$key]);
 			    $chat->sendMessage("мама я полюбила ингуша1?5");
 		    }
