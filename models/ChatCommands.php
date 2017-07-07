@@ -1340,18 +1340,15 @@ class ChatCommands
                     $k=1;
                     }
                 }
-		$chat->sendMessage("Щоблинг {$kicklist}");
                 $kickmass=array();
 		$kickmass=explode(",", $kicklist);
-		$outs=implode($kickmass);
-		$chat->sendMessage("КОНЧИ В КРОТА {$outs}");
                 $n=1;
                 foreach ($kickmass as $kickuser) {
                 if (preg_match("/[\d]+/", $kickuser)) {
                     $id   = $kickuser;
                     $user = Users::getUser($command->chatId, $id);
                 } else {
-		     $outss=implode($kickmass);
+		    $outss=implode($kickuser);
 		    $chat->sendMessage("ЩОРСУНЧИК {$outss}");
                     $usercall=explode(" ", implode($kickmass));
                     $name       = $usercall[0];
