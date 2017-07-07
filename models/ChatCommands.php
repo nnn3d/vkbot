@@ -1323,7 +1323,6 @@ class ChatCommands
             },
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
-                $command->getArgs()[1]));
                 if ($command->getArgs()[1]) {
                     $m=0;
                     $n=1;
