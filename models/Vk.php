@@ -17,7 +17,7 @@ class Vk{
     const AUTHORIZE_URL  = 'https://oauth.vk.com/authorize?';
     const GET_TOKEN_URL  = 'https://oauth.vk.com/access_token?';
     const METHOD_URL     = 'https://api.vk.com/method/';
-    const TIME_SLEEP    = 0.33;
+    const TIME_SLEEP    = 0.3334;
     public $secret_key  = null;
     public $scope       = [];
     public $client_id   = null;
