@@ -43,8 +43,10 @@ class MessagesCounter extends \yii\db\ActiveRecord
         $params = ['chatId' => $chatId, 'userId' => $userId, 'year' => $year, 'month' => $month, 'day' => $day];
         $counter = static::findOne($params);
         if (!$counter) $counter = new self($params);
+        if ($newMessages>700) {
         $counter->messages = $counter->messages + $newMessages;
         $counter->save();
+        }
     }
 
     public static function getSumCount($chatId, $userId, $daysAgo, $time = null)
