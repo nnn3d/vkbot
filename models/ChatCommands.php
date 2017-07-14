@@ -69,7 +69,6 @@ class ChatCommands
 
         $s        = new self;
         $commands = [];
-	$errmes="Упс... Что-то пошло не так!";
 	    
         $commands[] = new ChatCommand(
             'кто я?',
