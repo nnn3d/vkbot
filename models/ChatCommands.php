@@ -375,7 +375,7 @@ class ChatCommands
             'Последние выходы.',
             function ($command) use ($s) {
                 $s->load($command);
-                return $s->argsEqual(2) && $s->argsRegExp(['ливы', '[\d]{1,2}']) $s->argMinNumSet(1, 1) && $s->argMaxNumSet(7, 1);;
+                return $s->argsEqual(2) && $s->argsRegExp(['ливы', '[\d]{1,2}']) && $s->argMinNumSet(1, 1) && $s->argMaxNumSet(7, 1);
             },
             function ($command) {
                 $message       = "Из беседы вышли:\n";
