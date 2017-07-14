@@ -80,13 +80,6 @@ class ChatCommands
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
                 $user = Users::getUser($command->chatId, $command->userId);
-		if (!$chat) {
-			return false;
-		}
-		if (!$user) {
-			$chat->sendMessage("$errmes");
-			return false;
-		}
 
                 $a_sector = array(1 => "Пират", "Киборг", "Алкаш", "Урод", "Повелитель", "Жирдяй", "Админ", "Пенсионер", "Ассасин", "Владыка", "Лицушник", "Сталкер", "Разработчик", "Паркурщик", "Спринтер", "Задротище", "Довакин", "Опустошитель", "Бурят", "Шалава", "Высер", "Ингушет", "Анал", "Овощ", "Гусь", "Анимешник", "Зашквар", "Дупло", "Слюна", "Крот", "Делфьин", "Капибара", "Псина", "Коза");
                 $b_sector = array(1 => "карательных", "избирательных", "уродливых", "домашних", "четких", "святых", "школьных", "предвзятых", "овощных", "шальных", "игривых", "кричащих", "быстрых", "аномальных", "страшных", "тупых", "консольных", "черных", "вопиющих", "всратых", "анальных", "слюнявых", "больных", "бурятских", "ссаных", "ограниченных", "слитых", "степных", "козьих");
@@ -233,13 +226,7 @@ class ChatCommands
                 }
                 $chat = Chats::getChat($command->chatId);
                 $user = Users::getUser($command->chatId, $command->userId);
-		if (!$chat) {
-			return false;
-		}
-		if (!$user) {
-			$chat->sendMessage("$errmes");
-			return false;
-		}
+		
                 if (!preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9 ]+$/u', $nickname)) {
                     $chat->sendMessage("Твой ник не может содержать такие символы...", ['forward_messages' => $command->messageId]);
                     return false;
@@ -399,14 +386,7 @@ class ChatCommands
                 $eventList     = Events::getEvent($chat->chatId, $event);
                 $n             = 0;
                 $returnedUsers = array();
-		if (!$eventList) {
-			$chat->sendMessage("$errmes");
-			return false;
-		}
-		if (!$days) {
-			$chat->sendMessage("$errmes");
-			return false;
-		}
+		
                 foreach ($eventList as $userId) {
                     $user        = Users::getUser($chat->chatId, $userId->userId);
                     $checkUs     = Users::userExists($chat->chatId, $userId->userId);
