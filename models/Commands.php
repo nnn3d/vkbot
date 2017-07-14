@@ -23,7 +23,6 @@ class Commands extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    
     public static function tableName()
     {
         return 'commands';
@@ -79,9 +78,10 @@ class Commands extends \yii\db\ActiveRecord
 
     public function getArgs()
     {
-       $data = preg_replace_callback('!s:(\d+):"(.*?)";!', function($m) {
-        return 's:' . strlen($m[2]) . ':"' . $m[2] . '";';
-        }, $this->args);
+        $data = preg_replace_callback('!s:(\d+):"(.*?)";!', function($m) {
+return 's:' . strlen($m[2]) . ':"' . $m[2] . '";';
+}, $this->args);
+        return unserialize($data);
     }
 
     public function setArgs($args)
