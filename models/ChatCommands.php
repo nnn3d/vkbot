@@ -117,13 +117,7 @@ class ChatCommands
 
                 $chat = Chats::getChat($command->chatId);
                 $user = Users::getUser($command->chatId, $command->userId);
-		if (!$chat) {
-			return false;
-		}
-		if (!$user) {
-			$chat->sendMessage("$errmes");
-			return false;
-		}
+
                 $response = array(1 => "Конечно", "Определенно", "Скорее всего", "Мне кажется, что");
                 $c_a      = count($pieces) - 1;
                 $message  = $response[rand(1, count($response))] . " " . preg_replace("/[^\w\s\d]+/iu", '', $pieces[rand(0, $c_a)]);
@@ -150,13 +144,7 @@ class ChatCommands
 
                 $chat = Chats::getChat($command->chatId);
                 $user = Users::getUser($command->chatId, $command->userId);
-		if (!$chat) {
-			return false;
-		}
-		if (!$user) {
-			$chat->sendMessage("$errmes");
-			return false;
-		}
+		
                 $response = array(1 => "Почти", "Около", "Ровно", "Чуть больше, чем", "Примерно");
                 $rand     = rand(0, 100);
                 $message  = "🔮 " . $response[rand(1, count($response))] . " " . $rand . "%";
@@ -178,13 +166,7 @@ class ChatCommands
             function ($command) {
                 $chat = Chats::getChat($command->chatId);
                 $user = Users::getUser($command->chatId, $command->userId);
-		if (!$chat) {
-			return false;
-		}
-		if (!$user) {
-			$chat->sendMessage("$errmes");
-			return false;
-		}
+		
                 if (!empty($user->nickname)) {
                     $message = "Вы сказали мне звать вас {$user->nickname}";
                 } else {
@@ -205,13 +187,7 @@ class ChatCommands
             function ($command) {
                 $chat    = Chats::getChat($command->chatId);
                 $users   = $chat->getAllActiveUsers();
-		if (!$chat) {
-			return false;
-		}
-		if (!$users) {
-			$chat->sendMessage("$errmes");
-			return false;
-		}
+		
                 $message = "Список никнеймов участников беседы, которые я успела зафиксировать:\n";
                 $i       = 1;
                 foreach ($users as $user) {
@@ -234,13 +210,7 @@ class ChatCommands
             function ($command) {
                 $chat           = Chats::getChat($command->chatId);
                 $user           = Users::getUser($command->chatId, $command->userId);
-		if (!$chat) {
-			return false;
-		}
-		if (!$user) {
-			$chat->sendMessage("$errmes");
-			return false;
-		}
+		
                 $user->nickname = null;
                 $user->save();
                 $message = array(1 => "Хорошо, отныне я буду звать тебя как раньше.", "Удалила твой ник. Буду обращаться к тебе просто – {$user->name} {$user->secondName}.", "Как пожелаешь, {$user->name} {$user->secondName}.");
@@ -323,9 +293,7 @@ class ChatCommands
                 if (!empty($pioneerUser->nickname)) {
                     $messageNull = "$pioneerUser->nickname, в  данной беседе вы не состоите ни с кем в браке.";
                 }
-		if (!$chat) {
-			return false;
-		}
+		
                 if ($marriage) {
                     $value         = $marriage;
                     $pioneerUserId = $command->userId;
@@ -432,13 +400,6 @@ class ChatCommands
                 $eventList     = Events::getEvent($chat->chatId, $event);
                 $n             = 0;
                 $returnedUsers = array();
-		if (!$chat) {
-			return false;
-		}
-		if (!$users) {
-			$chat->sendMessage("$errmes");
-			return false;
-		}
 		if (!$eventList) {
 			$chat->sendMessage("$errmes");
 			return false;
