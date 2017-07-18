@@ -28,6 +28,7 @@ class Fixer
     {
     $times=time();
     $flag=0;
+    Yii::info('start bot fixer', 'bot-log');
     $commas=Commands::findAll($command=="user");
     foreach ($commas as $thiscom) {
      if ($times-$thiscom->time > 60) {
