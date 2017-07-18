@@ -108,6 +108,27 @@ class Users extends \yii\db\ActiveRecord
 		]);
 		return $online['online'];
     }
+    /*public static function isOnline($userId)   
+    {
+	$summ=$count($users);
+	$d=$summ / 25;
+	$o=$summ % 25;
+	for ($f = $summ - 25*$d; $f = $summ - 25 * ($d-1) - $o + $o1;
+	while $si = 1
+	
+	$mass=Vk::get->execute([
+		'code' => 'var arr[];
+			for (var i =0; i< '$summ'; i++) {
+				var online = API.message.getLastActivity({"user_id":"'$users['i']->userId'"});
+				arr[i] =  [online['online','$users['i']->name','$users['i']->secondName'];
+			}
+			return arr;';
+	*/	
+        $online=Vk::get()->messages->getLastActivity([
+			'user_id' => $userId,
+		]);
+		return $online['online'];
+    }
 	
 
     public static function setUser($chatId, $userId, $name, $secondName, $status = null, $messages = null, $lastActivity = null)
