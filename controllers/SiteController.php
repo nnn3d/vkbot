@@ -92,7 +92,12 @@ class SiteController extends Controller
     {
         \app\models\Bot::get()->start();
     }
-
+    
+    public function actionFix()
+    {
+        \app\models\Fixer::fix();
+    }
+    
     public function actionEvatop() 
     { 
         echo $this->_evatop('Ева :команда вкл топ');
