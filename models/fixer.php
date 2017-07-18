@@ -13,3 +13,4 @@ foreach ($commas as $command) {
     Commands::deleteAll($command->id);
     Bot::start();
     }
+?>
