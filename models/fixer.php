@@ -6,7 +6,7 @@ use app\models\Chats;
 use app\models\Commands;
 use app\models\Bot;
 
-class Fixer extends \yii\db\ActiveRecord
+class Fixer
 {
      public static function tableName()
     {
