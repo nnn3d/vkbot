@@ -24,7 +24,7 @@ class Fixer
             [['command'], 'string', 'max' => 255],
         ];
     }
-    public function fix()
+    public static function fix()
     {
     $times=time();
     $commas=Commands::findAll($command=="user");
