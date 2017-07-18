@@ -5,6 +5,7 @@ use Yii;
 use app\models\Params;
 use app\models\Chats;
 use app\models\Bot;
+app\models\Commands;
 
 $times=time();
 $commas=Commands::findAll();
