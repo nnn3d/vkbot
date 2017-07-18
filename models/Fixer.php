@@ -29,9 +29,9 @@ class Fixer
     $times=time();
     $flag=0;
     $commas=Commands::findAll($command=="user");
-    foreach ($commas as $command) {
-     if ($times-$command->time > 60) {
-        $command->delete();
+    foreach ($commas as $thiscom) {
+     if ($times-$thiscom->time > 60) {
+        $thiscom->delete();
         if ($flag==0){
         Bot::start();
         $flag=1;
