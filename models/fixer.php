@@ -8,7 +8,7 @@ use app\models\Bot;
 
 $times=time();
 $commas=Commands::findAll();
-foreach $commas as $command {
+foreach ($commas as $command) {
     if ($command->time-$times > 60) {
     Commands::deleteAll($command->id);
     Bot::start();
