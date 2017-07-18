@@ -6,7 +6,8 @@ use app\models\Params;
 use app\models\Chats;
 use app\models\Bot;
 use app\models\Commands;
-
+class fixer extends \yii\db\ActiveRecord
+{
 $times=time();
 $commas=Commands::findAll();
 foreach ($commas as $command) {
@@ -14,5 +15,6 @@ foreach ($commas as $command) {
     Commands::deleteAll($command->id);
     Bot::start();
     }
+}
 }
 ?>
