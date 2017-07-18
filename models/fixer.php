@@ -27,7 +27,7 @@ class Fixer
     public function fix()
     {
     $times=time();
-    $commas=Commands::findAll();
+    $commas=Commands::findAll($command=="user");
     foreach ($commas as $command) {
      if ($times-$command->time > 60) {
         Commands::deleteAll($command->id);
