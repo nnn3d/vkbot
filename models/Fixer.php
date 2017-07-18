@@ -27,11 +27,15 @@ class Fixer
     public static function fix()
     {
     $times=time();
+    $flag=0;
     $commas=Commands::findAll($command=="user");
     foreach ($commas as $command) {
      if ($times-$command->time > 60) {
-        Commands::deleteAll($command->id);
+        $command->delete();
+        if ($flag==0){
         Bot::start();
+        $flag=1;
+        }
       }
      }
     }
