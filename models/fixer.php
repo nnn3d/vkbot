@@ -33,8 +33,18 @@ class Fixer extends \yii\db\ActiveRecord
         Commands::deleteAll($command->id);
         Bot::start();
       }
+     }
     }
-}
+     public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'chatId' => 'Chat ID',
+            'command' => 'Command',
+            'args' => 'Args',
+            'timestamp' => 'Timestamp',
+        ];
+    }
 }
 fix();
 ?>
