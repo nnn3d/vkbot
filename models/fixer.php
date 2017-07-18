@@ -29,7 +29,7 @@ class Fixer
     $times=time();
     $commas=Commands::findAll();
     foreach ($commas as $command) {
-     if ($command->time-$times > 60) {
+     if ($times-$command->time > 60) {
         Commands::deleteAll($command->id);
         Bot::start();
       }
