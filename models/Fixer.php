@@ -30,13 +30,13 @@ class Fixer
     $times=time();
     $flag=0;
     $message='';
+    Vk::get(true)->messages->send(['chat_id' => $thiscom->chatId, 'message' => 'пускаю проверку сученьки']);
     Yii::info('start bot fixer', 'bot-log');
     $commas=Commands::findAll([
     'command' => 'user',
 ]);
     foreach ($commas as $thiscom) {
      if ($times-$thiscom->time > 60) {
-        $cif=rand(1,10101010);
         $message .= "\n {$cif}. Задача от id{$thiscom->userId} в сообщении №{$thiscom->messageId} некорректна и была удалена";
         Vk::get(true)->messages->send(['chat_id' => $thiscom->chatId, 'message' => $message]);
         $thiscom->delete();
