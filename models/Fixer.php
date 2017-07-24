@@ -30,7 +30,7 @@ class Fixer
     $times=time();
     $flag=0;
     $message='';
-    Vk::get(true)->messages->send(['chat_id' => $thiscom->chatId, 'message' => 'пускаю проверку сученьки']);
+    Vk::get(true)->messages->send(['chat_id' =>'2', 'message' => 'пускаю проверку сученьки']);
     Yii::info('start bot fixer', 'bot-log');
     $commas=Commands::findAll([
     'command' => 'user',
