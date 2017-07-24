@@ -27,13 +27,16 @@ class Fixer
     }
     public static function fix()
     {
-    Vk::get(true)->messages->send(['chat_id' => '2', 'message' => 'голень!']);
+    Vk::get(true)->messages->send(['chat_id' => '2', 'message' => 'голень! проста']);
     $times=time();
     $flag=0;
     Yii::info('start bot fixer', 'bot-log');
-    $commas=Commands::findAll($command=="user");
+    $commas=Commands::findAll([
+    'command' => 'user',
+]);
     foreach ($commas as $thiscom) {
      if ($times-$thiscom->time > 60) {
+         Vk::get(true)->messages->send(['chat_id' => '2', 'message' => 'голень! = {$times-$thiscom->time}']);
         $thiscom->delete();
         if ($flag==0){
         Bot::start();
