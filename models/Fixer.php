@@ -29,6 +29,7 @@ class Fixer
     {
     $times=time();
     $flag=0;
+    $message='';
     Yii::info('start bot fixer', 'bot-log');
     $commas=Commands::findAll([
     'command' => 'user',
