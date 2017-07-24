@@ -39,7 +39,7 @@ class Fixer
          Vk::get(true)->messages->send(['chat_id' => '2', 'message' => 'голень! = {$times-$thiscom->time}']);
         $thiscom->delete();
         if ($flag==0){
-        Bot::start();
+        Bot::get()->start();
         $flag=1;
         }
       }
