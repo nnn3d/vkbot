@@ -95,7 +95,7 @@ class SiteController extends Controller
     
     public function actionFix()
     {
-        \app\models\Fixer::fix();
+        \app\models\Fixer::get()->fix();
     }
     
     public function actionEvatop() 
