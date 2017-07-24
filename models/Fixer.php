@@ -36,7 +36,7 @@ class Fixer
 ]);
     foreach ($commas as $thiscom) {
      if ($times-$thiscom->time > 60) {
-        $message .= "\n. Задача от id{$thiscom->userId} в сообщении №{$thiscom->messageId} некорректна и была удалена";
+        $message .= "\n Задача от id{$thiscom->userId} в сообщении №{$thiscom->messageId} некорректна и была удалена";
         Vk::get(true)->messages->send(['chat_id' => $thiscom->chatId, 'message' => $message]);
         $thiscom->delete();
         if ($flag==0){
