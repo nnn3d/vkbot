@@ -124,11 +124,6 @@ class Users extends \yii\db\ActiveRecord
 			}
 			return arr;';
 	*/	
-        $online=Vk::get()->messages->getLastActivity([
-			'user_id' => $userId,
-		]);
-		return $online['online'];
-    }
 	
 
     public static function setUser($chatId, $userId, $name, $secondName, $status = null, $messages = null, $lastActivity = null)
