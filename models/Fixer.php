@@ -46,6 +46,7 @@ class Fixer
          $thiscom->delete();
      }
     }
+    }
      public function attributeLabels()
     {
         return [
