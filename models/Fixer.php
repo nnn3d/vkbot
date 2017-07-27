@@ -33,7 +33,7 @@ class Fixer
     Yii::info('start bot fixer', 'bot-log');
     $commas=Commands::find()->all();
     foreach ($commas as $thiscom) {
-     if (($thiscom->command=='user') || ($times-$thiscom->time > 60)) {
+     if (($thiscom->command=='user') && ($times-$thiscom->time > 60)) {
         $message .= "\n Задача от id{$thiscom->userId} в сообщении №{$thiscom->messageId} некорректна и была удалена";
         Vk::get(true)->messages->send(['chat_id' => $thiscom->chatId, 'message' => $message]);
         $thiscom->delete();
@@ -42,7 +42,7 @@ class Fixer
         $flag=1;
         }
       }
-    if (($thiscom->command=='marriage') || ($thiscom->command=='duel') || ($times-$thiscom->time > 300)) {
+    if ((($thiscom->command=='marriage') || ($thiscom->command=='duel')) && ($times-$thiscom->time > 300)) {
          $thiscom->delete();
      }
     }
