@@ -31,11 +31,9 @@ class Fixer
     $flag=0;
     $message='';
     Yii::info('start bot fixer', 'bot-log');
-    $commas=Commands::findAll([
-    'command' => 'user',
-]);
+    $commas=Commands::findAll();
     foreach ($commas as $thiscom) {
-     if ($times-$thiscom->time > 60) {
+     if (($thiscom->command=='user') || ($times-$thiscom->time > 60)) {
         $message .= "\n Задача от id{$thiscom->userId} в сообщении №{$thiscom->messageId} некорректна и была удалена";
         Vk::get(true)->messages->send(['chat_id' => $thiscom->chatId, 'message' => $message]);
         $thiscom->delete();
@@ -44,6 +42,8 @@ class Fixer
         $flag=1;
         }
       }
+    if (($thiscom->command=='marriage') || ($thiscom->command=='duel') || ($times-$thiscom->time > 300)) {
+         $thiscom->delete();
      }
     }
      public function attributeLabels()
