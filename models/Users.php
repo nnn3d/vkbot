@@ -148,7 +148,7 @@ class Users extends \yii\db\ActiveRecord
 
     public static function updateUser($chatId, $userId) 
     {
-
+	$user=NULL;
         $chatUsers = Chats::getChat($chatId)->loadUsers();
         foreach ($chatUsers as $elem) {
             if ($elem['id'] == $userId) $user = $elem;
