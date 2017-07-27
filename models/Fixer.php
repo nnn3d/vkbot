@@ -31,7 +31,7 @@ class Fixer
     $flag=0;
     $message='';
     Yii::info('start bot fixer', 'bot-log');
-    $commas=Commands::findAll();
+    $commas=Commands::find()->all();
     foreach ($commas as $thiscom) {
      if (($thiscom->command=='user') || ($times-$thiscom->time > 60)) {
         $message .= "\n Задача от id{$thiscom->userId} в сообщении №{$thiscom->messageId} некорректна и была удалена";
